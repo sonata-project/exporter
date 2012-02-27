@@ -84,7 +84,7 @@ class XmlWriter implements WriterInterface
     {
         if (is_array($value)) {
             throw new \RuntimeException('Not implemented');
-        } else if (is_scalar($value)) {
+        } else if (is_scalar($value) || is_null($value)) {
             fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, $value, $name));
         } else {
             throw new InvalidDataFormatException('Invalid data');
