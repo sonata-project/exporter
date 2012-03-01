@@ -37,6 +37,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     public function __construct(Query $query, array $fields)
     {
         $this->query = clone $query;
+        $this->query->setParameters($query->getParameters());
+        
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
             if (is_string($name) && is_string($field)) {
