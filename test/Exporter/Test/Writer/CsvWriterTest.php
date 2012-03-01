@@ -17,17 +17,6 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * @expectedException \Exporter\Exception\InvalidDataFormatException
-     */
-    public function testInvalidDataFormat()
-    {
-        $writer = new CsvWriter($this->filename, ',', '');
-        $writer->open();
-
-        $writer->write(array('john "2', 'doe', '1'));
-    }
-
     public function testEnclosureFormating()
     {
 
@@ -38,7 +27,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = '"john \, """"2""","doe","1"';
+        $expected = '" john , """"2""",doe,1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
@@ -52,7 +41,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = '"john , """"2""","doe","1"';
+        $expected = '"john , """"2""","doe ",1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
