@@ -1,7 +1,7 @@
 {
     "name": "sonata-project/exporter",
     "description": "Lightweight Exporter library",
-    "keywords": ["export csv xls data client"],
+    "keywords": ["export", "csv", "xls", "data", "client"],
     "homepage": "https://github.com/sonata-project/Exporter",
     "type": "library",
     "license": "MIT",
