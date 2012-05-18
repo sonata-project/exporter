@@ -31,14 +31,14 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @param \Doctrine\ORM\Query $query
-     * @param array $fields
+     * @param \Doctrine\ORM\Query $query  The Doctrine Query
+     * @param array               $fields Fields to export
      */
     public function __construct(Query $query, array $fields)
     {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
-        
+
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
             if (is_string($name) && is_string($field)) {
@@ -61,6 +61,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         foreach ($this->propertyPaths as $name => $propertyPath ) {
             $data[$name] = $this->getValue($propertyPath->getValue($current[0]));
         }
+
+        $this->query->getEntityManager()->getUnitOfWork()->detach($current[0]);
 
         return $data;
     }
