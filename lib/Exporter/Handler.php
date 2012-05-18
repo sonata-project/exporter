@@ -50,7 +50,7 @@ class Handler
      * @param Source\SourceIteratorInterface $source
      * @param Writer\WriterInterface         $writer
      *
-     * @return
+     * @return Handler
      */
     public static function create(SourceIteratorInterface $source, WriterInterface $writer)
     {

@@ -27,7 +27,9 @@ class XmlWriter implements WriterInterface
     private $childElement;
 
     /**
-     * @param $filename
+     * @param string $filename
+     * @param string $mainElement
+     * @param string $childElement
      */
     public function __construct($filename, $mainElement = 'datas', $childElement = 'data')
     {
@@ -76,8 +78,9 @@ class XmlWriter implements WriterInterface
     }
 
     /**
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param string $value
+     *
      * @return void
      */
     private function generateNode($name, $value)

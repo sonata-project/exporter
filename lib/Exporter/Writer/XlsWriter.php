@@ -74,6 +74,11 @@ class XlsWriter implements WriterInterface
         $this->position++;
     }
 
+    /**
+     * @param $data
+     *
+     * @return array mixed
+     */
     private function init($data)
     {
         if ($this->position > 0) {

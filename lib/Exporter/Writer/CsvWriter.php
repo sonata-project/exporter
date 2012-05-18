@@ -30,10 +30,11 @@ class CsvWriter implements WriterInterface
     private $position;
 
     /**
-     * @param        $filename
+     * @param string $filename
      * @param string $delimiter
      * @param string $enclosure
      * @param string $escape
+     * @param bool   $showHeaders
      */
     public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $showHeaders = true)
     {

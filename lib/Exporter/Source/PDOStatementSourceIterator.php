@@ -24,7 +24,7 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     protected $rewinded;
 
     /**
-     * @param array $data
+     * @param \PDOStatement $statement
      */
     public function __construct(\PDOStatement $statement)
     {

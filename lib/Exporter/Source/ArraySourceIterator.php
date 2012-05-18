@@ -36,7 +36,7 @@ class ArraySourceIterator implements SourceIteratorInterface
      */
     public function next()
     {
-        return $this->iterator->next();
+        $this->iterator->next();
     }
 
     /**
@@ -60,6 +60,6 @@ class ArraySourceIterator implements SourceIteratorInterface
      */
     public function rewind()
     {
-        return $this->iterator->rewind();
+        $this->iterator->rewind();
     }
 }

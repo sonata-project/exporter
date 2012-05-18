@@ -22,7 +22,7 @@ class JsonWriter implements WriterInterface
     private $position;
 
     /**
-     * @param $filename
+     * @param string $filename
      */
     public function __construct($filename)
     {
