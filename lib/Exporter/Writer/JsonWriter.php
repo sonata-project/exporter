@@ -26,8 +26,8 @@ class JsonWriter implements WriterInterface
      */
     public function __construct($filename)
     {
-        $this->filename  = $filename;
-        $this->position  = 0;
+        $this->filename = $filename;
+        $this->position = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -59,7 +59,7 @@ class JsonWriter implements WriterInterface
      */
     public function write(array $data)
     {
-        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data));
+        fwrite($this->file, ($this->position > 0 ? ',' : '') . json_encode($data));
 
         $this->position++;
     }

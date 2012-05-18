@@ -20,6 +20,7 @@ interface WriterInterface
 
     /**
      * @param array $data
+     *
      * @return void
      */
     function write(array $data);

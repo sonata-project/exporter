@@ -30,19 +30,19 @@ class CsvWriter implements WriterInterface
     private $position;
 
     /**
-     * @param $filename
+     * @param        $filename
      * @param string $delimiter
      * @param string $enclosure
      * @param string $escape
      */
     public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $showHeaders = true)
     {
-        $this->filename  = $filename;
-        $this->delimiter = $delimiter;
-        $this->enclosure = $enclosure;
-        $this->escape    = $escape;
+        $this->filename    = $filename;
+        $this->delimiter   = $delimiter;
+        $this->enclosure   = $enclosure;
+        $this->escape      = $escape;
         $this->showHeaders = $showHeaders;
-        $this->position = 0;
+        $this->position    = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -54,7 +54,7 @@ class CsvWriter implements WriterInterface
      */
     public function open()
     {
-         $this->file = fopen($this->filename, 'w', false);
+        $this->file = fopen($this->filename, 'w', false);
     }
 
     /**
@@ -83,6 +83,7 @@ class CsvWriter implements WriterInterface
 
     /**
      * @param array $data
+     *
      * @return void
      */
     private function addHeaders(array $data)
@@ -92,11 +93,12 @@ class CsvWriter implements WriterInterface
             $headers[] = $header;
         }
 
-        fwrite($this->file, join($this->delimiter, $headers)."\r\n");
+        fwrite($this->file, join($this->delimiter, $headers) . "\r\n");
     }
 
     /**
      * @param array $data
+     *
      * @return string
      */
     private function prepareData(array $data)
@@ -105,11 +107,12 @@ class CsvWriter implements WriterInterface
             $data[$pos] = sprintf("%s%s%s", $this->enclosure, $this->escape($value), $this->enclosure);
         }
 
-        return join($this->delimiter, $data)."\r\n";
+        return join($this->delimiter, $data) . "\r\n";
     }
 
     /**
      * @param $value
+     *
      * @return string
      */
     private function escape($value)

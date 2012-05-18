@@ -58,7 +58,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
         $data = array();
 
-        foreach ($this->propertyPaths as $name => $propertyPath ) {
+        foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = $this->getValue($propertyPath->getValue($current[0]));
         }
 
@@ -69,6 +69,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
     /**
      * @param $value
+     *
      * @return null|string
      */
     private function getValue($value)

@@ -25,14 +25,15 @@ class XlsWriter implements WriterInterface
 
     /**
      * @throws \RuntimeException
-     * @param $filename
+     *
+     * @param      $filename
      * @param bool $showHeaders
      */
-    public function __construct($filename,  $showHeaders = true)
+    public function __construct($filename, $showHeaders = true)
     {
-        $this->filename  = $filename;
+        $this->filename    = $filename;
         $this->showHeaders = $showHeaders;
-        $this->position = 0;
+        $this->position    = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -44,8 +45,8 @@ class XlsWriter implements WriterInterface
      */
     public function open()
     {
-         $this->file = fopen($this->filename, 'w', false);
-         fwrite($this->file, "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content=\"https://github.com/sonata-project/exporter\"></head><body><table>");
+        $this->file = fopen($this->filename, 'w', false);
+        fwrite($this->file, "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content=\"https://github.com/sonata-project/exporter\"></head><body><table>");
     }
 
     /**

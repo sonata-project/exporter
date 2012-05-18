@@ -22,7 +22,7 @@ class Handler
 
     /**
      * @param Source\SourceIteratorInterface $source
-     * @param Writer\WriterInterface $writer
+     * @param Writer\WriterInterface         $writer
      */
     public function __construct(SourceIteratorInterface $source, WriterInterface $writer)
     {
@@ -37,7 +37,7 @@ class Handler
     {
         $this->writer->open();
 
-        foreach($this->source as $data) {
+        foreach ($this->source as $data) {
             $this->writer->write($data);
         }
 
@@ -46,8 +46,10 @@ class Handler
 
     /**
      * @static
+     *
      * @param Source\SourceIteratorInterface $source
-     * @param Writer\WriterInterface $writer
+     * @param Writer\WriterInterface         $writer
+     *
      * @return
      */
     public static function create(SourceIteratorInterface $source, WriterInterface $writer)
