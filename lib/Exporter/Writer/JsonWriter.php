@@ -15,11 +15,11 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class JsonWriter implements WriterInterface
 {
-    private $filename;
+    protected $filename;
 
-    private $file;
+    protected $file;
 
-    private $position;
+    protected $position;
 
     /**
      * @param string $filename

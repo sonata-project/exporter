@@ -15,7 +15,7 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class InMemoryWriter implements WriterInterface
 {
-    private $elements;
+    protected $elements;
 
     /**
      * {@inheritdoc}

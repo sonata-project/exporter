@@ -16,15 +16,15 @@ use \SimpleXMLElement as SimpleXMLElement;
 
 class XmlWriter implements WriterInterface
 {
-    private $filename;
+    protected $filename;
 
-    private $file;
+    protected $file;
 
-    private $position;
+    protected $position;
 
-    private $mainElement;
+    protected $mainElement;
 
-    private $childElement;
+    protected $childElement;
 
     /**
      * @param string $filename
@@ -83,7 +83,7 @@ class XmlWriter implements WriterInterface
      *
      * @return void
      */
-    private function generateNode($name, $value)
+    protected function generateNode($name, $value)
     {
         if (is_array($value)) {
             throw new \RuntimeException('Not implemented');
