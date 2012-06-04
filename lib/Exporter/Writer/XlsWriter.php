@@ -15,13 +15,13 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class XlsWriter implements WriterInterface
 {
-    private $filename;
+    protected $filename;
 
-    private $file;
+    protected $file;
 
-    private $showHeaders;
+    protected $showHeaders;
 
-    private $position;
+    protected $position;
 
     /**
      * @throws \RuntimeException
@@ -79,7 +79,7 @@ class XlsWriter implements WriterInterface
      *
      * @return array mixed
      */
-    private function init($data)
+    protected function init($data)
     {
         if ($this->position > 0) {
             return;

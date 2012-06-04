@@ -15,19 +15,19 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class CsvWriter implements WriterInterface
 {
-    private $filename;
+    protected $filename;
 
-    private $delimiter;
+    protected $delimiter;
 
-    private $enclosure;
+    protected $enclosure;
 
-    private $escape;
+    protected $escape;
 
-    private $file;
+    protected $file;
 
-    private $showHeaders;
+    protected $showHeaders;
 
-    private $position;
+    protected $position;
 
     /**
      * @param string $filename
@@ -87,7 +87,7 @@ class CsvWriter implements WriterInterface
      *
      * @return void
      */
-    private function addHeaders(array $data)
+    protected function addHeaders(array $data)
     {
         $headers = array();
         foreach ($data as $header => $value) {
@@ -102,7 +102,7 @@ class CsvWriter implements WriterInterface
      *
      * @return string
      */
-    private function prepareData(array $data)
+    protected function prepareData(array $data)
     {
         foreach ($data as $pos => $value) {
             $data[$pos] = sprintf("%s%s%s", $this->enclosure, $this->escape($value), $this->enclosure);
@@ -116,7 +116,7 @@ class CsvWriter implements WriterInterface
      *
      * @return string
      */
-    private function escape($value)
+    protected function escape($value)
     {
         if (strlen($this->enclosure) == 0) {
             if (mb_strpos($value, '"')) {

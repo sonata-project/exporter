@@ -72,7 +72,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      *
      * @return null|string
      */
-    private function getValue($value)
+    protected function getValue($value)
     {
         if (is_array($value) or $value instanceof \Traversable) {
             $value = null;
