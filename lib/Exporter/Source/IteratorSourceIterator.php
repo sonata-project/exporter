@@ -27,6 +27,14 @@ class IteratorSourceIterator implements SourceIteratorInterface
     }
 
     /**
+     * @return \Iterator
+     */
+    public function getIterator()
+    {
+        return $this->iterator;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function current()
