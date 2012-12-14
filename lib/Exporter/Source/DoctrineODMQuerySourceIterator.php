@@ -31,13 +31,12 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @param \Doctrine\ORM\Query $query  The Doctrine Query
+     * @param \Doctrine\ODM\MongoDB\Query\Query $query  The Doctrine Query
      * @param array               $fields Fields to export
      */
     public function __construct(Query $query, array $fields)
     {
         $this->query = clone $query;
-//        $this->query->setParameters($query->getParameters());
 
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
