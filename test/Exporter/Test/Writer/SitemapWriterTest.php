@@ -33,8 +33,8 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         $writer->open();
         $writer->write(array(
             'url'     => 'http://sonata-project.org/bundle',
-            'lastmod' => 'now',
-            'change'  => 'daily'
+            'lastmod' => '2012-12-26',
+            'change'  => 'daily',
         ));
         $writer->close();
 
@@ -120,7 +120,6 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-
         foreach($this->getFiles() as $file) {
             unlink($file);
         }
