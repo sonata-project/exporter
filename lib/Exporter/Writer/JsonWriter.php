@@ -11,8 +11,6 @@
 
 namespace Exporter\Writer;
 
-use Exporter\Exception\InvalidDataFormatException;
-
 class JsonWriter implements WriterInterface
 {
     protected $filename;
