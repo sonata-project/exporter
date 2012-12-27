@@ -42,7 +42,7 @@ class ChainSourceIterator implements SourceIteratorInterface
      */
     public function current()
     {
-        return $this->sources->current();
+        return $this->sources->current()->current();
     }
 
     /**
@@ -50,7 +50,7 @@ class ChainSourceIterator implements SourceIteratorInterface
      */
     public function next()
     {
-        $this->sources->next();
+        $this->sources->current()->next();
     }
 
     /**
@@ -58,7 +58,7 @@ class ChainSourceIterator implements SourceIteratorInterface
      */
     public function key()
     {
-        return $this->sources->key();
+        return $this->sources->current()->key();
     }
 
     /**
@@ -66,7 +66,17 @@ class ChainSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        return $this->sources->valid();
+        if (!$this->sources->current()->valid()) {
+            $this->sources->next();
+
+            if (!$this->sources->valid()) {
+                return false;
+            }
+
+            $this->sources->current()->rewind();
+        }
+
+        return true;
     }
 
     /**
@@ -74,6 +84,8 @@ class ChainSourceIterator implements SourceIteratorInterface
      */
     public function rewind()
     {
-        $this->sources->rewind();
+        if ($this->sources->current()) {
+            $this->sources->current()->rewind();
+        }
     }
 }
