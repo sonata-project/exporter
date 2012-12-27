@@ -35,12 +35,11 @@ class SitemapWriter implements WriterInterface
 
     /**
      * @param string $folder
-     * @param string $pattern
      */
-    public function __construct($folder, $pattern)
+    public function __construct($folder)
     {
         $this->folder  = $folder;
-        $this->pattern = $pattern;
+        $this->pattern = 'sitemap_%05d.xml';
     }
 
     /**
@@ -85,7 +84,7 @@ class SitemapWriter implements WriterInterface
     public function generateSitemapIndex()
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?" . ">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
-        foreach (glob($this->folder) as $file) {
+        foreach (glob($this->folder.'/sitemap*.xml') as $file) {
             $stat = stat($file);
             $content .= sprintf("\t" . '<sitemap><loc>%s</loc><lastmod>%s</lastmod></sitemap>' . "\n",
                 basename($file),
@@ -121,7 +120,7 @@ class SitemapWriter implements WriterInterface
 
         $this->buffer = fopen($this->folder . '/' . $filename, 'w');
 
-        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n");
     }
 
     /**
@@ -134,7 +133,7 @@ class SitemapWriter implements WriterInterface
      */
     protected function addSitemapLine($url, $lastmod, $changefreq, $priority)
     {
-        $line = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>', $url, date('Y-m-d', strtotime($lastmod)), $changefreq, $priority);
+        $line = sprintf("\t".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $url, date('Y-m-d', strtotime($lastmod)), $changefreq, $priority);
 
         if ($this->bufferUrlCount >= self::LIMIT_URL) {
             $this->generateNewPart();
