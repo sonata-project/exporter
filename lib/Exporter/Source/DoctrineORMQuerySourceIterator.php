@@ -55,16 +55,47 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     public function current()
     {
         $current = $this->iterator->current();
-
         $data = array();
 
-        foreach ($this->propertyPaths as $name => $propertyPath) {
-            $data[$name] = $this->getValue($propertyPath->getValue($current[0]));
+        foreach ($this->propertyPaths as $name => $propertyPath ) {
+            $data[$name] = null;
+            if ($this->checkPropertyPathInheritance($propertyPath, $current[0])) {
+                $data[$name] = $this->getValue($propertyPath->getValue($current[0]));
+            }
         }
 
-        $this->query->getEntityManager()->getUnitOfWork()->detach($current[0]);
-
         return $data;
+    }
+
+    /**
+     * Checks more than 2 inheritance level values
+     *
+     * @param PropertyPath $propertyPath
+     * @param object|array The current iterator item
+     * @return boolean
+     */
+    private function checkPropertyPathInheritance(PropertyPath $propertyPath, $current)
+    {
+        $iterator = $propertyPath->getIterator();
+        $value = true;
+
+        // More than 2 inheritance levels
+        if ($iterator->count() > 2) {
+            $paths = array();
+
+            while($iterator->valid()) {
+                $paths[] = $iterator->current();
+                $specialPropertyPath = new PropertyPath(implode('.', $paths));
+
+                if (null === ($value = $specialPropertyPath->getValue($current))) {
+                    break;
+                }
+
+                $iterator->next();
+            }
+        }
+
+        return !empty($value);
     }
 
     /**
