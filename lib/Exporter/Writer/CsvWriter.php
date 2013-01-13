@@ -77,7 +77,11 @@ class CsvWriter implements WriterInterface
             $this->position++;
         }
 
-        fwrite($this->file, $this->prepareData($data));
+        $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure);
+
+        if (!$result) {
+            throw new InvalidDataFormatException();
+        }
 
         $this->position++;
     }
@@ -94,50 +98,6 @@ class CsvWriter implements WriterInterface
             $headers[] = $header;
         }
 
-        fwrite($this->file, join($this->delimiter, $headers) . "\r\n");
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return string
-     */
-    protected function prepareData(array $data)
-    {
-        foreach ($data as $pos => $value) {
-            $data[$pos] = sprintf("%s%s%s", $this->enclosure, $this->escape($value), $this->enclosure);
-        }
-
-        return join($this->delimiter, $data) . "\r\n";
-    }
-
-    /**
-     * @param $value
-     *
-     * @return string
-     */
-    protected function escape($value)
-    {
-        if (strlen($this->enclosure) == 0) {
-            if (mb_strpos($value, '"')) {
-                throw new InvalidDataFormatException('The data must be delimeted by a valid enclosure');
-            }
-
-            return $value;
-        }
-
-        $value = mb_ereg_replace(
-            sprintf('(%s)', $this->enclosure),
-            sprintf('%s\1', $this->enclosure),
-            $value
-        );
-
-        $value = mb_ereg_replace(
-            sprintf('(%s)', $this->delimiter),
-            sprintf('%s\1', $this->escape),
-            $value
-        );
-
-        return trim($value);
+        fputcsv($this->file, $headers, $this->delimiter, $this->enclosure);
     }
 }

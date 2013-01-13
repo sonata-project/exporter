@@ -30,7 +30,6 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
     public function testEnclosureFormating()
     {
-
         $writer = new CsvWriter($this->filename, ',', '"', "\\", false);
         $writer->open();
 
@@ -38,7 +37,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = '"john \, """"2""","doe","1"';
+        $expected = '" john , """"2""",doe,1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
@@ -52,7 +51,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = '"john , """"2""","doe","1"';
+        $expected = '"john , """"2""","doe ",1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
@@ -66,7 +65,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = 'name,surname,year'."\r\n".'"john , """"2""","doe","2001"';
+        $expected = 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
