@@ -45,6 +45,11 @@ class SitemapWriter implements WriterInterface
     protected $buffer;
 
     /**
+     * @var array
+     */
+    protected $headers;
+
+    /**
      * @var integer
      */
     protected $bufferSize = 0;
@@ -64,31 +69,17 @@ class SitemapWriter implements WriterInterface
      *
      * @param string  $folder    The folder to store the sitemap.xml file
      * @param mixed   $groupName Name of sub-sitemap (optional)
+     * @param array   $headers   Indicate the need for namespace in the header sitemap
      * @param boolean $autoIndex If you want to generate index of sitemap (optional)
      */
-    public function __construct($folder, $groupName = false, $autoIndex = true)
+    public function __construct($folder, $groupName = false, array $headers = array(), $autoIndex = true)
     {
         $this->folder    = $folder;
         $this->groupName = is_string($groupName) ? $groupName : '';
+        $this->headers   = $headers;
         $this->autoIndex = $autoIndex;
 
         $this->pattern = 'sitemap_' . ($this->groupName? $this->groupName . '_' : '') . '%05d.xml';
-    }
-
-    /**
-     * Sets the auto generation of index site map
-     *
-     * Warning: If the site map is being generated, it will be canceled
-     *
-     * @param boolean $autoIndex
-     */
-    public function setAutoIndex($autoIndex)
-    {
-        if ($this->buffer) {
-            $this->closeSitemap();
-        }
-
-        $this->autoIndex = (boolean) $autoIndex;
     }
 
     /**
@@ -208,7 +199,7 @@ class SitemapWriter implements WriterInterface
 
         $this->buffer = fopen($this->folder . '/' . $filename, 'w');
 
-        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n");
+        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . $this->getHeaderByFlag() . '>'."\n");
     }
 
     /**
@@ -269,7 +260,12 @@ class SitemapWriter implements WriterInterface
             return;
         }
 
-        if (!isset($data[$data['type']]) || !is_array($data[$data['type']])) {
+        $valid_var_name = array(
+            'image' => 'images',
+            'video' => 'video'
+        );
+
+        if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !is_array($data[$valid_var_name[$data['type']]])) {
             $data['type'] = 'default';
         }
     }
@@ -297,10 +293,8 @@ class SitemapWriter implements WriterInterface
     {
         $images = '';
 
-        if (array_key_exists('url', $data['image'])) {
-            $data['image'] = array($data['image']);
-        } elseif (count($data['image']) > 1000) {
-            $data['image'] = array_splice($data['image'], 1000);
+        if (count($data['images']) > 1000) {
+            $data['images'] = array_splice($data['images'], 1000);
         }
 
         $builder = array(
@@ -308,7 +302,7 @@ class SitemapWriter implements WriterInterface
             'location' => 'geo_location',
         );
 
-        foreach ($data['image'] as $image) {
+        foreach ($data['images'] as $image) {
             $images .= '<image:image>';
 
             foreach ($image as $key => $element) {
@@ -340,6 +334,26 @@ class SitemapWriter implements WriterInterface
         }
 
         return sprintf("\t".'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
+    }
+
+    /**
+     * Generate additional header with namespace adapted to the content
+     *
+     * @return string
+     */
+    protected function getHeaderByFlag()
+    {
+        $namespaces = array(
+            'video' => 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"',
+            'image' => 'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'
+        );
+
+        $result = '';
+        foreach ($this->headers as $flag) {
+            $result .= ' ' . $namespaces[$flag];
+        }
+
+        return $result;
     }
 
     /**
