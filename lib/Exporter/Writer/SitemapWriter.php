@@ -13,37 +13,106 @@ namespace Exporter\Writer;
 
 /**
  * Generates a sitemap site from
- *
  */
 class SitemapWriter implements WriterInterface
 {
     const LIMIT_SIZE = 10485760;
     const LIMIT_URL  = 50000;
 
+    /**
+     * @var string
+     */
     protected $folder;
 
+    /**
+     * @var string
+     */
     protected $pattern;
 
-    protected $buffer;
-
-    protected $bufferSize = 0;
-
-    protected $bufferUrlCount = 0;
-
-    protected $bufferPart = 0;
-
+    /**
+     * @var string
+     */
+    protected $groupName;
 
     /**
-     * @param string $folder
+     * @var boolean
      */
-    public function __construct($folder)
+    protected $autoIndex;
+
+    /**
+     * @var resource
+     */
+    protected $buffer;
+
+    /**
+     * @var integer
+     */
+    protected $bufferSize = 0;
+
+    /**
+     * @var integer
+     */
+    protected $bufferUrlCount = 0;
+
+    /**
+     * @var integer
+     */
+    protected $bufferPart = 0;
+
+    /**
+     * Constructor.
+     *
+     * @param string  $folder    The folder to store the sitemap.xml file
+     * @param mixed   $groupName Name of sub-sitemap (optional)
+     * @param boolean $autoIndex If you want to generate index of sitemap (optional)
+     */
+    public function __construct($folder, $groupName = false, $autoIndex = true)
     {
-        $this->folder  = $folder;
-        $this->pattern = 'sitemap_%05d.xml';
+        $this->folder    = $folder;
+        $this->groupName = is_string($groupName) ? $groupName : '';
+        $this->autoIndex = $autoIndex;
+
+        $this->pattern = 'sitemap_' . ($this->groupName? $this->groupName . '_' : '') . '%05d.xml';
     }
 
     /**
-     * @return void
+     * Sets the auto generation of index site map
+     *
+     * Warning: If the site map is being generated, it will be canceled
+     *
+     * @param boolean $autoIndex
+     */
+    public function setAutoIndex($autoIndex)
+    {
+        if ($this->buffer) {
+            $this->closeSitemap();
+        }
+
+        $this->autoIndex = (boolean) $autoIndex;
+    }
+
+    /**
+     * Returns the status of auto generation of index site map
+     *
+     * @return boolean
+     */
+    public function isAutoIndex()
+    {
+        return $this->autoIndex;
+    }
+
+    /**
+     * Returns folder to store the sitemap.xml file
+     *
+     * @return string
+     */
+    public function getFolder()
+    {
+        return $this->folder;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function open()
     {
@@ -52,22 +121,31 @@ class SitemapWriter implements WriterInterface
     }
 
     /**
-     * @param array $data
-     *
-     * @return void
+     * {@inheritdoc}
      */
     public function write(array $data)
     {
-        $this->addSitemapLine(
-            isset($data['url']) ? $data['url'] : null,
-            isset($data['lastmod']) ? $data['lastmod'] : 'now',
-            isset($data['changefreq']) ? $data['changefreq'] : 'weekly',
-            isset($data['priority']) ? $data['priority'] : 0.5
-        );
+        $data = $this->buildData($data);
+
+        switch ($data['type']) {
+            case 'video':
+                $line = $this->generateVideoLine($data);
+                break;
+
+            case 'image':
+                $line = $this->generateImageLine($data);
+                break;
+
+            case 'default':
+            default:
+                $line = $this->generateDefaultLine($data);
+        }
+
+        $this->addSitemapLine($line);
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function close()
     {
@@ -75,16 +153,26 @@ class SitemapWriter implements WriterInterface
             $this->closeSitemap();
         }
 
-        $this->generateSitemapIndex();
+        if ($this->autoIndex) {
+            self::generateSitemapIndex(
+                $this->folder,
+                'sitemap_' . ($this->groupName ? $this->groupName . '_' : '') . '*.xml',
+                'sitemap' . ($this->groupName ? '_' . $this->groupName : '') . '.xml'
+            );
+        }
     }
 
     /**
      * Generates the sitemap index from the sitemap part avaible in the folder
+     *
+     * @param string  $folder
+     * @param string  $pattern
+     * @param string  $filename
      */
-    public function generateSitemapIndex()
+    public static function generateSitemapIndex($folder, $pattern = 'sitemap*.xml', $filename = 'sitemap.xml')
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?" . ">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
-        foreach (glob($this->folder.'/sitemap*.xml') as $file) {
+        foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
             $stat = stat($file);
             $content .= sprintf("\t" . '<sitemap><loc>%s</loc><lastmod>%s</lastmod></sitemap>' . "\n",
                 basename($file),
@@ -94,7 +182,7 @@ class SitemapWriter implements WriterInterface
 
         $content .= '</sitemapindex>';
 
-        file_put_contents($this->folder.'/sitemap.xml', $content);
+        file_put_contents(sprintf('%s/%s', $folder, $filename), $content);
     }
 
     /**
@@ -126,15 +214,10 @@ class SitemapWriter implements WriterInterface
     /**
      * Add a new line into the sitemap part
      *
-     * @param string $url
-     * @param string $lastmod
-     * @param string $changefreq
-     * @param float  $priority
+     * @param string $line
      */
-    protected function addSitemapLine($url, $lastmod, $changefreq, $priority)
+    protected function addSitemapLine($line)
     {
-        $line = sprintf("\t".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $url, date('Y-m-d', strtotime($lastmod)), $changefreq, $priority);
-
         if ($this->bufferUrlCount >= self::LIMIT_URL) {
             $this->generateNewPart();
         }
@@ -146,6 +229,117 @@ class SitemapWriter implements WriterInterface
         $this->bufferUrlCount++;
 
         $this->bufferSize += fwrite($this->buffer, $line);
+    }
+
+    /**
+     * Build data with default parameters
+     *
+     * @param array $data List of parameters
+     *
+     * @return array
+     */
+    protected function buildData(array $data)
+    {
+        $default = array(
+            'url'        => null,
+            'lastmod'    => 'now',
+            'changefreq' => 'weekly',
+            'priority'   => 0.5,
+            'type'       => 'default'
+        );
+
+        $data = array_merge($default, $data);
+
+        $this->fixDataType($data);
+
+        return $data;
+    }
+
+    /**
+     * Fix type of data, if data type is specific,
+     * he must to be defined in data and he must to be a array
+     *
+     * @param array &$data List of parameters
+     *
+     * @return void
+     */
+    protected function fixDataType(array &$data)
+    {
+        if ('default' === $data['type']) {
+            return;
+        }
+
+        if (!isset($data[$data['type']]) || !is_array($data[$data['type']])) {
+            $data['type'] = 'default';
+        }
+    }
+
+    /**
+     * Generate standard line of sitemap
+     *
+     * @param array $data List of parameters
+     *
+     * @return string
+     */
+    protected function generateDefaultLine(array $data)
+    {
+        return sprintf("\t".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
+    }
+
+    /**
+     * Generate image line of sitemap
+     *
+     * @param array $data List of parameters
+     *
+     * @return string
+     */
+    protected function generateImageLine(array $data)
+    {
+        $images = '';
+
+        if (array_key_exists('url', $data['image'])) {
+            $data['image'] = array($data['image']);
+        } elseif (count($data['image']) > 1000) {
+            $data['image'] = array_splice($data['image'], 1000);
+        }
+
+        $builder = array(
+            'url'      => 'loc',
+            'location' => 'geo_location',
+        );
+
+        foreach ($data['image'] as $image) {
+            $images .= '<image:image>';
+
+            foreach ($image as $key => $element) {
+                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $element);
+            }
+
+            $images .= '</image:image>';
+        }
+
+        return sprintf("\t".'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
+    }
+
+    /**
+     * Generate video line of sitemap
+     *
+     * @param array $data List of parameters
+     *
+     * @return string
+     */
+    protected function generateVideoLine(array $data)
+    {
+        $videos  = '';
+        $builder = array(
+            'thumbnail' => 'thumbnail_loc'
+        );
+
+        foreach ($data['video'] as $key => $video) {
+            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $video);
+        }
+
+        return sprintf("\t".'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
     }
 
     /**
