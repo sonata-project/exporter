@@ -32,7 +32,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 
     /**
      * @param \Doctrine\ODM\MongoDB\Query\Query $query  The Doctrine Query
-     * @param array               $fields Fields to export
+     * @param array                             $fields Fields to export
      */
     public function __construct(Query $query, array $fields)
     {

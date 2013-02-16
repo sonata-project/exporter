@@ -156,9 +156,9 @@ class SitemapWriter implements WriterInterface
     /**
      * Generates the sitemap index from the sitemap part avaible in the folder
      *
-     * @param string  $folder
-     * @param string  $pattern
-     * @param string  $filename
+     * @param string $folder
+     * @param string $pattern
+     * @param string $filename
      */
     public static function generateSitemapIndex($folder, $pattern = 'sitemap*.xml', $filename = 'sitemap.xml')
     {

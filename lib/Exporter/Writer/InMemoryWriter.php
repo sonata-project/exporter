@@ -11,8 +11,6 @@
 
 namespace Exporter\Writer;
 
-use Exporter\Exception\InvalidDataFormatException;
-
 class InMemoryWriter implements WriterInterface
 {
     protected $elements;

@@ -12,7 +12,6 @@
 namespace Exporter\Writer;
 
 use Exporter\Exception\InvalidDataFormatException;
-use \SimpleXMLElement as SimpleXMLElement;
 
 class XmlWriter implements WriterInterface
 {
@@ -87,7 +86,7 @@ class XmlWriter implements WriterInterface
     {
         if (is_array($value)) {
             throw new \RuntimeException('Not implemented');
-        } else if (is_scalar($value) || is_null($value)) {
+        } elseif (is_scalar($value) || is_null($value)) {
             fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, $value, $name));
         } else {
             throw new InvalidDataFormatException('Invalid data');
