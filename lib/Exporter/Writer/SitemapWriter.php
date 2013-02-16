@@ -279,7 +279,7 @@ class SitemapWriter implements WriterInterface
      */
     protected function generateDefaultLine(array $data)
     {
-        return sprintf("\t".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
+        return sprintf("    ".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
     }
 
     /**
@@ -312,7 +312,7 @@ class SitemapWriter implements WriterInterface
             $images .= '</image:image>';
         }
 
-        return sprintf("\t".'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
+        return sprintf("    ".'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
     }
 
     /**
@@ -333,7 +333,7 @@ class SitemapWriter implements WriterInterface
             $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $video);
         }
 
-        return sprintf("\t".'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
+        return sprintf("    ".'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
     }
 
     /**
