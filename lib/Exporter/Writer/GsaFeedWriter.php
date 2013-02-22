@@ -86,7 +86,7 @@ class GsaFeedWriter implements WriterInterface
      */
     public function write(array $data)
     {
-        $line = sprintf("\t<record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",
+        $line = sprintf("    <record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",
             $data['url'],
             $data['mime_type'],
             $data['action']
