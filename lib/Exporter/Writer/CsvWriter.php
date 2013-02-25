@@ -56,6 +56,8 @@ class CsvWriter implements WriterInterface
     public function open()
     {
         $this->file = fopen($this->filename, 'w', false);
+        //Byte Order Mark - http://en.wikipedia.org/wiki/Byte_order_mark
+        fprintf($this->file, chr(0xEF) . chr(0xBB) . chr(0xBF));
     }
 
     /**
