@@ -8,12 +8,9 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 {
     protected $filename;
 
-    protected $bom;
-
     public function setUp()
     {
         $this->filename = 'foobar.csv';
-        $this->bom = chr(0xEF) . chr(0xBB) . chr(0xBF);
 
         if (is_file($this->filename)) {
             unlink($this->filename);
@@ -40,7 +37,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = $this->bom . '" john , """"2""",doe,1';
+        $expected = '" john , """"2""",doe,1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
@@ -54,7 +51,7 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = $this->bom . '"john , """"2""","doe ",1';
+        $expected = '"john , """"2""","doe ",1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
@@ -68,7 +65,22 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->close();
 
-        $expected = $this->bom . 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
+        $expected = 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
+
+        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
+    public function testWithoutBom()
+    {
+        $writer = new CsvWriter($this->filename, ',', '"', "\\", false, true);
+        $writer->open();
+
+        $writer->write(array(' john , ""2"', 'doe', '1'));
+
+        $writer->close();
+
+        $bom = chr(0xEF) . chr(0xBB) . chr(0xBF);
+        $expected = $bom. '" john , """"2""",doe,1';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
