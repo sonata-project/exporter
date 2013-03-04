@@ -70,6 +70,21 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
+    public function testWithBom()
+    {
+        $writer = new CsvWriter($this->filename, ',', '"', "\\", false, true);
+        $writer->open();
+
+        $writer->write(array(' john , ""2"', 'doe', '1'));
+
+        $writer->close();
+
+        $bom = chr(0xEF) . chr(0xBB) . chr(0xBF);
+        $expected = $bom. '" john , """"2""",doe,1';
+
+        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
     public function tearDown()
     {
         unlink($this->filename);

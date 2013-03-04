@@ -29,21 +29,25 @@ class CsvWriter implements WriterInterface
 
     protected $position;
 
+    protected $bom;
+
     /**
      * @param string $filename
      * @param string $delimiter
      * @param string $enclosure
      * @param string $escape
      * @param bool   $showHeaders
+     * @param bool   $bom
      */
-    public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $showHeaders = true)
+    public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $showHeaders = true, $bom = false)
     {
         $this->filename    = $filename;
         $this->delimiter   = $delimiter;
         $this->enclosure   = $enclosure;
         $this->escape      = $escape;
-        $this->showHeaders = $showHeaders;
+        $this->showHeaders = (boolean) $showHeaders;
         $this->position    = 0;
+        $this->bom         = (boolean) $bom;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -56,6 +60,11 @@ class CsvWriter implements WriterInterface
     public function open()
     {
         $this->file = fopen($this->filename, 'w', false);
+
+        if ($this->bom) {
+            //Byte Order Mark - http://en.wikipedia.org/wiki/Byte_order_mark
+            fprintf($this->file, chr(0xEF) . chr(0xBB) . chr(0xBF));
+        }
     }
 
     /**
