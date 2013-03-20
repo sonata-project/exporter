@@ -142,6 +142,4 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     {
         return $this->dateTimeFormat;
     }
-
-
 }
