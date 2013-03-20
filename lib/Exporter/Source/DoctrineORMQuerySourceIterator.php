@@ -33,13 +33,14 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @var string default DateTime format
      */
-    protected $dateTimeFormat = 'r';
+    protected $dateTimeFormat;
 
     /**
      * @param \Doctrine\ORM\Query $query  The Doctrine Query
-     * @param array               $fields Fields to export
+     * @param array $fields Fields to export
+     * @param string $dateTimeFormat
      */
-    public function __construct(Query $query, array $fields)
+    public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
@@ -52,6 +53,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
                 $this->propertyPaths[$field] = new PropertyPath($field);
             }
         }
+        $this->dateTimeFormat = $dateTimeFormat;
     }
 
     /**
