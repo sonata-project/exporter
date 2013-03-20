@@ -31,6 +31,11 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
+     * @var string default DateTime format
+     */
+    protected $dateTimeFormat = 'r';
+
+    /**
      * @param \Doctrine\ORM\Query $query  The Doctrine Query
      * @param array               $fields Fields to export
      */
@@ -77,7 +82,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         if (is_array($value) or $value instanceof \Traversable) {
             $value = null;
         } elseif ($value instanceof \DateTime) {
-            $value = $value->format('r');
+            $value = $value->format($this->dateTimeFormat);
         } elseif (is_object($value)) {
             $value = (string) $value;
         }
@@ -121,4 +126,22 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $this->iterator = $this->query->iterate();
         $this->iterator->rewind();
     }
+
+    /**
+     * @param string $dateTimeFormat
+     */
+    public function setDateTimeFormat($dateTimeFormat)
+    {
+        $this->dateTimeFormat = $dateTimeFormat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTimeFormat()
+    {
+        return $this->dateTimeFormat;
+    }
+
+
 }
