@@ -31,10 +31,16 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @param \Doctrine\ODM\MongoDB\Query\Query $query  The Doctrine Query
-     * @param array                             $fields Fields to export
+     * @var string default DateTime format
      */
-    public function __construct(Query $query, array $fields)
+    protected $dateTimeFormat;
+
+    /**
+     * @param \Doctrine\ODM\MongoDB\Query\Query $query  The Doctrine Query
+     * @param array $fields Fields to export
+     * @param string $dateTimeFormat
+     */
+    public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
         $this->query = clone $query;
 
@@ -46,6 +52,8 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
                 $this->propertyPaths[$field] = new PropertyPath($field);
             }
         }
+
+        $this->dateTimeFormat = $dateTimeFormat;
     }
 
     /**
@@ -76,7 +84,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         if (is_array($value) or $value instanceof \Traversable) {
             $value = null;
         } elseif ($value instanceof \DateTime) {
-            $value = $value->format('r');
+            $value = $value->format($this->dateTimeFormat);
         } elseif (is_object($value)) {
             $value = (string) $value;
         }
@@ -119,5 +127,21 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 
         $this->iterator = $this->query->iterate();
         $this->iterator->rewind();
+    }
+
+    /**
+     * @param string $dateTimeFormat
+     */
+    public function setDateTimeFormat($dateTimeFormat)
+    {
+        $this->dateTimeFormat = $dateTimeFormat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTimeFormat()
+    {
+        return $this->dateTimeFormat;
     }
 }
