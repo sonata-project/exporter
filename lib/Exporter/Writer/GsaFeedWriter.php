@@ -153,7 +153,6 @@ XML
         fwrite($this->buffer, <<<EOF
     </group>
 </gsafeed>
-
 EOF
         );
 
