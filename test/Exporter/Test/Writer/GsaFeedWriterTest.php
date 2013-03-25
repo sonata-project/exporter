@@ -92,8 +92,11 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
         <datasource>$this->datasource</datasource>
         <feedtype>$this->feedtype</feedtype>
     </header>
-    <record url="http://sonata-project.org/about" mimetype="text/html" action="add"/>
-    <record url="http://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
+
+    <group>
+        <record url="http://sonata-project.org/about" mimetype="text/html" action="add"/>
+        <record url="http://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
+    </group>
 </gsafeed>
 XML;
 
