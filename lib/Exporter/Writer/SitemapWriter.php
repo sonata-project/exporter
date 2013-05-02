@@ -156,16 +156,18 @@ class SitemapWriter implements WriterInterface
     /**
      * Generates the sitemap index from the sitemap part avaible in the folder
      *
-     * @param string $folder
-     * @param string $pattern
-     * @param string $filename
+     * @param string $folder   A folder to write sitemap index
+     * @param string $baseUrl  A base URL
+     * @param string $pattern  A sitemap pattern, optional
+     * @param string $filename A sitemap file name, optional
      */
-    public static function generateSitemapIndex($folder, $pattern = 'sitemap*.xml', $filename = 'sitemap.xml')
+    public static function generateSitemapIndex($folder, $baseUrl, $pattern = 'sitemap*.xml', $filename = 'sitemap.xml')
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?" . ">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
         foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
             $stat = stat($file);
-            $content .= sprintf("\t" . '<sitemap><loc>%s</loc><lastmod>%s</lastmod></sitemap>' . "\n",
+            $content .= sprintf("\t" . '<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>' . "\n",
+                $baseUrl,
                 basename($file),
                 date('Y-m-d', $stat['mtime'])
             );

@@ -7,6 +7,9 @@ use SimpleXMLElement;
 
 class SitemapWriterTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
     protected $folder;
 
     public function setUp()
@@ -84,7 +87,7 @@ XML;
         $this->assertEquals(1, count($generatedFiles));
         $this->assertEquals($this->folder . '/sitemap_test_00001.xml', $generatedFiles[0]);
 
-        SitemapWriter::generateSitemapIndex($this->folder);
+        SitemapWriter::generateSitemapIndex($this->folder, 'http://sonata-project.org');
 
         $generatedFiles = $this->getFiles();
 
