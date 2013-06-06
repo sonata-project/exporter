@@ -36,9 +36,9 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \Doctrine\ORM\Query $query  The Doctrine Query
-     * @param array $fields Fields to export
-     * @param string $dateTimeFormat
+     * @param \Doctrine\ORM\Query $query          The Doctrine Query
+     * @param array               $fields         Fields to export
+     * @param string              $dateTimeFormat
      */
     public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
