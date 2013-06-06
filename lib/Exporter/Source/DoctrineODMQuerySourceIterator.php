@@ -14,7 +14,8 @@ namespace Exporter\Source;
 use Exporter\Exception\InvalidMethodCallException;
 use Doctrine\ODM\MongoDB\Query\Query;
 use Exporter\Source\SourceIteratorInterface;
-use Symfony\Component\Form\Util\PropertyPath;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 {
@@ -29,6 +30,11 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $iterator;
 
     protected $propertyPaths;
+    
+    /**
+     * @var PropertyAccess
+     */
+    protected $propertyAccessor;
 
     /**
      * @var string default DateTime format
@@ -43,6 +49,11 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
         $this->query = clone $query;
+
+        // Note : will be deprecated in Symfony 3.0, conserved for 2.2 compatibility
+        // Use createPropertyAccessor() for 3.0
+        // @see Symfony\Component\PropertyAccess\PropertyAccess
+        $this->propertyAccessor = PropertyAccess::getPropertyAccessor();
 
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
@@ -66,7 +77,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         $data = array();
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
-            $data[$name] = $this->getValue($propertyPath->getValue($current));
+            $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
         }
 
         $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
