@@ -14,7 +14,8 @@ namespace Exporter\Source;
 use Exporter\Exception\InvalidMethodCallException;
 use Doctrine\ORM\Query;
 use Exporter\Source\SourceIteratorInterface;
-use Symfony\Component\Form\Util\PropertyPath;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
@@ -29,6 +30,11 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $iterator;
 
     protected $propertyPaths;
+    
+    /**
+     * @var PropertyAccess
+     */
+    protected $propertyAccessor;
 
     /**
      * @var string default DateTime format
@@ -44,6 +50,11 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
+
+        // Note : will be deprecated in Symfony 3.0, conserved for 2.2 compatibility
+        // Use createPropertyAccessor() for 3.0
+        // @see Symfony\Component\PropertyAccess\PropertyAccess
+        $this->propertyAccessor = PropertyAccess::getPropertyAccessor();
 
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
@@ -66,7 +77,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $data = array();
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
-            $data[$name] = $this->getValue($propertyPath->getValue($current[0]));
+            $data[$name] = $this->getValue($this->propertyAccessor->getValue($current[0], $propertyPath));
         }
 
         $this->query->getEntityManager()->getUnitOfWork()->detach($current[0]);
