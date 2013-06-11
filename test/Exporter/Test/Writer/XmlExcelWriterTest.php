@@ -61,6 +61,22 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
     }
 
+    public function testForceTypesWithHeaders()
+    {
+        // force all cells to have Number type
+        $writer = new XmlExcelWriter($this->filename, true, 'Number');
+        $writer->open();
+
+        $writer->write(array('name' => 'john', 'surname' => 'doe ', 'year' => '2001'));
+
+        $writer->close();
+
+        $expected = '<Row><Cell><Data ss:Type="String">name</Data></Cell><Cell><Data ss:Type="String">surname</Data></Cell><Cell><Data ss:Type="String">year</Data></Cell></Row>';
+        $expected .= '<Row><Cell><Data ss:Type="Number">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row>';
+
+        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+    }
+
     public function testSpecificTypes()
     {
         // define type for specific cell

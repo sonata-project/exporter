@@ -93,7 +93,10 @@ class XmlExcelWriter implements WriterInterface
             $value = htmlspecialchars($value);
             //$value = htmlentities($value);
             $value = str_replace(array("\r\n", "\r", "\n"), '&#10;', $value);
-            $dataType = $this->getDataType($key, $value);
+            $dataType = 'String';
+            if ($this->position != 0 || !$this->showHeaders) {
+                $dataType = $this->getDataType($key, $value);
+            }
             $xmlData[] = '<Cell><Data ss:Type="' . $dataType . '">' . $value . '</Data></Cell>';
         }
         $xmlData[] = '</Row>';
