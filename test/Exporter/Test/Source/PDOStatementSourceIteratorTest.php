@@ -11,6 +11,10 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        if (!in_array('sqlite', \PDO::getAvailableDrivers())) {
+            $this->markTestSkipped('the sqlite extension is not available');
+        }
+
         if (is_file('foo.db')) {
             unlink('foo.db');
         }
