@@ -1,12 +1,16 @@
 <?php
 
-spl_autoload_register(function($class) {
-    if (0 === strpos($class, 'Exporter\\')) {
-        $file = __DIR__ . '/../lib/' . str_replace('\\', '/', $class) . '.php';
-        if (file_exists($file)) {
-            require_once $file;
+/*
+ * This file is part of the Sonata package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-            return true;
-        }
-    }
-});
+if (file_exists($file = __DIR__.'/autoload.php')) {
+    require_once $file;
+} elseif (file_exists($file = __DIR__.'/autoload.php.dist')) {
+    require_once $file;
+}
