@@ -50,6 +50,9 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
+        foreach ($query->getHints() as $name => $value) {
+            $this->query->setHint($name, $value);
+        }
 
         // Note : will be deprecated in Symfony 3.0, conserved for 2.2 compatibility
         // Use createPropertyAccessor() for 3.0
