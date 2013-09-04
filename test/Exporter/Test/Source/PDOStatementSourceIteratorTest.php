@@ -6,20 +6,29 @@ use Exporter\Source\PDOStatementSourceIterator;
 
 class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
-
+    /**
+     * @var \PDO
+     */
     protected $dbh;
+
+    /**
+     * @var string
+     */
+    protected $pathToDb;
 
     public function setUp()
     {
+        $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
+
         if (!in_array('sqlite', \PDO::getAvailableDrivers())) {
             $this->markTestSkipped('the sqlite extension is not available');
         }
 
-        if (is_file('foo.db')) {
-            unlink('foo.db');
+        if (is_file($this->pathToDb)) {
+            unlink($this->pathToDb);
         }
 
-        $this->dbh = new \PDO('sqlite:foo.db');
+        $this->dbh = new \PDO('sqlite:'.$this->pathToDb);
         $this->dbh->exec('CREATE TABLE `user` (`id` int(11), `username` varchar(255) NOT NULL, `email` varchar(255) NOT NULL )');
 
         $data = array(
@@ -37,7 +46,11 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink('foo.db');
+        $this->dbh = null;
+
+        if (is_file($this->pathToDb)) {
+            unlink($this->pathToDb);
+        }
     }
 
     public function testHandler()
