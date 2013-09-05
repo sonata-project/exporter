@@ -36,7 +36,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $path = sys_get_temp_dir().'/sonata_exporter_test';
+        $path = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sonata_exporter_test';
         $this->folder = new \SplFileInfo($path);
 
         $this->tearDown();
