@@ -1,1 +1,6 @@
 phpunit.xml
+/nbproject/
+/coverage/
+/vendor/
+composer.lock
+composer.phar
