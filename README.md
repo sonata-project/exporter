@@ -46,3 +46,10 @@ For questions and proposals you can post on this google groups
 
 * [Sonata Users](https://groups.google.com/group/sonata-users): Only for user questions
 * [Sonata Devs](https://groups.google.com/group/sonata-devs): Only for devs
+ 
+
+### Note for symfony2 users
+
+* For >= symfony2.2, use tag 1.3.1
+* For symfony2.1, use tag 1.2.3
+* For symfony2.0, use tag 1.1.0
