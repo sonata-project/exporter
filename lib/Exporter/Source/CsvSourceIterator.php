@@ -43,7 +43,6 @@ class CsvSourceIterator implements SourceIteratorInterface
         $this->enclosure = $enclosure;
         $this->escape = $escape;
         $this->hasHeaders = $hasHeaders;
-
     }
 
     /**
@@ -106,8 +105,10 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        if ( !is_array($this->currentLine) ) {
-            fclose($this->file);
+        if (!is_array($this->currentLine) ) {
+            if (is_resource($this->file)) {
+                fclose($this->file);
+            }
 
             return false;
         }
