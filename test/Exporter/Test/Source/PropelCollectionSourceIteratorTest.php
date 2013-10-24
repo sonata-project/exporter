@@ -16,6 +16,11 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+
+        if (!class_exists('PropelCollection')) {
+            $this->markTestIncomplete('Propel is not available');
+        }
+
         $data = array(
             array('id' => 1, 'name' => 'john',   'mail' => 'john@foo.bar', 'created_at' => new \DateTime()),
             array('id' => 2, 'name' => 'john 2', 'mail' => 'john@foo.bar', 'created_at' => new \DateTime()),
