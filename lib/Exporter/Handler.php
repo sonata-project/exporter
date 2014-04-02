@@ -31,14 +31,22 @@ class Handler
     }
 
     /**
+     * @param \Closure|null $transformer Altering a data row
+     *
      * @return void
      */
-    public function export()
+    public function export(\Closure $transformer = null)
     {
         $this->writer->open();
 
-        foreach ($this->source as $data) {
-            $this->writer->write($data);
+        if ($transformer) {
+            foreach ($this->source as $data) {
+                $this->writer->write($transformer($data));
+            }
+        } else {
+            foreach ($this->source as $data) {
+                $this->writer->write($data);
+            }
         }
 
         $this->writer->close();
