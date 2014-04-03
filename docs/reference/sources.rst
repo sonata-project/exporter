@@ -10,6 +10,7 @@ You may export data from various sources:
 * PDO Statement
 * Propel Collection
 * PHP Iterator instance
+* PHP Iterator with a callback on current
 * XML
 * Excel XML
 * Sitemap (Takes another iterator)
