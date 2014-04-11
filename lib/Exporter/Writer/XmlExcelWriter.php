@@ -66,6 +66,7 @@ class XmlExcelWriter implements WriterInterface
             fwrite($this->file, $this->getXmlString($header));
             $this->position++;
         }
+
         fwrite($this->file, $this->getXmlString($data));
         $this->position++;
     }
@@ -91,7 +92,7 @@ class XmlExcelWriter implements WriterInterface
         $xmlData[] = '<Row>';
         foreach ($fields as $key => $value) {
             $value = htmlspecialchars($value);
-            //$value = htmlentities($value);
+
             $value = str_replace(array("\r\n", "\r", "\n"), '&#10;', $value);
             $dataType = 'String';
             if ($this->position != 0 || !$this->showHeaders) {

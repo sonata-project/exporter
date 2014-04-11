@@ -30,7 +30,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $iterator;
 
     protected $propertyPaths;
-    
+
     /**
      * @var PropertyAccess
      */
@@ -92,7 +92,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
      */
     protected function getValue($value)
     {
-        if (is_array($value) or $value instanceof \Traversable) {
+        if (is_array($value) || $value instanceof \Traversable) {
             $value = null;
         } elseif ($value instanceof \DateTime) {
             $value = $value->format($this->dateTimeFormat);
