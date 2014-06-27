@@ -30,5 +30,10 @@
         "psr-0": {
             "Exporter": "lib/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
