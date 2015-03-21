@@ -65,12 +65,12 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new GsaFeedWriter($this->folder, $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
         $writer->write(array(
-            'url'       => 'http://sonata-project.org/about',
+            'url'       => 'https://sonata-project.org/about',
             'mime_type' => 'text/html',
             'action'    => 'add',
         ));
         $writer->write(array(
-            'url'       => 'http://sonata-project.org/bundles/',
+            'url'       => 'https://sonata-project.org/bundles/',
             'mime_type' => 'text/html',
             'action'    => 'delete',
         ));
@@ -94,8 +94,8 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     </header>
 
     <group>
-        <record url="http://sonata-project.org/about" mimetype="text/html" action="add"/>
-        <record url="http://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
+        <record url="https://sonata-project.org/about" mimetype="text/html" action="add"/>
+        <record url="https://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
     </group>
 </gsafeed>
 XML;

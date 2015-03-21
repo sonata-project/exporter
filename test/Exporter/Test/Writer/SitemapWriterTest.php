@@ -35,7 +35,7 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new SitemapWriter($this->folder);
         $writer->open();
         $writer->write(array(
-            'url'     => 'http://sonata-project.org/bundle/',
+            'url'     => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change'  => 'daily',
         ));
@@ -51,7 +51,7 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         $expected =<<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>http://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+    <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>
 XML;
 
@@ -63,19 +63,19 @@ XML;
         $writer = new SitemapWriter($this->folder, 'test', array('image'), false);
         $writer->open();
         $writer->write(array(
-            'url'     => 'http://sonata-project.org/bundle/',
+            'url'     => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change'  => 'daily',
             'type'    => 'default',
         ));
         $writer->write(array(
-            'url'     => 'http://sonata-project.org/bundle/',
+            'url'     => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change'  => 'weekly',
             'type'    => 'image',
             'images'  => array(
                 array(
-                    'url'     => 'http://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg',
+                    'url'     => 'https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg',
                     'caption' => 'sonata img'
                 )
             )
@@ -87,7 +87,7 @@ XML;
         $this->assertEquals(1, count($generatedFiles));
         $this->assertEquals($this->folder . '/sitemap_test_00001.xml', $generatedFiles[0]);
 
-        SitemapWriter::generateSitemapIndex($this->folder, 'http://sonata-project.org');
+        SitemapWriter::generateSitemapIndex($this->folder, 'https://sonata-project.org');
 
         $generatedFiles = $this->getFiles();
 
@@ -99,8 +99,8 @@ XML;
         $expected =<<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <url><loc>http://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-    <url><loc>http://sonata-project.org/bundle/</loc><image:image><image:loc>http://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg</image:loc><image:caption>sonata img</image:caption></image:image></url>
+    <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+    <url><loc>https://sonata-project.org/bundle/</loc><image:image><image:loc>https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg</image:loc><image:caption>sonata img</image:caption></image:image></url>
 </urlset>
 XML;
 
