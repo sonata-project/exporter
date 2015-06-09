@@ -17,14 +17,14 @@
     },
     "require-dev": {
         "symfony/routing": "*",
-        "symfony/property-access": "~2.2",
+        "symfony/property-access": "~2.3",
         "symfony/phpunit-bridge": "~2.7",
         "propel/propel1": "~1.6"
     },
     "suggest": {
         "ext-curl": "*",
         "symfony/routing": "*",
-        "symfony/property-access": "~2.2",
+        "symfony/property-access": "~2.3",
         "propel/propel1": "~1.6"
     },
     "autoload": {
