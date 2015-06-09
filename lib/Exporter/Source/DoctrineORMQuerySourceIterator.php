@@ -55,10 +55,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             $this->query->setHint($name, $value);
         }
 
-        // Note : will be deprecated in Symfony 3.0, conserved for 2.2 compatibility
-        // Use createPropertyAccessor() for 3.0
-        // @see Symfony\Component\PropertyAccess\PropertyAccess
-        $this->propertyAccessor = PropertyAccess::getPropertyAccessor();
+        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
 
         $this->propertyPaths = array();
         foreach ($fields as $name => $field) {
