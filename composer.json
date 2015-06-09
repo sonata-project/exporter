@@ -18,6 +18,7 @@
     "require-dev": {
         "symfony/routing": "*",
         "symfony/property-access": "~2.2",
+        "symfony/phpunit-bridge": "~2.7",
         "propel/propel1": "~1.6"
     },
     "suggest": {
