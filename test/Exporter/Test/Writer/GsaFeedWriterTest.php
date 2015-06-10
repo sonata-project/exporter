@@ -82,7 +82,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->folder . '/feed_00001.xml', $generatedFiles[0]);
 
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[0]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[0]), LIBXML_PARSEHUGE);
 
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -126,8 +126,8 @@ XML;
         $this->assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[0]));
-        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[0]), LIBXML_PARSEHUGE);
+        new \SimpleXMLElement(file_get_contents($generatedFiles[1]), LIBXML_PARSEHUGE);
 
         $info = stat($generatedFiles[0]);
 
