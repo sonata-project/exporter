@@ -6,7 +6,6 @@ use Exporter\Source\ChainSourceIterator;
 
 class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testIterator()
     {
         $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
@@ -14,7 +13,6 @@ class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $iterator = new ChainSourceIterator(array($source));
 
         foreach ($iterator as $data) {
-
         }
     }
 }

@@ -12,16 +12,15 @@
 namespace Exporter\Source;
 
 /**
- * Read data from a Xml Excel file
+ * Read data from a Xml Excel file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
 class XmlExcelSourceIterator extends AbstractXmlSourceIterator
 {
-
     /**
-     * @param string  $filename
-     * @param boolean $hasHeaders
+     * @param string $filename
+     * @param bool   $hasHeaders
      */
     public function __construct($filename, $hasHeaders = true)
     {

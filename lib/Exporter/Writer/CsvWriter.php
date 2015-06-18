@@ -36,7 +36,7 @@ class CsvWriter implements WriterInterface
      * @param string $escape
      * @param bool   $showHeaders
      */
-    public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $showHeaders = true)
+    public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $showHeaders = true)
     {
         $this->filename    = $filename;
         $this->delimiter   = $delimiter;
@@ -74,7 +74,7 @@ class CsvWriter implements WriterInterface
         if ($this->position == 0 && $this->showHeaders) {
             $this->addHeaders($data);
 
-            $this->position++;
+            ++$this->position;
         }
 
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure);
@@ -83,13 +83,11 @@ class CsvWriter implements WriterInterface
             throw new InvalidDataFormatException();
         }
 
-        $this->position++;
+        ++$this->position;
     }
 
     /**
      * @param array $data
-     *
-     * @return void
      */
     protected function addHeaders(array $data)
     {

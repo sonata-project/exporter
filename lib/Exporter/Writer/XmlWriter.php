@@ -57,7 +57,7 @@ class XmlWriter implements WriterInterface
      */
     public function close()
     {
-        fwrite($this->file, sprintf("</%s>", $this->mainElement));
+        fwrite($this->file, sprintf('</%s>', $this->mainElement));
 
         fclose($this->file);
     }
@@ -79,8 +79,6 @@ class XmlWriter implements WriterInterface
     /**
      * @param string $name
      * @param string $value
-     *
-     * @return void
      */
     protected function generateNode($name, $value)
     {

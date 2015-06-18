@@ -16,13 +16,12 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
             unlink($this->filename);
         }
 
-        $xml= '<?xml version="1.0" ?><datas><data><sku><![CDATA[123]]></sku><ean><![CDATA[1234567891234]]></ean><name><![CDATA[Product é]]></name></data><data><sku><![CDATA[124]]></sku><ean><![CDATA[1234567891235]]></ean><name><![CDATA[Product @]]></name></data><data><sku><![CDATA[125]]></sku><ean><![CDATA[1234567891236]]></ean><name><![CDATA[Product 3 ©]]></name></data></datas>';
+        $xml = '<?xml version="1.0" ?><datas><data><sku><![CDATA[123]]></sku><ean><![CDATA[1234567891234]]></ean><name><![CDATA[Product é]]></name></data><data><sku><![CDATA[124]]></sku><ean><![CDATA[1234567891235]]></ean><name><![CDATA[Product @]]></name></data><data><sku><![CDATA[125]]></sku><ean><![CDATA[1234567891236]]></ean><name><![CDATA[Product 3 ©]]></name></data></datas>';
         file_put_contents($this->filename, $xml);
     }
 
     public function testHandler()
     {
-
         $iterator = new XmlSourceIterator($this->filename);
 
         $i = 0;
@@ -34,21 +33,20 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals('sku', $keys[0]);
             $this->assertEquals('ean', $keys[1]);
             $this->assertEquals('name', $keys[2]);
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
     }
 
     public function testRewind()
     {
-
         $iterator = new XmlSourceIterator($this->filename);
 
         $i = 0;
         foreach ($iterator as $value) {
             $this->assertTrue(is_array($value));
             $this->assertEquals(3, count($value));
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
 
@@ -56,7 +54,7 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         foreach ($iterator as $value) {
             $this->assertTrue(is_array($value));
             $this->assertEquals(3, count($value));
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
     }

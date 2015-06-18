@@ -38,7 +38,7 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
         $writer->write(array('firstname' => 'john 3', 'lastname' => 'doe', 'id' => '1'));
         $writer->close();
 
-        $expected =<<<XML
+        $expected = <<<XML
 <?xml version="1.0" ?>
 <datas>
 <data>
@@ -55,7 +55,6 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
 XML;
 
         $this->assertEquals($expected, file_get_contents($this->filename));
-
     }
 
     public function tearDown()

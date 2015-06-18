@@ -4,9 +4,8 @@ namespace Exporter\Test\Source;
 
 use Exporter\Source\PropelCollectionSourceIterator;
 
-
 /**
- * Tests the PropelCollectionSourceIterator class
+ * Tests the PropelCollectionSourceIterator class.
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
@@ -16,7 +15,6 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-
         if (!class_exists('PropelCollection')) {
             $this->markTestIncomplete('Propel is not available');
         }
@@ -45,7 +43,7 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(array(
              array(
                 'id'    => 1,
-                'name'  => 'john'
+                'name'  => 'john',
             ),
             array(
                 'id'    => 2,
@@ -54,7 +52,7 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
             array(
                 'id'    => 3,
                 'name'  => 'john 3',
-            )
+            ),
         ), $data);
     }
 
@@ -71,6 +69,7 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
     protected function extract(\PropelCollection $collection, array $fields)
     {
         $iterator = new PropelCollectionSourceIterator($collection, $fields);
+
         return iterator_to_array($iterator);
     }
 }

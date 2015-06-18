@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 date_default_timezone_set('Europe/Paris');
 
 if (file_exists($file = __DIR__.'/autoload.php')) {

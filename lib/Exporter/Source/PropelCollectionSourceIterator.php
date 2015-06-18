@@ -11,15 +11,12 @@
 
 namespace Exporter\Source;
 
-use Exporter\Source\SourceIteratorInterface;
+use PropelCollection;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
-use \PropelCollection;
-
-
 /**
- * Read data from a PropelCollection
+ * Read data from a PropelCollection.
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
@@ -48,9 +45,9 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \PropelCollection     $query          The Doctrine Query
-     * @param array                 $fields         Fields to export
-     * @param string                $dateTimeFormat
+     * @param \PropelCollection $query          The Doctrine Query
+     * @param array             $fields         Fields to export
+     * @param string            $dateTimeFormat
      */
     public function __construct(PropelCollection $collection, array $fields, $dateTimeFormat = 'r')
     {
@@ -134,6 +131,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     {
         if ($this->iterator) {
             $this->iterator->rewind();
+
             return;
         }
 

@@ -11,9 +11,8 @@
 
 namespace Exporter\Source;
 
-use Exporter\Exception\InvalidMethodCallException;
 use Doctrine\ODM\MongoDB\Query\Query;
-use Exporter\Source\SourceIteratorInterface;
+use Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
 

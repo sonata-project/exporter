@@ -57,8 +57,8 @@ class JsonWriter implements WriterInterface
      */
     public function write(array $data)
     {
-        fwrite($this->file, ($this->position > 0 ? ',' : '') . json_encode($data));
+        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data));
 
-        $this->position++;
+        ++$this->position;
     }
 }

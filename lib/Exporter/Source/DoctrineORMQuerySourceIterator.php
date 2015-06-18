@@ -11,12 +11,11 @@
 
 namespace Exporter\Source;
 
-use Exporter\Exception\InvalidMethodCallException;
 use Doctrine\ORM\Query;
-use Exporter\Source\SourceIteratorInterface;
+use Exporter\Exception\InvalidMethodCallException;
+use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
-use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {

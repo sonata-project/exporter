@@ -12,7 +12,7 @@
 namespace Exporter\Source;
 
 /**
- * Read data from a Xml file
+ * Read data from a Xml file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
@@ -27,14 +27,12 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Prepare the row to return
-     *
-     * @return void
+     * Prepare the row to return.
      */
     protected function prepareCurrentRow()
     {
         $this->currentRow = array_shift($this->bufferedRow);
-        if ( is_array($this->currentRow) ) {
+        if (is_array($this->currentRow)) {
             $datas = array();
             foreach ($this->currentRow as $key => $value) {
                 $datas[$this->columns[$key]] = $value;
@@ -44,13 +42,11 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Start element handler
+     * Start element handler.
      *
      * @param resource $parser
      * @param string   $name
      * @param array    $attributes
-     *
-     * @return void
      */
     public function tagStart($parser, $name, $attributes = array())
     {
@@ -71,12 +67,10 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * End element handler
+     * End element handler.
      *
      * @param resource $parser
      * @param string   $name
-     *
-     * @return void
      */
     public function tagEnd($parser, $name)
     {
@@ -95,12 +89,10 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Tag content handler
+     * Tag content handler.
      *
      * @param resource $parser
      * @param string   $data
-     *
-     * @return void
      */
     public function tagContent($parser, $data)
     {

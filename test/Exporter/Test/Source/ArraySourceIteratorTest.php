@@ -6,7 +6,6 @@ use Exporter\Source\ArraySourceIterator;
 
 class ArraySourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testHandler()
     {
         $data = array(

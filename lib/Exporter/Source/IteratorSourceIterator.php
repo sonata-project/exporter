@@ -12,7 +12,7 @@
 namespace Exporter\Source;
 
 /**
- * SourceIterator implementation based on Iterator
+ * SourceIterator implementation based on Iterator.
  */
 class IteratorSourceIterator implements SourceIteratorInterface
 {
