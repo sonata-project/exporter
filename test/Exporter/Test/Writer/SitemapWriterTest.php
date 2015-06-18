@@ -48,7 +48,7 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         // this will throw an exception if the xml is invalid
         new SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
-        $expected =<<<XML
+        $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
@@ -76,16 +76,16 @@ XML;
             'images'  => array(
                 array(
                     'url'     => 'https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg',
-                    'caption' => 'sonata img'
-                )
-            )
+                    'caption' => 'sonata img',
+                ),
+            ),
         ));
         $writer->close();
 
         $generatedFiles = $this->getFiles();
 
         $this->assertEquals(1, count($generatedFiles));
-        $this->assertEquals($this->folder . '/sitemap_test_00001.xml', $generatedFiles[0]);
+        $this->assertEquals($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
 
         SitemapWriter::generateSitemapIndex($this->folder, 'https://sonata-project.org');
 
@@ -96,7 +96,7 @@ XML;
         // this will throw an exception if the xml is invalid
         new SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
-        $expected =<<<XML
+        $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
@@ -116,7 +116,7 @@ XML;
             $writer->write(array(
                 'url'     => str_repeat('x', 8196),
                 'lastmod' => 'now',
-                'change'  => 'daily'
+                'change'  => 'daily',
             ));
         }
         $writer->close();
@@ -143,7 +143,7 @@ XML;
             $writer->write(array(
                 'url'     => str_repeat('x', 40),
                 'lastmod' => 'now',
-                'change'  => 'daily'
+                'change'  => 'daily',
             ));
         }
         $writer->close();

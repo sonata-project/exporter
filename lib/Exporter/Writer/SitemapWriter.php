@@ -12,7 +12,7 @@
 namespace Exporter\Writer;
 
 /**
- * Generates a sitemap site from
+ * Generates a sitemap site from.
  */
 class SitemapWriter implements WriterInterface
 {
@@ -35,7 +35,7 @@ class SitemapWriter implements WriterInterface
     protected $groupName;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $autoIndex;
 
@@ -50,27 +50,27 @@ class SitemapWriter implements WriterInterface
     protected $headers;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $bufferSize = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $bufferUrlCount = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $bufferPart = 0;
 
     /**
      * Constructor.
      *
-     * @param string  $folder    The folder to store the sitemap.xml file
-     * @param mixed   $groupName Name of sub-sitemap (optional)
-     * @param array   $headers   Indicate the need for namespace in the header sitemap
-     * @param boolean $autoIndex If you want to generate index of sitemap (optional)
+     * @param string $folder    The folder to store the sitemap.xml file
+     * @param mixed  $groupName Name of sub-sitemap (optional)
+     * @param array  $headers   Indicate the need for namespace in the header sitemap
+     * @param bool   $autoIndex If you want to generate index of sitemap (optional)
      */
     public function __construct($folder, $groupName = false, array $headers = array(), $autoIndex = true)
     {
@@ -79,13 +79,13 @@ class SitemapWriter implements WriterInterface
         $this->headers   = $headers;
         $this->autoIndex = $autoIndex;
 
-        $this->pattern = 'sitemap_' . ($this->groupName? $this->groupName . '_' : '') . '%05d.xml';
+        $this->pattern = 'sitemap_'.($this->groupName ? $this->groupName.'_' : '').'%05d.xml';
     }
 
     /**
-     * Returns the status of auto generation of index site map
+     * Returns the status of auto generation of index site map.
      *
-     * @return boolean
+     * @return bool
      */
     public function isAutoIndex()
     {
@@ -93,7 +93,7 @@ class SitemapWriter implements WriterInterface
     }
 
     /**
-     * Returns folder to store the sitemap.xml file
+     * Returns folder to store the sitemap.xml file.
      *
      * @return string
      */
@@ -119,7 +119,7 @@ class SitemapWriter implements WriterInterface
         $data = $this->buildData($data);
 
         switch ($data['type']) {
-            case 'video':
+            case 'video' :
                 $line = $this->generateVideoLine($data);
                 break;
 
@@ -147,14 +147,14 @@ class SitemapWriter implements WriterInterface
         if ($this->autoIndex) {
             self::generateSitemapIndex(
                 $this->folder,
-                'sitemap_' . ($this->groupName ? $this->groupName . '_' : '') . '*.xml',
-                'sitemap' . ($this->groupName ? '_' . $this->groupName : '') . '.xml'
+                'sitemap_'.($this->groupName ? $this->groupName.'_' : '').'*.xml',
+                'sitemap'.($this->groupName ? '_'.$this->groupName : '').'.xml'
             );
         }
     }
 
     /**
-     * Generates the sitemap index from the sitemap part avaible in the folder
+     * Generates the sitemap index from the sitemap part avaible in the folder.
      *
      * @param string $folder   A folder to write sitemap index
      * @param string $baseUrl  A base URL
@@ -163,10 +163,10 @@ class SitemapWriter implements WriterInterface
      */
     public static function generateSitemapIndex($folder, $baseUrl, $pattern = 'sitemap*.xml', $filename = 'sitemap.xml')
     {
-        $content = "<?xml version='1.0' encoding='UTF-8'?" . ">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
+        $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
         foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
             $stat = stat($file);
-            $content .= sprintf("\t" . '<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>' . "\n",
+            $content .= sprintf("\t".'<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>'."\n",
                 $baseUrl,
                 basename($file),
                 date('Y-m-d', $stat['mtime'])
@@ -179,7 +179,7 @@ class SitemapWriter implements WriterInterface
     }
 
     /**
-     * Generate a new sitemap part
+     * Generate a new sitemap part.
      *
      * @throws \RuntimeException
      */
@@ -191,7 +191,7 @@ class SitemapWriter implements WriterInterface
 
         $this->bufferUrlCount = 0;
         $this->bufferSize     = 0;
-        $this->bufferPart++;
+        ++$this->bufferPart;
 
         if (!is_writable($this->folder)) {
             throw new \RuntimeException(sprintf('Unable to write to folder: %s', $this->folder));
@@ -199,13 +199,13 @@ class SitemapWriter implements WriterInterface
 
         $filename = sprintf($this->pattern, $this->bufferPart);
 
-        $this->buffer = fopen($this->folder . '/' . $filename, 'w');
+        $this->buffer = fopen($this->folder.'/'.$filename, 'w');
 
-        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . $this->getHeaderByFlag() . '>'."\n");
+        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
     }
 
     /**
-     * Add a new line into the sitemap part
+     * Add a new line into the sitemap part.
      *
      * @param string $line
      */
@@ -219,13 +219,13 @@ class SitemapWriter implements WriterInterface
             $this->generateNewPart();
         }
 
-        $this->bufferUrlCount++;
+        ++$this->bufferUrlCount;
 
         $this->bufferSize += fwrite($this->buffer, $line);
     }
 
     /**
-     * Build data with default parameters
+     * Build data with default parameters.
      *
      * @param array $data List of parameters
      *
@@ -238,7 +238,7 @@ class SitemapWriter implements WriterInterface
             'lastmod'    => 'now',
             'changefreq' => 'weekly',
             'priority'   => 0.5,
-            'type'       => 'default'
+            'type'       => 'default',
         );
 
         $data = array_merge($default, $data);
@@ -250,11 +250,9 @@ class SitemapWriter implements WriterInterface
 
     /**
      * Fix type of data, if data type is specific,
-     * he must to be defined in data and he must to be a array
+     * he must to be defined in data and he must to be a array.
      *
      * @param array &$data List of parameters
-     *
-     * @return void
      */
     protected function fixDataType(array &$data)
     {
@@ -264,7 +262,7 @@ class SitemapWriter implements WriterInterface
 
         $valid_var_name = array(
             'image' => 'images',
-            'video' => 'video'
+            'video' => 'video',
         );
 
         if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !is_array($data[$valid_var_name[$data['type']]])) {
@@ -273,7 +271,7 @@ class SitemapWriter implements WriterInterface
     }
 
     /**
-     * Generate standard line of sitemap
+     * Generate standard line of sitemap.
      *
      * @param array $data List of parameters
      *
@@ -281,11 +279,11 @@ class SitemapWriter implements WriterInterface
      */
     protected function generateDefaultLine(array $data)
     {
-        return sprintf("    ".'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
+        return sprintf('    '.'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
     }
 
     /**
-     * Generate image line of sitemap
+     * Generate image line of sitemap.
      *
      * @param array $data List of parameters
      *
@@ -314,11 +312,11 @@ class SitemapWriter implements WriterInterface
             $images .= '</image:image>';
         }
 
-        return sprintf("    ".'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
+        return sprintf('    '.'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
     }
 
     /**
-     * Generate video line of sitemap
+     * Generate video line of sitemap.
      *
      * @param array $data List of parameters
      *
@@ -328,18 +326,18 @@ class SitemapWriter implements WriterInterface
     {
         $videos  = '';
         $builder = array(
-            'thumbnail' => 'thumbnail_loc'
+            'thumbnail' => 'thumbnail_loc',
         );
 
         foreach ($data['video'] as $key => $video) {
             $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $video);
         }
 
-        return sprintf("    ".'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
+        return sprintf('    '.'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
     }
 
     /**
-     * Generate additional header with namespace adapted to the content
+     * Generate additional header with namespace adapted to the content.
      *
      * @return string
      */
@@ -347,19 +345,19 @@ class SitemapWriter implements WriterInterface
     {
         $namespaces = array(
             'video' => 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"',
-            'image' => 'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'
+            'image' => 'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"',
         );
 
         $result = '';
         foreach ($this->headers as $flag) {
-            $result .= ' ' . $namespaces[$flag];
+            $result .= ' '.$namespaces[$flag];
         }
 
         return $result;
     }
 
     /**
-     * Close the sitemap part
+     * Close the sitemap part.
      */
     protected function closeSitemap()
     {

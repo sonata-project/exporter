@@ -6,7 +6,6 @@ use Exporter\Handler;
 
 class HandlerTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testHandler()
     {
         $source = $this->getMock('Exporter\Source\SourceIteratorInterface');

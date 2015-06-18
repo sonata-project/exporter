@@ -11,9 +11,9 @@
 
 namespace Exporter\Source;
 
-use Exporter\Exception\InvalidMethodCallException;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Statement;
+use Exporter\Exception\InvalidMethodCallException;
 
 class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
@@ -58,7 +58,7 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
     public function next()
     {
         $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
-        $this->position++;
+        ++$this->position;
     }
 
     /**

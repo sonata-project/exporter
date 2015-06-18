@@ -47,7 +47,7 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     public function next()
     {
         $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
-        $this->position++;
+        ++$this->position;
     }
 
     /**

@@ -14,19 +14,15 @@ namespace Exporter\Writer;
 interface WriterInterface
 {
     /**
-     * @return void
      */
     public function open();
 
     /**
      * @param array $data
-     *
-     * @return void
      */
     public function write(array $data);
 
     /**
-     * @return void
      */
     public function close();
 }

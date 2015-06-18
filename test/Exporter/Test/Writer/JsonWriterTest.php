@@ -34,7 +34,7 @@ class JsonWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             array('john "2', 'doe', '1'),
-            array('john 3', 'doe', '1')
+            array('john 3', 'doe', '1'),
         );
 
         $this->assertEquals($expected, json_decode($content, false));

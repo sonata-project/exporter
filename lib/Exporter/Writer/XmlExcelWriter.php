@@ -12,7 +12,7 @@
 namespace Exporter\Writer;
 
 /**
- * Generate a Xml Excel file
+ * Generate a Xml Excel file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
@@ -27,12 +27,12 @@ class XmlExcelWriter implements WriterInterface
     protected $footer = '</Table></Worksheet></Workbook>';
 
     /**
-     * @param string  $filename
-     * @param boolean $showHeaders
-     * @param mixed   $columnsType Define cells type to use
-     *                             If string: force all cells to the given type. e.g: 'Number'
-     *                             If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
-     *                             If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
+     * @param string $filename
+     * @param bool   $showHeaders
+     * @param mixed  $columnsType Define cells type to use
+     *                            If string: force all cells to the given type. e.g: 'Number'
+     *                            If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
+     *                            If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
      */
     public function __construct($filename, $showHeaders = true, $columnsType = null)
     {
@@ -46,7 +46,6 @@ class XmlExcelWriter implements WriterInterface
     }
 
     /**
-     * @return void
      */
     public function open()
     {
@@ -56,23 +55,20 @@ class XmlExcelWriter implements WriterInterface
 
     /**
      * @param array $data
-     *
-     * @return void
      */
     public function write(array $data)
     {
         if ($this->position == 0 && $this->showHeaders) {
             $header = array_keys($data);
             fwrite($this->file, $this->getXmlString($header));
-            $this->position++;
+            ++$this->position;
         }
 
         fwrite($this->file, $this->getXmlString($data));
-        $this->position++;
+        ++$this->position;
     }
 
     /**
-     * @return void
      */
     public function close()
     {
@@ -81,9 +77,10 @@ class XmlExcelWriter implements WriterInterface
     }
 
     /**
-     * Prepare and return XML string for MS Excel XML from array
+     * Prepare and return XML string for MS Excel XML from array.
      *
-     * @param  array  $fields
+     * @param array $fields
+     *
      * @return string
      */
     private function getXmlString(array $fields = array())
@@ -98,11 +95,11 @@ class XmlExcelWriter implements WriterInterface
             if ($this->position != 0 || !$this->showHeaders) {
                 $dataType = $this->getDataType($key, $value);
             }
-            $xmlData[] = '<Cell><Data ss:Type="' . $dataType . '">' . $value . '</Data></Cell>';
+            $xmlData[] = '<Cell><Data ss:Type="'.$dataType.'">'.$value.'</Data></Cell>';
         }
         $xmlData[] = '</Row>';
 
-        return join('', $xmlData);
+        return implode('', $xmlData);
     }
 
     /**

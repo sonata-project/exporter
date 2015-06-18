@@ -12,7 +12,7 @@
 namespace Exporter\Source;
 
 /**
- * Read data from a csv file
+ * Read data from a csv file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
@@ -30,13 +30,13 @@ class CsvSourceIterator implements SourceIteratorInterface
     protected $currentLine = array();
 
     /**
-     * @param string  $filename
-     * @param string  $delimiter
-     * @param string  $enclosure
-     * @param string  $escape
-     * @param boolean $showHeaders
+     * @param string $filename
+     * @param string $delimiter
+     * @param string $enclosure
+     * @param string $escape
+     * @param bool   $showHeaders
      */
-    public function __construct($filename, $delimiter = ",", $enclosure = "\"", $escape = "\\", $hasHeaders = true)
+    public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $hasHeaders = true)
     {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
@@ -68,8 +68,8 @@ class CsvSourceIterator implements SourceIteratorInterface
     {
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
-        $this->position++;
-        if ( $this->hasHeaders && is_array($line) ) {
+        ++$this->position;
+        if ($this->hasHeaders && is_array($line)) {
             $data = array();
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
@@ -91,7 +91,7 @@ class CsvSourceIterator implements SourceIteratorInterface
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }
         $this->currentLine = $line;
-        if ( $this->hasHeaders && is_array($line) ) {
+        if ($this->hasHeaders && is_array($line)) {
             $data = array();
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
@@ -105,7 +105,7 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        if (!is_array($this->currentLine) ) {
+        if (!is_array($this->currentLine)) {
             if (is_resource($this->file)) {
                 fclose($this->file);
             }

@@ -5,7 +5,7 @@ namespace Exporter\Test\Source;
 use Exporter\Writer\GsaFeedWriter;
 
 /**
- * Tests the GSA feed writer class
+ * Tests the GSA feed writer class.
  *
  * @author Rémi Marseille <marseille@ekino.com>
  */
@@ -32,7 +32,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     private $feedtype;
 
     /**
-     * Creates the folder useful to this test
+     * Creates the folder useful to this test.
      */
     public function setUp()
     {
@@ -58,7 +58,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests a simple write case
+     * Tests a simple write case.
      */
     public function testSimpleWrite()
     {
@@ -79,7 +79,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
         $generatedFiles = $this->getFiles();
 
         $this->assertCount(1, $generatedFiles);
-        $this->assertEquals($this->folder . '/feed_00001.xml', $generatedFiles[0]);
+        $this->assertEquals($this->folder.'/feed_00001.xml', $generatedFiles[0]);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), LIBXML_PARSEHUGE);
@@ -104,7 +104,7 @@ XML;
     }
 
     /**
-     * Tests the writer limit
+     * Tests the writer limit.
      */
     public function testLimitSize()
     {
@@ -135,7 +135,7 @@ XML;
     }
 
     /**
-     * Gets an array of files of the main folder
+     * Gets an array of files of the main folder.
      *
      * @return array
      */
@@ -149,7 +149,7 @@ XML;
     }
 
     /**
-     * Deletes the generated XML and the created folder
+     * Deletes the generated XML and the created folder.
      */
     public function tearDown()
     {

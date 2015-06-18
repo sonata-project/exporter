@@ -16,7 +16,7 @@ class CsvSourceIteratorTest extends \PHPUnit_Framework_TestCase
             unlink($this->filename);
         }
 
-        $csv= <<<EOF
+        $csv = <<<EOF
 firstname,name
 John 1,Doe
 John 2,Doe
@@ -27,7 +27,6 @@ EOF;
 
     public function testHandler()
     {
-
         $iterator = new CsvSourceIterator($this->filename);
 
         $i = 0;
@@ -38,7 +37,7 @@ EOF;
             $keys = array_keys($value);
             $this->assertEquals('firstname', $keys[0]);
             $this->assertEquals('name', $keys[1]);
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
     }
@@ -52,7 +51,7 @@ EOF;
             $this->assertTrue(is_array($value));
             $this->assertEquals(2, count($value));
             $this->assertEquals($i, $iterator->key());
-            $i++;
+            ++$i;
         }
         $this->assertEquals(4, $i);
     }
@@ -65,7 +64,7 @@ EOF;
         foreach ($iterator as $value) {
             $this->assertTrue(is_array($value));
             $this->assertEquals(2, count($value));
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
 
@@ -73,7 +72,7 @@ EOF;
         foreach ($iterator as $value) {
             $this->assertTrue(is_array($value));
             $this->assertEquals(2, count($value));
-            $i++;
+            ++$i;
         }
         $this->assertEquals(3, $i);
     }

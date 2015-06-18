@@ -41,7 +41,7 @@ class GsaFeedWriter implements WriterInterface
     private $feedtype;
 
     /**
-     * @var integer
+     * @var int
      */
     private $bufferPart;
 
@@ -51,12 +51,12 @@ class GsaFeedWriter implements WriterInterface
     private $buffer;
 
     /**
-     * @var integer
+     * @var int
      */
     private $bufferSize;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param \SplFileInfo $folder     The folder to store the generated feed(s)
      * @param string       $dtd        A DTD URL (something like http://gsa.example.com/gsafeed.dtd)
@@ -111,7 +111,7 @@ class GsaFeedWriter implements WriterInterface
     }
 
     /**
-     * Generates a new file
+     * Generates a new file.
      *
      * @throws \RuntimeException
      */
@@ -122,7 +122,7 @@ class GsaFeedWriter implements WriterInterface
         }
 
         $this->bufferSize = 0;
-        $this->bufferPart++;
+        ++$this->bufferPart;
 
         if (!is_writable($this->folder)) {
             throw new \RuntimeException(sprintf('Unable to write to folder: %s', $this->folder));
@@ -146,7 +146,7 @@ XML
     }
 
     /**
-     * Closes the current feed
+     * Closes the current feed.
      */
     private function closeFeed()
     {

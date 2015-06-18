@@ -31,7 +31,6 @@ class Handler
     }
 
     /**
-     * @return void
      */
     public function export()
     {

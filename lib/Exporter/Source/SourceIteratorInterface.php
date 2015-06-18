@@ -13,5 +13,4 @@ namespace Exporter\Source;
 
 interface SourceIteratorInterface extends \Iterator
 {
-
 }
