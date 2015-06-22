@@ -18,12 +18,19 @@ namespace Exporter\Source;
  */
 class XmlSourceIterator extends AbstractXmlSourceIterator
 {
+    protected $mainTag;
+    protected $dataTag;
+
     /**
      * @param string $filename
+     * @param string $mainTag
+     * @param string $dataTag
      */
-    public function __construct($filename)
+    public function __construct($filename, $mainTag = 'datas', $dataTag = 'data')
     {
         parent::__construct($filename, false);
+        $this->mainTag = $mainTag;
+        $this->dataTag = $dataTag;
     }
 
     /**
@@ -51,9 +58,9 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     public function tagStart($parser, $name, $attributes = array())
     {
         switch ($name) {
-            case 'datas':
+            case $this->mainTag:
                 break;
-            case 'data':
+            case $this->dataTag:
                 $this->bufferedRow['i_'.$this->currentRowIndex] = array();
                 break;
             default:
@@ -75,9 +82,9 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     public function tagEnd($parser, $name)
     {
         switch ($name) {
-            case 'datas':
+            case $this->mainTag:
                 break;
-            case 'data':
+            case $this->dataTag:
                 $this->currentRowIndex++;
                 $this->currentColumnIndex = 0;
                 $this->currentRowEnded = true;
