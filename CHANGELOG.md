@@ -7,6 +7,10 @@ A [BC BREAK] means the update will break the project for many reasons:
 * new dependencies
 * class refactoring
 
+### 2015-06-29
+
+* [XmlSourceIterator] Add possibility to set custom tag names
+
 ### 2015-06-09
 
 * [BC BREAK] Replaced deprecated `PropertyAccess::getPropertyAccessor()` method `PropertyAccess::createPropertyAccessor()`.
