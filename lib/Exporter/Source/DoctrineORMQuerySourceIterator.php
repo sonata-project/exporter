@@ -103,6 +103,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             $value = $value->format($this->dateTimeFormat);
         } elseif (is_object($value)) {
             $value = (string) $value;
+        } elseif (is_bool($value)) {
+            $value == 1 ? $value = 'yes' : $value = 'no';
         }
 
         return $value;
