@@ -33,21 +33,19 @@ matrix:
     - php: 5.6
       env: SYMFONY_VERSION=2.7.*
     - php: 5.6
-      env: SYMFONY_VERSION=2.8.*@dev
+      env: SYMFONY_VERSION=2.8.*@dev SYMFONY_DEPRECATIONS_HELPER=strict
     - php: 5.6
-      env: SYMFONY_VERSION="3.0.x-dev as 2.8"
+      env: SYMFONY_VERSION=3.0.*@dev DEPENDENCIES=dev COMPOSER_FLAGS="--prefer-stable" SYMFONY_DEPRECATIONS_HELPER=strict
   allow_failures:
     - php: 7.0
     - php: hhvm
-    - env: SYMFONY_VERSION=2.8.*@dev
-    - env: SYMFONY_VERSION="3.0.x-dev as 2.8"
 
 before_script:
   - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d && echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer selfupdate
   - composer config -q github-oauth.github.com $GITHUB_OAUTH_TOKEN
-  - if [ "$SYMFONY_VERSION" = "2.8.*@dev" ] || [ "$SYMFONY_VERSION" = "3.0.x-dev as 2.8" ]; then SYMFONY_DEPRECATIONS_HELPER=strict; fi;
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
+  - if [ "$SYMFONY_VERSION" != "" ]; then composer require --dev --no-update symfony/symfony=$SYMFONY_VERSION; fi
+  - if [ "$DEPENDENCIES" = "dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
   - travis_wait composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
   - export PATH=$HOME/.local/bin:$PATH
   - pip install -r docs/requirements.txt --user `whoami`
