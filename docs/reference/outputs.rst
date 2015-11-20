@@ -12,5 +12,6 @@ Several output formatters are supported:
 * XML
 * Excel XML
 * XLS (MS Excel)
+* PDF
 
 You may also create your own. To do so, simply create a class that implements the ``Exporter\Writer\WriterInterface``.
