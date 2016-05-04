@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -150,7 +150,7 @@ XML
      */
     private function closeFeed()
     {
-        fwrite($this->buffer, <<<EOF
+        fwrite($this->buffer, <<<'EOF'
     </group>
 </gsafeed>
 EOF

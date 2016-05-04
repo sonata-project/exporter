@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -13,8 +13,6 @@ namespace Exporter\Writer;
 
 interface WriterInterface
 {
-    /**
-     */
     public function open();
 
     /**
@@ -22,7 +20,5 @@ interface WriterInterface
      */
     public function write(array $data);
 
-    /**
-     */
     public function close();
 }
