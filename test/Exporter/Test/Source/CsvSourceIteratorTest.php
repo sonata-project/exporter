@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -25,7 +25,7 @@ class CsvSourceIteratorTest extends \PHPUnit_Framework_TestCase
             unlink($this->filename);
         }
 
-        $csv = <<<EOF
+        $csv = <<<'EOF'
 firstname,name
 John 1,Doe
 John 2,Doe

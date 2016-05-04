@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -47,7 +47,7 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
         $writer->write(array('firstname' => 'john 3', 'lastname' => 'doe', 'id' => '1'));
         $writer->close();
 
-        $expected = <<<XML
+        $expected = <<<'XML'
 <?xml version="1.0" ?>
 <datas>
 <data>

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -119,7 +119,7 @@ class SitemapWriter implements WriterInterface
         $data = $this->buildData($data);
 
         switch ($data['type']) {
-            case 'video' :
+            case 'video':
                 $line = $this->generateVideoLine($data);
                 break;
 

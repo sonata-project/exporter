@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -45,8 +45,6 @@ class XmlExcelWriter implements WriterInterface
         }
     }
 
-    /**
-     */
     public function open()
     {
         $this->file = fopen($this->filename, 'w');
@@ -68,8 +66,6 @@ class XmlExcelWriter implements WriterInterface
         ++$this->position;
     }
 
-    /**
-     */
     public function close()
     {
         fwrite($this->file, $this->footer);
