@@ -101,8 +101,8 @@ Deprecation          | Yes (Have to)            | Minor           | `master`   |
 Deprecation removal  | No (Can't be)            | Major           | `master` | |
 
 Notes:
-  * Branch `[latest].x` means the branch of the **latest stable** minor release (e.g. `3.x`).
-  Please refer to the branch list of the project and pick the **higher** one.
+  * Branch `master` is the branch of the **latest stable** minor release and
+  has to be used for Backward compatible PRs.
   * If you PR is not **Backward Compatible** but can be, it **must** be:
     * Changing a function/method signature? Prefer create a new one and deprecated the old one.
     * Code deletion? Don't. Please deprecate it instead.
