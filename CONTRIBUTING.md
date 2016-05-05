@@ -69,7 +69,7 @@ php-cs-fixer fix --verbose
 #### The content
 
 Ideally, a Pull Request should concern one and **only one** subject, so that it
-remains clear, and independant changes can be merged quickly.
+remains clear, and independent changes can be merged quickly.
 
 If you want to fix a typo and improve the performance of a process, you should
 try as much as possible to it in a **separate** PR, so that we can quickly
