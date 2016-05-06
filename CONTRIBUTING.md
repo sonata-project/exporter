@@ -82,6 +82,27 @@ your work, please do another PR for that. In some rare cases, you might be
 forced to do it on the same PR. In this kind of situation, please add a comment
 on your PR explaining why you feel it is the case.
 
+#### The Change log
+
+On each PR, the `CHANGELOG.md` file **has to be updated**.
+
+There are few cases where the `CHANGELOG.md` file should not be touched:
+
+* When you fix a bug on an unreleased feature.
+* When your PR concerns only the documentation (fix or improvement).
+
+The change log note has to be put below the `## [Unreleased]` section.
+
+Your note can be put on one of these sections:
+
+* `Added` for new features.
+* `Changed` for changes in existing functionality.
+* `Deprecated` for deprecation of features that will be removed in next major release.
+* `Removed` for deprecated features removed in this release.
+* `Fixed` for any bug fixes.
+* `Security` to invite users to upgrade in case of vulnerabilities.
+
+More information about the followed changelog format: [keepachangelog.com](http://keepachangelog.com/)
 
 #### The base branch
 
@@ -168,7 +189,9 @@ The commit description should be able to live without what is said in the PR,
 and should ideally sum it up in a crystal clear way, so that people do not have
 to open a web browser to understand what you did.
 Links to PRs/Issues and external references are of course welcome, but should
-not be considered enough.
+not be considered enough. When you reference an issue, make sure to use one of
+the keywords described in [the dedicated github
+article](https://help.github.com/articles/closing-issues-via-commit-messages/).
 
 Good commit message with description :
 
