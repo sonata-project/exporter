@@ -19,7 +19,7 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 {
     /**
-     * @var \Doctrine\ORM\Query
+     * @var \Doctrine\ODM\MongoDB\Query\Query
      */
     protected $query;
 
@@ -129,7 +129,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     public function rewind()
     {
         if ($this->iterator) {
-            throw new InvalidMethodCallException('Cannot rewind a Doctrine\ODM\Query');
+            throw new InvalidMethodCallException('Cannot rewind a Doctrine\ODM\MongoDB\Query\Query');
         }
 
         $this->iterator = $this->query->iterate();
