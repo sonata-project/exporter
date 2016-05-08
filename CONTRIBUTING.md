@@ -1,7 +1,5 @@
 # Sonata project contribution
 
-TEST
-
 Thanks for you interest onto Sonata projects!
 
 ## Summary
