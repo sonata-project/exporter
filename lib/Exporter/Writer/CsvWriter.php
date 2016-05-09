@@ -44,13 +44,13 @@ class CsvWriter implements WriterInterface
      */
     public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $showHeaders = true, $withBom = false)
     {
-        $this->filename    = $filename;
-        $this->delimiter   = $delimiter;
-        $this->enclosure   = $enclosure;
-        $this->escape      = $escape;
+        $this->filename = $filename;
+        $this->delimiter = $delimiter;
+        $this->enclosure = $enclosure;
+        $this->escape = $escape;
         $this->showHeaders = $showHeaders;
-        $this->position    = 0;
-        $this->withBom     = $withBom;
+        $this->position = 0;
+        $this->withBom = $withBom;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));

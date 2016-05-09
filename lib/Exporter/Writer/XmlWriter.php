@@ -32,9 +32,9 @@ class XmlWriter implements WriterInterface
      */
     public function __construct($filename, $mainElement = 'datas', $childElement = 'data')
     {
-        $this->filename     = $filename;
-        $this->position     = 0;
-        $this->mainElement  = $mainElement;
+        $this->filename = $filename;
+        $this->position = 0;
+        $this->mainElement = $mainElement;
         $this->childElement = $childElement;
 
         if (is_file($filename)) {

@@ -38,10 +38,10 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
     public function __construct(Connection $connection, $query, array $parameters = array())
     {
         $this->connection = $connection;
-        $this->query      = $query;
+        $this->query = $query;
         $this->parameters = $parameters;
 
-        $this->position   = 0;
+        $this->position = 0;
     }
 
     /**

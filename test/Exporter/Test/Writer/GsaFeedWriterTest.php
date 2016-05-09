@@ -74,14 +74,14 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new GsaFeedWriter($this->folder, $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
         $writer->write(array(
-            'url'       => 'https://sonata-project.org/about',
+            'url' => 'https://sonata-project.org/about',
             'mime_type' => 'text/html',
-            'action'    => 'add',
+            'action' => 'add',
         ));
         $writer->write(array(
-            'url'       => 'https://sonata-project.org/bundles/',
+            'url' => 'https://sonata-project.org/bundles/',
             'mime_type' => 'text/html',
-            'action'    => 'delete',
+            'action' => 'delete',
         ));
         $writer->close();
 
@@ -122,9 +122,9 @@ XML;
 
         foreach (range(0, GsaFeedWriter::LIMIT_SIZE / 8196) as $i) {
             $writer->write(array(
-                'url'       => str_repeat('x', 8196),
+                'url' => str_repeat('x', 8196),
                 'mime_type' => 'text/html',
-                'action'    => 'add',
+                'action' => 'add',
             ));
         }
 
