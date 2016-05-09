@@ -29,9 +29,9 @@ class XlsWriter implements WriterInterface
      */
     public function __construct($filename, $showHeaders = true)
     {
-        $this->filename    = $filename;
+        $this->filename = $filename;
         $this->showHeaders = $showHeaders;
-        $this->position    = 0;
+        $this->position = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));

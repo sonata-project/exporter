@@ -29,8 +29,8 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     public function __construct(\PDOStatement $statement)
     {
         $this->statement = $statement;
-        $this->position  = 0;
-        $this->rewinded  = false;
+        $this->position = 0;
+        $this->rewinded = false;
     }
 
     /**
@@ -75,7 +75,7 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
             throw new InvalidMethodCallException('Cannot rewind a PDOStatement');
         }
 
-        $this->current  = $this->statement->fetch(\PDO::FETCH_ASSOC);
+        $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
         $this->rewinded = true;
     }
 }
