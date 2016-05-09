@@ -51,16 +51,16 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array(
              array(
-                'id'    => 1,
-                'name'  => 'john',
+                'id' => 1,
+                'name' => 'john',
             ),
             array(
-                'id'    => 2,
-                'name'  => 'john 2',
+                'id' => 2,
+                'name' => 'john 2',
             ),
             array(
-                'id'    => 3,
-                'name'  => 'john 3',
+                'id' => 3,
+                'name' => 'john 3',
             ),
         ), $data);
     }

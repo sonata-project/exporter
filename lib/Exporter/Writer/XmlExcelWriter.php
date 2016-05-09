@@ -36,7 +36,7 @@ class XmlExcelWriter implements WriterInterface
      */
     public function __construct($filename, $showHeaders = true, $columnsType = null)
     {
-        $this->filename    = $filename;
+        $this->filename = $filename;
         $this->showHeaders = $showHeaders;
         $this->columnsType = $columnsType;
 

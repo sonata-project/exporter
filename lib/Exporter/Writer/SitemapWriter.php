@@ -17,7 +17,7 @@ namespace Exporter\Writer;
 class SitemapWriter implements WriterInterface
 {
     const LIMIT_SIZE = 10485760;
-    const LIMIT_URL  = 50000;
+    const LIMIT_URL = 50000;
 
     /**
      * @var string
@@ -74,9 +74,9 @@ class SitemapWriter implements WriterInterface
      */
     public function __construct($folder, $groupName = false, array $headers = array(), $autoIndex = true)
     {
-        $this->folder    = $folder;
+        $this->folder = $folder;
         $this->groupName = is_string($groupName) ? $groupName : '';
-        $this->headers   = $headers;
+        $this->headers = $headers;
         $this->autoIndex = $autoIndex;
 
         $this->pattern = 'sitemap_'.($this->groupName ? $this->groupName.'_' : '').'%05d.xml';
@@ -190,7 +190,7 @@ class SitemapWriter implements WriterInterface
         }
 
         $this->bufferUrlCount = 0;
-        $this->bufferSize     = 0;
+        $this->bufferSize = 0;
         ++$this->bufferPart;
 
         if (!is_writable($this->folder)) {
@@ -234,11 +234,11 @@ class SitemapWriter implements WriterInterface
     protected function buildData(array $data)
     {
         $default = array(
-            'url'        => null,
-            'lastmod'    => 'now',
+            'url' => null,
+            'lastmod' => 'now',
             'changefreq' => 'weekly',
-            'priority'   => 0.5,
-            'type'       => 'default',
+            'priority' => 0.5,
+            'type' => 'default',
         );
 
         $data = array_merge($default, $data);
@@ -298,7 +298,7 @@ class SitemapWriter implements WriterInterface
         }
 
         $builder = array(
-            'url'      => 'loc',
+            'url' => 'loc',
             'location' => 'geo_location',
         );
 
@@ -324,7 +324,7 @@ class SitemapWriter implements WriterInterface
      */
     protected function generateVideoLine(array $data)
     {
-        $videos  = '';
+        $videos = '';
         $builder = array(
             'thumbnail' => 'thumbnail_loc',
         );
