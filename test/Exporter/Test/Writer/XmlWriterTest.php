@@ -26,6 +26,11 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     /**
      * @expectedException \RuntimeException
      */
@@ -64,10 +69,5 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
 XML;
 
         $this->assertEquals($expected, file_get_contents($this->filename));
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
     }
 }

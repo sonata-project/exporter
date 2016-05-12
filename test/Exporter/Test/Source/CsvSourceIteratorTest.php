@@ -34,6 +34,11 @@ EOF;
         file_put_contents($this->filename, $csv);
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     public function testHandler()
     {
         $iterator = new CsvSourceIterator($this->filename);
@@ -84,10 +89,5 @@ EOF;
             ++$i;
         }
         $this->assertEquals(3, $i);
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
     }
 }

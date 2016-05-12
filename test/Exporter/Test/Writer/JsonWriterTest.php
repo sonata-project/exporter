@@ -26,6 +26,11 @@ class JsonWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     public function testWrite()
     {
         $writer = new JsonWriter($this->filename, ',', '');
@@ -47,10 +52,5 @@ class JsonWriterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, json_decode($content, false));
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
     }
 }

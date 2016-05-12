@@ -58,6 +58,20 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Deletes the generated XML and the created folder.
+     */
+    public function tearDown()
+    {
+        if ($this->folder->getRealPath()) {
+            foreach ($this->getFiles() as $file) {
+                unlink($file);
+            }
+
+            rmdir($this->folder->getRealPath());
+        }
+    }
+
+    /**
      * @expectedException RuntimeException
      */
     public function testNonExistentFolder()
@@ -155,19 +169,5 @@ XML;
         sort($files);
 
         return $files;
-    }
-
-    /**
-     * Deletes the generated XML and the created folder.
-     */
-    public function tearDown()
-    {
-        if ($this->folder->getRealPath()) {
-            foreach ($this->getFiles() as $file) {
-                unlink($file);
-            }
-
-            rmdir($this->folder->getRealPath());
-        }
     }
 }
