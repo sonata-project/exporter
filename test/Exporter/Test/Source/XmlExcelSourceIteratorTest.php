@@ -36,6 +36,12 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
         file_put_contents($this->filenameSS, $xmlSS);
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+        unlink($this->filenameSS);
+    }
+
     public function testHandler()
     {
         $iterator = new XmlExcelSourceIterator($this->filename);
@@ -105,11 +111,5 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
             ++$i;
         }
         $this->assertEquals(3, $i);
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
-        unlink($this->filenameSS);
     }
 }

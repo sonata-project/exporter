@@ -26,6 +26,11 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     public function testWriter()
     {
         $writer = new XmlExcelWriter($this->filename, false);
@@ -99,10 +104,5 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $expected = '<Row><Cell><Data ss:Type="String">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="String">2001</Data></Cell></Row>';
 
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
     }
 }

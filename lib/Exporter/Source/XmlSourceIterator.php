@@ -34,21 +34,6 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Prepare the row to return.
-     */
-    protected function prepareCurrentRow()
-    {
-        $this->currentRow = array_shift($this->bufferedRow);
-        if (is_array($this->currentRow)) {
-            $datas = array();
-            foreach ($this->currentRow as $key => $value) {
-                $datas[$this->columns[$key]] = $value;
-            }
-            $this->currentRow = $datas;
-        }
-    }
-
-    /**
      * Start element handler.
      *
      * @param resource $parser
@@ -107,6 +92,21 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
             && isset($this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex])
         ) {
             $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
+        }
+    }
+
+    /**
+     * Prepare the row to return.
+     */
+    protected function prepareCurrentRow()
+    {
+        $this->currentRow = array_shift($this->bufferedRow);
+        if (is_array($this->currentRow)) {
+            $datas = array();
+            foreach ($this->currentRow as $key => $value) {
+                $datas[$this->columns[$key]] = $value;
+            }
+            $this->currentRow = $datas;
         }
     }
 }

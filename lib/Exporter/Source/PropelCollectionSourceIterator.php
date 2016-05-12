@@ -83,24 +83,6 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param $value
-     *
-     * @return null|string
-     */
-    protected function getValue($value)
-    {
-        if (is_array($value) || $value instanceof \Traversable) {
-            $value = null;
-        } elseif ($value instanceof \DateTime) {
-            $value = $value->format($this->dateTimeFormat);
-        } elseif (is_object($value)) {
-            $value = (string) $value;
-        }
-
-        return $value;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function next()
@@ -153,5 +135,23 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     public function getDateTimeFormat()
     {
         return $this->dateTimeFormat;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return null|string
+     */
+    protected function getValue($value)
+    {
+        if (is_array($value) || $value instanceof \Traversable) {
+            $value = null;
+        } elseif ($value instanceof \DateTime) {
+            $value = $value->format($this->dateTimeFormat);
+        } elseif (is_object($value)) {
+            $value = (string) $value;
+        }
+
+        return $value;
     }
 }
