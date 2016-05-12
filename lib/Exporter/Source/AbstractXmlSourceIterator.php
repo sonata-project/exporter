@@ -42,48 +42,6 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * Parse until </Row> reached.
-     */
-    protected function parseRow()
-    {
-        // only parse the next row if only one in buffer
-        if (count($this->bufferedRow) > 1) {
-            return;
-        }
-        if (feof($this->file)) {
-            $this->currentRow = null;
-
-            return;
-        }
-
-        $this->currentRowEnded = false;
-        // read file until row is ended
-        while (!$this->currentRowEnded && !feof($this->file)) {
-            $data = fread($this->file, 1024);
-            xml_parse($this->parser, $data);
-        }
-    }
-
-    /**
-     * Prepare the row to return.
-     */
-    protected function prepareCurrentRow()
-    {
-        $this->currentRow = array_shift($this->bufferedRow);
-        if (is_array($this->currentRow)) {
-            $datas = array();
-            foreach ($this->currentRow as $key => $value) {
-                if ($this->hasHeaders) {
-                    $datas[$this->columns[$key]] = html_entity_decode($value);
-                } else {
-                    $datas[$key] = html_entity_decode($value);
-                }
-            }
-            $this->currentRow = $datas;
-        }
-    }
-
-    /**
      * Start element handler.
      *
      * @param resource $parser
@@ -173,5 +131,47 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         }
 
         return true;
+    }
+
+    /**
+     * Parse until </Row> reached.
+     */
+    protected function parseRow()
+    {
+        // only parse the next row if only one in buffer
+        if (count($this->bufferedRow) > 1) {
+            return;
+        }
+        if (feof($this->file)) {
+            $this->currentRow = null;
+
+            return;
+        }
+
+        $this->currentRowEnded = false;
+        // read file until row is ended
+        while (!$this->currentRowEnded && !feof($this->file)) {
+            $data = fread($this->file, 1024);
+            xml_parse($this->parser, $data);
+        }
+    }
+
+    /**
+     * Prepare the row to return.
+     */
+    protected function prepareCurrentRow()
+    {
+        $this->currentRow = array_shift($this->bufferedRow);
+        if (is_array($this->currentRow)) {
+            $datas = array();
+            foreach ($this->currentRow as $key => $value) {
+                if ($this->hasHeaders) {
+                    $datas[$this->columns[$key]] = html_entity_decode($value);
+                } else {
+                    $datas[$key] = html_entity_decode($value);
+                }
+            }
+            $this->currentRow = $datas;
+        }
     }
 }

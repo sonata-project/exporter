@@ -30,6 +30,17 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         mkdir($this->folder);
     }
 
+    public function tearDown()
+    {
+        foreach ($this->getFiles() as $file) {
+            unlink($file);
+        }
+
+        if (is_dir($this->folder)) {
+            rmdir($this->folder);
+        }
+    }
+
     /**
      * @expectedException RuntimeException
      */
@@ -182,16 +193,5 @@ XML;
         sort($files);
 
         return $files;
-    }
-
-    public function tearDown()
-    {
-        foreach ($this->getFiles() as $file) {
-            unlink($file);
-        }
-
-        if (is_dir($this->folder)) {
-            rmdir($this->folder);
-        }
     }
 }

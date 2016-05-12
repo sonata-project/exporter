@@ -30,6 +30,12 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->createXmlFile($this->filenameCustomTagNames, $xml);
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+        unlink($this->filenameCustomTagNames);
+    }
+
     public function testHandler()
     {
         $iterator = new XmlSourceIterator($this->filename);
@@ -85,12 +91,6 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
             ++$i;
         }
         $this->assertEquals(3, $i);
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
-        unlink($this->filenameCustomTagNames);
     }
 
     protected function createXmlFile($filename, $content)

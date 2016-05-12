@@ -21,6 +21,16 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
     /** @var \ArrayIterator */
     protected $iterator;
 
+    protected function setUp()
+    {
+        $this->iterator = new \ArrayIterator(array(array(0), array(1), array(2), array(3)));
+        $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, function ($data) {
+            $data[0] = 1 << $data[0];
+
+            return $data;
+        });
+    }
+
     public function testTransformer()
     {
         $result = array(1, 2, 4, 8);
@@ -38,15 +48,5 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
     public function testGetIterator()
     {
         $this->assertSame($this->iterator, $this->sourceIterator->getIterator());
-    }
-
-    protected function setUp()
-    {
-        $this->iterator = new \ArrayIterator(array(array(0), array(1), array(2), array(3)));
-        $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, function ($data) {
-            $data[0] = 1 << $data[0];
-
-            return $data;
-        });
     }
 }

@@ -26,6 +26,11 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function tearDown()
+    {
+        unlink($this->filename);
+    }
+
     /**
      * @expectedException \Exporter\Exception\InvalidDataFormatException
      */
@@ -77,11 +82,6 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
         $expected = 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
-    }
-
-    public function tearDown()
-    {
-        unlink($this->filename);
     }
 
     public function testWithBom()
