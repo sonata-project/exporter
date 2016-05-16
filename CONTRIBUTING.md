@@ -114,15 +114,15 @@ Here is a short table resuming on which you have to start:
 
 Kind of modification | Backward Compatible (BC) | Type of release | Branch to target        | Label |
 -------------------- | ------------------------ | --------------- | ----------------------- | ----- |
-Bug fixes            | Yes                      | Patch           | `master`   | |
+Bug fixes            | Yes                      | Patch           | `1.x`   | |
 Bug fixes            | No (Only if no choice)   | Major           | `master` | |
-Feature              | Yes                      | Minor           | `master`   | |
+Feature              | Yes                      | Minor           | `1.x`   | |
 Feature              | No (Only if no choice)   | Major           | `master` | |
-Deprecation          | Yes (Have to)            | Minor           | `master`   | |
+Deprecation          | Yes (Have to)            | Minor           | `1.x`   | |
 Deprecation removal  | No (Can't be)            | Major           | `master` | |
 
 Notes:
-  * Branch `master` is the branch of the **latest stable** minor release and
+  * Branch `1.x` is the branch of the **latest stable** minor release and
   has to be used for Backward compatible PRs.
   * If you PR is not **Backward Compatible** but can be, it **must** be:
     * Changing a function/method signature? Prefer create a new one and deprecated the old one.
