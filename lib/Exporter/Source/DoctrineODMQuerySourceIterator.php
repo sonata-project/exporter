@@ -19,7 +19,7 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 {
     /**
-     * @var \Doctrine\ODM\MongoDB\Query\Query
+     * @var Query
      */
     protected $query;
 
@@ -41,9 +41,9 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \Doctrine\ODM\MongoDB\Query\Query $query          The Doctrine Query
-     * @param array                             $fields         Fields to export
-     * @param string                            $dateTimeFormat
+     * @param Query  $query          The Doctrine Query
+     * @param array  $fields         Fields to export
+     * @param string $dateTimeFormat
      */
     public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
