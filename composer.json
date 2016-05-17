@@ -16,17 +16,17 @@
         "php": "^5.3 || ^7.0"
     },
     "require-dev": {
-        "symfony/routing": "^2.3 || ^3.0",
-        "symfony/property-access": "^2.3 || ^3.0",
-        "symfony/phpunit-bridge": "^2.7 || ^3.0",
+        "symfony/routing": "^2.8 || ^3.0",
+        "symfony/property-access": "^2.8 || ^3.0",
+        "symfony/phpunit-bridge": "^2.8 || ^3.0",
         "propel/propel1": "^1.6",
         "fabpot/php-cs-fixer": "~0.1 || ^1.0",
         "sllh/php-cs-fixer-styleci-bridge": "^2.0"
     },
     "suggest": {
         "ext-curl": "*",
-        "symfony/routing": "^2.3 || ^3.0",
-        "symfony/property-access": "^2.3 || ^3.0",
+        "symfony/routing": "^2.8 || ^3.0",
+        "symfony/property-access": "^2.8 || ^3.0",
         "propel/propel1": "^1.6"
     },
     "autoload": {
