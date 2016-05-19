@@ -10,6 +10,7 @@
  */
 
 // Use same namespace as system under test to mock native functions
+
 namespace Exporter\Writer;
 
 use org\bovigo\vfs\vfsStream;
