@@ -10,9 +10,8 @@
  */
 
 // Use same namespace as system under test to mock native functions
-namespace Exporter\Writer;
 
-use Exporter\Writer\KnpSnappyWriter;
+namespace Exporter\Writer;
 
 function is_executable()
 {
@@ -20,7 +19,7 @@ function is_executable()
 }
 
 /**
- * Tests the KnpSnappyWriter
+ * Tests the KnpSnappyWriter.
  */
 class KnpSnappyWriterTest extends \PHPUnit_Framework_TestCase
 {
