@@ -10,9 +10,9 @@
  */
 
 // Use same namespace as system under test to mock native functions
+
 namespace Exporter\Writer;
 
-use Exporter\Writer\KnpSnappyWriter;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
@@ -23,7 +23,7 @@ function is_executable()
 }
 
 /**
- * Tests the KnpSnappyWriter
+ * Tests the KnpSnappyWriter.
  */
 class KnpSnappyWriterTest extends \PHPUnit_Framework_TestCase
 {
