@@ -11,7 +11,7 @@
 
 namespace Exporter\Writer;
 
-class XlsWriter implements WriterInterface
+class XlsWriter implements TypedWriterInterface
 {
     /**
      * @var string
@@ -48,6 +48,22 @@ class XlsWriter implements WriterInterface
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getDefaultMimeType()
+    {
+        return 'application/vnd.ms-excel';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getFormat()
+    {
+        return 'xls';
     }
 
     /**

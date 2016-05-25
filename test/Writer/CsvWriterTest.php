@@ -13,12 +13,13 @@ namespace Exporter\Test\Writer;
 
 use Exporter\Writer\CsvWriter;
 
-class CsvWriterTest extends \PHPUnit_Framework_TestCase
+class CsvWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
     public function setUp()
     {
+        parent::setUp();
         $this->filename = 'foobar.csv';
 
         if (is_file($this->filename)) {
@@ -28,7 +29,9 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->filename);
+        if (is_file($this->filename)) {
+            unlink($this->filename);
+        }
     }
 
     /**
@@ -95,5 +98,10 @@ class CsvWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = chr(0xEF).chr(0xBB).chr(0xBF).'name,surname,year'."\n".'"Rémi , """"2""","doe ",2001';
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
+    protected function getWriter()
+    {
+        return new CsvWriter('/tmp/whatever.csv');
     }
 }

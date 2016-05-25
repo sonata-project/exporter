@@ -35,6 +35,11 @@
             "Exporter\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Exporter\\Test\\": "test/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"

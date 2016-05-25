@@ -13,12 +13,13 @@ namespace Exporter\Test\Writer;
 
 use Exporter\Writer\JsonWriter;
 
-class JsonWriterTest extends \PHPUnit_Framework_TestCase
+class JsonWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
     public function setUp()
     {
+        parent::setUp();
         $this->filename = 'foobar.json';
 
         if (is_file($this->filename)) {
@@ -28,7 +29,9 @@ class JsonWriterTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->filename);
+        if (is_file($this->filename)) {
+            unlink($this->filename);
+        }
     }
 
     public function testWrite()
@@ -52,5 +55,10 @@ class JsonWriterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, json_decode($content, false));
+    }
+
+    protected function getWriter()
+    {
+        return new JsonWriter('/tmp/whatever.json');
     }
 }

@@ -11,7 +11,7 @@
 
 namespace Exporter\Writer;
 
-class JsonWriter implements WriterInterface
+class JsonWriter implements TypedWriterInterface
 {
     /**
      * @var string
@@ -39,6 +39,22 @@ class JsonWriter implements WriterInterface
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getDefaultMimeType()
+    {
+        return 'application/json';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getFormat()
+    {
+        return 'json';
     }
 
     /**
