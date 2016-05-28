@@ -13,6 +13,9 @@ namespace Exporter\Writer;
 
 use Exporter\Exception\InvalidDataFormatException;
 
+/**
+ * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class XmlWriter implements TypedWriterInterface
 {
     /**

@@ -11,6 +11,9 @@
 
 namespace Exporter\Writer;
 
+/**
+ * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class JsonWriter implements TypedWriterInterface
 {
     /**
