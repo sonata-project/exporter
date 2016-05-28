@@ -15,12 +15,24 @@ use Exporter\Exception\InvalidMethodCallException;
 
 class PDOStatementSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var \PDOStatement
+     */
     protected $statement;
 
+    /**
+     * @var mixed
+     */
     protected $current;
 
+    /**
+     * @var int
+     */
     protected $position;
 
+    /**
+     * @var bool
+     */
     protected $rewinded;
 
     /**
