@@ -13,6 +13,9 @@ namespace Exporter\Writer;
 
 class InMemoryWriter implements WriterInterface
 {
+    /**
+     * @var array
+     */
     protected $elements;
 
     /**

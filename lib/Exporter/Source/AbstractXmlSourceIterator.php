@@ -18,17 +18,59 @@ namespace Exporter\Source;
  */
 abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var string
+     */
     protected $filename = null;
+
+    /**
+     * @var resource
+     */
     protected $file = null;
+
+    /**
+     * @var bool|null
+     */
     protected $hasHeaders = null;
+
+    /**
+     * @var string[]
+     */
     protected $columns = array();
+
+    /**
+     * @var resource
+     */
     protected $parser = null;
 
+    /**
+     * @var int
+     */
     protected $currentRowIndex = 0;
+
+    /**
+     * @var int
+     */
     protected $currentColumnIndex = 0;
+
+    /**
+     * @var mixed
+     */
     protected $currentRow = null;
+
+    /**
+     * @var array
+     */
     protected $bufferedRow = array();
+
+    /**
+     * @var bool
+     */
     protected $currentRowEnded = false;
+
+    /**
+     * @var int
+     */
     protected $position = 0;
 
     /**
