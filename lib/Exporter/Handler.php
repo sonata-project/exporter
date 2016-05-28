@@ -16,13 +16,19 @@ use Exporter\Writer\WriterInterface;
 
 class Handler
 {
+    /**
+     * @var SourceIteratorInterface
+     */
     protected $source;
 
+    /**
+     * @var WriterInterface
+     */
     protected $writer;
 
     /**
-     * @param Source\SourceIteratorInterface $source
-     * @param Writer\WriterInterface         $writer
+     * @param SourceIteratorInterface $source
+     * @param WriterInterface         $writer
      */
     public function __construct(SourceIteratorInterface $source, WriterInterface $writer)
     {
@@ -42,10 +48,8 @@ class Handler
     }
 
     /**
-     * @static
-     *
-     * @param Source\SourceIteratorInterface $source
-     * @param Writer\WriterInterface         $writer
+     * @param SourceIteratorInterface $source
+     * @param WriterInterface         $writer
      *
      * @return Handler
      */
