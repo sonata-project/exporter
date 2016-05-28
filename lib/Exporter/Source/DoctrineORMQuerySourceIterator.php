@@ -29,6 +29,9 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      */
     protected $iterator;
 
+    /**
+     * @var array
+     */
     protected $propertyPaths;
 
     /**

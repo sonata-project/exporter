@@ -18,15 +18,54 @@ namespace Exporter\Source;
  */
 class CsvSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var string
+     */
     protected $filename = null;
+
+    /**
+     * @var resource
+     */
     protected $file = null;
+
+    /**
+     * @var string|null
+     */
     protected $delimiter = null;
+
+    /**
+     * @var string|null
+     */
     protected $enclosure = null;
+
+    /**
+     * @var string|null
+     */
     protected $escape = null;
+
+    /**
+     * @var bool|null
+     */
     protected $hasHeaders = null;
+
+    /**
+     * @var array
+     */
     protected $lines = array();
+
+    /**
+     * @var array
+     */
     protected $columns = array();
+
+    /**
+     * @var int
+     */
     protected $position = 0;
+
+    /**
+     * @var array
+     */
     protected $currentLine = array();
 
     /**
@@ -34,7 +73,7 @@ class CsvSourceIterator implements SourceIteratorInterface
      * @param string $delimiter
      * @param string $enclosure
      * @param string $escape
-     * @param bool   $showHeaders
+     * @param bool   $hasHeaders
      */
     public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $hasHeaders = true)
     {

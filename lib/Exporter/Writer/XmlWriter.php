@@ -15,14 +15,29 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class XmlWriter implements WriterInterface
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
+    /**
+     * @var resource
+     */
     protected $file;
 
+    /**
+     * @var int
+     */
     protected $position;
 
+    /**
+     * @var string
+     */
     protected $mainElement;
 
+    /**
+     * @var string
+     */
     protected $childElement;
 
     /**

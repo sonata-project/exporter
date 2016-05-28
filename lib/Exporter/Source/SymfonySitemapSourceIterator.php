@@ -16,12 +16,24 @@ use Symfony\Component\Routing\RouterInterface;
 
 class SymfonySitemapSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var RouterInterface
+     */
     protected $router;
 
+    /**
+     * @var SourceIteratorInterface
+     */
     protected $source;
 
+    /**
+     * @var string
+     */
     protected $routeName;
 
+    /**
+     * @var array
+     */
     protected $parameters;
 
     /**
