@@ -18,7 +18,7 @@ namespace Exporter\Source;
  */
 class IteratorCallbackSourceIterator extends IteratorSourceIterator
 {
-    /** 
+    /**
      * @var \Closure
      */
     protected $transformer;
