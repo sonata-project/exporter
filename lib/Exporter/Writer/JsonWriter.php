@@ -13,10 +13,19 @@ namespace Exporter\Writer;
 
 class JsonWriter implements WriterInterface
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
+    /**
+     * @var
+     */
     protected $file;
 
+    /**
+     * @var int
+     */
     protected $position;
 
     /**

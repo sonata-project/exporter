@@ -18,11 +18,34 @@ namespace Exporter\Writer;
  */
 class XmlExcelWriter implements WriterInterface
 {
+    /**
+     * @var string|null
+     */
     protected $filename = null;
+
+    /**
+     * @var resource|null
+     */
     protected $file = null;
+
+    /**
+     * @var bool
+     */
     protected $showHeaders;
+
+    /**
+     * @var mixed|null
+     */
     protected $columnsType = null;
+
+    /**
+     * @var int
+     */
     protected $position = 0;
+
+    /**
+     * @var string
+     */
     protected $header = '<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet"><OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office"></OfficeDocumentSettings><ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel"></ExcelWorkbook><Worksheet ss:Name="Sheet 1"><Table>';
     protected $footer = '</Table></Worksheet></Workbook>';
 

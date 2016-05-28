@@ -13,8 +13,6 @@ namespace Exporter\Source;
 
 class ArraySourceIterator extends IteratorSourceIterator
 {
-    protected $iterator;
-
     /**
      * @param array $data
      */

@@ -15,6 +15,9 @@ use ArrayIterator;
 
 class ChainSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var ArrayIterator
+     */
     protected $sources;
 
     /**
