@@ -50,7 +50,7 @@ class CsvSourceIterator implements SourceIteratorInterface
 
     /**
      * @deprecated
-     * 
+     *
      * @var array
      */
     protected $lines = array();
