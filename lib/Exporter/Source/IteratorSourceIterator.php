@@ -16,6 +16,9 @@ namespace Exporter\Source;
  */
 class IteratorSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var \Iterator
+     */
     protected $iterator;
 
     /**

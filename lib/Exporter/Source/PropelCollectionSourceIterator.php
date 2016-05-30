@@ -32,6 +32,9 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
      */
     protected $iterator;
 
+    /**
+     * @var array
+     */
     protected $propertyPaths;
 
     /**
@@ -45,9 +48,9 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \PropelCollection $query          The Doctrine Query
-     * @param array             $fields         Fields to export
-     * @param string            $dateTimeFormat
+     * @param PropelCollection $collection
+     * @param array            $fields         Fields to export
+     * @param string           $dateTimeFormat
      */
     public function __construct(PropelCollection $collection, array $fields, $dateTimeFormat = 'r')
     {

@@ -15,18 +15,39 @@ use Exporter\Exception\InvalidDataFormatException;
 
 class CsvWriter implements WriterInterface
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
+    /**
+     * @var string
+     */
     protected $delimiter;
 
+    /**
+     * @var string
+     */
     protected $enclosure;
 
+    /**
+     * @var string
+     */
     protected $escape;
 
+    /**
+     * @var resource
+     */
     protected $file;
 
+    /**
+     * @var bool
+     */
     protected $showHeaders;
 
+    /**
+     * @var int
+     */
     protected $position;
 
     /**

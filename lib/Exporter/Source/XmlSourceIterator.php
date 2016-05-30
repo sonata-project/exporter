@@ -18,7 +18,14 @@ namespace Exporter\Source;
  */
 class XmlSourceIterator extends AbstractXmlSourceIterator
 {
+    /**
+     * @var string
+     */
     protected $mainTag;
+
+    /**
+     * @var string
+     */
     protected $dataTag;
 
     /**
@@ -34,11 +41,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Start element handler.
-     *
-     * @param resource $parser
-     * @param string   $name
-     * @param array    $attributes
+     * {@inheritdoc}
      */
     public function tagStart($parser, $name, $attributes = array())
     {
@@ -59,10 +62,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * End element handler.
-     *
-     * @param resource $parser
-     * @param string   $name
+     * {@inheritdoc}
      */
     public function tagEnd($parser, $name)
     {
@@ -81,10 +81,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Tag content handler.
-     *
-     * @param resource $parser
-     * @param string   $data
+     * {@inheritdoc}
      */
     public function tagContent($parser, $data)
     {
@@ -96,7 +93,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     }
 
     /**
-     * Prepare the row to return.
+     * {@inheritdoc}
      */
     protected function prepareCurrentRow()
     {
