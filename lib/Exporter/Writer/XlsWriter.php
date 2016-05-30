@@ -13,12 +13,24 @@ namespace Exporter\Writer;
 
 class XlsWriter implements WriterInterface
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
+    /**
+     * @var resource
+     */
     protected $file;
 
+    /**
+     * @var bool
+     */
     protected $showHeaders;
 
+    /**
+     * @var int
+     */
     protected $position;
 
     /**

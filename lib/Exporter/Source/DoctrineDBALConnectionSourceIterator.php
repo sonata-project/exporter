@@ -17,14 +17,29 @@ use Exporter\Exception\InvalidMethodCallException;
 
 class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
+    /**
+     * @var Connection
+     */
     protected $connection;
 
+    /**
+     * @var string
+     */
     protected $query;
 
+    /**
+     * @var array
+     */
     protected $parameters;
 
+    /**
+     * @var mixed
+     */
     protected $current;
 
+    /**
+     * @var int
+     */
     protected $position;
 
     /**
@@ -33,7 +48,9 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
     protected $statement;
 
     /**
-     * @param Connection $statement
+     * @param Connection $connection
+     * @param            $query
+     * @param array      $parameters
      */
     public function __construct(Connection $connection, $query, array $parameters = array())
     {

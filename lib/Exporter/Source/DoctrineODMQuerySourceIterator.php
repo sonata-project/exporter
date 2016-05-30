@@ -12,6 +12,7 @@
 namespace Exporter\Source;
 
 use Doctrine\ODM\MongoDB\Query\Query;
+use Doctrine\ORM\Internal\Hydration\IterableResult;
 use Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
@@ -19,15 +20,18 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 {
     /**
-     * @var \Doctrine\ORM\Query
+     * @var Query
      */
     protected $query;
 
     /**
-     * @var \Doctrine\ORM\Internal\Hydration\IterableResult
+     * @var IterableResult
      */
     protected $iterator;
 
+    /**
+     * @var array
+     */
     protected $propertyPaths;
 
     /**
@@ -41,9 +45,9 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \Doctrine\ODM\MongoDB\Query\Query $query          The Doctrine Query
-     * @param array                             $fields         Fields to export
-     * @param string                            $dateTimeFormat
+     * @param Query  $query          The Doctrine Query
+     * @param array  $fields         Fields to export
+     * @param string $dateTimeFormat
      */
     public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
