@@ -36,20 +36,26 @@ matrix:
   include:
     - php: '7.0'
       env: TARGET=docs
+    - php: '7.0'
+      env: TARGET=lint
     - php: '5.3'
       env: COMPOSER_FLAGS="--prefer-lowest"
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=2.3.*
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=2.7.*
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=2.8.*
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=3.0.*
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=3.1.*
-    - php: '7.0'
+    - php: '5.6'
       env: SYMFONY=dev-master@dev
+    - php: '5.6'
+      env: DOCTRINE_ODM=1.*
+    - php: '5.6'
+      env: DOCTRINE_ODM=dev-master@dev
     - php: '7.0'
       env: SYMFONY_DEPRECATIONS_HELPER=0
   allow_failures:
@@ -57,6 +63,7 @@ matrix:
     - php: hhvm
     - env: SYMFONY_DEPRECATIONS_HELPER=0
     - env: SYMFONY=dev-master@dev
+    - env: DOCTRINE_ODM=dev-master@dev
 
 before_install:
   - git remote add upstream ${UPSTREAM_URL} && git fetch --all
