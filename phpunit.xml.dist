@@ -3,13 +3,13 @@
 <phpunit bootstrap="./test/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Exporter Test Suite">
-            <directory suffix="Test.php">./test/Exporter/</directory>
+            <directory suffix="Test.php">./test/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./lib/Exporter/</directory>
+            <directory suffix=".php">./lib/</directory>
         </whitelist>
     </filter>
 </phpunit>
