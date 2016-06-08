@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Exporter\\": "lib/"
+            "Exporter\\": "src/"
         }
     },
     "extra": {
