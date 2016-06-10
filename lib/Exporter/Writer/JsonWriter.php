@@ -19,7 +19,7 @@ class JsonWriter implements WriterInterface
     protected $filename;
 
     /**
-     * @var string
+     * @var resource
      */
     protected $file;
 
