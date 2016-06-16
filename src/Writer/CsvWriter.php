@@ -13,7 +13,10 @@ namespace Exporter\Writer;
 
 use Exporter\Exception\InvalidDataFormatException;
 
-class CsvWriter implements WriterInterface
+/**
+ * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
+class CsvWriter implements TypedWriterInterface
 {
     /**
      * @var string
@@ -76,6 +79,22 @@ class CsvWriter implements WriterInterface
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getDefaultMimeType()
+    {
+        return 'text/csv';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getFormat()
+    {
+        return 'csv';
     }
 
     /**

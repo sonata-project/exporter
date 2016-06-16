@@ -13,7 +13,10 @@ namespace Exporter\Writer;
 
 use Exporter\Exception\InvalidDataFormatException;
 
-class XmlWriter implements WriterInterface
+/**
+ * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
+class XmlWriter implements TypedWriterInterface
 {
     /**
      * @var string
@@ -55,6 +58,22 @@ class XmlWriter implements WriterInterface
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getDefaultMimeType()
+    {
+        return 'text/xml';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getFormat()
+    {
+        return 'xml';
     }
 
     /**

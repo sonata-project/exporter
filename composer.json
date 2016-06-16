@@ -31,8 +31,13 @@
         "propel/propel1": "^1.6"
     },
     "autoload": {
-        "psr-0": {
-            "Exporter": "lib/"
+        "psr-4": {
+            "Exporter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Exporter\\Test\\": "test/"
         }
     },
     "extra": {

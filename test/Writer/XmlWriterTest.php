@@ -13,12 +13,13 @@ namespace Exporter\Test\Writer;
 
 use Exporter\Writer\XmlWriter;
 
-class XmlWriterTest extends \PHPUnit_Framework_TestCase
+class XmlWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
     public function setUp()
     {
+        parent::setUp();
         $this->filename = 'foobar.xml';
 
         if (is_file($this->filename)) {
@@ -28,7 +29,9 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->filename);
+        if (is_file($this->filename)) {
+            unlink($this->filename);
+        }
     }
 
     /**
@@ -69,5 +72,10 @@ class XmlWriterTest extends \PHPUnit_Framework_TestCase
 XML;
 
         $this->assertEquals($expected, file_get_contents($this->filename));
+    }
+
+    protected function getWriter()
+    {
+        return new XmlWriter('/tmp/whatever.xml');
     }
 }
