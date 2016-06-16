@@ -13,12 +13,13 @@ namespace Exporter\Test\Writer;
 
 use Exporter\Writer\XlsWriter;
 
-class XlsWriterTest extends \PHPUnit_Framework_TestCase
+class XlsWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
     public function setUp()
     {
+        parent::setUp();
         $this->filename = 'foobar.xls';
 
         if (is_file($this->filename)) {
@@ -28,7 +29,9 @@ class XlsWriterTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->filename);
+        if (is_file($this->filename)) {
+            unlink($this->filename);
+        }
     }
 
     public function testValidDataFormat()
@@ -55,5 +58,10 @@ class XlsWriterTest extends \PHPUnit_Framework_TestCase
         $expected = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table><tr><th>firtname</th><th>surname</th><th>year</th></tr><tr><td>john "2</td><td>doe</td><td>1</td></tr></table></body></html>';
 
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
+    protected function getWriter()
+    {
+        return new XlsWriter('/tmp/whatever.xls', false);
     }
 }
