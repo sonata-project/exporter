@@ -1,6 +1,10 @@
 UPGRADE 1.x
 ===========
 
+## Deprectaded AbstractTypedWriterTestCase namespace
+
+The `Test\Writer\AbstractTypedWriterTestCase` class is deprecated. Use `Test\AbstractTypedWriterTestCase` instead.
+
 UPGRADE FROM 1.4 to 1.5
 =======================
 

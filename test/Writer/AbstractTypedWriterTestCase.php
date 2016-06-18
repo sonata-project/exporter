@@ -11,38 +11,19 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Writer\WriterInterface;
+use Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
+
+@trigger_error(
+    'The '.__NAMESPACE__.'\AbstractTypedWriterTestCase class is deprecated since version 1.x and will be removed in 2.0.'
+    .' Use Exporter\Test\AbstractTypedWriterTestCase instead.',
+    E_USER_DEPRECATED
+);
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
+ *
+ * @deprecated Deprecated since version 1.x. Use Exporter\Test\AbstractTypedWriterTestCase instead.
  */
-abstract class AbstractTypedWriterTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractTypedWriterTestCase extends BaseTestCase
 {
-    /**
-     * @var WriterInterface
-     */
-    private $writer;
-
-    protected function setUp()
-    {
-        $this->writer = $this->getWriter();
-    }
-
-    public function testFormatIsString()
-    {
-        $this->assertInternalType('string', $this->writer->getFormat());
-    }
-
-    public function testDefaultMimeTypeIsString()
-    {
-        $this->assertInternalType('string', $this->writer->getDefaultMimeType());
-    }
-
-    /**
-     * Should return a very simple instance of the writer (no need for complex
-     * configuration).
-     *
-     * @return WriterInterface
-     */
-    abstract protected function getWriter();
 }
