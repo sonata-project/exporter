@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\SitemapWriter;
 use SimpleXMLElement;
+use Sonata\Exporter\Writer\SitemapWriter;
 
 class SitemapWriterTest extends \PHPUnit_Framework_TestCase
 {

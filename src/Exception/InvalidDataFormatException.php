@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Exception;
+namespace Sonata\Exporter\Exception;
 
 class InvalidDataFormatException extends \RuntimeException
 {

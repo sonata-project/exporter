@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\WriterInterface;
+use Sonata\Exporter\Writer\WriterInterface;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>

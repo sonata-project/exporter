@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter;
+namespace Sonata\Exporter;
 
-use Exporter\Source\SourceIteratorInterface;
-use Exporter\Writer\WriterInterface;
+use Sonata\Exporter\Source\SourceIteratorInterface;
+use Sonata\Exporter\Writer\WriterInterface;
 
 class Handler
 {

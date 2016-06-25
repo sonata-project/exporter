@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
-use Exporter\Source\PropelCollectionSourceIterator;
+use Sonata\Exporter\Source\PropelCollectionSourceIterator;
 
 /**
  * Tests the PropelCollectionSourceIterator class.

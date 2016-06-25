@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
-use Exporter\Source\ChainSourceIterator;
+use Sonata\Exporter\Source\ChainSourceIterator;
 
 class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
     public function testIterator()
     {
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
+        $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
 
         $iterator = new ChainSourceIterator(array($source));
 

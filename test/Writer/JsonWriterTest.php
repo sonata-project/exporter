@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\JsonWriter;
+use Sonata\Exporter\Writer\JsonWriter;
 
 class JsonWriterTest extends AbstractTypedWriterTestCase
 {

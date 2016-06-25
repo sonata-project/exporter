@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Exporter\\": "src/"
+            "Sonata\\Exporter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Exporter\\Test\\": "test/"
+            "Sonata\\Exporter\\Test\\": "test/"
         }
     },
     "extra": {
