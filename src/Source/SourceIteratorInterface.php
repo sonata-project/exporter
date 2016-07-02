@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 interface SourceIteratorInterface extends \Iterator
 {

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\XmlWriter;
+use Sonata\Exporter\Writer\XmlWriter;
 
 class XmlWriterTest extends AbstractTypedWriterTestCase
 {

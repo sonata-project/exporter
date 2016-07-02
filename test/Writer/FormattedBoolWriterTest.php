@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\FormattedBoolWriter;
+use Sonata\Exporter\Writer\FormattedBoolWriter;
 
 /**
  * Format boolean before use another writer.
@@ -40,7 +40,7 @@ class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
     {
         $data = array('john', 'doe', false, true);
         $expected = array('john', 'doe', 'no', 'yes');
-        $mock = $this->getMockBuilder('Exporter\Writer\XlsWriter')
+        $mock = $this->getMockBuilder('Sonata\Exporter\Writer\XlsWriter')
                        ->setConstructorArgs(array('formatedbool.xls', false))
                        ->getMock();
         $mock->expects($this->any())

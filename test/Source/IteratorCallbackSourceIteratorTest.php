@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
-use Exporter\Source\IteratorCallbackSourceIterator;
+use Sonata\Exporter\Source\IteratorCallbackSourceIterator;
 
 class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function testExtends()
     {
-        $this->assertInstanceOf('Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
+        $this->assertInstanceOf('Sonata\Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
     }
 
     public function testGetIterator()

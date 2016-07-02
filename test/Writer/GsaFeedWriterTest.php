@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\GsaFeedWriter;
+use Sonata\Exporter\Writer\GsaFeedWriter;
 
 /**
  * Tests the GSA feed writer class.

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\CsvWriter;
+use Sonata\Exporter\Writer\CsvWriter;
 
 class CsvWriterTest extends AbstractTypedWriterTestCase
 {
@@ -35,7 +35,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
     }
 
     /**
-     * @expectedException \Exporter\Exception\InvalidDataFormatException
+     * @expectedException \Sonata\Exporter\Exception\InvalidDataFormatException
      */
     public function testInvalidDataFormat()
     {

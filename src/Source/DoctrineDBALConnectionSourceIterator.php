@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Statement;
-use Exporter\Exception\InvalidMethodCallException;
+use Sonata\Exporter\Exception\InvalidMethodCallException;
 
 class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {

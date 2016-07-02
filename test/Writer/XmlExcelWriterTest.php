@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Writer;
+namespace Sonata\Exporter\Test\Writer;
 
-use Exporter\Writer\XmlExcelWriter;
+use Sonata\Exporter\Writer\XmlExcelWriter;
 
 class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
 {

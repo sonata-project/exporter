@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
-use Exporter\Source\XmlExcelSourceIterator;
+use Sonata\Exporter\Source\XmlExcelSourceIterator;
 
 class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {

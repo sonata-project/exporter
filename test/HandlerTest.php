@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test;
+namespace Sonata\Exporter\Test;
 
-use Exporter\Handler;
+use Sonata\Exporter\Handler;
 
 class HandlerTest extends \PHPUnit_Framework_TestCase
 {
     public function testHandler()
     {
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Exporter\Writer\WriterInterface');
+        $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
+        $writer = $this->getMock('Sonata\Exporter\Writer\WriterInterface');
         $writer->expects($this->once())->method('open');
         $writer->expects($this->once())->method('close');
 

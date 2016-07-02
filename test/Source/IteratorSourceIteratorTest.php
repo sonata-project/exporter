@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
-use Exporter\Source\IteratorSourceIterator;
+use Sonata\Exporter\Source\IteratorSourceIterator;
 
 class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
