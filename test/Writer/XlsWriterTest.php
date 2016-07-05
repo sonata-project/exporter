@@ -11,6 +11,7 @@
 
 namespace Exporter\Test\Writer;
 
+use Exporter\Test\AbstractTypedWriterTestCase;
 use Exporter\Writer\XlsWriter;
 
 class XlsWriterTest extends AbstractTypedWriterTestCase
