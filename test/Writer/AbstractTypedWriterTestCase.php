@@ -22,7 +22,7 @@ use Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  *
- * @deprecated Deprecated since version 1.x. Use Exporter\Test\AbstractTypedWriterTestCase instead.
+ * @deprecated Deprecated since version 1.x. Use Exporter\Test\AbstractTypedWriterTestCase instead
  */
 abstract class AbstractTypedWriterTestCase extends BaseTestCase
 {
