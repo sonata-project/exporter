@@ -14,7 +14,7 @@ namespace Exporter\Test\Writer;
 use Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
 
 @trigger_error(
-    'The '.__NAMESPACE__.'\AbstractTypedWriterTestCase class is deprecated since version 1.x and will be removed in 2.0.'
+    'The '.__NAMESPACE__.'\AbstractTypedWriterTestCase class is deprecated since version 1.6 and will be removed in 2.0.'
     .' Use Exporter\Test\AbstractTypedWriterTestCase instead.',
     E_USER_DEPRECATED
 );
@@ -22,7 +22,7 @@ use Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  *
- * @deprecated Deprecated since version 1.x. Use Exporter\Test\AbstractTypedWriterTestCase instead
+ * @deprecated Deprecated since version 1.6. Use Exporter\Test\AbstractTypedWriterTestCase instead
  */
 abstract class AbstractTypedWriterTestCase extends BaseTestCase
 {

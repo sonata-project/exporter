@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.6.0](https://github.com/sonata-project/exporter/compare/1.5.0...1.6.0) - 2016-08-01
+### Added
+- Added `Exporter\Exporter` class to provide a Symfony `StreamedResponse`.
+- Added a `sonata.exporter.exporter` service to deprecate the one defined in the admin bundle
+
+### Deprecated
+- Deprecate `Test\Writer\AbstractTypedWriterTestCase` in favor of `Test\AbstractTypedWriterTestCase`
+
 ## [1.5.0](https://github.com/sonata-project/exporter/compare/1.4.1...1.5.0) - 2016-06-16
 ### Added
 - `MimeTypedWriterInterface` can be implemented to indicate the suitable `Content-Type` header and format for a writer.
