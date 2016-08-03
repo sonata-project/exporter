@@ -39,6 +39,16 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         new Exporter(array('Not even an object'));
     }
 
+    public function testGetAvailableFormats()
+    {
+        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $writer->expects($this->once())
+            ->method('getFormat')
+            ->willReturn('whatever');
+        $exporter = new Exporter(array($writer));
+        $this->assertSame(array('whatever'), $exporter->getAvailableFormats());
+    }
+
     /**
      * @dataProvider getGetResponseTests
      */
