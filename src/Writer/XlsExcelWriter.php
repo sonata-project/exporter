@@ -51,7 +51,7 @@ class XlsExcelWriter implements TypedWriterInterface
     public function __construct($file = 'php://output', $showHeaders = true)
     {
         $this->file = $file;
-        $this->showHeaders = true;
+        $this->showHeaders = $showHeaders;
         $this->configure();
     }
 
