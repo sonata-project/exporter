@@ -1,6 +1,12 @@
 <?php
-/**
- * @author Lukáš Brzák <lukas.brzak@email.cz>
+
+/*
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Exporter\Writer;
@@ -10,6 +16,7 @@ namespace Exporter\Writer;
  * @see https://github.com/PHPOffice/PHPExcel
  *
  * @package Exporter\Writer
+ * @author Lukáš Brzák <lukas.brzak@email.cz>
  */
 class XlsExcelWriter implements TypedWriterInterface
 {
@@ -177,5 +184,4 @@ class XlsExcelWriter implements TypedWriterInterface
     {
         return 'xls';
     }
-
 }
