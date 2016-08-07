@@ -145,8 +145,14 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
      */
     protected function getValue($value)
     {
-        if (is_array($value) || $value instanceof \Traversable) {
-            $value = null;
+        //if value is array or collection, creates string
+        if (is_array($value) or $value instanceof \Traversable) {
+            $result = array();
+            foreach ($value as $item) {
+                $result[] = $this->getValue($item);
+            }
+            $value = implode(', ', $result);
+            //formated datetime output
         } elseif ($value instanceof \DateTime) {
             $value = $value->format($this->dateTimeFormat);
         } elseif (is_object($value)) {
