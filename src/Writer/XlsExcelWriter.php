@@ -15,7 +15,6 @@ namespace Exporter\Writer;
  * .xls writer bridge for library `phpoffice/phpexcel`
  * @see https://github.com/PHPOffice/PHPExcel
  *
- * @package Exporter\Writer
  * @author Lukáš Brzák <lukas.brzak@email.cz>
  */
 class XlsExcelWriter implements TypedWriterInterface
