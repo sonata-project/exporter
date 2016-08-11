@@ -19,6 +19,7 @@
         "doctrine/dbal": "^2.2",
         "matthiasnoback/symfony-config-test": "^1.2.1 || ^2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^0.7.6 || ^1.0",
+        "phpoffice/phpexcel": "^1.8",
         "propel/propel1": "^1.6",
         "sllh/php-cs-fixer-styleci-bridge": "^2.0",
         "symfony/dependency-injection": "^2.3 || ^3.0",
@@ -27,10 +28,10 @@
         "symfony/phpunit-bridge": "^2.7 || ^3.0",
         "symfony/property-access": "^2.3 || ^3.0",
         "symfony/routing": "^2.3 || ^3.0",
-        "phpoffice/phpexcel": "1.8.*"
     },
     "suggest": {
         "ext-curl": "*",
+        "phpoffice/phpexcel": "^1.8",
         "propel/propel1": "^1.6",
         "symfony/property-access": "^2.3 || ^3.0",
         "symfony/routing": "^2.3 || ^3.0"
