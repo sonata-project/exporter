@@ -17,7 +17,7 @@ namespace Exporter\Writer;
  *
  * @author Lukáš Brzák <lukas.brzak@email.cz>
  */
-class XlsExcelWriter implements TypedWriterInterface
+final class XlsExcelWriter implements TypedWriterInterface
 {
     /** @var \PHPExcel $excel */
     protected $excel;
