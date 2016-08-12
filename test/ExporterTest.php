@@ -39,6 +39,16 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         new Exporter(array('Not even an object'));
     }
 
+    public function testGetAvailableFormats()
+    {
+        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $writer->expects($this->once())
+            ->method('getFormat')
+            ->willReturn('whatever');
+        $exporter = new Exporter(array($writer));
+        $this->assertSame(array('whatever'), $exporter->getAvailableFormats());
+    }
+
     /**
      * @dataProvider getGetResponseTests
      */
@@ -56,11 +66,11 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
             ->willReturn('application/made-up');
 
         $exporter = new Exporter(array(
-            'csv' => new CsvWriter('php://output', ',', '"', '', true, true),
-            'json' => new JsonWriter('php://output'),
-            'xls' => new XlsWriter('php://output'),
-            'xml' => new XmlWriter('php://output'),
-            'made-up' => $writer,
+            new CsvWriter('php://output', ',', '"', '', true, true),
+            new JsonWriter('php://output'),
+            new XlsWriter('php://output'),
+            new XmlWriter('php://output'),
+            $writer,
         ));
         $response = $exporter->getResponse($format, $filename, $source);
 

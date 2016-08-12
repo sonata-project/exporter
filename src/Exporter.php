@@ -72,6 +72,16 @@ final class Exporter
     }
 
     /**
+     * Returns a simple array of export formats.
+     *
+     * @return string[] writer formats as returned by the TypedWriterInterface::getFormat() method
+     */
+    public function getAvailableFormats()
+    {
+        return array_keys($this->writers);
+    }
+
+    /**
      * The main benefit of this method is the type hinting.
      *
      * @param TypedWriterInterface $writer a possible writer for exporting data
