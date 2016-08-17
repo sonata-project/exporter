@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.0](https://github.com/sonata-project/exporter/compare/1.6.0...1.7.0) - 2016-08-17
+### Added
+- Added some `Exporter::getAvailableFormats` to retrieve the list of the formats of the registered writers.
+
 ## [1.6.0](https://github.com/sonata-project/exporter/compare/1.5.0...1.6.0) - 2016-08-01
 ### Added
 - Added `Exporter\Exporter` class to provide a Symfony `StreamedResponse`.
