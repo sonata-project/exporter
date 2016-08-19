@@ -12,7 +12,8 @@
 namespace Exporter\Writer;
 
 /**
- * .xls writer bridge for library `phpoffice/phpexcel`
+ * .xls writer bridge for library `phpoffice/phpexcel`.
+ *
  * @see https://github.com/PHPOffice/PHPExcel
  *
  * @author Lukáš Brzák <lukas.brzak@email.cz>
@@ -37,13 +38,12 @@ final class XlsExcelWriter implements TypedWriterInterface
     /** @var string $file */
     protected $file;
 
-    /** @var boolean $showHeaders */
+    /** @var bool $showHeaders */
     protected $showHeaders;
-
 
     /**
      * @param string $file
-     * @param bool $showHeaders
+     * @param bool   $showHeaders
      *
      * @throws \PHPExcel_Exception
      */
@@ -54,22 +54,7 @@ final class XlsExcelWriter implements TypedWriterInterface
         $this->configure();
     }
 
-    /**
-     * @return void
-     * @throws \PHPExcel_Exception
-     */
-    protected function configure()
-    {
-        $this->excel = new \PHPExcel();
-        $this->excel->setActiveSheetIndex(0);
-        $this->sheet = $this->excel->getActiveSheet();
-        $this->column = 'A';
-        $this->row = 1;
-    }
 
-    /**
-     * @return void
-     */
     public function open()
     {
         $this->writer = new \PHPExcel_Writer_Excel2007($this->excel);
@@ -95,7 +80,45 @@ final class XlsExcelWriter implements TypedWriterInterface
     }
 
     /**
-     * Save the initial row of headers
+     * Save the file.
+     *
+     * @throws \PHPExcel_Writer_Exception
+     */
+    public function close()
+    {
+        $this->writer->save($this->file);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getDefaultMimeType()
+    {
+        return 'application/vnd.ms-excel';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getFormat()
+    {
+        return 'xls';
+    }
+
+    /**
+     * @throws \PHPExcel_Exception
+     */
+    protected function configure()
+    {
+        $this->excel = new \PHPExcel();
+        $this->excel->setActiveSheetIndex(0);
+        $this->sheet = $this->excel->getActiveSheet();
+        $this->column = 'A';
+        $this->row = 1;
+    }
+
+    /**
+     * Save the initial row of headers.
      *
      * @param array $data
      */
@@ -118,16 +141,6 @@ final class XlsExcelWriter implements TypedWriterInterface
     }
 
     /**
-     * Save the file
-     *
-     * @throws \PHPExcel_Writer_Exception
-     */
-    public function close()
-    {
-        $this->writer->save($this->file);
-    }
-
-    /**
      * Get coordinates for current Cell A1, B2, AB22 ..
      *
      * @return string
@@ -138,9 +151,7 @@ final class XlsExcelWriter implements TypedWriterInterface
     }
 
     /**
-     * Increment row number
-     *
-     * @return void
+     * Increment row number.
      */
     protected function nextRow()
     {
@@ -149,9 +160,7 @@ final class XlsExcelWriter implements TypedWriterInterface
     }
 
     /**
-     * Increment `A`>`B`; `Z`>`AA`; `AA`>`AB`; `AAZ`>`ABA`
-     *
-     * @return void
+     * Increment `A`>`B`; `Z`>`AA`; `AA`>`AB`; `AAZ`>`ABA`.
      */
     protected function nextColumn()
     {
@@ -159,28 +168,10 @@ final class XlsExcelWriter implements TypedWriterInterface
     }
 
     /**
-     * Reset pointer to the first Excel column A
-     *
-     * @return void
+     * Reset pointer to the first Excel column A.
      */
     protected function resetColumn()
     {
         $this->column = 'A';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    final public function getDefaultMimeType()
-    {
-        return 'application/vnd.ms-excel';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    final public function getFormat()
-    {
-        return 'xls';
     }
 }
