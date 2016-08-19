@@ -31,7 +31,7 @@
     },
     "suggest": {
         "ext-curl": "*",
-        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpexcel": "If you want to use XlsExcelWriter with better support for Office 365",
         "propel/propel1": "^1.6",
         "symfony/property-access": "^2.3 || ^3.0",
         "symfony/routing": "^2.3 || ^3.0"
