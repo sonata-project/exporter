@@ -54,7 +54,6 @@ final class XlsExcelWriter implements TypedWriterInterface
         $this->configure();
     }
 
-
     public function open()
     {
         $this->writer = new \PHPExcel_Writer_Excel2007($this->excel);
