@@ -64,7 +64,15 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             if (is_string($name) && is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
             } else {
-                $this->propertyPaths[$field] = new PropertyPath($field);
+                if (is_array($field)) {
+                    $this->propertyPaths[$name] = array();
+                    $this->propertyPaths[$name]['property'] = new PropertyPath($field['property']);
+                    if (isset($field['closure'])) {
+                        $this->propertyPaths[$name]['closure'] = $field['closure'];
+                    }
+                } else {
+                    $this->propertyPaths[$field] = new PropertyPath($field);
+                }
             }
         }
         $this->dateTimeFormat = $dateTimeFormat;
@@ -81,7 +89,15 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
             try {
-                $data[$name] = $this->getValue($this->propertyAccessor->getValue($current[0], $propertyPath));
+                if (is_array($propertyPath)) {
+                    $value = $this->propertyAccessor->getValue($current[0], $propertyPath['property']);
+                    if (isset($this->propertyPaths[$name]['closure'])) {
+                        $data[$name] = $this->propertyPaths[$name]['closure']($value);
+                    }
+                } else {
+                    $value = $this->propertyAccessor->getValue($current[0], $propertyPath);
+                    $data[$name] = $this->getValue($value);
+                }
             } catch (UnexpectedTypeException $e) {
                 //non existent object in path will be ignored
                 $data[$name] = null;
