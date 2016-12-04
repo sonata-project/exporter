@@ -77,17 +77,9 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         $data = array();
         foreach ($this->propertyPaths as $name => $propertyPath) {
 
-          // Is the property extended
-          if (strpos($propertyPath, '.')) {
-            $data[$name] = '';
-            // Construct the get method
-            $getMethod = 'get'.ucfirst(strstr($propertyPath, '.', true));
-            // Check whether there is an object
-            if ($current->$getMethod()) {
-                $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
-            }
-          } else {
-              $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
+          $data[$name] = '';
+          if ($this->propertyAccessor->isReadable($current, $propertyPath)) {
+            $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
           }
         }
 
@@ -157,7 +149,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected function getValue($value)
     {
         //if value is array or collection, creates string
-        if (is_array($value) or $value instanceof \Traversable) {
+        if (is_array($value) || $value instanceof \Traversable) {
             $result = array();
             foreach ($value as $item) {
                 $result[] = $this->getValue($item);
