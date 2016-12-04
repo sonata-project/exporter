@@ -75,9 +75,24 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         $current = $this->iterator->current();
 
         $data = array();
-
         foreach ($this->propertyPaths as $name => $propertyPath) {
+
+          // Is the property extended
+          if(strpos($propertyPath, '.'))
+          {
+            $data[$name] = '';
+            // Construct the get method
+            $getMethod =  'get'.ucfirst(strstr($propertyPath, ".", true));
+            // Check whether there is an object
+            if($current->$getMethod())
+            {
+              $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
+            }
+          }
+          else
+          {
             $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
+          }
         }
 
         $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
