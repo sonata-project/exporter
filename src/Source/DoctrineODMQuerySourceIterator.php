@@ -78,7 +78,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = '';
             if ($this->propertyAccessor->isReadable($current, $propertyPath)) {
-              $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
+                $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
             }
         }
 
