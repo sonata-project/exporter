@@ -14,5 +14,4 @@ Summary
     Installation <reference/installation>
     Sources <reference/sources>
     Outputs <reference/outputs>
-
-
+    Symfony integration <reference/symfony>
