@@ -181,9 +181,9 @@ namespace Foo;
 
 interface BarInterface
 {
-
-  // NEXT_MAJOR: Uncomment this method
   /**
+   * NEXT_MAJOR: Uncomment this method
+   *
    * This method does useful stuff.
    */
   // public function usefulMethod();
@@ -205,6 +205,21 @@ if (/* some condition showing the user is using the legacy way */) {
     );
 } else {
     // new way of doing things
+}
+```
+
+Additionally, and when applicable, you must use the `@deprecated` tag on classes or methods you wish to deprecate,
+along with a message directed at the end user (as opposed to other contributors).
+
+
+```php
+/**
+ * NEXT_MAJOR: remove this method
+ *
+ * @deprecated since 3.x, to be removed in 4.0. Use Foo::bar instead.
+ */
+public function baz()
+{
 }
 ```
 

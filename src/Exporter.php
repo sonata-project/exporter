@@ -86,7 +86,7 @@ final class Exporter
      *
      * @param TypedWriterInterface $writer a possible writer for exporting data
      */
-    private function addWriter(TypedWriterInterface $writer)
+    public function addWriter(TypedWriterInterface $writer)
     {
         $this->writers[$writer->getFormat()] = $writer;
     }

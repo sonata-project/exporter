@@ -20,6 +20,8 @@ use Sonata\Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
 );
 
 /**
+ * NEXT_MAJOR: remove this class.
+ *
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  *
  * @deprecated Deprecated since version 1.6. Use Sonata\Exporter\Test\AbstractTypedWriterTestCase instead

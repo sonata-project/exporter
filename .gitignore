@@ -1,8 +1,5 @@
-phpunit.xml
-/nbproject/
-/coverage/
-/vendor/
 /docs/_build
-composer.lock
-composer.phar
+/vendor/
 .php_cs.cache
+composer.lock
+phpunit.xml
