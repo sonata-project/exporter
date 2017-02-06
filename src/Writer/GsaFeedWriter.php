@@ -56,8 +56,6 @@ class GsaFeedWriter implements WriterInterface
     private $bufferSize;
 
     /**
-     * Constructor.
-     *
      * @param \SplFileInfo $folder     The folder to store the generated feed(s)
      * @param string       $dtd        A DTD URL (something like http://gsa.example.com/gsafeed.dtd)
      * @param string       $datasource A datasouce
