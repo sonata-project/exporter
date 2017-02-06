@@ -65,8 +65,6 @@ class SitemapWriter implements WriterInterface
     protected $bufferPart = 0;
 
     /**
-     * Constructor.
-     *
      * @param string $folder    The folder to store the sitemap.xml file
      * @param mixed  $groupName Name of sub-sitemap (optional)
      * @param array  $headers   Indicate the need for namespace in the header sitemap
