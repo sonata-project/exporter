@@ -24,8 +24,6 @@ class IteratorCallbackSourceIterator extends IteratorSourceIterator
     protected $transformer;
 
     /**
-     * Constructor.
-     *
      * @param \Iterator $iterator    Iterator with string array elements
      * @param \Closure  $transformer Altering a data row
      */
