@@ -23,14 +23,18 @@ Please provide a version constraint for the sonata-project/exporter requirement:
 ### Usage
 
 ```php
-
 <?php
+
+use Exporter\Handler;
+use Exporter\Source\PDOStatementSourceIterator;
+use Exporter\Writer\CsvWriter;
+
 // Prepare the data source
 $dbh = new \PDO('sqlite:foo.db');
 $stm = $dbh->prepare('SELECT id, username, email FROM user');
 $stm->execute();
 
-$source = new PDOStatementSource($stm);
+$source = new PDOStatementSourceIterator($stm);
 
 // Prepare the writer
 $writer = new CsvWriter('data.csv');
