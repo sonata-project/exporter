@@ -80,7 +80,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
                 $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
             }
         }
-        $this->query->getDocumentManager()->getUnitOfWork()->detach($current);        
+        $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
         return $data;
     }
 
