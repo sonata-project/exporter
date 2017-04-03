@@ -73,7 +73,6 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     public function current()
     {
         $current = $this->iterator->current();
-
         $data = array();
         foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = '';
@@ -81,9 +80,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
                 $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
             }
         }
-
         $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
-
         return $data;
     }
 
