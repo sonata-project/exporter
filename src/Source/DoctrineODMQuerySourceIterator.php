@@ -73,6 +73,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     public function current()
     {
         $current = $this->iterator->current();
+        
         $data = array();
         foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = '';
