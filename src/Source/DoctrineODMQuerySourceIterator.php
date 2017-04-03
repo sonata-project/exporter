@@ -73,18 +73,14 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     public function current()
     {
         $current = $this->iterator->current();
-        
         $data = array();
-        
         foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = '';
             if ($this->propertyAccessor->isReadable($current, $propertyPath)) {
                 $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));
             }
         }
-        
-        $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
-        
+        $this->query->getDocumentManager()->getUnitOfWork()->detach($current);        
         return $data;
     }
 
