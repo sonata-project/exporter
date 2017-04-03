@@ -81,6 +81,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
             }
         }
         $this->query->getDocumentManager()->getUnitOfWork()->detach($current);
+        
         return $data;
     }
 
