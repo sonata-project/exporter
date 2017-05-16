@@ -18,7 +18,7 @@ Registering the bundle
     {
         $bundles = array(
             // …
-            new Exporter\Bridge\Symfony\Bundle\SonataExporterBundle();
+            new Exporter\Bridge\Symfony\Bundle\SonataExporterBundle(),
         );
 
         // …
