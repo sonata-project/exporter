@@ -15,8 +15,9 @@ namespace Sonata\Exporter\Source;
  * Read data from a csv file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
+ * @author Sylvain Rascar <sylvain.rascar@ekino.com>
  */
-class CsvSourceIterator implements SourceIteratorInterface
+class CsvSourceIterator implements SeekableSourceIteratorInterface
 {
     /**
      * @var string
@@ -24,7 +25,7 @@ class CsvSourceIterator implements SourceIteratorInterface
     protected $filename = null;
 
     /**
-     * @var resource
+     * @var \SplFileObject
      */
     protected $file = null;
 
@@ -105,16 +106,8 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function next()
     {
-        $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
-        $this->currentLine = $line;
+        $this->currentLine = $this->getNextLine();
         ++$this->position;
-        if ($this->hasHeaders && is_array($line)) {
-            $data = array();
-            foreach ($line as $key => $value) {
-                $data[$this->columns[$key]] = $value;
-            }
-            $this->currentLine = $data;
-        }
     }
 
     /**
@@ -122,21 +115,28 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function rewind()
     {
-        $this->file = fopen($this->filename, 'r');
-        $this->position = 0;
-        $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
+        $this->initializeRead();
+        $this->currentLine = $this->getNextLine();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function seek($position)
+    {
+        if (!($this->file instanceof \SplFileObject)) {
+            $this->initializeRead();
+        }
+
         if ($this->hasHeaders) {
-            $this->columns = $line;
-            $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
+            $this->file->seek($position + 1);
+            $this->currentLine = $this->combineColumns($this->file->current());
+        } else {
+            $this->file->seek($position);
+            $this->currentLine = $this->file->current();
         }
-        $this->currentLine = $line;
-        if ($this->hasHeaders && is_array($line)) {
-            $data = array();
-            foreach ($line as $key => $value) {
-                $data[$this->columns[$key]] = $value;
-            }
-            $this->currentLine = $data;
-        }
+
+        $this->position = $position;
     }
 
     /**
@@ -145,13 +145,77 @@ class CsvSourceIterator implements SourceIteratorInterface
     public function valid()
     {
         if (!is_array($this->currentLine)) {
-            if (is_resource($this->file)) {
-                fclose($this->file);
-            }
-
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * Initialize read process setting CSV options
+     * and setting field names. (Assuming that first line is column name).
+     */
+    private function initializeRead()
+    {
+        // close the previous file
+        if ($this->file instanceof \SplFileObject) {
+            $this->file = null;
+        }
+
+        $this->file = new \SplFileObject($this->filename);
+        $this->file->setFlags(
+            \SplFileObject::READ_CSV |
+            \SplFileObject::READ_AHEAD |
+            \SplFileObject::SKIP_EMPTY |
+            \SplFileObject::DROP_NEW_LINE
+        );
+        $this->file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
+        $this->position = 0;
+
+        if ($this->hasHeaders) {
+            $this->columns = $this->file->fgetcsv();
+        }
+    }
+
+    /**
+     * @return array|void
+     */
+    private function getNextLine()
+    {
+        $line = $this->file->fgetcsv();
+
+        if (false === $line) {
+            throw new \RuntimeException(sprintf('An error occurred while reading the csv %s.', $this->file->getRealPath()));
+        }
+
+        return $this->combineColumns($line);
+    }
+
+    /**
+     * @param array $line
+     *
+     * @return array|void
+     */
+    private function combineColumns($line)
+    {
+        if (!$this->hasHeaders) {
+            return $line;
+        }
+
+        if ($line === array(null) || $line === null) {
+            $this->currentLine = null;
+
+            return;
+        }
+
+        if (count($this->columns) !== count($line)) {
+            throw new \RuntimeException(sprintf('Invalid column count at line %s. Expected %d; Got %d.',
+                $this->position,
+                count($this->columns),
+                count($line)
+            ));
+        }
+
+        return array_combine($this->columns, $line);
     }
 }

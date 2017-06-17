@@ -90,4 +90,43 @@ EOF;
         }
         $this->assertEquals(3, $i);
     }
+
+    public function testSeek()
+    {
+        $iterator = new CsvSourceIterator($this->filename);
+
+        $iterator->seek(1);
+        $value = $iterator->current();
+        $this->assertTrue(is_array($value));
+        $this->assertEquals('John 2', $value['firstname']);
+    }
+
+    public function testSeekNoHeaders()
+    {
+        $iterator = new CsvSourceIterator($this->filename, ',', '"', '\\', false);
+
+        $iterator->seek(1);
+        $value = $iterator->current();
+        $this->assertTrue(is_array($value));
+        $this->assertEquals('John 1', $value[0]);
+    }
+
+    public function testInvalidColumns()
+    {
+        if (is_file($this->filename)) {
+            unlink($this->filename);
+        }
+
+        $csv = <<<'EOF'
+firstname,name
+John 1,Doe
+John 2,Doe, extra
+"John, 3", Doe
+EOF;
+        file_put_contents($this->filename, $csv);
+        $this->expectException('RuntimeException');
+
+        $iterator = new CsvSourceIterator($this->filename);
+        $iterator->seek(1);
+    }
 }
