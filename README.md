@@ -34,13 +34,12 @@ $writer = new CsvWriter('data.csv');
 Handler::create($source, $writer)->export();
 ```
 
-### Google Groups
+## Support
 
-For questions and proposals you can post on this google groups
+For general support and questions, please use [StackOverflow](http://stackoverflow.com/questions/tagged/sonata).
 
-* [Sonata Users](https://groups.google.com/group/sonata-users): Only for user questions
-* [Sonata Devs](https://groups.google.com/group/sonata-devs): Only for devs
-
+If you think you found a bug or you have a feature idea to propose, feel free to open an issue
+**after looking** at the [contributing guide](CONTRIBUTING.md).
 
 ### Note for Symfony2 users
 
