@@ -32,7 +32,6 @@ $writer = new CsvWriter('data.csv');
 
 // Export the data
 Handler::create($source, $writer)->export();
-
 ```
 
 ### Google Groups
