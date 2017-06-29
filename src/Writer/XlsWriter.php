@@ -49,7 +49,7 @@ class XlsWriter implements TypedWriterInterface
         $this->position = 0;
 
         if (is_file($filename)) {
-            throw new \RuntimeException(sprintf('The file %s already exist', $filename));
+            throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }
     }
 
