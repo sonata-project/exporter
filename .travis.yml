@@ -18,6 +18,9 @@ php:
   - '7.1'
   - nightly
 
+services:
+  - mongodb
+
 sudo: false
 
 cache:
