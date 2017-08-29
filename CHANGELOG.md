@@ -6,7 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Removed
 - Symfony 2.3 to 2.7 support dropped
 
-## [1.x]
+## [1.7.1](https://github.com/sonata-project/exporter/compare/1.7.0...1.7.1) - 2017-02-09
+### Fixed
+- \Exporter\Exporter::addWriter is now public as needed by the related bundle
+
 ## [1.7.0](https://github.com/sonata-project/exporter/compare/1.6.0...1.7.0) - 2016-08-17
 ### Added
 - Added some `Exporter::getAvailableFormats` to retrieve the list of the formats of the registered writers.

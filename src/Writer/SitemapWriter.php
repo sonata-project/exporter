@@ -119,10 +119,12 @@ class SitemapWriter implements WriterInterface
         switch ($data['type']) {
             case 'video':
                 $line = $this->generateVideoLine($data);
+
                 break;
 
             case 'image':
                 $line = $this->generateImageLine($data);
+
                 break;
 
             case 'default':

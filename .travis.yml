@@ -14,9 +14,12 @@ php:
   - '7.0'
   - '7.1'
   - nightly
-  - hhvm
+
+services:
+  - mongodb
 
 sudo: false
+dist: precise
 
 cache:
   pip: true
@@ -54,6 +57,8 @@ matrix:
       env: DOCTRINE_ODM=dev-master@dev
     - php: '7.1'
       env: SYMFONY_DEPRECATIONS_HELPER=0
+    - php: hhvm
+      dist: trusty
   allow_failures:
     - php: nightly
     - php: hhvm
