@@ -36,11 +36,13 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
             case 'ss:Row':
             case 'Row':
                 $this->bufferedRow['i_'.$this->currentRowIndex] = array();
+
                 break;
             case 'ss:Cell':
             case 'Cell':
                 // set empty values when opening Cell tag
                 $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] = '';
+
                 break;
         }
     }
@@ -56,10 +58,12 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
                 $this->currentRowIndex++;
                 $this->currentColumnIndex = 0;
                 $this->currentRowEnded = true;
+
                 break;
             case 'ss:Cell':
             case 'Cell':
                 $this->currentColumnIndex++;
+
                 break;
         }
     }

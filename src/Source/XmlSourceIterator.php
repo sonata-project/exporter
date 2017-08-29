@@ -50,6 +50,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
                 break;
             case $this->dataTag:
                 $this->bufferedRow['i_'.$this->currentRowIndex] = array();
+
                 break;
             default:
                 if (!isset($this->columns[$this->currentColumnIndex])) {
@@ -57,6 +58,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
                 }
                 // set empty values when opening Cell tag
                 $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] = '';
+
                 break;
         }
     }
@@ -73,9 +75,11 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
                 $this->currentRowIndex++;
                 $this->currentColumnIndex = 0;
                 $this->currentRowEnded = true;
+
                 break;
             default:
                 $this->currentColumnIndex++;
+
                 break;
         }
     }
