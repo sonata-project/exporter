@@ -39,10 +39,10 @@ class XlsWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      *
-     * @param      $filename
-     * @param bool $showHeaders
+     * @param mixed $filename
+     * @param bool  $showHeaders
      */
-    public function __construct($filename, $showHeaders = true)
+    public function __construct($filename, bool $showHeaders = true)
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
@@ -56,7 +56,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getDefaultMimeType()
+    final public function getDefaultMimeType(): string
     {
         return 'application/vnd.ms-excel';
     }
@@ -64,7 +64,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getFormat()
+    final public function getFormat(): string
     {
         return 'xls';
     }

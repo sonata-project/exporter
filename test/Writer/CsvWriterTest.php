@@ -13,6 +13,7 @@ namespace Sonata\Exporter\Test\Writer;
 
 use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\CsvWriter;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 
 class CsvWriterTest extends AbstractTypedWriterTestCase
 {
@@ -101,7 +102,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
-    protected function getWriter()
+    protected function getWriter(): TypedWriterInterface
     {
         return new CsvWriter('/tmp/whatever.csv');
     }

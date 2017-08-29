@@ -28,7 +28,7 @@ final class SonataExporterBundle extends Bundle
     /**
      * {@inheritdoc}
      */
-    protected function getContainerExtensionClass()
+    protected function getContainerExtensionClass(): string
     {
         return 'Sonata\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension';
     }

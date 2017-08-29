@@ -66,7 +66,7 @@ class CsvWriter implements TypedWriterInterface
      * @param bool   $showHeaders
      * @param bool   $withBom
      */
-    public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $showHeaders = true, $withBom = false)
+    public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\', bool $showHeaders = true, bool $withBom = false)
     {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
@@ -84,7 +84,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getDefaultMimeType()
+    final public function getDefaultMimeType(): string
     {
         return 'text/csv';
     }
@@ -92,7 +92,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getFormat()
+    final public function getFormat(): string
     {
         return 'csv';
     }

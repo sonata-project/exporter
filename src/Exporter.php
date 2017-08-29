@@ -46,7 +46,7 @@ final class Exporter
      *
      * @return StreamedResponse
      */
-    public function getResponse($format, $filename, SourceIteratorInterface $source)
+    public function getResponse(string $format, string $filename, SourceIteratorInterface $source): StreamedResponse
     {
         if (!array_key_exists($format, $this->writers)) {
             throw new \RuntimeException(sprintf(
@@ -76,7 +76,7 @@ final class Exporter
      *
      * @return string[] writer formats as returned by the TypedWriterInterface::getFormat() method
      */
-    public function getAvailableFormats()
+    public function getAvailableFormats(): array
     {
         return array_keys($this->writers);
     }

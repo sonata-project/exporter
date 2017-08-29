@@ -49,7 +49,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      * @param array               $fields         Fields to export
      * @param string              $dateTimeFormat
      */
-    public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
+    public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r')
     {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
@@ -133,7 +133,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @param string $dateTimeFormat
      */
-    public function setDateTimeFormat($dateTimeFormat)
+    public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
@@ -141,7 +141,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @return string
      */
-    public function getDateTimeFormat()
+    public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }

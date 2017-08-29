@@ -33,7 +33,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
      * @param string $mainTag
      * @param string $dataTag
      */
-    public function __construct($filename, $mainTag = 'datas', $dataTag = 'data')
+    public function __construct(string $filename, string $mainTag = 'datas', string $dataTag = 'data')
     {
         parent::__construct($filename, false);
         $this->mainTag = $mainTag;
@@ -43,7 +43,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagStart($parser, $name, $attributes = array())
+    public function tagStart($parser, string $name, $attributes = array())
     {
         switch ($name) {
             case $this->mainTag:
@@ -66,7 +66,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagEnd($parser, $name)
+    public function tagEnd($parser, string $name)
     {
         switch ($name) {
             case $this->mainTag:
@@ -87,7 +87,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagContent($parser, $data)
+    public function tagContent($parser, string $data)
     {
         if (isset($this->bufferedRow['i_'.$this->currentRowIndex])
             && isset($this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex])

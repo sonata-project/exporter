@@ -34,7 +34,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * @param string $filename
      */
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
         $this->position = 0;
@@ -47,7 +47,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getDefaultMimeType()
+    final public function getDefaultMimeType(): string
     {
         return 'application/json';
     }
@@ -55,7 +55,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getFormat()
+    final public function getFormat(): string
     {
         return 'json';
     }

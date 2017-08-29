@@ -38,7 +38,7 @@ class FormattedBoolWriter implements WriterInterface
      * @param string          $falseLabel
      * @param string          $trueLabel
      */
-    public function __construct(WriterInterface $writer, $trueLabel = 'yes', $falseLabel = 'no')
+    public function __construct(WriterInterface $writer, string $trueLabel = 'yes', string $falseLabel = 'no')
     {
         $this->writer = $writer;
         $this->trueLabel = $trueLabel;

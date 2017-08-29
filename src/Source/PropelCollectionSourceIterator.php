@@ -52,7 +52,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
      * @param array            $fields         Fields to export
      * @param string           $dateTimeFormat
      */
-    public function __construct(PropelCollection $collection, array $fields, $dateTimeFormat = 'r')
+    public function __construct(PropelCollection $collection, array $fields, string $dateTimeFormat = 'r')
     {
         $this->collection = clone $collection;
 
@@ -127,7 +127,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     /**
      * @param string $dateTimeFormat
      */
-    public function setDateTimeFormat($dateTimeFormat)
+    public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
@@ -135,7 +135,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     /**
      * @return string
      */
-    public function getDateTimeFormat()
+    public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }

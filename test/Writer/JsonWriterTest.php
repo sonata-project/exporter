@@ -13,6 +13,7 @@ namespace Sonata\Exporter\Test\Writer;
 
 use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\JsonWriter;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 
 class JsonWriterTest extends AbstractTypedWriterTestCase
 {
@@ -58,7 +59,7 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, json_decode($content, false));
     }
 
-    protected function getWriter()
+    protected function getWriter(): TypedWriterInterface
     {
         return new JsonWriter('/tmp/whatever.json');
     }

@@ -57,7 +57,7 @@ class XmlExcelWriter implements WriterInterface
      *                            If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
      *                            If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
      */
-    public function __construct($filename, $showHeaders = true, $columnsType = null)
+    public function __construct(string $filename, bool $showHeaders = true, $columnsType = null)
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
@@ -127,7 +127,7 @@ class XmlExcelWriter implements WriterInterface
      *
      * @return string
      */
-    private function getDataType($key, $value)
+    private function getDataType(string $key, string $value): string
     {
         $dataType = null;
         if (!is_null($this->columnsType)) {

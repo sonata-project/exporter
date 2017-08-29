@@ -30,7 +30,7 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagStart($parser, $name, $attributes = array())
+    public function tagStart($parser, string $name, $attributes = array()): void
     {
         switch ($name) {
             case 'ss:Row':
@@ -50,7 +50,7 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagEnd($parser, $name)
+    public function tagEnd($parser, string $name): void
     {
         switch ($name) {
             case 'ss:Row':
@@ -71,7 +71,7 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagContent($parser, $data)
+    public function tagContent($parser, string $data): void
     {
         $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
     }
