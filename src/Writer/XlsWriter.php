@@ -36,7 +36,7 @@ class XlsWriter implements TypedWriterInterface
      */
     protected $cell;
     /**
-     * @var PHPExcel
+     * @var \PHPExcel
      */
     protected $objPHPExcel;
 
@@ -83,10 +83,10 @@ class XlsWriter implements TypedWriterInterface
      */
     public function open()
     {
-        $this->objPHPExcel = new PHPExcel();
+        $this->objPHPExcel = new \PHPExcel();
 
         $this->objPHPExcel->setActiveSheetIndex(0);
-        $this->objWriter = PHPExcel_IOFactory::createWriter($this->objPHPExcel, 'Excel5');
+        $this->objWriter = \PHPExcel_IOFactory::createWriter($this->objPHPExcel, 'Excel5');
     }
 
     /**
