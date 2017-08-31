@@ -44,6 +44,7 @@ class XlsWriter implements TypedWriterInterface
      * @var PHPExcel_Writer_IWriter
      */
     protected $objWriter;
+    
     /**
      * @throws \RuntimeException
      *
@@ -106,7 +107,7 @@ class XlsWriter implements TypedWriterInterface
 
         foreach ($data as $value) {
             $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell).$this->row, $value);
-            $this->cell++;
+            ++$this->cell;
         }
         $this->cell = 0;
         ++$this->row;
