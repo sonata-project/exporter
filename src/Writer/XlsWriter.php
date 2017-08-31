@@ -44,7 +44,7 @@ class XlsWriter implements TypedWriterInterface
      * @var PHPExcel_Writer_IWriter
      */
     protected $objWriter;
-    
+
     /**
      * @throws \RuntimeException
      *
