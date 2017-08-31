@@ -48,7 +48,7 @@ class XmlWriter implements TypedWriterInterface
      * @param string $mainElement
      * @param string $childElement
      */
-    public function __construct($filename, $mainElement = 'datas', $childElement = 'data')
+    public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
     {
         $this->filename = $filename;
         $this->position = 0;
@@ -63,7 +63,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getDefaultMimeType()
+    final public function getDefaultMimeType(): string
     {
         return 'text/xml';
     }
@@ -71,7 +71,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getFormat()
+    final public function getFormat(): string
     {
         return 'xml';
     }
@@ -112,9 +112,9 @@ class XmlWriter implements TypedWriterInterface
 
     /**
      * @param string $name
-     * @param string $value
+     * @param mixed  $value
      */
-    protected function generateNode($name, $value)
+    protected function generateNode(string $name, $value): void
     {
         if (is_array($value)) {
             throw new \RuntimeException('Not implemented');

@@ -39,24 +39,24 @@ class XlsWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      *
-     * @param      $filename
-     * @param bool $showHeaders
+     * @param mixed $filename
+     * @param bool  $showHeaders
      */
-    public function __construct($filename, $showHeaders = true)
+    public function __construct($filename, bool $showHeaders = true)
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
         $this->position = 0;
 
         if (is_file($filename)) {
-            throw new \RuntimeException(sprintf('The file %s already exist', $filename));
+            throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    final public function getDefaultMimeType()
+    final public function getDefaultMimeType(): string
     {
         return 'application/vnd.ms-excel';
     }
@@ -64,7 +64,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    final public function getFormat()
+    final public function getFormat(): string
     {
         return 'xls';
     }

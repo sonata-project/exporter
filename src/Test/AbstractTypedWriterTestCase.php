@@ -11,6 +11,8 @@
 
 namespace Sonata\Exporter\Test;
 
+use Sonata\Exporter\Writer\TypedWriterInterface;
+
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  */
@@ -42,5 +44,5 @@ abstract class AbstractTypedWriterTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return WriterInterface
      */
-    abstract protected function getWriter();
+    abstract protected function getWriter(): TypedWriterInterface;
 }

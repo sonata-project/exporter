@@ -22,7 +22,7 @@ interface TypedWriterInterface extends WriterInterface
      *
      * @return string the mime type of the output
      */
-    public function getDefaultMimeType();
+    public function getDefaultMimeType(): string;
 
     /**
      * Returns a string best describing the format of the output (the file
@@ -30,5 +30,5 @@ interface TypedWriterInterface extends WriterInterface
      *
      * @return string a string without spaces, usable in a translation string
      */
-    public function getFormat();
+    public function getFormat(): string;
 }

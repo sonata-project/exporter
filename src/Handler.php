@@ -53,7 +53,7 @@ class Handler
      *
      * @return Handler
      */
-    public static function create(SourceIteratorInterface $source, WriterInterface $writer)
+    public static function create(SourceIteratorInterface $source, WriterInterface $writer): self
     {
         return new self($source, $writer);
     }

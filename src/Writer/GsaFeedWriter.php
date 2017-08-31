@@ -61,7 +61,7 @@ class GsaFeedWriter implements WriterInterface
      * @param string       $datasource A datasouce
      * @param string       $feedtype   A feedtype (full|incremental|metadata-and-url)
      */
-    public function __construct(\SplFileInfo $folder, $dtd, $datasource, $feedtype)
+    public function __construct(\SplFileInfo $folder, string $dtd, string $datasource, string $feedtype)
     {
         $this->folder = $folder;
         $this->dtd = $dtd;

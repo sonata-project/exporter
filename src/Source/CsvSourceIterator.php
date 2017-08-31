@@ -75,7 +75,7 @@ class CsvSourceIterator implements SourceIteratorInterface
      * @param string $escape
      * @param bool   $hasHeaders
      */
-    public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $hasHeaders = true)
+    public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\', bool $hasHeaders = true)
     {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
@@ -142,7 +142,7 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function valid(): bool
     {
         if (!is_array($this->currentLine)) {
             if (is_resource($this->file)) {

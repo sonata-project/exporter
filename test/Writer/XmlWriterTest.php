@@ -12,6 +12,7 @@
 namespace Sonata\Exporter\Test\Writer;
 
 use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XmlWriter;
 
 class XmlWriterTest extends AbstractTypedWriterTestCase
@@ -75,7 +76,7 @@ XML;
         $this->assertEquals($expected, file_get_contents($this->filename));
     }
 
-    protected function getWriter()
+    protected function getWriter(): TypedWriterInterface
     {
         return new XmlWriter('/tmp/whatever.xml');
     }
