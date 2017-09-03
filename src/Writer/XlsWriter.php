@@ -144,5 +144,4 @@ class XlsWriter implements TypedWriterInterface
         }
         $this->cell = 0;
     }
-
 }
