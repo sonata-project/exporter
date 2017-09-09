@@ -41,7 +41,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Exporter\\Test\\": "test/"
+            "Exporter\\Test\\": "tests/"
         }
     },
     "config": {
