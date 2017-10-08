@@ -23,7 +23,7 @@ class InMemoryWriter implements WriterInterface
      */
     public function open()
     {
-        $this->elements = array();
+        $this->elements = [];
     }
 
     /**

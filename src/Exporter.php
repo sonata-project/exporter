@@ -28,9 +28,9 @@ final class Exporter
     /**
      * @param TypedWriterInterface[] $writers an array of allowed typed writers, indexed by format name
      */
-    public function __construct(array $writers = array())
+    public function __construct(array $writers = [])
     {
-        $this->writers = array();
+        $this->writers = [];
 
         foreach ($writers as $writer) {
             $this->addWriter($writer);
@@ -62,9 +62,9 @@ final class Exporter
             $handler->export();
         };
 
-        $headers = array(
+        $headers = [
             'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-        );
+        ];
 
         $headers['Content-Type'] = $writer->getDefaultMimeType();
 

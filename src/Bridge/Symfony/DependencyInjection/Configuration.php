@@ -35,7 +35,7 @@ final class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('default_writers')
-                            ->defaultValue(array('csv', 'json', 'xls', 'xml'))
+                            ->defaultValue(['csv', 'json', 'xls', 'xml'])
                             ->prototype('scalar')->end()
                         ->end()
                     ->end()
