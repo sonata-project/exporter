@@ -38,10 +38,10 @@ class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
 
     public function testValidDataFormat()
     {
-        $data = array('john', 'doe', false, true);
-        $expected = array('john', 'doe', 'no', 'yes');
+        $data = ['john', 'doe', false, true];
+        $expected = ['john', 'doe', 'no', 'yes'];
         $mock = $this->getMockBuilder('Exporter\Writer\XlsWriter')
-                       ->setConstructorArgs(array('formatedbool.xls', false))
+                       ->setConstructorArgs(['formatedbool.xls', false])
                        ->getMock();
         $mock->expects($this->any())
                ->method('write')

@@ -32,7 +32,7 @@ class ExporterCompilerPassTest extends AbstractCompilerPassTestCase
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'sonata.exporter.exporter',
             'addWriter',
-            array(new Reference('foo_writer'))
+            [new Reference('foo_writer')]
         );
     }
 
