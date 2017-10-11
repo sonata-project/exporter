@@ -23,7 +23,7 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->iterator = new \ArrayIterator(array(array(0), array(1), array(2), array(3)));
+        $this->iterator = new \ArrayIterator([[0], [1], [2], [3]]);
         $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, function ($data) {
             $data[0] = 1 << $data[0];
 
@@ -33,10 +33,10 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     public function testTransformer()
     {
-        $result = array(1, 2, 4, 8);
+        $result = [1, 2, 4, 8];
 
         foreach ($this->sourceIterator as $key => $value) {
-            $this->assertEquals(array($result[$key]), $value);
+            $this->assertEquals([$result[$key]], $value);
         }
     }
 

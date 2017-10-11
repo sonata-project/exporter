@@ -23,35 +23,35 @@ class ConfigurationTest extends AbstractConfigurationTestCase
 
     public function testDefault()
     {
-        $this->assertProcessedConfigurationEquals(array(
-            array(),
-        ), array(
-            'exporter' => array('default_writers' => array(
+        $this->assertProcessedConfigurationEquals([
+            [],
+        ], [
+            'exporter' => ['default_writers' => [
                 'csv', 'json', 'xls', 'xml',
-            )),
-            'writers' => array(
-                'csv' => array(
+            ]],
+            'writers' => [
+                'csv' => [
                     'filename' => 'php://output',
                     'delimiter' => ',',
                     'enclosure' => '"',
                     'escape' => '\\',
                     'show_headers' => true,
                     'with_bom' => false,
-                ),
-                'json' => array(
+                ],
+                'json' => [
                     'filename' => 'php://output',
-                ),
-                'xls' => array(
+                ],
+                'xls' => [
                     'filename' => 'php://output',
                     'show_headers' => true,
-                ),
-                'xml' => array(
+                ],
+                'xml' => [
                     'filename' => 'php://output',
                     'show_headers' => true,
                     'main_element' => 'datas',
                     'child_element' => 'data',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
     }
 }

@@ -33,7 +33,7 @@ final class ExporterCompilerPass implements CompilerPassInterface
         $writers = $container->findTaggedServiceIds('sonata.exporter.writer');
 
         foreach (array_keys($writers) as $id) {
-            $definition->addMethodCall('addWriter', array(new Reference($id)));
+            $definition->addMethodCall('addWriter', [new Reference($id)]);
         }
     }
 }

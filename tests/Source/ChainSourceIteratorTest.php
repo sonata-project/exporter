@@ -19,7 +19,7 @@ class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
     {
         $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
 
-        $iterator = new ChainSourceIterator(array($source));
+        $iterator = new ChainSourceIterator([$source]);
 
         foreach ($iterator as $data) {
         }

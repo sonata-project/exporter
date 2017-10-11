@@ -141,7 +141,7 @@ class CsvWriter implements TypedWriterInterface
      */
     protected function addHeaders(array $data)
     {
-        $headers = array();
+        $headers = [];
         foreach ($data as $header => $value) {
             $headers[] = $header;
         }

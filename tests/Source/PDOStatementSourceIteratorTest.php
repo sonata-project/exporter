@@ -40,11 +40,11 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->dbh = new \PDO('sqlite:'.$this->pathToDb);
         $this->dbh->exec('CREATE TABLE `user` (`id` int(11), `username` varchar(255) NOT NULL, `email` varchar(255) NOT NULL )');
 
-        $data = array(
-            array(1, 'john', 'john@foo.bar'),
-            array(2, 'john 2', 'john@foo.bar'),
-            array(3, 'john 3', 'john@foo.bar'),
-        );
+        $data = [
+            [1, 'john', 'john@foo.bar'],
+            [2, 'john 2', 'john@foo.bar'],
+            [3, 'john 3', 'john@foo.bar'],
+        ];
 
         foreach ($data as $user) {
             $query = $this->dbh->prepare('INSERT INTO user (id, username, email) VALUES(?, ?, ?)');
@@ -69,7 +69,7 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
         $iterator = new PDOStatementSourceIterator($stm);
 
-        $data = array();
+        $data = [];
         foreach ($iterator as $user) {
             $data[] = $user;
         }

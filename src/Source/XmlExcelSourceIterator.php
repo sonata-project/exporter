@@ -30,12 +30,12 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagStart($parser, string $name, $attributes = array()): void
+    public function tagStart($parser, string $name, $attributes = []): void
     {
         switch ($name) {
             case 'ss:Row':
             case 'Row':
-                $this->bufferedRow['i_'.$this->currentRowIndex] = array();
+                $this->bufferedRow['i_'.$this->currentRowIndex] = [];
 
                 break;
             case 'ss:Cell':

@@ -41,8 +41,8 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
         $writer = new JsonWriter($this->filename, ',', '');
         $writer->open();
 
-        $writer->write(array('john "2', 'doe', '1'));
-        $writer->write(array('john 3', 'doe', '1'));
+        $writer->write(['john "2', 'doe', '1']);
+        $writer->write(['john 3', 'doe', '1']);
 
         $writer->close();
 
@@ -51,10 +51,10 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
 
         $this->assertEquals($expected, $content);
 
-        $expected = array(
-            array('john "2', 'doe', '1'),
-            array('john 3', 'doe', '1'),
-        );
+        $expected = [
+            ['john "2', 'doe', '1'],
+            ['john 3', 'doe', '1'],
+        ];
 
         $this->assertEquals($expected, json_decode($content, false));
     }

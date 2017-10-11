@@ -40,9 +40,9 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->iterator
             ->expects(self::once())
             ->method('current')
-            ->will($this->returnValue(array('current')));
+            ->will($this->returnValue(['current']));
 
-        self::assertEquals(array('current'), $this->sourceIterator->current());
+        self::assertEquals(['current'], $this->sourceIterator->current());
     }
 
     public function testNext()

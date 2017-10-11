@@ -25,7 +25,7 @@ class SonataExporterExtensionTest extends AbstractExtensionTestCase
     public function testServiceParametersArePresent()
     {
         $this->load();
-        foreach (array(
+        foreach ([
             'sonata.exporter.writer.csv.filename',
             'sonata.exporter.writer.csv.delimiter',
             'sonata.exporter.writer.csv.enclosure',
@@ -38,15 +38,15 @@ class SonataExporterExtensionTest extends AbstractExtensionTestCase
             'sonata.exporter.writer.xml.filename',
             'sonata.exporter.writer.xml.main_element',
             'sonata.exporter.writer.xml.child_element',
-        ) as $parameter) {
+        ] as $parameter) {
             $this->assertContainerBuilderHasParameter($parameter);
         }
     }
 
     protected function getContainerExtensions()
     {
-        return array(
+        return [
             new SonataExporterExtension(),
-        );
+        ];
     }
 }

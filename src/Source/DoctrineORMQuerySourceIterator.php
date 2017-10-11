@@ -59,7 +59,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        $this->propertyPaths = array();
+        $this->propertyPaths = [];
         foreach ($fields as $name => $field) {
             if (is_string($name) && is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
@@ -77,7 +77,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     {
         $current = $this->iterator->current();
 
-        $data = array();
+        $data = [];
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
             try {

@@ -16,7 +16,7 @@ use Sonata\Exporter\Source\XmlExcelSourceIterator;
 class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
     protected $filename;
-    protected $headers = array('sku', 'ean', 'name');
+    protected $headers = ['sku', 'ean', 'name'];
 
     public function setUp()
     {

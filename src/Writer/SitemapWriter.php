@@ -70,7 +70,7 @@ class SitemapWriter implements WriterInterface
      * @param array  $headers   Indicate the need for namespace in the header sitemap
      * @param bool   $autoIndex If you want to generate index of sitemap (optional)
      */
-    public function __construct(string $folder, $groupName = false, array $headers = array(), bool $autoIndex = true)
+    public function __construct(string $folder, $groupName = false, array $headers = [], bool $autoIndex = true)
     {
         $this->folder = $folder;
         $this->groupName = is_string($groupName) ? $groupName : '';
@@ -233,13 +233,13 @@ class SitemapWriter implements WriterInterface
      */
     protected function buildData(array $data)
     {
-        $default = array(
+        $default = [
             'url' => null,
             'lastmod' => 'now',
             'changefreq' => 'weekly',
             'priority' => 0.5,
             'type' => 'default',
-        );
+        ];
 
         $data = array_merge($default, $data);
 
@@ -260,10 +260,10 @@ class SitemapWriter implements WriterInterface
             return;
         }
 
-        $valid_var_name = array(
+        $valid_var_name = [
             'image' => 'images',
             'video' => 'video',
-        );
+        ];
 
         if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !is_array($data[$valid_var_name[$data['type']]])) {
             $data['type'] = 'default';
@@ -297,10 +297,10 @@ class SitemapWriter implements WriterInterface
             $data['images'] = array_splice($data['images'], 1000);
         }
 
-        $builder = array(
+        $builder = [
             'url' => 'loc',
             'location' => 'geo_location',
-        );
+        ];
 
         foreach ($data['images'] as $image) {
             $images .= '<image:image>';
@@ -325,9 +325,9 @@ class SitemapWriter implements WriterInterface
     protected function generateVideoLine(array $data): string
     {
         $videos = '';
-        $builder = array(
+        $builder = [
             'thumbnail' => 'thumbnail_loc',
-        );
+        ];
 
         foreach ($data['video'] as $key => $video) {
             $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $video);
@@ -343,10 +343,10 @@ class SitemapWriter implements WriterInterface
      */
     protected function getHeaderByFlag(): string
     {
-        $namespaces = array(
+        $namespaces = [
             'video' => 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"',
             'image' => 'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"',
-        );
+        ];
 
         $result = '';
         foreach ($this->headers as $flag) {

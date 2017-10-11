@@ -51,12 +51,12 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * @var array
      */
-    protected $lines = array();
+    protected $lines = [];
 
     /**
      * @var array
      */
-    protected $columns = array();
+    protected $columns = [];
 
     /**
      * @var int
@@ -66,7 +66,7 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * @var array
      */
-    protected $currentLine = array();
+    protected $currentLine = [];
 
     /**
      * @param string $filename
@@ -109,7 +109,7 @@ class CsvSourceIterator implements SourceIteratorInterface
         $this->currentLine = $line;
         ++$this->position;
         if ($this->hasHeaders && is_array($line)) {
-            $data = array();
+            $data = [];
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
             }
@@ -131,7 +131,7 @@ class CsvSourceIterator implements SourceIteratorInterface
         }
         $this->currentLine = $line;
         if ($this->hasHeaders && is_array($line)) {
-            $data = array();
+            $data = [];
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
             }

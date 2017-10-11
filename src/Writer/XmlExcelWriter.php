@@ -102,14 +102,14 @@ class XmlExcelWriter implements WriterInterface
      *
      * @return string
      */
-    private function getXmlString(array $fields = array())
+    private function getXmlString(array $fields = [])
     {
-        $xmlData = array();
+        $xmlData = [];
         $xmlData[] = '<Row>';
         foreach ($fields as $key => $value) {
             $value = htmlspecialchars($value);
 
-            $value = str_replace(array("\r\n", "\r", "\n"), '&#10;', $value);
+            $value = str_replace(["\r\n", "\r", "\n"], '&#10;', $value);
             $dataType = 'String';
             if ($this->position != 0 || !$this->showHeaders) {
                 $dataType = $this->getDataType($key, $value);

@@ -36,7 +36,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * @var string[]
      */
-    protected $columns = array();
+    protected $columns = [];
 
     /**
      * @var resource
@@ -61,7 +61,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * @var array
      */
-    protected $bufferedRow = array();
+    protected $bufferedRow = [];
 
     /**
      * @var bool
@@ -90,7 +90,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      * @param string   $name
      * @param array    $attributes
      */
-    abstract public function tagStart($parser, string $name, $attributes = array());
+    abstract public function tagStart($parser, string $name, $attributes = []);
 
     /**
      * End element handler.
@@ -148,7 +148,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 
         $this->file = fopen($this->filename, 'r');
 
-        $this->bufferedRow = array();
+        $this->bufferedRow = [];
         $this->currentRowIndex = 0;
         $this->currentColumnIndex = 0;
         $this->position = 0;
@@ -205,7 +205,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     {
         $this->currentRow = array_shift($this->bufferedRow);
         if (is_array($this->currentRow)) {
-            $datas = array();
+            $datas = [];
             foreach ($this->currentRow as $key => $value) {
                 if ($this->hasHeaders) {
                     $datas[$this->columns[$key]] = html_entity_decode($value);

@@ -23,7 +23,7 @@ class ChainSourceIterator implements SourceIteratorInterface
     /**
      * @param array $sources
      */
-    public function __construct(array $sources = array())
+    public function __construct(array $sources = [])
     {
         $this->sources = new ArrayIterator();
 

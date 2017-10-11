@@ -44,7 +44,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
         $writer = new XmlWriter($this->filename);
         $writer->open();
 
-        $writer->write(array('firstname' => 'john "2', 'lastname' => 'doe', 'id' => '1', 'tags' => array('foo', 'bar')));
+        $writer->write(['firstname' => 'john "2', 'lastname' => 'doe', 'id' => '1', 'tags' => ['foo', 'bar']]);
         $writer->close();
     }
 
@@ -53,8 +53,8 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
         $writer = new XmlWriter($this->filename);
         $writer->open();
 
-        $writer->write(array('firstname' => 'john 1', 'lastname' => 'doe', 'id' => '1'));
-        $writer->write(array('firstname' => 'john 3', 'lastname' => 'doe', 'id' => '1'));
+        $writer->write(['firstname' => 'john 1', 'lastname' => 'doe', 'id' => '1']);
+        $writer->write(['firstname' => 'john 3', 'lastname' => 'doe', 'id' => '1']);
         $writer->close();
 
         $expected = <<<'XML'
