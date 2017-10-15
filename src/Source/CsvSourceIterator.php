@@ -103,7 +103,7 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
@@ -120,7 +120,7 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->file = fopen($this->filename, 'r');
         $this->position = 0;

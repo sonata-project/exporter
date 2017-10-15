@@ -15,7 +15,7 @@ use Sonata\Exporter\Handler;
 
 class HandlerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
         $writer = $this->getMock('Sonata\Exporter\Writer\WriterInterface');

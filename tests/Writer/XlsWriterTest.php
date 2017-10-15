@@ -19,7 +19,7 @@ class XlsWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->filename = 'foobar.xls';
@@ -29,14 +29,14 @@ class XlsWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (is_file($this->filename)) {
             unlink($this->filename);
         }
     }
 
-    public function testValidDataFormat()
+    public function testValidDataFormat(): void
     {
         $writer = new XlsWriter($this->filename, false);
         $writer->open();
@@ -49,7 +49,7 @@ class XlsWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
-    public function testWithHeaders()
+    public function testWithHeaders(): void
     {
         $writer = new XlsWriter($this->filename);
         $writer->open();

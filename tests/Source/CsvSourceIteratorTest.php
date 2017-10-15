@@ -17,7 +17,7 @@ class CsvSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->filename = 'foobar.csv';
 
@@ -34,12 +34,12 @@ EOF;
         file_put_contents($this->filename, $csv);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->filename);
     }
 
-    public function testHandler()
+    public function testHandler(): void
     {
         $iterator = new CsvSourceIterator($this->filename);
 
@@ -56,7 +56,7 @@ EOF;
         $this->assertEquals(3, $i);
     }
 
-    public function testNoHeaders()
+    public function testNoHeaders(): void
     {
         $iterator = new CsvSourceIterator($this->filename, ',', '"', '\\', false);
 
@@ -70,7 +70,7 @@ EOF;
         $this->assertEquals(4, $i);
     }
 
-    public function testRewind()
+    public function testRewind(): void
     {
         $iterator = new CsvSourceIterator($this->filename);
 

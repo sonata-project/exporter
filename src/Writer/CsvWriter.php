@@ -100,7 +100,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->file = fopen($this->filename, 'w', false);
         if (true === $this->withBom) {
@@ -111,7 +111,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         fclose($this->file);
     }
@@ -119,7 +119,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         if ($this->position == 0 && $this->showHeaders) {
             $this->addHeaders($data);
@@ -139,7 +139,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * @param array $data
      */
-    protected function addHeaders(array $data)
+    protected function addHeaders(array $data): void
     {
         $headers = [];
         foreach ($data as $header => $value) {

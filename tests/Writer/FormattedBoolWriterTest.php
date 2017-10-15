@@ -30,13 +30,13 @@ class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
      */
     protected $falseLabel;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->trueLabel = 'yes';
         $this->falseLabel = 'no';
     }
 
-    public function testValidDataFormat()
+    public function testValidDataFormat(): void
     {
         $data = ['john', 'doe', false, true];
         $expected = ['john', 'doe', 'no', 'yes'];

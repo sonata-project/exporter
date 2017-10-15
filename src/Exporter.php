@@ -57,7 +57,7 @@ final class Exporter
         }
         $writer = $this->writers[$format];
 
-        $callback = function () use ($source, $writer) {
+        $callback = function () use ($source, $writer): void {
             $handler = \Exporter\Handler::create($source, $writer);
             $handler->export();
         };
@@ -86,7 +86,7 @@ final class Exporter
      *
      * @param TypedWriterInterface $writer a possible writer for exporting data
      */
-    public function addWriter(TypedWriterInterface $writer)
+    public function addWriter(TypedWriterInterface $writer): void
     {
         $this->writers[$writer->getFormat()] = $writer;
     }

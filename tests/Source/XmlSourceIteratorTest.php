@@ -18,7 +18,7 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
     protected $filename;
     protected $filenameCustomTagNames;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->filename = 'source_xml.xml';
         $xml = '<?xml version="1.0" ?><datas><data><sku><![CDATA[123]]></sku><ean><![CDATA[1234567891234]]></ean><name><![CDATA[Product é]]></name></data><data><sku><![CDATA[124]]></sku><ean><![CDATA[1234567891235]]></ean><name><![CDATA[Product @]]></name></data><data><sku><![CDATA[125]]></sku><ean><![CDATA[1234567891236]]></ean><name><![CDATA[Product 3 ©]]></name></data></datas>';
@@ -30,13 +30,13 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->createXmlFile($this->filenameCustomTagNames, $xml);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->filename);
         unlink($this->filenameCustomTagNames);
     }
 
-    public function testHandler()
+    public function testHandler(): void
     {
         $iterator = new XmlSourceIterator($this->filename);
 
@@ -54,7 +54,7 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $i);
     }
 
-    public function testRewind()
+    public function testRewind(): void
     {
         $iterator = new XmlSourceIterator($this->filename);
 
@@ -75,7 +75,7 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $i);
     }
 
-    public function testCustomTagNames()
+    public function testCustomTagNames(): void
     {
         $iterator = new XmlSourceIterator($this->filenameCustomTagNames, 'channel', 'item');
 
@@ -93,7 +93,7 @@ class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $i);
     }
 
-    protected function createXmlFile($filename, $content)
+    protected function createXmlFile($filename, $content): void
     {
         if (is_file($filename)) {
             unlink($filename);

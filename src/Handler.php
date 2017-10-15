@@ -36,7 +36,7 @@ class Handler
         $this->writer = $writer;
     }
 
-    public function export()
+    public function export(): void
     {
         $this->writer->open();
 

@@ -20,7 +20,7 @@ use Sonata\Exporter\Writer\XmlWriter;
 
 class ExporterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFilter()
+    public function testFilter(): void
     {
         $this->setExpectedException('RuntimeException', 'Invalid "foo" format');
         $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
@@ -30,7 +30,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         $exporter->getResponse('foo', 'foo', $source);
     }
 
-    public function testConstructorRejectsNonTypedWriters()
+    public function testConstructorRejectsNonTypedWriters(): void
     {
         $this->setExpectedException(
             version_compare(PHP_VERSION, '7.0.0', '<') ? 'PHPUnit_Framework_Error' : 'TypeError',
@@ -39,7 +39,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         new Exporter(['Not even an object']);
     }
 
-    public function testGetAvailableFormats()
+    public function testGetAvailableFormats(): void
     {
         $writer = $this->getMock('Sonata\Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->once())
@@ -52,7 +52,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getGetResponseTests
      */
-    public function testGetResponse($format, $filename, $contentType)
+    public function testGetResponse($format, $filename, $contentType): void
     {
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],

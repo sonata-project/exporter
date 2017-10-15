@@ -48,7 +48,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->iterator->next();
     }
@@ -72,7 +72,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->iterator->rewind();
     }

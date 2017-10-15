@@ -48,7 +48,7 @@ class FormattedBoolWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->writer->open();
     }
@@ -56,7 +56,7 @@ class FormattedBoolWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         $this->writer->close();
     }
@@ -64,7 +64,7 @@ class FormattedBoolWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         foreach ($data as $key => $value) {
             if (is_bool($data[$key])) {

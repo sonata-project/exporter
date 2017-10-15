@@ -22,7 +22,7 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
     protected $collection;
 
-    public function setUp()
+    public function setUp(): void
     {
         if (!class_exists('PropelCollection')) {
             $this->markTestIncomplete('Propel is not available');
@@ -38,14 +38,14 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->collection->setData($data);
     }
 
-    public function testIterator()
+    public function testIterator(): void
     {
         $data = $this->extract($this->collection, ['id' => '[id]', 'name' => '[name]']);
 
         $this->assertCount(3, $data);
     }
 
-    public function testFieldsExtraction()
+    public function testFieldsExtraction(): void
     {
         $data = $this->extract($this->collection, ['id' => '[id]', 'name' => '[name]']);
 
@@ -65,7 +65,7 @@ class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
         ], $data);
     }
 
-    public function testDateTimeTransformation()
+    public function testDateTimeTransformation(): void
     {
         $data = $this->extract($this->collection, ['id' => '[id]', 'created_at' => '[created_at]']);
 

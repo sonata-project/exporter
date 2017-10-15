@@ -68,7 +68,7 @@ class XmlExcelWriter implements WriterInterface
         }
     }
 
-    public function open()
+    public function open(): void
     {
         $this->file = fopen($this->filename, 'w');
         fwrite($this->file, $this->header);
@@ -77,7 +77,7 @@ class XmlExcelWriter implements WriterInterface
     /**
      * @param array $data
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         if ($this->position == 0 && $this->showHeaders) {
             $header = array_keys($data);
@@ -89,7 +89,7 @@ class XmlExcelWriter implements WriterInterface
         ++$this->position;
     }
 
-    public function close()
+    public function close(): void
     {
         fwrite($this->file, $this->footer);
         fclose($this->file);

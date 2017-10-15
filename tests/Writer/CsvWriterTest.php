@@ -19,7 +19,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->filename = 'foobar.csv';
@@ -29,7 +29,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (is_file($this->filename)) {
             unlink($this->filename);
@@ -39,7 +39,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
     /**
      * @expectedException \Sonata\Exporter\Exception\InvalidDataFormatException
      */
-    public function testInvalidDataFormat()
+    public function testInvalidDataFormat(): void
     {
         $writer = new CsvWriter($this->filename, ',', '', '\\', false);
         $writer->open();
@@ -47,7 +47,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer->write(['john "2', 'doe', '1']);
     }
 
-    public function testEnclosureFormating()
+    public function testEnclosureFormating(): void
     {
         $writer = new CsvWriter($this->filename, ',', '"', '\\', false);
         $writer->open();
@@ -61,7 +61,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
-    public function testEnclosureFormatingWithExcel()
+    public function testEnclosureFormatingWithExcel(): void
     {
         $writer = new CsvWriter($this->filename, ',', '"', '', false);
         $writer->open();
@@ -75,7 +75,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
-    public function testWithHeaders()
+    public function testWithHeaders(): void
     {
         $writer = new CsvWriter($this->filename, ',', '"', '', true);
         $writer->open();
@@ -89,7 +89,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
-    public function testWithBom()
+    public function testWithBom(): void
     {
         $writer = new CsvWriter($this->filename, ',', '"', '', true, true);
         $writer->open();

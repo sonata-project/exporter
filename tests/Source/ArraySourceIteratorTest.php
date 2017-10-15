@@ -15,7 +15,7 @@ use Sonata\Exporter\Source\ArraySourceIterator;
 
 class ArraySourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $data = [
             ['john 1', 'doe', '1'],

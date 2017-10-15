@@ -21,7 +21,7 @@ class ConfigurationTest extends AbstractConfigurationTestCase
         return new Configuration();
     }
 
-    public function testDefault()
+    public function testDefault(): void
     {
         $this->assertProcessedConfigurationEquals([
             [],

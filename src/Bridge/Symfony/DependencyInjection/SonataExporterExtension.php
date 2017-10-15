@@ -25,7 +25,7 @@ final class SonataExporterExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $processor = new Processor();
         $configuration = new Configuration();
@@ -38,7 +38,7 @@ final class SonataExporterExtension extends Extension
         $this->configureWriters($container, $config['writers']);
     }
 
-    private function configureExporter(ContainerBuilder $container, array $config)
+    private function configureExporter(ContainerBuilder $container, array $config): void
     {
         foreach (['csv', 'json', 'xls', 'xml'] as $format) {
             if (in_array($format, $config['default_writers'])) {
@@ -49,7 +49,7 @@ final class SonataExporterExtension extends Extension
         }
     }
 
-    private function configureWriters(ContainerBuilder $container, array $config)
+    private function configureWriters(ContainerBuilder $container, array $config): void
     {
         foreach ($config as $format => $settings) {
             foreach ($settings as $key => $value) {
