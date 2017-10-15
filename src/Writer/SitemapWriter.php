@@ -103,7 +103,7 @@ class SitemapWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->bufferPart = 0;
         $this->generateNewPart();
@@ -112,7 +112,7 @@ class SitemapWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         $data = $this->buildData($data);
 
@@ -138,7 +138,7 @@ class SitemapWriter implements WriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         if ($this->buffer) {
             $this->closeSitemap();
@@ -161,7 +161,7 @@ class SitemapWriter implements WriterInterface
      * @param string $pattern  A sitemap pattern, optional
      * @param string $filename A sitemap file name, optional
      */
-    public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml')
+    public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml'): void
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
         foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
@@ -183,7 +183,7 @@ class SitemapWriter implements WriterInterface
      *
      * @throws \RuntimeException
      */
-    protected function generateNewPart()
+    protected function generateNewPart(): void
     {
         if ($this->buffer) {
             $this->closeSitemap();
@@ -209,7 +209,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param string $line
      */
-    protected function addSitemapLine(string $line)
+    protected function addSitemapLine(string $line): void
     {
         if ($this->bufferUrlCount >= self::LIMIT_URL) {
             $this->generateNewPart();
@@ -254,7 +254,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array &$data List of parameters
      */
-    protected function fixDataType(array &$data)
+    protected function fixDataType(array &$data): void
     {
         if ('default' === $data['type']) {
             return;
@@ -359,7 +359,7 @@ class SitemapWriter implements WriterInterface
     /**
      * Close the sitemap part.
      */
-    protected function closeSitemap()
+    protected function closeSitemap(): void
     {
         fwrite($this->buffer, '</urlset>');
         fclose($this->buffer);

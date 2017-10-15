@@ -69,7 +69,7 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->source->next();
     }
@@ -93,7 +93,7 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->source->rewind();
     }

@@ -35,7 +35,7 @@ class ChainSourceIterator implements SourceIteratorInterface
     /**
      * @param SourceIteratorInterface $source
      */
-    public function addSource(SourceIteratorInterface $source)
+    public function addSource(SourceIteratorInterface $source): void
     {
         $this->sources->append($source);
     }
@@ -51,7 +51,7 @@ class ChainSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->sources->current()->next();
     }
@@ -85,7 +85,7 @@ class ChainSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         if ($this->sources->current()) {
             $this->sources->current()->rewind();

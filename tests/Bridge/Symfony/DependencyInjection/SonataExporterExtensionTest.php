@@ -16,13 +16,13 @@ use Sonata\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension;
 
 class SonataExporterExtensionTest extends AbstractExtensionTestCase
 {
-    public function testExporterServiceIsPresent()
+    public function testExporterServiceIsPresent(): void
     {
         $this->load();
         $this->assertContainerBuilderHasService('sonata.exporter.exporter');
     }
 
-    public function testServiceParametersArePresent()
+    public function testServiceParametersArePresent(): void
     {
         $this->load();
         foreach ([

@@ -17,7 +17,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->filename = 'foobar.csv';
 
@@ -26,12 +26,12 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->filename);
     }
 
-    public function testWriter()
+    public function testWriter(): void
     {
         $writer = new XmlExcelWriter($this->filename, false);
         $writer->open();
@@ -45,7 +45,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
     }
 
-    public function testWithHeaders()
+    public function testWithHeaders(): void
     {
         $writer = new XmlExcelWriter($this->filename, true);
         $writer->open();
@@ -60,7 +60,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
     }
 
-    public function testForceTypes()
+    public function testForceTypes(): void
     {
         // force all cells to have Number type
         $writer = new XmlExcelWriter($this->filename, false, 'Number');
@@ -75,7 +75,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
     }
 
-    public function testForceTypesWithHeaders()
+    public function testForceTypesWithHeaders(): void
     {
         // force all cells to have Number type
         $writer = new XmlExcelWriter($this->filename, true, 'Number');
@@ -91,7 +91,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
     }
 
-    public function testSpecificTypes()
+    public function testSpecificTypes(): void
     {
         // define type for specific cell
         $writer = new XmlExcelWriter($this->filename, false, ['year' => 'String', 'surname' => 'Number']);

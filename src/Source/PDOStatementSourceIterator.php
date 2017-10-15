@@ -56,7 +56,7 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
         ++$this->position;
@@ -81,7 +81,7 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         if ($this->rewinded) {
             throw new InvalidMethodCallException('Cannot rewind a PDOStatement');

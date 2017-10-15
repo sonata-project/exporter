@@ -18,7 +18,7 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
     protected $filename;
     protected $headers = ['sku', 'ean', 'name'];
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->filename = 'foobar.xml';
         $this->filenameSS = 'foobar_ss.xml';
@@ -36,13 +36,13 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
         file_put_contents($this->filenameSS, $xmlSS);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->filename);
         unlink($this->filenameSS);
     }
 
-    public function testHandler()
+    public function testHandler(): void
     {
         $iterator = new XmlExcelSourceIterator($this->filename);
 
@@ -60,7 +60,7 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $i);
     }
 
-    public function testHandlerSS()
+    public function testHandlerSS(): void
     {
         $iterator = new XmlExcelSourceIterator($this->filenameSS);
 
@@ -78,7 +78,7 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $i);
     }
 
-    public function testNoHeaders()
+    public function testNoHeaders(): void
     {
         $iterator = new XmlExcelSourceIterator($this->filename, false);
 
@@ -92,7 +92,7 @@ class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(4, $i);
     }
 
-    public function testRewind()
+    public function testRewind(): void
     {
         $iterator = new XmlExcelSourceIterator($this->filename);
 

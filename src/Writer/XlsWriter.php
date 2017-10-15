@@ -72,7 +72,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->file = fopen($this->filename, 'w', false);
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
@@ -81,7 +81,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         fwrite($this->file, '</table></body></html>');
         fclose($this->file);
@@ -90,7 +90,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         $this->init($data);
 

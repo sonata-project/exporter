@@ -127,7 +127,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->parseRow();
         $this->prepareCurrentRow();
@@ -137,7 +137,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->parser = xml_parser_create();
         xml_set_object($this->parser, $this);
@@ -178,7 +178,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * Parse until </Row> reached.
      */
-    protected function parseRow()
+    protected function parseRow(): void
     {
         // only parse the next row if only one in buffer
         if (count($this->bufferedRow) > 1) {
@@ -201,7 +201,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * Prepare the row to return.
      */
-    protected function prepareCurrentRow()
+    protected function prepareCurrentRow(): void
     {
         $this->currentRow = array_shift($this->bufferedRow);
         if (is_array($this->currentRow)) {

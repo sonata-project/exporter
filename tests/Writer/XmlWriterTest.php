@@ -19,7 +19,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->filename = 'foobar.xml';
@@ -29,7 +29,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (is_file($this->filename)) {
             unlink($this->filename);
@@ -39,7 +39,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
     /**
      * @expectedException \RuntimeException
      */
-    public function testArrayDataFormat()
+    public function testArrayDataFormat(): void
     {
         $writer = new XmlWriter($this->filename);
         $writer->open();
@@ -48,7 +48,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
         $writer->close();
     }
 
-    public function testInvalidDataFormat()
+    public function testInvalidDataFormat(): void
     {
         $writer = new XmlWriter($this->filename);
         $writer->open();

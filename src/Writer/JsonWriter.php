@@ -63,7 +63,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->file = fopen($this->filename, 'w', false);
 
@@ -73,7 +73,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         fwrite($this->file, ']');
 
@@ -83,7 +83,7 @@ class JsonWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data));
 

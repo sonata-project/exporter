@@ -19,7 +19,7 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->filename = 'foobar.json';
@@ -29,14 +29,14 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (is_file($this->filename)) {
             unlink($this->filename);
         }
     }
 
-    public function testWrite()
+    public function testWrite(): void
     {
         $writer = new JsonWriter($this->filename, ',', '');
         $writer->open();

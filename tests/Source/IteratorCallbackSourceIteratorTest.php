@@ -21,7 +21,7 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
     /** @var \ArrayIterator */
     protected $iterator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->iterator = new \ArrayIterator([[0], [1], [2], [3]]);
         $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, function ($data) {
@@ -31,7 +31,7 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
         });
     }
 
-    public function testTransformer()
+    public function testTransformer(): void
     {
         $result = [1, 2, 4, 8];
 
@@ -40,12 +40,12 @@ class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testExtends()
+    public function testExtends(): void
     {
         $this->assertInstanceOf('Sonata\Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
     }
 
-    public function testGetIterator()
+    public function testGetIterator(): void
     {
         $this->assertSame($this->iterator, $this->sourceIterator->getIterator());
     }

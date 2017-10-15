@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class ExporterCompilerPassTest extends AbstractCompilerPassTestCase
 {
-    public function testWritersAreAddedToTheExporter()
+    public function testWritersAreAddedToTheExporter(): void
     {
         $exporter = new Definition();
         $this->setDefinition('sonata.exporter.exporter', $exporter);
@@ -36,7 +36,7 @@ class ExporterCompilerPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    protected function registerCompilerPass(ContainerBuilder $container)
+    protected function registerCompilerPass(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new ExporterCompilerPass());
     }

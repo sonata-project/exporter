@@ -21,7 +21,7 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
      */
     protected $folder;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->folder = sys_get_temp_dir().'/sonata_exporter_test';
 
@@ -30,7 +30,7 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
         mkdir($this->folder);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         foreach ($this->getFiles() as $file) {
             unlink($file);
@@ -44,13 +44,13 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \RuntimeException
      */
-    public function testNonExistentFolder()
+    public function testNonExistentFolder(): void
     {
         $writer = new SitemapWriter('booo');
         $writer->open();
     }
 
-    public function testSimpleWrite()
+    public function testSimpleWrite(): void
     {
         $writer = new SitemapWriter($this->folder);
         $writer->open();
@@ -78,7 +78,7 @@ XML;
         $this->assertEquals(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
-    public function testSimpleWriteAdvanced()
+    public function testSimpleWriteAdvanced(): void
     {
         $writer = new SitemapWriter($this->folder, 'test', ['image'], false);
         $writer->open();
@@ -127,7 +127,7 @@ XML;
         $this->assertEquals(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
-    public function testLimitSize()
+    public function testLimitSize(): void
     {
         $writer = new SitemapWriter($this->folder);
         $writer->open();
@@ -154,7 +154,7 @@ XML;
         $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
     }
 
-    public function testLimitUrl()
+    public function testLimitUrl(): void
     {
         $writer = new SitemapWriter($this->folder);
         $writer->open();

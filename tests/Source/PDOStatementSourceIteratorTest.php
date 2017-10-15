@@ -25,7 +25,7 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
      */
     protected $pathToDb;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
 
@@ -53,7 +53,7 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->dbh = null;
 
@@ -62,7 +62,7 @@ class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testHandler()
+    public function testHandler(): void
     {
         $stm = $this->dbh->prepare('SELECT id, username, email FROM user');
         $stm->execute();

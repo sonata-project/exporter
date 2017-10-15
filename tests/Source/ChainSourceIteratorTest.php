@@ -15,7 +15,7 @@ use Sonata\Exporter\Source\ChainSourceIterator;
 
 class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIterator()
+    public function testIterator(): void
     {
         $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
 

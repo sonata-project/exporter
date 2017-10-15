@@ -79,7 +79,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function open()
+    public function open(): void
     {
         $this->file = fopen($this->filename, 'w', false);
 
@@ -89,7 +89,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function close()
+    public function close(): void
     {
         fwrite($this->file, sprintf('</%s>', $this->mainElement));
 
@@ -99,7 +99,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(array $data)
+    public function write(array $data): void
     {
         fwrite($this->file, sprintf("<%s>\n", $this->childElement));
 

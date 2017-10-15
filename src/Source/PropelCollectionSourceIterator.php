@@ -88,7 +88,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->iterator->next();
     }
@@ -112,7 +112,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         if ($this->iterator) {
             $this->iterator->rewind();

@@ -23,17 +23,17 @@ abstract class AbstractTypedWriterTestCase extends \PHPUnit_Framework_TestCase
      */
     private $writer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->writer = $this->getWriter();
     }
 
-    public function testFormatIsString()
+    public function testFormatIsString(): void
     {
         $this->assertInternalType('string', $this->writer->getFormat());
     }
 
-    public function testDefaultMimeTypeIsString()
+    public function testDefaultMimeTypeIsString(): void
     {
         $this->assertInternalType('string', $this->writer->getDefaultMimeType());
     }

@@ -43,7 +43,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Creates the folder useful to this test.
      */
-    public function setUp()
+    public function setUp(): void
     {
         $path = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sonata_exporter_test';
         $this->folder = new \SplFileInfo($path);
@@ -60,7 +60,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Deletes the generated XML and the created folder.
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         if ($this->folder->getRealPath()) {
             foreach ($this->getFiles() as $file) {
@@ -74,7 +74,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \RuntimeException
      */
-    public function testNonExistentFolder()
+    public function testNonExistentFolder(): void
     {
         $writer = new GsaFeedWriter(new \SplFileInfo('foo'), $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
@@ -83,7 +83,7 @@ class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests a simple write case.
      */
-    public function testSimpleWrite()
+    public function testSimpleWrite(): void
     {
         $writer = new GsaFeedWriter($this->folder, $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
@@ -129,7 +129,7 @@ XML;
     /**
      * Tests the writer limit.
      */
-    public function testLimitSize()
+    public function testLimitSize(): void
     {
         $writer = new GsaFeedWriter($this->folder, $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();

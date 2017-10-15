@@ -96,7 +96,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->iterator->next();
     }
@@ -120,7 +120,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         if ($this->iterator) {
             throw new InvalidMethodCallException('Cannot rewind a Doctrine\ORM\Query');

@@ -24,18 +24,18 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
      */
     protected $iterator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->iterator = $this->getMock('Iterator');
         $this->sourceIterator = new IteratorSourceIterator($this->iterator);
     }
 
-    public function testGetIterator()
+    public function testGetIterator(): void
     {
         self::assertSame($this->iterator, $this->sourceIterator->getIterator());
     }
 
-    public function testCurrent()
+    public function testCurrent(): void
     {
         $this->iterator
             ->expects(self::once())
@@ -45,7 +45,7 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
         self::assertEquals(['current'], $this->sourceIterator->current());
     }
 
-    public function testNext()
+    public function testNext(): void
     {
         $this->iterator
             ->expects(self::once())
@@ -54,7 +54,7 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
         $this->sourceIterator->next();
     }
 
-    public function testKey()
+    public function testKey(): void
     {
         $this->iterator
             ->expects(self::once())
@@ -64,7 +64,7 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
         self::assertEquals('key', $this->sourceIterator->key());
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $this->iterator
             ->expects(self::once())
@@ -74,7 +74,7 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
         self::assertTrue($this->sourceIterator->valid());
     }
 
-    public function testRewind()
+    public function testRewind(): void
     {
         $this->iterator
             ->expects(self::once())
