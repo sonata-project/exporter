@@ -32,10 +32,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsNonTypedWriters(): void
     {
-        $this->setExpectedException(
-            version_compare(PHP_VERSION, '7.0.0', '<') ? 'PHPUnit_Framework_Error' : 'TypeError',
-            'must implement interface'
-        );
+        $this->setExpectedException('TypeError', 'must implement interface');
         new Exporter(['Not even an object']);
     }
 
