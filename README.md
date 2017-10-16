@@ -34,6 +34,13 @@ $writer = new CsvWriter('data.csv');
 Handler::create($source, $writer)->export();
 ```
 
+## Documentation
+* [Introduction](docs/reference/introduction.rst)
+* [Installation](docs/reference/installation.rst)
+* [Sources](docs/reference/sources.rst)
+* [Outputs](docs/reference/outputs.rst)
+* [Symfony integration](docs/reference/symfony.rst)
+
 ## Support
 
 For general support and questions, please use [StackOverflow](http://stackoverflow.com/questions/tagged/sonata).
