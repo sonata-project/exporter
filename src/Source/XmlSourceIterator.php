@@ -43,13 +43,13 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     /**
      * {@inheritdoc}
      */
-    public function tagStart($parser, $name, $attributes = array())
+    public function tagStart($parser, $name, $attributes = [])
     {
         switch ($name) {
             case $this->mainTag:
                 break;
             case $this->dataTag:
-                $this->bufferedRow['i_'.$this->currentRowIndex] = array();
+                $this->bufferedRow['i_'.$this->currentRowIndex] = [];
 
                 break;
             default:
@@ -103,7 +103,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     {
         $this->currentRow = array_shift($this->bufferedRow);
         if (is_array($this->currentRow)) {
-            $datas = array();
+            $datas = [];
             foreach ($this->currentRow as $key => $value) {
                 $datas[$this->columns[$key]] = $value;
             }
