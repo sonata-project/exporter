@@ -13,6 +13,7 @@ namespace Exporter\Source;
 
 use PropelCollection;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
@@ -38,7 +39,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @var PropertyAccess
+     * @var PropertyAccessor
      */
     protected $propertyAccessor;
 
