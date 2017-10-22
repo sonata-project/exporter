@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\IteratorSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class IteratorSourceIteratorTest extends TestCase
 {
     /**
      * @var IteratorSourceIterator
@@ -26,7 +27,7 @@ class IteratorSourceIteratorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->iterator = $this->getMock('Iterator');
+        $this->iterator = $this->createMock('Iterator');
         $this->sourceIterator = new IteratorSourceIterator($this->iterator);
     }
 

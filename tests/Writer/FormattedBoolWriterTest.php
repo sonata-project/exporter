@@ -12,13 +12,14 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\FormattedBoolWriter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Format boolean before use another writer.
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
+class FormattedBoolWriterTest extends TestCase
 {
     /**
      * @var string

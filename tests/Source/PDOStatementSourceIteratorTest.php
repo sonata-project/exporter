@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\PDOStatementSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class PDOStatementSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class PDOStatementSourceIteratorTest extends TestCase
 {
     /**
      * @var \PDO

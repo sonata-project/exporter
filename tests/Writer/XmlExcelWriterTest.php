@@ -12,8 +12,9 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\XmlExcelWriter;
+use PHPUnit\Framework\TestCase;
 
-class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
+class XmlExcelWriterTest extends TestCase
 {
     protected $filename;
 

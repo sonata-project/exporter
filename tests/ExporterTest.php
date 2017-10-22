@@ -17,14 +17,15 @@ use Exporter\Writer\CsvWriter;
 use Exporter\Writer\JsonWriter;
 use Exporter\Writer\XlsWriter;
 use Exporter\Writer\XmlWriter;
+use PHPUnit\Framework\TestCase;
 
-class ExporterTest extends \PHPUnit_Framework_TestCase
+class ExporterTest extends TestCase
 {
     public function testFilter()
     {
         $this->setExpectedException('RuntimeException', 'Invalid "foo" format');
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $source = $this->createMock('Exporter\Source\SourceIteratorInterface');
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
 
         $exporter = new Exporter([$writer]);
         $exporter->getResponse('foo', 'foo', $source);
@@ -41,7 +42,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAvailableFormats()
     {
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->once())
             ->method('getFormat')
             ->willReturn('whatever');
@@ -57,7 +58,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],
         ]);
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->any())
             ->method('getFormat')
             ->willReturn('made-up');

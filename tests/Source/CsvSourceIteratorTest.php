@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\CsvSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class CsvSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class CsvSourceIteratorTest extends TestCase
 {
     protected $filename;
 

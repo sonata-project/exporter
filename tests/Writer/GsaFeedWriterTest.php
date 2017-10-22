@@ -12,13 +12,14 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\GsaFeedWriter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the GSA feed writer class.
  *
  * @author Rémi Marseille <marseille@ekino.com>
  */
-class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
+class GsaFeedWriterTest extends TestCase
 {
     /**
      * @var \SplFileInfo
