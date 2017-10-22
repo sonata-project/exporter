@@ -15,6 +15,7 @@ use Doctrine\ORM\Query;
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
@@ -35,7 +36,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @var PropertyAccess
+     * @var PropertyAccessor
      */
     protected $propertyAccessor;
 
