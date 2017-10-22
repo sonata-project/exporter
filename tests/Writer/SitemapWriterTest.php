@@ -11,10 +11,11 @@
 
 namespace Sonata\Exporter\Test\Writer;
 
+use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 use Sonata\Exporter\Writer\SitemapWriter;
 
-class SitemapWriterTest extends \PHPUnit_Framework_TestCase
+class SitemapWriterTest extends TestCase
 {
     /**
      * @var string

@@ -11,6 +11,7 @@
 
 namespace Sonata\Exporter\Test\Writer;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\FormattedBoolWriter;
 
 /**
@@ -18,7 +19,7 @@ use Sonata\Exporter\Writer\FormattedBoolWriter;
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
+class FormattedBoolWriterTest extends TestCase
 {
     /**
      * @var string

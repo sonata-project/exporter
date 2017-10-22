@@ -11,6 +11,7 @@
 
 namespace Sonata\Exporter\Test\Source;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\PropelCollectionSourceIterator;
 
 /**
@@ -18,7 +19,7 @@ use Sonata\Exporter\Source\PropelCollectionSourceIterator;
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
-class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class PropelCollectionSourceIteratorTest extends TestCase
 {
     protected $collection;
 

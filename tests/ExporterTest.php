@@ -11,6 +11,7 @@
 
 namespace Sonata\Exporter\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Source\ArraySourceIterator;
 use Sonata\Exporter\Writer\CsvWriter;
@@ -18,13 +19,13 @@ use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\XlsWriter;
 use Sonata\Exporter\Writer\XmlWriter;
 
-class ExporterTest extends \PHPUnit_Framework_TestCase
+class ExporterTest extends TestCase
 {
     public function testFilter(): void
     {
         $this->setExpectedException('RuntimeException', 'Invalid "foo" format');
-        $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
+        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
 
         $exporter = new Exporter([$writer]);
         $exporter->getResponse('foo', 'foo', $source);
@@ -38,7 +39,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAvailableFormats(): void
     {
-        $writer = $this->getMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->once())
             ->method('getFormat')
             ->willReturn('whatever');
@@ -54,7 +55,7 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],
         ]);
-        $writer = $this->getMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->any())
             ->method('getFormat')
             ->willReturn('made-up');

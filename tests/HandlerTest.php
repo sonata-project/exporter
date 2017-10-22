@@ -11,14 +11,15 @@
 
 namespace Sonata\Exporter\Test;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Handler;
 
-class HandlerTest extends \PHPUnit_Framework_TestCase
+class HandlerTest extends TestCase
 {
     public function testHandler(): void
     {
-        $source = $this->getMock('Sonata\Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Sonata\Exporter\Writer\WriterInterface');
+        $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
+        $writer = $this->createMock('Sonata\Exporter\Writer\WriterInterface');
         $writer->expects($this->once())->method('open');
         $writer->expects($this->once())->method('close');
 

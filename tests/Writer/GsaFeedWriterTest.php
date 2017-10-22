@@ -11,6 +11,7 @@
 
 namespace Sonata\Exporter\Test\Writer;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\GsaFeedWriter;
 
 /**
@@ -18,7 +19,7 @@ use Sonata\Exporter\Writer\GsaFeedWriter;
  *
  * @author Rémi Marseille <marseille@ekino.com>
  */
-class GsaFeedWriterTest extends \PHPUnit_Framework_TestCase
+class GsaFeedWriterTest extends TestCase
 {
     /**
      * @var \SplFileInfo

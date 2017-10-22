@@ -11,9 +11,10 @@
 
 namespace Sonata\Exporter\Test\Source;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\XmlExcelSourceIterator;
 
-class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class XmlExcelSourceIteratorTest extends TestCase
 {
     protected $filename;
     protected $headers = ['sku', 'ean', 'name'];

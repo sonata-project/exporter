@@ -11,9 +11,10 @@
 
 namespace Sonata\Exporter\Test\Source;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\IteratorCallbackSourceIterator;
 
-class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class IteratorCallbackSourceIteratorTest extends TestCase
 {
     /** @var IteratorCallbackSourceIterator */
     protected $sourceIterator;

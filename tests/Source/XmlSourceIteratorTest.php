@@ -11,9 +11,10 @@
 
 namespace Sonata\Exporter\Test\Source;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\XmlSourceIterator;
 
-class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class XmlSourceIteratorTest extends TestCase
 {
     protected $filename;
     protected $filenameCustomTagNames;
