@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\ArraySourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class ArraySourceIteratorTest extends \PHPUnit_Framework_TestCase
+class ArraySourceIteratorTest extends TestCase
 {
     public function testHandler()
     {

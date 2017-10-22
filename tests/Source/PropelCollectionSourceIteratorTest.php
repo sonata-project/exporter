@@ -12,13 +12,14 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\PropelCollectionSourceIterator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the PropelCollectionSourceIterator class.
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
-class PropelCollectionSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class PropelCollectionSourceIteratorTest extends TestCase
 {
     protected $collection;
 

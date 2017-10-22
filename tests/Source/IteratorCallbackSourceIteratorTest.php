@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\IteratorCallbackSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class IteratorCallbackSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class IteratorCallbackSourceIteratorTest extends TestCase
 {
     /** @var IteratorCallbackSourceIterator */
     protected $sourceIterator;

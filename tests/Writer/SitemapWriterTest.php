@@ -12,9 +12,10 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\SitemapWriter;
+use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 
-class SitemapWriterTest extends \PHPUnit_Framework_TestCase
+class SitemapWriterTest extends TestCase
 {
     /**
      * @var string

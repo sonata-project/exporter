@@ -12,12 +12,13 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\ChainSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class ChainSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class ChainSourceIteratorTest extends TestCase
 {
     public function testIterator()
     {
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
+        $source = $this->createMock('Exporter\Source\SourceIteratorInterface');
 
         $iterator = new ChainSourceIterator([$source]);
 
