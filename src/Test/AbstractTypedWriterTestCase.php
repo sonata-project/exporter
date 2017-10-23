@@ -11,12 +11,13 @@
 
 namespace Sonata\Exporter\Test;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  */
-abstract class AbstractTypedWriterTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractTypedWriterTestCase extends TestCase
 {
     /**
      * @var WriterInterface
