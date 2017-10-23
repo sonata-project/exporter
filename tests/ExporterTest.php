@@ -50,7 +50,7 @@ class ExporterTest extends TestCase
     /**
      * @dataProvider getGetResponseTests
      */
-    public function testGetResponse($format, $filename, $contentType): void
+    public function testGetResponse($format, $filename, $contentType, $expectedOutput): void
     {
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],
@@ -75,16 +75,18 @@ class ExporterTest extends TestCase
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
         $this->assertSame($contentType, $response->headers->get('Content-Type'));
         $this->assertSame('attachment; filename="'.$filename.'"', $response->headers->get('Content-Disposition'));
+        $this->expectOutputRegex($expectedOutput);
+        $response->sendContent();
     }
 
     public function getGetResponseTests()
     {
         return [
-            ['json', 'foo.json', 'application/json'],
-            ['xml', 'foo.xml', 'text/xml'],
-            ['xls', 'foo.xls', 'application/vnd.ms-excel'],
-            ['csv', 'foo.csv', 'text/csv'],
-            ['made-up', 'foo.made-up', 'application/made-up'],
+            ['json', 'foo.json', 'application/json', '#foo#'],
+            ['xml', 'foo.xml', 'text/xml', '#foo#'],
+            ['xls', 'foo.xls', 'application/vnd.ms-excel', '#foo#'],
+            ['csv', 'foo.csv', 'text/csv', '#foo#'],
+            ['made-up', 'foo.made-up', 'application/made-up', '##'],
         ];
     }
 }
