@@ -26,7 +26,8 @@
         "symfony/http-kernel": "^2.8 || ^3.2",
         "symfony/phpunit-bridge": "^3.3",
         "symfony/property-access": "^2.8 || ^3.2",
-        "symfony/routing": "^2.8 || ^3.2"
+        "symfony/routing": "^2.8 || ^3.2",
+        "phpoffice/phpexcel": "1.8"
     },
     "suggest": {
         "ext-curl": "*",

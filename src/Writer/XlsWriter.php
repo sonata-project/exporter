@@ -22,11 +22,6 @@ class XlsWriter implements TypedWriterInterface
     protected $filename;
 
     /**
-     * @var resource
-     */
-    protected $file;
-
-    /**
      * @var bool
      */
     protected $showHeaders;
@@ -34,7 +29,21 @@ class XlsWriter implements TypedWriterInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $row;
+
+    /**
+     * @var int
+     */
+    protected $cell;
+    /**
+     * @var \PHPExcel
+     */
+    protected $objPHPExcel;
+
+    /**
+     * @var PHPExcel_Writer_IWriter
+     */
+    protected $objWriter;
 
     /**
      * @throws \RuntimeException
@@ -46,7 +55,8 @@ class XlsWriter implements TypedWriterInterface
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
-        $this->position = 0;
+        $this->row = 1;
+        $this->cell = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -74,8 +84,10 @@ class XlsWriter implements TypedWriterInterface
      */
     public function open()
     {
-        $this->file = fopen($this->filename, 'w', false);
-        fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
+        $this->objPHPExcel = new \PHPExcel();
+
+        $this->objPHPExcel->setActiveSheetIndex(0);
+        $this->objWriter = \PHPExcel_IOFactory::createWriter($this->objPHPExcel, 'Excel5');
     }
 
     /**
@@ -83,8 +95,7 @@ class XlsWriter implements TypedWriterInterface
      */
     public function close()
     {
-        fwrite($this->file, '</table></body></html>');
-        fclose($this->file);
+        $this->objWriter->save('php://output');
     }
 
     /**
@@ -94,13 +105,24 @@ class XlsWriter implements TypedWriterInterface
     {
         $this->init($data);
 
-        fwrite($this->file, '<tr>');
         foreach ($data as $value) {
-            fwrite($this->file, sprintf('<td>%s</td>', $value));
+            $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell).$this->row, $value);
+            ++$this->cell;
         }
-        fwrite($this->file, '</tr>');
+        $this->cell = 0;
+        ++$this->row;
+    }
 
-        ++$this->position;
+    public function getNameFromNumber($num)
+    {
+        $numeric = $num % 26;
+        $letter = chr(65 + $numeric);
+        $num2 = intval($num / 26);
+        if ($num2 > 0) {
+            return $this->getNameFromNumber($num2 - 1).$letter;
+        }
+
+        return $letter;
     }
 
     /**
@@ -108,17 +130,16 @@ class XlsWriter implements TypedWriterInterface
      */
     protected function init($data)
     {
-        if ($this->position > 0) {
-            return;
-        }
-
         if ($this->showHeaders) {
-            fwrite($this->file, '<tr>');
             foreach ($data as $header => $value) {
-                fwrite($this->file, sprintf('<th>%s</th>', $header));
+                $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell).'1', $header);
+                $this->objPHPExcel->getActiveSheet()->getStyle($this->getNameFromNumber($this->cell).'1')->getFont()->setBold(true);
+                $this->objPHPExcel->getActiveSheet()->getColumnDimension($this->getNameFromNumber($this->cell))->setAutoSize(true);
+                ++$this->cell;
             }
-            fwrite($this->file, '</tr>');
-            ++$this->position;
+            $this->showHeaders = false;
+            ++$this->row;
         }
+        $this->cell = 0;
     }
 }
