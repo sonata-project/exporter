@@ -13,12 +13,12 @@
         }
     ],
     "require": {
-        "php": "^5.3 || ^7.0"
+        "php": "^7.1"
     },
     "require-dev": {
         "doctrine/dbal": "^2.2",
-        "matthiasnoback/symfony-config-test": "^1.2.1 || ^2.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^0.7.6 || ^1.0",
+        "matthiasnoback/symfony-config-test": "^2.0",
+        "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "propel/propel1": "^1.6",
         "sllh/php-cs-fixer-styleci-bridge": "^2.0",
         "symfony/dependency-injection": "^2.3 || ^3.0",
@@ -42,7 +42,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Exporter\\Test\\": "test/"
+            "Exporter\\Test\\": "tests/"
         }
     },
     "config": {

@@ -17,16 +17,17 @@ use Exporter\Writer\CsvWriter;
 use Exporter\Writer\JsonWriter;
 use Exporter\Writer\XlsWriter;
 use Exporter\Writer\XmlWriter;
+use PHPUnit\Framework\TestCase;
 
-class ExporterTest extends \PHPUnit_Framework_TestCase
+class ExporterTest extends TestCase
 {
     public function testFilter()
     {
         $this->setExpectedException('RuntimeException', 'Invalid "foo" format');
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $source = $this->createMock('Exporter\Source\SourceIteratorInterface');
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
 
-        $exporter = new Exporter(array($writer));
+        $exporter = new Exporter([$writer]);
         $exporter->getResponse('foo', 'foo', $source);
     }
 
@@ -36,17 +37,17 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
             version_compare(PHP_VERSION, '7.0.0', '<') ? 'PHPUnit_Framework_Error' : 'TypeError',
             'must implement interface'
         );
-        new Exporter(array('Not even an object'));
+        new Exporter(['Not even an object']);
     }
 
     public function testGetAvailableFormats()
     {
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->once())
             ->method('getFormat')
             ->willReturn('whatever');
-        $exporter = new Exporter(array($writer));
-        $this->assertSame(array('whatever'), $exporter->getAvailableFormats());
+        $exporter = new Exporter([$writer]);
+        $this->assertSame(['whatever'], $exporter->getAvailableFormats());
     }
 
     /**
@@ -54,10 +55,10 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetResponse($format, $filename, $contentType)
     {
-        $source = new ArraySourceIterator(array(
-            array('foo' => 'bar'),
-        ));
-        $writer = $this->getMock('Exporter\Writer\TypedWriterInterface');
+        $source = new ArraySourceIterator([
+            ['foo' => 'bar'],
+        ]);
+        $writer = $this->createMock('Exporter\Writer\TypedWriterInterface');
         $writer->expects($this->any())
             ->method('getFormat')
             ->willReturn('made-up');
@@ -65,13 +66,13 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
             ->method('getDefaultMimeType')
             ->willReturn('application/made-up');
 
-        $exporter = new Exporter(array(
+        $exporter = new Exporter([
             new CsvWriter('php://output', ',', '"', '', true, true),
             new JsonWriter('php://output'),
             new XlsWriter('php://output'),
             new XmlWriter('php://output'),
             $writer,
-        ));
+        ]);
         $response = $exporter->getResponse($format, $filename, $source);
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
@@ -81,12 +82,12 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
 
     public function getGetResponseTests()
     {
-        return array(
-            array('json', 'foo.json', 'application/json'),
-            array('xml', 'foo.xml', 'text/xml'),
-            array('xls', 'foo.xls', 'application/vnd.ms-excel'),
-            array('csv', 'foo.csv', 'text/csv'),
-            array('made-up', 'foo.made-up', 'application/made-up'),
-        );
+        return [
+            ['json', 'foo.json', 'application/json'],
+            ['xml', 'foo.xml', 'text/xml'],
+            ['xls', 'foo.xls', 'application/vnd.ms-excel'],
+            ['csv', 'foo.csv', 'text/csv'],
+            ['made-up', 'foo.made-up', 'application/made-up'],
+        ];
     }
 }

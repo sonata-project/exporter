@@ -43,7 +43,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer = new CsvWriter($this->filename, ',', '', '\\', false);
         $writer->open();
 
-        $writer->write(array('john "2', 'doe', '1'));
+        $writer->write(['john "2', 'doe', '1']);
     }
 
     public function testEnclosureFormating()
@@ -51,7 +51,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer = new CsvWriter($this->filename, ',', '"', '\\', false);
         $writer->open();
 
-        $writer->write(array(' john , ""2"', 'doe', '1'));
+        $writer->write([' john , ""2"', 'doe', '1']);
 
         $writer->close();
 
@@ -65,7 +65,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer = new CsvWriter($this->filename, ',', '"', '', false);
         $writer->open();
 
-        $writer->write(array('john , ""2"', 'doe ', '1'));
+        $writer->write(['john , ""2"', 'doe ', '1']);
 
         $writer->close();
 
@@ -79,7 +79,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer = new CsvWriter($this->filename, ',', '"', '', true);
         $writer->open();
 
-        $writer->write(array('name' => 'john , ""2"', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'john , ""2"', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 
@@ -93,7 +93,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer = new CsvWriter($this->filename, ',', '"', '', true, true);
         $writer->open();
 
-        $writer->write(array('name' => 'Rémi , ""2"', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'Rémi , ""2"', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 

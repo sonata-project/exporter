@@ -12,8 +12,9 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\XmlExcelWriter;
+use PHPUnit\Framework\TestCase;
 
-class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
+class XmlExcelWriterTest extends TestCase
 {
     protected $filename;
 
@@ -36,7 +37,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new XmlExcelWriter($this->filename, false);
         $writer->open();
 
-        $writer->write(array(' john', 'doe &', 'é'));
+        $writer->write([' john', 'doe &', 'é']);
 
         $writer->close();
 
@@ -50,7 +51,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new XmlExcelWriter($this->filename, true);
         $writer->open();
 
-        $writer->write(array('name' => 'john', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'john', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 
@@ -66,7 +67,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new XmlExcelWriter($this->filename, false, 'Number');
         $writer->open();
 
-        $writer->write(array('name' => 'john', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'john', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 
@@ -81,7 +82,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $writer = new XmlExcelWriter($this->filename, true, 'Number');
         $writer->open();
 
-        $writer->write(array('name' => 'john', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'john', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 
@@ -94,10 +95,10 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
     public function testSpecificTypes()
     {
         // define type for specific cell
-        $writer = new XmlExcelWriter($this->filename, false, array('year' => 'String', 'surname' => 'Number'));
+        $writer = new XmlExcelWriter($this->filename, false, ['year' => 'String', 'surname' => 'Number']);
         $writer->open();
 
-        $writer->write(array('name' => 'john', 'surname' => 'doe ', 'year' => '2001'));
+        $writer->write(['name' => 'john', 'surname' => 'doe ', 'year' => '2001']);
 
         $writer->close();
 

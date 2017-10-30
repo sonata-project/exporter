@@ -12,17 +12,18 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\ArraySourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class ArraySourceIteratorTest extends \PHPUnit_Framework_TestCase
+class ArraySourceIteratorTest extends TestCase
 {
     public function testHandler()
     {
-        $data = array(
-            array('john 1', 'doe', '1'),
-            array('john 2', 'doe', '1'),
-            array('john 3', 'doe', '1'),
-            array('john 4', 'doe', '1'),
-        );
+        $data = [
+            ['john 1', 'doe', '1'],
+            ['john 2', 'doe', '1'],
+            ['john 3', 'doe', '1'],
+            ['john 4', 'doe', '1'],
+        ];
 
         $iterator = new ArraySourceIterator($data);
 

@@ -113,9 +113,9 @@ Some rules have to be respected about the test:
   * `@codeCoverageIgnore`
   * `@codeCoverageIgnoreStart`
   * `@codeCoverageIgnoreEnd`
-* All test methods should be prefixed by `test`. Example: `public function testItReturnsNull()`.
-* All test method names must be in camel case format.
+* All test methods must be prefixed by `test`. Example: `public function testItReturnsNull()`.
 * As opposed, the `@test` annotation is prohibited.
+* All test method names must be in camel case format.
 * Most of the time, the test class should have the same name as the targeted class, suffixed by `Test`.
 * The `@expectedException*` annotations are prohibited. Use `PHPUnit_Framework_TestCase::setExpectedException()`.
 
@@ -191,7 +191,6 @@ Here is a short table resuming on which you have to start:
 Kind of modification | Backward Compatible (BC) | Type of release | Branch to target        | Label |
 -------------------- | ------------------------ | --------------- | ----------------------- | ----- |
 Bug fixes            | Yes                      | Patch           | `1.x`   | |
-Bug fixes            | Not on legacy            | Patch           | `1.x`   | |
 Bug fixes            | No (Only if no choice)   | Major           | `master` | |
 Feature              | Yes                      | Minor           | `1.x`   | |
 Feature              | No (Only if no choice)   | Major           | `master` | |
@@ -199,12 +198,8 @@ Deprecation          | Yes (Have to)            | Minor           | `1.x`   | |
 Deprecation removal  | No (Can't be)            | Major           | `master` | |
 
 Notes:
-  * Branch `1.x` is the branch of the **latest stable** patch releases and
-  has to be used for Backward Compatible bug fixes only.
   * Branch `1.x` is the branch of the **latest stable** minor release and
-  has to be used for Backward compatible enhancement PRs.
-  **No bug fix will be accepted here**, except if the bug fix concerns `1.x` and **only this one**.
-  Bug fixes merged on `1.x` will be ported on other branches by fallback merging.
+  has to be used for Backward compatible PRs.
   * If you PR is not **Backward Compatible** but can be, it **must** be:
     * Changing a function/method signature? Prefer create a new one and deprecate the old one.
     * Code deletion? Don't. Please deprecate it instead.
@@ -237,8 +232,62 @@ interface BarInterface
 }
 ```
 
-In some cases, you will have the possibility to warn the user that things will change,
-and recommend a new way of doing things. You can do so by triggering the dedicated kind of error, like this:
+##### Deprecation
+
+In some cases, you might have some code parts that might become superseded by others, but could still be used by the end user.
+If the concerned code is not tagged as `internal`, it must be deprecated on the stable branch, then removed.
+
+If an alternate usage solution is possible, you **MUST** provide it in the deprecation message.
+
+The deprecated minor version **MUST NOT** be provided. Use `x` instead. It will be updated when releasing.
+
+Any deprecation **MUST** be documented in the corresponding `UPGRADE-[0-9].x.md`.
+The documentation **MUST** be filled inside the top **unreleased** section with a sub title.
+
+The `NEXT_MAJOR` tag should not be used for deprecation.
+The `@deprecated` and `E_USER_DEPRECATED` key will be searched for before releasing the next major version.
+
+You have three ways to deprecate things.
+
+For class definitions, methods (or first level functions) and properties, use the `@deprecated` tag: 
+
+```php
+/**
+ * @deprecated since 42.x, to be removed in 43.0. Use Shiny\New\ClassOfTheMonth instead.
+ */
+final class IAmOldAndUseless
+{
+}
+
+final class StillUsedClass
+{
+    /**
+     * @deprecated since 42.x, to be removed in 43.0.
+     */
+    public $butNotThisProperty;
+
+    /**
+     * @deprecated since 42.x, to be removed in 43.0.
+     */
+    public function iAmBatman()
+    {
+        echo "But this is not Gotham here.";
+    }
+}
+```
+
+If the deprecated thing is a service, you **MUST** specify it on the service definition:
+
+```xml
+<service id="sonata.block.old" class="Sonata\Block\Old">
+    <argument type="service" id="security.token_storage" />
+    <deprecated>The "%service_id%" service is deprecated since 42.x and will be removed in 43.0.</deprecated>
+ </service>
+ ```
+
+More info: http://symfony.com/blog/new-in-symfony-2-8-deprecated-service-definitions
+
+For everything else, not managed by the `@deprecated` tag, you **MUST** trigger a deprecation message.
 
 ```php
 <?php
@@ -253,28 +302,39 @@ if (/* some condition showing the user is using the legacy way */) {
 }
 ```
 
-Additionally, and when applicable, you must use the `@deprecated` tag on classes or methods you wish to deprecate,
-along with a message directed at the end user (as opposed to other contributors).
+Note that the `trigger_error` usage is not necessary if the `@deprecated` tag is used.
 
-
-```php
-/**
- * NEXT_MAJOR: remove this method
- *
- * @deprecated since 3.x, to be removed in 4.0. Use Foo::bar instead.
- */
-public function baz()
-{
-}
-```
-
-In that case, unit tests might show your deprecation notice. You must mark such tests with the `@group legacy` annotation,
-and if need be, isolate them in a new test method that can simply be removed in the non-BC PR.
+In the case of a deprecation, unit tests might show your deprecation notice.
+You **MUST** mark such tests with the `@group legacy` annotation and if need be,
+isolate them in a new test method that can simply be removed in the non-BC PR.
 
 Be aware that pull requests with BC breaks could be rejected
-or postponed to next major release if BC is not possible.
+or postponed to next major release **only** if BC is not possible.
 
 If you are not sure what should be done, don't hesitate to open an issue about your PR project.
+
+##### Dependency changes
+
+If you want to change some dependencies, here are the rules:
+
+- Don't add support for a version lower than the current one.
+- Don't change the highest supported version to a lower one.
+- Lower version dropping is accepted as a Backward Compatible change according to [semver][semver_dependencies_update],
+but some extra rules must be respected here:
+  - PHP versions that are under the [orange zone][php_supported_versions] (Security Support) **MUST NOT** be dropped on the stable branch.
+  - PHP versions that are under the [green zone][php_supported_versions] (Active Support) **MUST NOT** be dropped on the master branch.
+  - If it's a Symfony package, at least the last LTS version **MUST** be supported, even on master.
+  - Generally, don't drop dependency version it it doesn't have a big impact on the code.
+  - Backward Compatible code related to the dropped version **MUST** be dropped on the same PR.
+    This will allow to see if this version drop **is really worth it** or not.
+    Please note that we can refuse a version drop at any moment if the gain does not seem sufficient.
+
+##### Legacy branches
+
+Legacy branches are **NOT** supported at all. Any submitted Pull Request will be immediately closed.
+
+Core team members *may* cherry-pick some fixes from the stable branch to the legacy one if it's really needed
+and if the legacy one is not too old (~less than one month).
 
 #### The commit message
 
@@ -416,10 +476,21 @@ and atomic.
 
 Do not merge something you wrote yourself. Do not merge a PR you reviewed alone,
 instead, merge PRs that have already be reviewed and approved by another reviewer.
-If there is only one commit in the PR, prefer the squash feature, otherwise, always
-use a regular merge.
+If the commit history is unclear or irrelevant, prefer the "Squash and merge" feature, otherwise, always
+use the "Rebase and merge" feature.
 And finally, use your common sense : if you see a PR about a typo,
 or if there is a situation (faulty commit, revert needed) maybe you can merge it directly.
+
+#### Dependencies version dropping
+
+Do not merge any merge request dropping a dependency version support.
+To achieve that, mark them as `RTM`, and mention then on Slack when asking for a release.
+
+This rule should be applied for these reasons:
+
+- Even if it's semver compatible, we don't maintain minor branches.
+So it's preferable to give priority to bugfixes over version-dropping PRs.
+- Some dependencies need a dev-kit update. By the way, you can make a PR on dev-kit and link it to your own.
 
 ### Be nice to the contributor
 
@@ -430,3 +501,5 @@ code yourself, or ping someone who can help.
 [sphinx_install]: http://www.sphinx-doc.org/en/stable/
 [pip_install]: https://pip.pypa.io/en/stable/installing/
 [sf_docs_standards]: https://symfony.com/doc/current/contributing/documentation/standards.html
+[semver_dependencies_update]: http://semver.org/#what-should-i-do-if-i-update-my-own-dependencies-without-changing-the-public-api
+[php_supported_versions]: http://php.net/supported-versions.php

@@ -12,9 +12,10 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\SitemapWriter;
+use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 
-class SitemapWriterTest extends \PHPUnit_Framework_TestCase
+class SitemapWriterTest extends TestCase
 {
     /**
      * @var string
@@ -54,11 +55,11 @@ class SitemapWriterTest extends \PHPUnit_Framework_TestCase
     {
         $writer = new SitemapWriter($this->folder);
         $writer->open();
-        $writer->write(array(
+        $writer->write([
             'url' => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change' => 'daily',
-        ));
+        ]);
         $writer->close();
 
         $generatedFiles = $this->getFiles();
@@ -80,26 +81,26 @@ XML;
 
     public function testSimpleWriteAdvanced()
     {
-        $writer = new SitemapWriter($this->folder, 'test', array('image'), false);
+        $writer = new SitemapWriter($this->folder, 'test', ['image'], false);
         $writer->open();
-        $writer->write(array(
+        $writer->write([
             'url' => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change' => 'daily',
             'type' => 'default',
-        ));
-        $writer->write(array(
+        ]);
+        $writer->write([
             'url' => 'https://sonata-project.org/bundle/',
             'lastmod' => '2012-12-26',
             'change' => 'weekly',
             'type' => 'image',
-            'images' => array(
-                array(
+            'images' => [
+                [
                     'url' => 'https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg',
                     'caption' => 'sonata img',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
         $writer->close();
 
         $generatedFiles = $this->getFiles();
@@ -133,11 +134,11 @@ XML;
         $writer->open();
 
         foreach (range(0, SitemapWriter::LIMIT_SIZE / 8196) as $i) {
-            $writer->write(array(
+            $writer->write([
                 'url' => str_repeat('x', 8196),
                 'lastmod' => 'now',
                 'change' => 'daily',
-            ));
+            ]);
         }
         $writer->close();
 
@@ -160,11 +161,11 @@ XML;
         $writer->open();
 
         foreach (range(1, SitemapWriter::LIMIT_URL + 1) as $i) {
-            $writer->write(array(
+            $writer->write([
                 'url' => str_repeat('x', 40),
                 'lastmod' => 'now',
                 'change' => 'daily',
-            ));
+            ]);
         }
         $writer->close();
 
