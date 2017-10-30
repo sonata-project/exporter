@@ -42,7 +42,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = '<Row><Cell><Data ss:Type="String"> john</Data></Cell><Cell><Data ss:Type="String">doe &amp;</Data></Cell><Cell><Data ss:Type="String">é</Data></Cell></Row>';
 
-        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+        $this->assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
     }
 
     public function testWithHeaders()
@@ -57,7 +57,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $expected = '<Row><Cell><Data ss:Type="String">name</Data></Cell><Cell><Data ss:Type="String">surname</Data></Cell><Cell><Data ss:Type="String">year</Data></Cell></Row>';
         $expected .= '<Row><Cell><Data ss:Type="String">john</Data></Cell><Cell><Data ss:Type="String">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row';
 
-        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+        $this->assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
     }
 
     public function testForceTypes()
@@ -72,7 +72,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = '<Row><Cell><Data ss:Type="Number">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row>';
 
-        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+        $this->assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
     }
 
     public function testForceTypesWithHeaders()
@@ -88,7 +88,7 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
         $expected = '<Row><Cell><Data ss:Type="String">name</Data></Cell><Cell><Data ss:Type="String">surname</Data></Cell><Cell><Data ss:Type="String">year</Data></Cell></Row>';
         $expected .= '<Row><Cell><Data ss:Type="Number">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row>';
 
-        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+        $this->assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
     }
 
     public function testSpecificTypes()
@@ -103,6 +103,6 @@ class XmlExcelWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = '<Row><Cell><Data ss:Type="String">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="String">2001</Data></Cell></Row>';
 
-        $this->assertTrue(strstr(file_get_contents($this->filename), $expected) !== false);
+        $this->assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
     }
 }
