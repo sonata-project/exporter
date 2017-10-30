@@ -12,13 +12,14 @@
 namespace Exporter\Test;
 
 use Exporter\Handler;
+use PHPUnit\Framework\TestCase;
 
-class HandlerTest extends \PHPUnit_Framework_TestCase
+class HandlerTest extends TestCase
 {
     public function testHandler()
     {
-        $source = $this->getMock('Exporter\Source\SourceIteratorInterface');
-        $writer = $this->getMock('Exporter\Writer\WriterInterface');
+        $source = $this->createMock('Exporter\Source\SourceIteratorInterface');
+        $writer = $this->createMock('Exporter\Writer\WriterInterface');
         $writer->expects($this->once())->method('open');
         $writer->expects($this->once())->method('close');
 

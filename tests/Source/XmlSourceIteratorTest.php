@@ -12,8 +12,9 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\XmlSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class XmlSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class XmlSourceIteratorTest extends TestCase
 {
     protected $filename;
     protected $filenameCustomTagNames;

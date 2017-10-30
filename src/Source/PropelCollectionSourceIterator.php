@@ -13,6 +13,7 @@ namespace Exporter\Source;
 
 use PropelCollection;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
@@ -38,7 +39,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     protected $propertyPaths;
 
     /**
-     * @var PropertyAccess
+     * @var PropertyAccessor
      */
     protected $propertyAccessor;
 
@@ -58,7 +59,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
 
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        $this->propertyPaths = array();
+        $this->propertyPaths = [];
         foreach ($fields as $name => $field) {
             if (is_string($name) && is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
@@ -76,7 +77,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     {
         $current = $this->iterator->current();
 
-        $data = array();
+        $data = [];
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
             $data[$name] = $this->getValue($this->propertyAccessor->getValue($current, $propertyPath));

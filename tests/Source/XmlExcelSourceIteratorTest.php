@@ -12,11 +12,12 @@
 namespace Exporter\Test\Source;
 
 use Exporter\Source\XmlExcelSourceIterator;
+use PHPUnit\Framework\TestCase;
 
-class XmlExcelSourceIteratorTest extends \PHPUnit_Framework_TestCase
+class XmlExcelSourceIteratorTest extends TestCase
 {
     protected $filename;
-    protected $headers = array('sku', 'ean', 'name');
+    protected $headers = ['sku', 'ean', 'name'];
 
     public function setUp()
     {

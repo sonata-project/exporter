@@ -6,6 +6,7 @@ if [ "${TRAVIS_PHP_VERSION}" != "hhvm" ]; then
     TRAVIS_INI_FILE="$PHP_INI_DIR/travis.ini"
     echo "memory_limit=3072M" >> "$TRAVIS_INI_FILE"
 
+    
         if [ "$TRAVIS_PHP_VERSION" '<' '7.0' ]; then
         echo "extension=mongo.so" >> "$TRAVIS_INI_FILE"
     else

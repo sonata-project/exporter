@@ -127,8 +127,6 @@ class XlsWriter implements TypedWriterInterface
 
     /**
      * @param $data
-     *
-     * @return array mixed
      */
     protected function init($data)
     {

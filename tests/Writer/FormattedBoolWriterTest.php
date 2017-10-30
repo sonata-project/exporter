@@ -12,13 +12,14 @@
 namespace Exporter\Test\Writer;
 
 use Exporter\Writer\FormattedBoolWriter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Format boolean before use another writer.
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
+class FormattedBoolWriterTest extends TestCase
 {
     /**
      * @var string
@@ -38,10 +39,10 @@ class FormattedBoolWriterTest extends \PHPUnit_Framework_TestCase
 
     public function testValidDataFormat()
     {
-        $data = array('john', 'doe', false, true);
-        $expected = array('john', 'doe', 'no', 'yes');
+        $data = ['john', 'doe', false, true];
+        $expected = ['john', 'doe', 'no', 'yes'];
         $mock = $this->getMockBuilder('Exporter\Writer\XlsWriter')
-                       ->setConstructorArgs(array('formatedbool.xls', false))
+                       ->setConstructorArgs(['formatedbool.xls', false])
                        ->getMock();
         $mock->expects($this->any())
                ->method('write')

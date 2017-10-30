@@ -42,7 +42,7 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
      * @param string                  $routeName
      * @param array                   $parameters
      */
-    public function __construct(SourceIteratorInterface $source, RouterInterface $router, $routeName, array $parameters = array())
+    public function __construct(SourceIteratorInterface $source, RouterInterface $router, $routeName, array $parameters = [])
     {
         $this->source = $source;
         $this->router = $router;
