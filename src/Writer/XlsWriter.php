@@ -44,6 +44,7 @@ class XlsWriter implements TypedWriterInterface
      * @var PHPExcel_Writer_IWriter
      */
     protected $objWriter;
+
     /**
      * @throws \RuntimeException
      *
@@ -105,8 +106,8 @@ class XlsWriter implements TypedWriterInterface
         $this->init($data);
 
         foreach ($data as $value) {
-            $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell) . $this->row, $value);
-            $this->cell++;
+            $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell).$this->row, $value);
+            ++$this->cell;
         }
         $this->cell = 0;
         ++$this->row;
@@ -121,8 +122,8 @@ class XlsWriter implements TypedWriterInterface
     {
         if ($this->showHeaders) {
             foreach ($data as $header => $value) {
-                $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell) . '1', $header);
-                $this->objPHPExcel->getActiveSheet()->getStyle($this->getNameFromNumber($this->cell) . '1')->getFont()->setBold(true);
+                $this->objPHPExcel->getActiveSheet()->setCellValue($this->getNameFromNumber($this->cell).'1', $header);
+                $this->objPHPExcel->getActiveSheet()->getStyle($this->getNameFromNumber($this->cell).'1')->getFont()->setBold(true);
                 $this->objPHPExcel->getActiveSheet()->getColumnDimension($this->getNameFromNumber($this->cell))->setAutoSize(true);
                 ++$this->cell;
             }
