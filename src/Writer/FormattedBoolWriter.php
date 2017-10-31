@@ -68,7 +68,7 @@ class FormattedBoolWriter implements WriterInterface
     {
         foreach ($data as $key => $value) {
             if (is_bool($data[$key])) {
-                $data[$key] = $data[$key] === true ? $this->trueLabel : $this->falseLabel;
+                $data[$key] = true === $data[$key] ? $this->trueLabel : $this->falseLabel;
             }
         }
         $this->writer->write($data);
