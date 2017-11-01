@@ -21,7 +21,7 @@
         "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "propel/propel1": "^1.6",
         "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-        "symfony/dependency-injection": "^2.3 || ^3.0",
+        "symfony/dependency-injection": "^2.8 || ^3.2",
         "symfony/http-foundation": "^2.3 || ^3.0",
         "symfony/http-kernel": "^2.3 || ^3.0",
         "symfony/phpunit-bridge": "^2.7 || ^3.0",
