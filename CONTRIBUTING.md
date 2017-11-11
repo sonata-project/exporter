@@ -74,7 +74,7 @@ php-cs-fixer fix --verbose
 
 #### The documentation
 
-The documentation is mostly written with the `rst` format, and can be found in the `Resources/doc` directory.
+The documentation is mostly written with the `rst` format, and can be found in the `docs` directory.
 You can test the doc rendering with the `make docs` command, but to do this, you will need [Sphinx][sphinx_install].
 Just like php dependencies can be managed with Composer, python dependencies can be managed with [pip][pip_install].
 To get sphinx, simply run the following command.
