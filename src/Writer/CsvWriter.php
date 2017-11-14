@@ -121,7 +121,7 @@ class CsvWriter implements TypedWriterInterface
      */
     public function write(array $data)
     {
-        if ($this->position == 0 && $this->showHeaders) {
+        if (0 == $this->position && $this->showHeaders) {
             $this->addHeaders($data);
 
             ++$this->position;
