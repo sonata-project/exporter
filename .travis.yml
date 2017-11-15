@@ -50,20 +50,18 @@ matrix:
     - php: '7.1'
       env: SYMFONY=3.3.*
     - php: '7.1'
-      env: SYMFONY=dev-master@dev
+      env: SYMFONY='dev-master as 3.3'
     - php: '7.1'
       env: DOCTRINE_ODM=1.*
     - php: '7.1'
-      env: DOCTRINE_ODM=dev-master@dev
+      env: DOCTRINE_ODM='dev-master as 1'
     - php: '7.1'
       env: SYMFONY_DEPRECATIONS_HELPER=0
-    - php: hhvm
   allow_failures:
     - php: nightly
-    - php: hhvm
     - env: SYMFONY_DEPRECATIONS_HELPER=0
-    - env: SYMFONY=dev-master@dev
-    - env: DOCTRINE_ODM=dev-master@dev
+    - env: SYMFONY='dev-master as 3.3'
+    - env: DOCTRINE_ODM='dev-master as 1'
 
 before_install:
   - git remote add upstream ${UPSTREAM_URL} && git fetch --all
