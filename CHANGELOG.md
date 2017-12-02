@@ -6,6 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Removed
 - Symfony 2.3 to 2.7 support dropped
 
+## [1.8.0](https://github.com/sonata-project/exporter/compare/1.7.1...1.8.0) - 2017-11-30
+### Fixed
+- Allow `\DateTimeImmutable` values
+- It is now allowed to install Symfony 4
+
+### Removed
+- Support for old versions of PHP and Symfony.
+
 ## [1.7.1](https://github.com/sonata-project/exporter/compare/1.7.0...1.7.1) - 2017-02-09
 ### Fixed
 - \Exporter\Exporter::addWriter is now public as needed by the related bundle
