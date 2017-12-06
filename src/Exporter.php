@@ -38,11 +38,11 @@ final class Exporter
     }
 
     /**
-     * @throws \RuntimeException
-     *
      * @param string                  $format
      * @param string                  $filename
      * @param SourceIteratorInterface $source
+     *
+     * @throws \RuntimeException
      *
      * @return StreamedResponse
      */
