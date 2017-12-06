@@ -35,11 +35,10 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    /**
-     * @expectedException \Exporter\Exception\InvalidDataFormatException
-     */
     public function testInvalidDataFormat()
     {
+        $this->expectException(\Exporter\Exception\InvalidDataFormatException::class);
+
         $writer = new CsvWriter($this->filename, ',', '', '\\', false);
         $writer->open();
 

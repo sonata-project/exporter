@@ -14,7 +14,7 @@ namespace Exporter\Test;
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  */
-abstract class AbstractTypedWriterTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractTypedWriterTestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var WriterInterface

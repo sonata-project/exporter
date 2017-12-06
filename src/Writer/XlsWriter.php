@@ -37,10 +37,10 @@ class XlsWriter implements TypedWriterInterface
     protected $position;
 
     /**
-     * @throws \RuntimeException
-     *
      * @param      $filename
      * @param bool $showHeaders
+     *
+     * @throws \RuntimeException
      */
     public function __construct($filename, $showHeaders = true)
     {
