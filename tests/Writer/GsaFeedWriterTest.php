@@ -72,11 +72,10 @@ class GsaFeedWriterTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testNonExistentFolder(): void
     {
+        $this->expectException(\RuntimeException::class);
+
         $writer = new GsaFeedWriter(new \SplFileInfo('foo'), $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
     }

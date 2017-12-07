@@ -23,7 +23,8 @@ class ExporterTest extends TestCase
 {
     public function testFilter(): void
     {
-        $this->setExpectedException('RuntimeException', 'Invalid "foo" format');
+        $this->expectException('RuntimeException');
+        $this->expectExceptionMessage('Invalid "foo" format');
         $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
         $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
 
@@ -33,7 +34,12 @@ class ExporterTest extends TestCase
 
     public function testConstructorRejectsNonTypedWriters(): void
     {
-        $this->setExpectedException('TypeError', 'must implement interface');
+        $this->expectException(
+            version_compare(PHP_VERSION, '7.0.0', '<') ? 'PHPUnit_Framework_Error' : 'TypeError'
+        );
+        $this->expectExceptionMessage(
+            'must implement interface'
+        );
         new Exporter(['Not even an object']);
     }
 

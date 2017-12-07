@@ -130,7 +130,7 @@ class XmlExcelWriter implements WriterInterface
     private function getDataType(string $key, string $value): string
     {
         $dataType = null;
-        if (!is_null($this->columnsType)) {
+        if (null !== $this->columnsType) {
             if (is_string($this->columnsType)) {
                 $dataType = $this->columnsType;
             } elseif (is_array($this->columnsType)) {
@@ -139,7 +139,7 @@ class XmlExcelWriter implements WriterInterface
                 }
             }
         }
-        if (is_null($dataType)) {
+        if (null === $dataType) {
             // guess the type
             if (is_numeric($value)) {
                 $dataType = 'Number';

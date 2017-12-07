@@ -14,6 +14,7 @@ namespace Sonata\Exporter\Test\Writer;
 use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\TypedWriterInterface;
+use Sonata\Exporter\Exception\InvalidDataFormatException;
 
 class CsvWriterTest extends AbstractTypedWriterTestCase
 {
@@ -36,11 +37,10 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    /**
-     * @expectedException \Sonata\Exporter\Exception\InvalidDataFormatException
-     */
     public function testInvalidDataFormat(): void
     {
+        $this->expectException(InvalidDataFormatException::class);
+
         $writer = new CsvWriter($this->filename, ',', '', '\\', false);
         $writer->open();
 

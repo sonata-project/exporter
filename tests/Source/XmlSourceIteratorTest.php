@@ -43,7 +43,7 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertTrue(is_array($value));
+            $this->assertInternalType('array', $value);
             $this->assertEquals(3, count($value));
             $keys = array_keys($value);
             $this->assertEquals($i, $iterator->key());
@@ -61,7 +61,7 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertTrue(is_array($value));
+            $this->assertInternalType('array', $value);
             $this->assertEquals(3, count($value));
             ++$i;
         }
@@ -69,7 +69,7 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertTrue(is_array($value));
+            $this->assertInternalType('array', $value);
             $this->assertEquals(3, count($value));
             ++$i;
         }
@@ -82,7 +82,7 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertTrue(is_array($value));
+            $this->assertInternalType('array', $value);
             $this->assertEquals(3, count($value));
             $keys = array_keys($value);
             $this->assertEquals($i, $iterator->key());
