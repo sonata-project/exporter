@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -106,7 +108,7 @@ class XlsWriter implements TypedWriterInterface
     /**
      * @param $data
      */
-    protected function init($data)
+    protected function init($data): void
     {
         if ($this->position > 0) {
             return;

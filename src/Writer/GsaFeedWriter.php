@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -18,7 +20,7 @@ namespace Sonata\Exporter\Writer;
  */
 class GsaFeedWriter implements WriterInterface
 {
-    const LIMIT_SIZE = 31457280; // 30MB
+    public const LIMIT_SIZE = 31457280; // 30MB
 
     /**
      * @var \SplFileInfo
