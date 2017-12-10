@@ -114,7 +114,7 @@ class XmlExcelWriter implements WriterInterface
             $value = str_replace(["\r\n", "\r", "\n"], '&#10;', $value);
             $dataType = 'String';
             if (0 != $this->position || !$this->showHeaders) {
-                $dataType = $this->getDataType($key, $value);
+                $dataType = $this->getDataType((string) $key, $value);
             }
             $xmlData[] = '<Cell><Data ss:Type="'.$dataType.'">'.$value.'</Data></Cell>';
         }

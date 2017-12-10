@@ -124,7 +124,7 @@ class GsaFeedWriter implements WriterInterface
         $this->bufferSize = 0;
         ++$this->bufferPart;
 
-        if (!is_writable($this->folder)) {
+        if (!$this->folder->isWritable()) {
             throw new \RuntimeException(sprintf('Unable to write to folder: %s', $this->folder));
         }
 
