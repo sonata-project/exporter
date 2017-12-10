@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -16,8 +18,8 @@ namespace Sonata\Exporter\Writer;
  */
 class SitemapWriter implements WriterInterface
 {
-    const LIMIT_SIZE = 10485760;
-    const LIMIT_URL = 50000;
+    public const LIMIT_SIZE = 10485760;
+    public const LIMIT_URL = 50000;
 
     /**
      * @var string
@@ -306,7 +308,7 @@ class SitemapWriter implements WriterInterface
             $images .= '<image:image>';
 
             foreach ($image as $key => $element) {
-                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $element);
+                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', ($builder[$key] ?? $key), $element);
             }
 
             $images .= '</image:image>';
@@ -330,7 +332,7 @@ class SitemapWriter implements WriterInterface
         ];
 
         foreach ($data['video'] as $key => $video) {
-            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', (isset($builder[$key]) ? $builder[$key] : $key), $video);
+            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', ($builder[$key] ?? $key), $video);
         }
 
         return sprintf('    '.'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);

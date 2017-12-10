@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -11,10 +13,10 @@
 
 namespace Sonata\Exporter\Test\Writer;
 
+use Sonata\Exporter\Exception\InvalidDataFormatException;
 use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\TypedWriterInterface;
-use Sonata\Exporter\Exception\InvalidDataFormatException;
 
 class CsvWriterTest extends AbstractTypedWriterTestCase
 {
