@@ -1,9 +1,15 @@
 {
     "name": "sonata-project/exporter",
-    "description": "Lightweight Exporter library",
-    "keywords": ["export", "csv", "xls", "data", "client"],
-    "homepage": "https://github.com/sonata-project/Exporter",
     "type": "library",
+    "description": "Lightweight Exporter library",
+    "keywords": [
+        "export",
+        "csv",
+        "xls",
+        "data",
+        "client"
+    ],
+    "homepage": "https://github.com/sonata-project/Exporter",
     "license": "MIT",
     "authors": [
         {
@@ -34,6 +40,14 @@
         "symfony/property-access": "^2.8 || ^3.2 || ^4.0",
         "symfony/routing": "^2.8 || ^3.2 || ^4.0"
     },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Sonata\\Exporter\\": "src/"
@@ -42,14 +56,6 @@
     "autoload-dev": {
         "psr-4": {
             "Sonata\\Exporter\\Test\\": "test/"
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.x-dev"
         }
     }
 }
