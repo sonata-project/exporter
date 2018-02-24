@@ -16,11 +16,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Exporter\Test\Source\Fixtures\DoctrineORMQuerySourceIterator;
 use Exporter\Test\Source\Fixtures\ObjectWithToString;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>
  */
-final class DoctrineORMQuerySourceIteratorTest extends \PHPUnit_Framework_TestCase
+final class DoctrineORMQuerySourceIteratorTest extends TestCase
 {
     /**
      * @var Query
