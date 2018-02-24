@@ -12,7 +12,7 @@
 namespace Exporter\Test\Source;
 
 use Doctrine\ORM\Configuration;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Exporter\Test\Source\Fixtures\DoctrineORMQuerySourceIterator;
 use Exporter\Test\Source\Fixtures\ObjectWithToString;
@@ -30,8 +30,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
 
     protected function setUp()
     {
-        /** @var EntityManagerInterface|\PHPUnit_Framework_MockObject_MockObject $entityManager */
-        $entityManager = $this->createMock('Doctrine\ORM\EntityManagerInterface');
+        $entityManager = $this->createMock(EntityManager::class);
         $entityManager->method('getConfiguration')->willReturn(new Configuration());
         $this->query = new Query($entityManager);
     }
