@@ -35,11 +35,10 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testArrayDataFormat()
     {
+        $this->expectException(\RuntimeException::class);
+
         $writer = new XmlWriter($this->filename);
         $writer->open();
 

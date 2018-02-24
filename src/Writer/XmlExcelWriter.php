@@ -79,7 +79,7 @@ class XmlExcelWriter implements WriterInterface
      */
     public function write(array $data)
     {
-        if ($this->position == 0 && $this->showHeaders) {
+        if (0 == $this->position && $this->showHeaders) {
             $header = array_keys($data);
             fwrite($this->file, $this->getXmlString($header));
             ++$this->position;
@@ -111,7 +111,7 @@ class XmlExcelWriter implements WriterInterface
 
             $value = str_replace(["\r\n", "\r", "\n"], '&#10;', $value);
             $dataType = 'String';
-            if ($this->position != 0 || !$this->showHeaders) {
+            if (0 != $this->position || !$this->showHeaders) {
                 $dataType = $this->getDataType($key, $value);
             }
             $xmlData[] = '<Cell><Data ss:Type="'.$dataType.'">'.$value.'</Data></Cell>';
@@ -130,7 +130,7 @@ class XmlExcelWriter implements WriterInterface
     private function getDataType($key, $value)
     {
         $dataType = null;
-        if (!is_null($this->columnsType)) {
+        if (null !== $this->columnsType) {
             if (is_string($this->columnsType)) {
                 $dataType = $this->columnsType;
             } elseif (is_array($this->columnsType)) {
@@ -139,7 +139,7 @@ class XmlExcelWriter implements WriterInterface
                 }
             }
         }
-        if (is_null($dataType)) {
+        if (null === $dataType) {
             // guess the type
             if (is_numeric($value)) {
                 $dataType = 'Number';

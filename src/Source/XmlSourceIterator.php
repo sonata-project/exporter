@@ -89,8 +89,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
      */
     public function tagContent($parser, $data)
     {
-        if (isset($this->bufferedRow['i_'.$this->currentRowIndex])
-            && isset($this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex])
+        if (isset($this->bufferedRow['i_'.$this->currentRowIndex], $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex])
         ) {
             $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
         }

@@ -1,9 +1,15 @@
 {
     "name": "sonata-project/exporter",
-    "description": "Lightweight Exporter library",
-    "keywords": ["export", "csv", "xls", "data", "client"],
-    "homepage": "https://github.com/sonata-project/Exporter",
     "type": "library",
+    "description": "Lightweight Exporter library",
+    "keywords": [
+        "export",
+        "csv",
+        "xls",
+        "data",
+        "client"
+    ],
+    "homepage": "https://github.com/sonata-project/Exporter",
     "license": "MIT",
     "authors": [
         {
@@ -13,27 +19,35 @@
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^5.6 || ^7.0"
     },
     "require-dev": {
-        "doctrine/dbal": "^2.2",
-        "doctrine/orm": "^2.0",
+        "doctrine/dbal": "^2.5",
+        "doctrine/orm": "^2.4.5",
         "matthiasnoback/symfony-config-test": "^2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "propel/propel1": "^1.6",
-        "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-        "symfony/dependency-injection": "^2.8 || ^3.2",
-        "symfony/http-foundation": "^2.8 || ^3.2",
-        "symfony/http-kernel": "^2.8 || ^3.2",
-        "symfony/phpunit-bridge": "^3.3",
-        "symfony/property-access": "^2.8 || ^3.2",
-        "symfony/routing": "^2.8 || ^3.2"
+        "symfony/config": "^2.8 || ^3.2 || ^4.0",
+        "symfony/dependency-injection": "^2.8 || ^3.2 || ^4.0",
+        "symfony/http-foundation": "^2.8 || ^3.2 || ^4.0",
+        "symfony/http-kernel": "^2.8 || ^3.2 || ^4.0",
+        "symfony/phpunit-bridge": "^4.0",
+        "symfony/property-access": "^2.8 || ^3.2 || ^4.0",
+        "symfony/routing": "^2.8 || ^3.2 || ^4.0"
     },
     "suggest": {
         "ext-curl": "*",
         "propel/propel1": "^1.6",
-        "symfony/property-access": "^2.3 || ^3.0",
-        "symfony/routing": "^2.3 || ^3.0"
+        "symfony/property-access": "To be able to export from database entities",
+        "symfony/routing": "To be able to export the routes of a Symfony app"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -43,14 +57,6 @@
     "autoload-dev": {
         "psr-4": {
             "Exporter\\Test\\": "tests/"
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
         }
     }
 }

@@ -147,7 +147,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     {
         if (is_array($value) || $value instanceof \Traversable) {
             $value = null;
-        } elseif ($value instanceof \DateTime) {
+        } elseif ($value instanceof \DateTimeInterface) {
             $value = $value->format($this->dateTimeFormat);
         } elseif (is_object($value)) {
             $value = (string) $value;

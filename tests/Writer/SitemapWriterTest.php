@@ -42,11 +42,10 @@ class SitemapWriterTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testNonExistentFolder()
     {
+        $this->expectException(\RuntimeException::class);
+
         $writer = new SitemapWriter('booo');
         $writer->open();
     }
