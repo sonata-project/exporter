@@ -22,23 +22,24 @@
         "php": "^7.1"
     },
     "require-dev": {
-        "doctrine/dbal": "^2.2",
+        "doctrine/dbal": "^2.5",
         "doctrine/orm": "^2.2",
         "matthiasnoback/symfony-config-test": "^2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "propel/propel1": "^1.6",
+        "symfony/config": "^2.8 || ^3.2 || ^4.0",
         "symfony/dependency-injection": "^2.8 || ^3.2 || ^4.0",
         "symfony/http-foundation": "^2.8 || ^3.2 || ^4.0",
         "symfony/http-kernel": "^2.8 || ^3.2 || ^4.0",
-        "symfony/phpunit-bridge": "^3.3 || ^4.0",
+        "symfony/phpunit-bridge": "^4.0",
         "symfony/property-access": "^2.8 || ^3.2 || ^4.0",
         "symfony/routing": "^2.8 || ^3.2 || ^4.0"
     },
     "suggest": {
         "ext-curl": "*",
         "propel/propel1": "^1.6",
-        "symfony/property-access": "^2.8 || ^3.2 || ^4.0",
-        "symfony/routing": "^2.8 || ^3.2 || ^4.0"
+        "symfony/property-access": "To be able to export from database entities",
+        "symfony/routing": "To be able to export the routes of a Symfony app"
     },
     "config": {
         "sort-packages": true
