@@ -23,6 +23,7 @@
     },
     "require-dev": {
         "doctrine/dbal": "^2.5",
+        "doctrine/orm": "^2.4.5",
         "matthiasnoback/symfony-config-test": "^2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "propel/propel1": "^1.6",
