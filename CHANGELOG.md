@@ -46,3 +46,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.2.2](https://github.com/sonata-project/exporter/compare/1.2.1...1.2.2) - 2013-05-02
 ### Added
 - Add new argument in method \Exporter\Writer\SitemapWriter::generateSitemapIndex to handle absolute URL.
+
+### Added
+- Add custom escape/terminator strings to `CsvWriter`.
