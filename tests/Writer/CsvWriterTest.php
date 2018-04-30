@@ -65,7 +65,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $writer->open();
 
-        $writer->write(['john','doe', '\\', '/']);
+        $writer->write(['john', 'doe', '\\', '/']);
 
         $writer->close();
 
