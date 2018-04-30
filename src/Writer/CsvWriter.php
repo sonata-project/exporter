@@ -61,7 +61,7 @@ class CsvWriter implements TypedWriterInterface
     /**
      * @var string
      */
-    protected $terminate;
+    private $terminate;
 
     /**
      * @param string $filename

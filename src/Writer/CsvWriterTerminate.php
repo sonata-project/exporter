@@ -14,7 +14,7 @@ namespace Exporter\Writer;
 /**
  * Filter CSV output to replace the default terminator while supporting active streams.
  */
-class CsvWriterTerminate extends \php_user_filter
+final class CsvWriterTerminate extends \php_user_filter
 {
     /**
      * @param $in
