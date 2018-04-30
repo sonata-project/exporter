@@ -59,6 +59,21 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
+    public function testWithTerminate()
+    {
+        $writer = new CsvWriter($this->filename, ',', '"', '\\', false, false, "\r\n");
+        $writer->open();
+
+        $writer->write(['john', 'doe', '1']);
+        $writer->write(['john', 'doe', '2']);
+
+        $writer->close();
+
+        $expected = "john,doe,1\r\njohn,doe,2";
+
+        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
     public function testEnclosureFormatingWithExcel()
     {
         $writer = new CsvWriter($this->filename, ',', '"', '', false);
