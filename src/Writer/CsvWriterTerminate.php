@@ -16,7 +16,6 @@ namespace Exporter\Writer;
  */
 class CsvWriterTerminate extends \php_user_filter
 {
-
     /**
      * @param $in
      * @param $out
