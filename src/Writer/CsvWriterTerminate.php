@@ -25,7 +25,7 @@ class CsvWriterTerminate extends \php_user_filter
      *
      * @return int
      */
-    function filter($in, $out, &$consumed, $closing)
+    public function filter($in, $out, &$consumed, $closing)
     {
         while ($bucket = stream_bucket_make_writeable($in)) {
             if (isset($this->params['terminate'])) {
