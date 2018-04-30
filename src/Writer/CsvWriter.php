@@ -118,7 +118,7 @@ class CsvWriter implements TypedWriterInterface
     {
         $this->file = fopen($this->filename, 'w', false);
         if ("\n" !== $this->terminate) {
-            stream_filter_register('filterTerminate', 'CsvWriterTerminate');
+            stream_filter_register('filterTerminate', 'Exporter\Writer\CsvWriterTerminate');
             stream_filter_append($this->file, 'filterTerminate', STREAM_FILTER_WRITE, ['terminate' => $this->terminate]);
         }
         if (true === $this->withBom) {
