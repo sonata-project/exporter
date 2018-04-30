@@ -78,15 +78,13 @@ class CsvWriter implements TypedWriterInterface
         $enclosure = '"',
         $escape = '\\',
         $showHeaders = true,
-        $withBom = false,
-        $terminate = "\n"
+        $withBom = false
     ) {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
         $this->enclosure = $enclosure;
         $this->escape = $escape;
         $this->showHeaders = $showHeaders;
-        $this->terminate = $terminate;
         $this->position = 0;
         $this->withBom = $withBom;
 
@@ -117,10 +115,6 @@ class CsvWriter implements TypedWriterInterface
     public function open()
     {
         $this->file = fopen($this->filename, 'w', false);
-        if ("\n" !== $this->terminate) {
-            stream_filter_register('filterTerminate', 'CsvWriterTerminate');
-            stream_filter_append($this->file, 'filterTerminate', STREAM_FILTER_WRITE, ['terminate' => $this->terminate]);
-        }
         if (true === $this->withBom) {
             fprintf($this->file, chr(0xEF).chr(0xBB).chr(0xBF));
         }
