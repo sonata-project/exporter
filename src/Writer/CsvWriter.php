@@ -72,8 +72,15 @@ class CsvWriter implements TypedWriterInterface
      * @param bool   $withBom
      * @param string $terminate
      */
-    public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\', bool $showHeaders = true, bool $withBom = false, string $terminate = "\n")
-    {
+    public function __construct(
+        $filename,
+        $delimiter = ',',
+        $enclosure = '"',
+        $escape = '\\',
+        $showHeaders = true,
+        $withBom = false,
+        $terminate = "\n"
+    ) {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
         $this->enclosure = $enclosure;
