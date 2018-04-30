@@ -65,7 +65,6 @@ class CsvWriter implements TypedWriterInterface
      * @param string $escape
      * @param bool   $showHeaders
      * @param bool   $withBom
-     * @param string $terminate
      */
     public function __construct(
         $filename,
