@@ -145,7 +145,7 @@ class CsvWriter implements TypedWriterInterface
             ++$this->position;
         }
 
-        $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure);
+        $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
 
         if (!$result) {
             throw new InvalidDataFormatException();
@@ -164,6 +164,6 @@ class CsvWriter implements TypedWriterInterface
             $headers[] = $header;
         }
 
-        fputcsv($this->file, $headers, $this->delimiter, $this->enclosure);
+        fputcsv($this->file, $headers, $this->delimiter, $this->enclosure, $this->escape);
     }
 }
