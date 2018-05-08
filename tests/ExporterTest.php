@@ -72,7 +72,7 @@ class ExporterTest extends TestCase
             ->willReturn('application/made-up');
 
         $exporter = new Exporter([
-            new CsvWriter('php://output', ',', '"', '', true, true),
+            new CsvWriter('php://output', ',', '"', '\\', true, true),
             new JsonWriter('php://output'),
             new XlsWriter('php://output'),
             new XmlWriter('php://output'),

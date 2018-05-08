@@ -63,9 +63,24 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $this->assertEquals($expected, trim(file_get_contents($this->filename)));
     }
 
+    public function testEscapeFormating(): void
+    {
+        $writer = new CsvWriter($this->filename, ',', '"', '/', false);
+
+        $writer->open();
+
+        $writer->write(['john', 'doe', '\\', '/']);
+
+        $writer->close();
+
+        $expected = 'john,doe,\,"/"';
+
+        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+    }
+
     public function testEnclosureFormatingWithExcel(): void
     {
-        $writer = new CsvWriter($this->filename, ',', '"', '', false);
+        $writer = new CsvWriter($this->filename, ',', '"', '\\', false);
         $writer->open();
 
         $writer->write(['john , ""2"', 'doe ', '1']);
@@ -79,7 +94,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
     public function testWithHeaders(): void
     {
-        $writer = new CsvWriter($this->filename, ',', '"', '', true);
+        $writer = new CsvWriter($this->filename, ',', '"', '\\', true);
         $writer->open();
 
         $writer->write(['name' => 'john , ""2"', 'surname' => 'doe ', 'year' => '2001']);
@@ -93,7 +108,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
     public function testWithBom(): void
     {
-        $writer = new CsvWriter($this->filename, ',', '"', '', true, true);
+        $writer = new CsvWriter($this->filename, ',', '"', '\\', true, true);
         $writer->open();
 
         $writer->write(['name' => 'Rémi , ""2"', 'surname' => 'doe ', 'year' => '2001']);
