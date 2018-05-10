@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.0](https://github.com/sonata-project/exporter/compare/1.8.0...1.9.0) - 2018-05-10
+
+### Added
+- Added support for custom terminators with `CsvWriter` class
+
+### Fixed
+- CsvWriter actually uses the escape parameter.
+
 ## [1.8.0](https://github.com/sonata-project/exporter/compare/1.7.1...1.8.0) - 2017-11-30
 ### Fixed
 - Allow `\DateTimeImmutable` values
