@@ -6,6 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Removed
 - Symfony 2.3 to 2.7 support dropped
 
+## [1.9.0](https://github.com/sonata-project/exporter/compare/1.8.0...1.9.0) - 2018-05-10
+
+### Added
+- Added support for custom terminators with `CsvWriter` class
+
+### Fixed
+- CsvWriter actually uses the escape parameter.
+
 ## [1.8.0](https://github.com/sonata-project/exporter/compare/1.7.1...1.8.0) - 2017-11-30
 ### Fixed
 - Allow `\DateTimeImmutable` values
