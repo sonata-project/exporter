@@ -63,7 +63,7 @@ class SitemapWriterTest extends TestCase
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertEquals(2, count($generatedFiles));
+        $this->assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -104,14 +104,14 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertEquals(1, count($generatedFiles));
+        $this->assertCount(1, $generatedFiles);
         $this->assertEquals($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
 
         SitemapWriter::generateSitemapIndex($this->folder, 'https://sonata-project.org');
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertEquals(2, count($generatedFiles));
+        $this->assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -143,7 +143,7 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertEquals(3, count($generatedFiles));
+        $this->assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -170,7 +170,7 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertEquals(3, count($generatedFiles));
+        $this->assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         $file1 = new SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -180,7 +180,7 @@ XML;
 
         $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
         $this->assertEquals(SitemapWriter::LIMIT_URL, count($file1->children()));
-        $this->assertEquals(1, count($file2->children()));
+        $this->assertCount(1, iterator_to_array($file2->children()));
     }
 
     /**
