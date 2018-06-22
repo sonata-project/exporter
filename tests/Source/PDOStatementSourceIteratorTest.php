@@ -75,6 +75,6 @@ class PDOStatementSourceIteratorTest extends TestCase
             $data[] = $user;
         }
 
-        $this->assertEquals(3, count($data));
+        $this->assertCount(3, $data);
     }
 }
