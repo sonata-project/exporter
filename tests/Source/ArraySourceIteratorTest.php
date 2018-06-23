@@ -31,7 +31,7 @@ class ArraySourceIteratorTest extends TestCase
 
         foreach ($iterator as $value) {
             $this->assertInternalType('array', $value);
-            $this->assertEquals(3, count($value));
+            $this->assertCount(3, $value);
         }
     }
 }

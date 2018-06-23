@@ -48,7 +48,7 @@ class GsaFeedWriterTest extends TestCase
      */
     public function setUp(): void
     {
-        $path = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sonata_exporter_test';
+        $path = sys_get_temp_dir().\DIRECTORY_SEPARATOR.'sonata_exporter_test';
         $this->folder = new \SplFileInfo($path);
 
         $this->tearDown();
