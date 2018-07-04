@@ -13,6 +13,10 @@ namespace Exporter\Source;
 
 use Doctrine\ORM\Query;
 use Exporter\Exception\InvalidMethodCallException;
+use Exporter\Formatter\ArrayFormatter;
+use Exporter\Formatter\DataFormatterInterface;
+use Exporter\Formatter\DateTimeFormatter;
+use Exporter\Formatter\ObjectToStringFormatter;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
@@ -41,14 +45,23 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $propertyAccessor;
 
     /**
-     * @var string default DateTime format
+     * @var string $dateTimeFormat
      */
     protected $dateTimeFormat;
 
     /**
-     * @param \Doctrine\ORM\Query $query          The Doctrine Query
-     * @param array               $fields         Fields to export
-     * @param string              $dateTimeFormat
+     * @var DataFormatterInterface[]
+     */
+    private $formatters = array();
+
+    /**
+     * NEXT_MAJOR: Change function signature to __construct(Query $query, array $fields, array $formatters)
+     *             Remove default set of formatters
+     *
+     * @param \Doctrine\ORM\Query      $query          The Doctrine Query
+     * @param array                    $fields         Fields to export
+     * @param string                   $dateTimeFormat
+     * @param DataFormatterInterface[] $formatters     Array of data formatters
      */
     public function __construct(Query $query, array $fields, $dateTimeFormat = 'r')
     {
@@ -68,7 +81,30 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
                 $this->propertyPaths[$field] = new PropertyPath($field);
             }
         }
-        $this->dateTimeFormat = $dateTimeFormat;
+
+        if (func_num_args() == 3 && is_string($dateTimeFormat)) {
+            // NEXT_MAJOR: When removed, the code below initializing a default set of formatters should be rewritten as well
+            @trigger_error('Passing a dateTimeFormat string as the 4th parameter is deprecated since 1.7.2, to be removed in 2.0. '.
+                'Pass an array of DataFormatterInterfaces instead',
+                E_USER_DEPRECATED);
+        }
+
+        $formatters = array(new ArrayFormatter(), new DateTimeFormatter($dateTimeFormat), new ObjectToStringFormatter());
+        if (func_num_args() == 4) {
+            $formatters = array_merge($formatters, (array)func_get_arg(3));
+        }
+
+        foreach ($formatters as $formatter) {
+            $this->addFormatter($formatter);
+        }
+    }
+
+    /**
+     * @param DataFormatterInterface $formatter
+     */
+    private function addFormatter(DataFormatterInterface $formatter)
+    {
+        $this->formatters[$formatter->getPriority()] = $formatter;
     }
 
     /**
@@ -82,7 +118,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
         foreach ($this->propertyPaths as $name => $propertyPath) {
             try {
-                $data[$name] = $this->getValue($this->propertyAccessor->getValue($current[0], $propertyPath));
+                $data[$name] = $this->getValue($current[0], $propertyPath);
             } catch (UnexpectedTypeException $e) {
                 //non existent object in path will be ignored
                 $data[$name] = null;
@@ -127,6 +163,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             throw new InvalidMethodCallException('Cannot rewind a Doctrine\ORM\Query');
         }
 
+        ksort($this->formatters);
+
         $this->iterator = $this->query->iterate();
         $this->iterator->rewind();
     }
@@ -136,11 +174,20 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      */
     public function setDateTimeFormat($dateTimeFormat)
     {
+        @trigger_error('Passing a dateTimeFormat string is deprecated since 1.7.2, to be removed in 2.0. '.
+            'The source should be initialized in the constructor with an array of DataFormatterInterfaces instead',
+            E_USER_DEPRECATED);
+
         $this->dateTimeFormat = $dateTimeFormat;
+        $newFormatter = new DateTimeFormatter($dateTimeFormat);
+        $this->formatters[$newFormatter->getPriority()] = $newFormatter;
     }
 
     /**
+     * NEXT_MAJOR: Remove
+     *
      * @return string
+     * @deprecated Deprecated since 1.7.1, to be removed in 2.0
      */
     public function getDateTimeFormat()
     {
@@ -148,18 +195,32 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param $value
+     * NEXT_MAJOR: Change function signature to getValue($target, PropertyPath $propertyPath), keep code between if block,
+     *             and drop the else code block
      *
-     * @return null|string
+     * @param mixed        $target
+     * @param PropertyPath $propertyPath
+     *
+     * @return mixed|array|string|object
      */
-    protected function getValue($value)
+    protected function getValue($target)
     {
-        if (is_array($value) || $value instanceof \Traversable) {
-            $value = null;
-        } elseif ($value instanceof \DateTimeInterface) {
-            $value = $value->format($this->dateTimeFormat);
-        } elseif (is_object($value)) {
-            $value = (string) $value;
+        if (func_num_args() == 2 && func_get_arg(1) instanceof PropertyPath) {
+            $propertyPath = func_get_arg(1);
+            $value = $this->propertyAccessor->getValue($target, $propertyPath);
+        } else {
+            @trigger_error('Passing a single value is deprecated since 1.7.2, to be removed in 2.0.'.
+                'Pass the target object and a PropertyPath object that will retrieve the value instead',
+                E_USER_DEPRECATED);
+
+            $value = $target;
+            $propertyPath = new PropertyPath('');
+        }
+
+        foreach ($this->formatters as $formatter) {
+            if ($formatter->supports($value)) {
+                return $formatter->format($value, $propertyPath);
+            }
         }
 
         return $value;
