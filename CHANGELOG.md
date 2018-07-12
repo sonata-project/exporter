@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Removed
 - Symfony 2.3 to 2.7 support dropped
 
+## [1.9.1](https://github.com/sonata-project/exporter/compare/1.9.0...1.9.1) - 2018-07-04
+
+- Made `sonata.exporter.exporter` service public
+
 ## [1.9.0](https://github.com/sonata-project/exporter/compare/1.8.0...1.9.0) - 2018-05-10
 
 ### Added
