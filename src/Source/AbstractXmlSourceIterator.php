@@ -146,7 +146,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, XML_OPTION_SKIP_WHITE, 0);
 
-        $this->file = fopen($this->filename, 'r');
+        $this->file = fopen($this->filename, 'rb');
 
         $this->bufferedRow = [];
         $this->currentRowIndex = 0;
@@ -165,7 +165,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        if (!is_array($this->currentRow)) {
+        if (!\is_array($this->currentRow)) {
             xml_parser_free($this->parser);
             fclose($this->file);
 
@@ -181,7 +181,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected function parseRow()
     {
         // only parse the next row if only one in buffer
-        if (count($this->bufferedRow) > 1) {
+        if (\count($this->bufferedRow) > 1) {
             return;
         }
         if (feof($this->file)) {
@@ -204,7 +204,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected function prepareCurrentRow()
     {
         $this->currentRow = array_shift($this->bufferedRow);
-        if (is_array($this->currentRow)) {
+        if (\is_array($this->currentRow)) {
             $datas = [];
             foreach ($this->currentRow as $key => $value) {
                 if ($this->hasHeaders) {

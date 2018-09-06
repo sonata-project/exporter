@@ -61,7 +61,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
 
         $this->propertyPaths = [];
         foreach ($fields as $name => $field) {
-            if (is_string($name) && is_string($field)) {
+            if (\is_string($name) && \is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
             } else {
                 $this->propertyPaths[$field] = new PropertyPath($field);
@@ -148,11 +148,11 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
      */
     protected function getValue($value)
     {
-        if (is_array($value) || $value instanceof \Traversable) {
+        if (\is_array($value) || $value instanceof \Traversable) {
             $value = null;
         } elseif ($value instanceof \DateTimeInterface) {
             $value = $value->format($this->dateTimeFormat);
-        } elseif (is_object($value)) {
+        } elseif (\is_object($value)) {
             $value = (string) $value;
         }
 

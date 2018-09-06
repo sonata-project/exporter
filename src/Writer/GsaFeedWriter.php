@@ -91,7 +91,7 @@ class GsaFeedWriter implements WriterInterface
         );
 
         // + 18 corresponding to the length of the closing tags
-        if (($this->bufferSize + strlen($line) + 18) > self::LIMIT_SIZE) {
+        if (($this->bufferSize + \strlen($line) + 18) > self::LIMIT_SIZE) {
             $this->generateNewPart();
         }
 
@@ -126,7 +126,7 @@ class GsaFeedWriter implements WriterInterface
             throw new \RuntimeException(sprintf('Unable to write to folder: %s', $this->folder));
         }
 
-        $this->buffer = fopen(sprintf('%s/feed_%05d.xml', $this->folder, $this->bufferPart), 'w');
+        $this->buffer = fopen(sprintf('%s/feed_%05d.xml', $this->folder, $this->bufferPart), 'wb');
 
         $this->bufferSize += fwrite($this->buffer, <<<XML
 <?xml version="1.0" encoding="UTF-8"?>

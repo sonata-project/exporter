@@ -91,7 +91,7 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        return is_array($this->current);
+        return \is_array($this->current);
     }
 
     /**

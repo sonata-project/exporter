@@ -108,7 +108,7 @@ class CsvSourceIterator implements SourceIteratorInterface
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
         ++$this->position;
-        if ($this->hasHeaders && is_array($line)) {
+        if ($this->hasHeaders && \is_array($line)) {
             $data = [];
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
@@ -122,7 +122,7 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function rewind()
     {
-        $this->file = fopen($this->filename, 'r');
+        $this->file = fopen($this->filename, 'rb');
         $this->position = 0;
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         if ($this->hasHeaders) {
@@ -130,7 +130,7 @@ class CsvSourceIterator implements SourceIteratorInterface
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }
         $this->currentLine = $line;
-        if ($this->hasHeaders && is_array($line)) {
+        if ($this->hasHeaders && \is_array($line)) {
             $data = [];
             foreach ($line as $key => $value) {
                 $data[$this->columns[$key]] = $value;
@@ -144,8 +144,8 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function valid()
     {
-        if (!is_array($this->currentLine)) {
-            if (is_resource($this->file)) {
+        if (!\is_array($this->currentLine)) {
+            if (\is_resource($this->file)) {
                 fclose($this->file);
             }
 
