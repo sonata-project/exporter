@@ -81,7 +81,7 @@ class XmlWriter implements TypedWriterInterface
      */
     public function open()
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $this->file = fopen($this->filename, 'wb', false);
 
         fwrite($this->file, sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
@@ -116,7 +116,7 @@ class XmlWriter implements TypedWriterInterface
      */
     protected function generateNode($name, $value)
     {
-        if (is_array($value)) {
+        if (\is_array($value)) {
             throw new \RuntimeException('Not implemented');
         } elseif (is_scalar($value) || null === $value) {
             fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, $value, $name));

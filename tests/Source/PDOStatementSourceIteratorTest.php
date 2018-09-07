@@ -30,7 +30,7 @@ class PDOStatementSourceIteratorTest extends TestCase
     {
         $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
 
-        if (!in_array('sqlite', \PDO::getAvailableDrivers())) {
+        if (!\in_array('sqlite', \PDO::getAvailableDrivers())) {
             $this->markTestSkipped('the sqlite extension is not available');
         }
 
