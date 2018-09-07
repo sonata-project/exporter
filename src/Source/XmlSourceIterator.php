@@ -101,7 +101,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
     protected function prepareCurrentRow()
     {
         $this->currentRow = array_shift($this->bufferedRow);
-        if (is_array($this->currentRow)) {
+        if (\is_array($this->currentRow)) {
             $datas = [];
             foreach ($this->currentRow as $key => $value) {
                 $datas[$this->columns[$key]] = $value;
