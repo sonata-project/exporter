@@ -179,7 +179,7 @@ XML;
         $info = stat($generatedFiles[0]);
 
         $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
-        $this->assertEquals(SitemapWriter::LIMIT_URL, count($file1->children()));
+        $this->assertEquals(SitemapWriter::LIMIT_URL, \count($file1->children()));
         $this->assertCount(1, iterator_to_array($file2->children()));
     }
 
