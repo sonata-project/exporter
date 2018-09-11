@@ -41,6 +41,6 @@ class IteratorCallbackSourceIterator extends IteratorSourceIterator
      */
     public function current()
     {
-        return call_user_func($this->transformer, $this->iterator->current());
+        return \call_user_func($this->transformer, $this->iterator->current());
     }
 }

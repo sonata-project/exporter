@@ -67,7 +67,7 @@ class JsonWriter implements TypedWriterInterface
      */
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $this->file = fopen($this->filename, 'wb', false);
 
         fwrite($this->file, '[');
     }

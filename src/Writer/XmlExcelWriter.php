@@ -72,7 +72,7 @@ class XmlExcelWriter implements WriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w');
+        $this->file = fopen($this->filename, 'wb');
         fwrite($this->file, $this->header);
     }
 
@@ -133,9 +133,9 @@ class XmlExcelWriter implements WriterInterface
     {
         $dataType = null;
         if (null !== $this->columnsType) {
-            if (is_string($this->columnsType)) {
+            if (\is_string($this->columnsType)) {
                 $dataType = $this->columnsType;
-            } elseif (is_array($this->columnsType)) {
+            } elseif (\is_array($this->columnsType)) {
                 if (array_key_exists($key, $this->columnsType)) {
                     $dataType = $this->columnsType[$key];
                 }

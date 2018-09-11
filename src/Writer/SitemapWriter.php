@@ -75,7 +75,7 @@ class SitemapWriter implements WriterInterface
     public function __construct(string $folder, $groupName = false, array $headers = [], bool $autoIndex = true)
     {
         $this->folder = $folder;
-        $this->groupName = is_string($groupName) ? $groupName : '';
+        $this->groupName = \is_string($groupName) ? $groupName : '';
         $this->headers = $headers;
         $this->autoIndex = $autoIndex;
 
@@ -201,7 +201,7 @@ class SitemapWriter implements WriterInterface
 
         $filename = sprintf($this->pattern, $this->bufferPart);
 
-        $this->buffer = fopen($this->folder.'/'.$filename, 'w');
+        $this->buffer = fopen($this->folder.'/'.$filename, 'wb');
 
         $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
     }
@@ -217,7 +217,7 @@ class SitemapWriter implements WriterInterface
             $this->generateNewPart();
         }
 
-        if (($this->bufferSize + strlen($line) + 9) > self::LIMIT_SIZE) {
+        if (($this->bufferSize + \strlen($line) + 9) > self::LIMIT_SIZE) {
             $this->generateNewPart();
         }
 
@@ -267,7 +267,7 @@ class SitemapWriter implements WriterInterface
             'video' => 'video',
         ];
 
-        if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !is_array($data[$valid_var_name[$data['type']]])) {
+        if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !\is_array($data[$valid_var_name[$data['type']]])) {
             $data['type'] = 'default';
         }
     }
@@ -295,7 +295,7 @@ class SitemapWriter implements WriterInterface
     {
         $images = '';
 
-        if (count($data['images']) > 1000) {
+        if (\count($data['images']) > 1000) {
             $data['images'] = array_splice($data['images'], 1000);
         }
 
