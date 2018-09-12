@@ -19,6 +19,6 @@ fi
 
 sed --in-place "s/\"dev-master\":/\"dev-${TRAVIS_COMMIT}\":/" composer.json
 
-            if [ "$SYMFONY" != "" ]; then composer require "symfony/symfony:$SYMFONY" --no-update; fi;
-                if [ "$DOCTRINE_ODM" != "" ]; then composer require "doctrine/mongodb-odm:$DOCTRINE_ODM" --no-update; fi;
+    if [ "$SYMFONY" != "" ]; then composer require "symfony/symfony:$SYMFONY" --no-update; fi;
+        if [ "$DOCTRINE_ODM" != "" ]; then composer require "doctrine/mongodb-odm:$DOCTRINE_ODM" --no-update; fi;
     
