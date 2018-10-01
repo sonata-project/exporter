@@ -13,11 +13,14 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Bridge\Symfony\DependencyInjection;
 
-use Matthias\SymfonyConfigTest\PhpUnit\AbstractConfigurationTestCase;
+use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Configuration;
 
-class ConfigurationTest extends AbstractConfigurationTestCase
+class ConfigurationTest extends TestCase
 {
+    use ConfigurationTestCaseTrait;
+
     public function getConfiguration()
     {
         return new Configuration();

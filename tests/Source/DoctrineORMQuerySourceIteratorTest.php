@@ -11,14 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source;
+namespace Sonata\Exporter\Test\Source;
 
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
-use Exporter\Test\Source\Fixtures\DoctrineORMQuerySourceIterator;
-use Exporter\Test\Source\Fixtures\ObjectWithToString;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Test\Source\Fixtures\DoctrineORMQuerySourceIterator;
+use Sonata\Exporter\Test\Source\Fixtures\ObjectWithToString;
 
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>

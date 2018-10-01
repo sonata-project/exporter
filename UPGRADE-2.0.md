@@ -7,7 +7,7 @@ PHP 7.1 is required.
 
 ## Symfony
 
-Symfony support is dropped from 2.3 to 2.7 included.
+Symfony support is dropped from 2.3 to 3.3 included.
 
 ## Namespace
 
