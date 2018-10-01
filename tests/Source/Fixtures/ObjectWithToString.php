@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source\Fixtures;
+namespace Sonata\Exporter\Test\Source\Fixtures;
 
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>

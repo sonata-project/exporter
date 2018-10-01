@@ -11,12 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test\Source\Fixtures;
+namespace Sonata\Exporter\Test\Source\Fixtures;
+
+use Sonata\Exporter\Source\DoctrineORMQuerySourceIterator as BaseDoctrineORMQuerySourceIterator;
 
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>
  */
-final class DoctrineORMQuerySourceIterator extends \Exporter\Source\DoctrineORMQuerySourceIterator
+final class DoctrineORMQuerySourceIterator extends BaseDoctrineORMQuerySourceIterator
 {
     public function getValue($value)
     {
