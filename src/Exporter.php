@@ -40,13 +40,7 @@ final class Exporter
     }
 
     /**
-     * @param string                  $format
-     * @param string                  $filename
-     * @param SourceIteratorInterface $source
-     *
      * @throws \RuntimeException
-     *
-     * @return StreamedResponse
      */
     public function getResponse(string $format, string $filename, SourceIteratorInterface $source): StreamedResponse
     {

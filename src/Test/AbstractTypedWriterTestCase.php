@@ -22,7 +22,7 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
 abstract class AbstractTypedWriterTestCase extends TestCase
 {
     /**
-     * @var WriterInterface
+     * @var TypedWriterInterface
      */
     private $writer;
 
@@ -41,11 +41,5 @@ abstract class AbstractTypedWriterTestCase extends TestCase
         $this->assertInternalType('string', $this->writer->getDefaultMimeType());
     }
 
-    /**
-     * Should return a very simple instance of the writer (no need for complex
-     * configuration).
-     *
-     * @return WriterInterface
-     */
     abstract protected function getWriter(): TypedWriterInterface;
 }

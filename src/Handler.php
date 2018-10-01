@@ -28,10 +28,6 @@ class Handler
      */
     protected $writer;
 
-    /**
-     * @param SourceIteratorInterface $source
-     * @param WriterInterface         $writer
-     */
     public function __construct(SourceIteratorInterface $source, WriterInterface $writer)
     {
         $this->source = $source;
@@ -49,12 +45,6 @@ class Handler
         $this->writer->close();
     }
 
-    /**
-     * @param SourceIteratorInterface $source
-     * @param WriterInterface         $writer
-     *
-     * @return Handler
-     */
     public static function create(SourceIteratorInterface $source, WriterInterface $writer): self
     {
         return new self($source, $writer);

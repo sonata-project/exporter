@@ -21,14 +21,14 @@ namespace Sonata\Exporter\Writer;
 class XmlExcelWriter implements WriterInterface
 {
     /**
-     * @var string|null
+     * @var string
      */
-    protected $filename = null;
+    protected $filename;
 
     /**
      * @var resource|null
      */
-    protected $file = null;
+    protected $file;
 
     /**
      * @var bool
@@ -38,7 +38,7 @@ class XmlExcelWriter implements WriterInterface
     /**
      * @var mixed|null
      */
-    protected $columnsType = null;
+    protected $columnsType;
 
     /**
      * @var int
@@ -52,12 +52,10 @@ class XmlExcelWriter implements WriterInterface
     protected $footer = '</Table></Worksheet></Workbook>';
 
     /**
-     * @param string $filename
-     * @param bool   $showHeaders
-     * @param mixed  $columnsType Define cells type to use
-     *                            If string: force all cells to the given type. e.g: 'Number'
-     *                            If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
-     *                            If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
+     * @param mixed $columnsType Define cells type to use
+     *                           If string: force all cells to the given type. e.g: 'Number'
+     *                           If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
+     *                           If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
      */
     public function __construct(string $filename, bool $showHeaders = true, $columnsType = null)
     {
@@ -76,9 +74,6 @@ class XmlExcelWriter implements WriterInterface
         fwrite($this->file, $this->header);
     }
 
-    /**
-     * @param array $data
-     */
     public function write(array $data): void
     {
         if (0 == $this->position && $this->showHeaders) {
@@ -99,12 +94,8 @@ class XmlExcelWriter implements WriterInterface
 
     /**
      * Prepare and return XML string for MS Excel XML from array.
-     *
-     * @param array $fields
-     *
-     * @return string
      */
-    private function getXmlString(array $fields = [])
+    private function getXmlString(array $fields = []): string
     {
         $xmlData = [];
         $xmlData[] = '<Row>';
@@ -123,12 +114,6 @@ class XmlExcelWriter implements WriterInterface
         return implode('', $xmlData);
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     *
-     * @return string
-     */
     private function getDataType(string $key, string $value): string
     {
         $dataType = null;

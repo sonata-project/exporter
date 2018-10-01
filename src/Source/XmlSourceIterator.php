@@ -30,11 +30,6 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
      */
     protected $dataTag;
 
-    /**
-     * @param string $filename
-     * @param string $mainTag
-     * @param string $dataTag
-     */
     public function __construct(string $filename, string $mainTag = 'datas', string $dataTag = 'data')
     {
         parent::__construct($filename, false);
@@ -42,10 +37,7 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
         $this->dataTag = $dataTag;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function tagStart($parser, string $name, $attributes = []): void
+    public function tagStart($parser, string $name, array $attributes = []): void
     {
         switch ($name) {
             case $this->mainTag:
@@ -65,9 +57,6 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function tagEnd($parser, string $name): void
     {
         switch ($name) {
@@ -86,20 +75,16 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function tagContent($parser, string $data): void
     {
-        if (isset($this->bufferedRow['i_'.$this->currentRowIndex], $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex])
-        ) {
+        if (isset(
+            $this->bufferedRow['i_'.$this->currentRowIndex],
+            $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex]
+        )) {
             $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function prepareCurrentRow(): void
     {
         $this->currentRow = array_shift($this->bufferedRow);

@@ -39,41 +39,26 @@ class IteratorSourceIterator implements SourceIteratorInterface
         return $this->iterator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->iterator->current();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->iterator->next();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->iterator->key();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         $this->iterator->rewind();

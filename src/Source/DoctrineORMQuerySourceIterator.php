@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
+use Doctrine\ORM\Internal\Hydration\IterableResult;
 use Doctrine\ORM\Query;
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
@@ -23,19 +24,19 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
     /**
-     * @var \Doctrine\ORM\Query
+     * @var Query
      */
     protected $query;
 
     /**
-     * @var \Doctrine\ORM\Internal\Hydration\IterableResult
+     * @var IterableResult
      */
     protected $iterator;
 
     /**
      * @var array
      */
-    protected $propertyPaths;
+    protected $propertyPaths = [];
 
     /**
      * @var PropertyAccessor
@@ -48,9 +49,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param \Doctrine\ORM\Query $query          The Doctrine Query
-     * @param array               $fields         Fields to export
-     * @param string              $dateTimeFormat
+     * @param Query $query  The Doctrine Query
+     * @param array $fields Fields to export
      */
     public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r')
     {
@@ -62,7 +62,6 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        $this->propertyPaths = [];
         foreach ($fields as $name => $field) {
             if (\is_string($name) && \is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
@@ -73,9 +72,6 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         $current = $this->iterator->current();
@@ -96,33 +92,21 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->iterator->next();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->iterator->key();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         if ($this->iterator) {
@@ -133,26 +117,18 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $this->iterator->rewind();
     }
 
-    /**
-     * @param string $dateTimeFormat
-     */
     public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    /**
-     * @return string
-     */
     public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }
 
     /**
-     * @param $value
-     *
-     * @return null|string
+     * @return mixed
      */
     protected function getValue($value)
     {

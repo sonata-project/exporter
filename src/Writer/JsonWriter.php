@@ -31,40 +31,27 @@ class JsonWriter implements TypedWriterInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
-    /**
-     * @param string $filename
-     */
     public function __construct(string $filename)
     {
         $this->filename = $filename;
-        $this->position = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getDefaultMimeType(): string
     {
         return 'application/json';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getFormat(): string
     {
         return 'json';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->file = fopen($this->filename, 'wb', false);
@@ -72,9 +59,6 @@ class JsonWriter implements TypedWriterInterface
         fwrite($this->file, '[');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         fwrite($this->file, ']');
@@ -82,9 +66,6 @@ class JsonWriter implements TypedWriterInterface
         fclose($this->file);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data));

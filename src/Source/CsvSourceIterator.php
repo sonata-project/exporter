@@ -23,32 +23,32 @@ class CsvSourceIterator implements SourceIteratorInterface
     /**
      * @var string
      */
-    protected $filename = null;
+    protected $filename;
 
     /**
-     * @var resource
+     * @var resource|null
      */
-    protected $file = null;
+    protected $file;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $delimiter = null;
+    protected $delimiter;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $enclosure = null;
+    protected $enclosure;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $escape = null;
+    protected $escape;
 
     /**
-     * @var bool|null
+     * @var bool
      */
-    protected $hasHeaders = null;
+    protected $hasHeaders;
 
     /**
      * @var array
@@ -70,15 +70,13 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     protected $currentLine = [];
 
-    /**
-     * @param string $filename
-     * @param string $delimiter
-     * @param string $enclosure
-     * @param string $escape
-     * @param bool   $hasHeaders
-     */
-    public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = '\\', bool $hasHeaders = true)
-    {
+    public function __construct(
+        string $filename,
+        string $delimiter = ',',
+        string $enclosure = '"',
+        string $escape = '\\',
+        bool $hasHeaders = true
+    ) {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
         $this->enclosure = $enclosure;

@@ -20,33 +20,21 @@ class InMemoryWriter implements WriterInterface
      */
     protected $elements;
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->elements = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close()
     {
         return $this->elements;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         $this->elements[] = $data;
     }
 
-    /**
-     * @return array
-     */
     public function getElements(): array
     {
         return $this->elements;
