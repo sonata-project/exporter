@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Exception;
 
-class InvalidDataFormatException extends \RuntimeException implements SonataExporterException
+/**
+ * @author Marko Kunic <kunicmarko20@gmail.com>
+ */
+interface SonataExporterException extends \Throwable
 {
 }
