@@ -4,6 +4,7 @@ UPGRADE FROM 1.x to 2.0
 ## PHP
 
 PHP 7.1 is required.
+Added types and return types.
 
 ## Symfony
 

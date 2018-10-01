@@ -30,59 +30,39 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
     /**
      * @var bool
      */
-    protected $rewinded;
+    protected $rewinded = false;
 
-    /**
-     * @param \PDOStatement $statement
-     */
     public function __construct(\PDOStatement $statement)
     {
         $this->statement = $statement;
-        $this->position = 0;
-        $this->rewinded = false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->current;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
         ++$this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return \is_array($this->current);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         if ($this->rewinded) {

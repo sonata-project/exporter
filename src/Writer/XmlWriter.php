@@ -33,7 +33,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
     /**
      * @var string
@@ -45,15 +45,9 @@ class XmlWriter implements TypedWriterInterface
      */
     protected $childElement;
 
-    /**
-     * @param string $filename
-     * @param string $mainElement
-     * @param string $childElement
-     */
     public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
     {
         $this->filename = $filename;
-        $this->position = 0;
         $this->mainElement = $mainElement;
         $this->childElement = $childElement;
 
@@ -62,25 +56,16 @@ class XmlWriter implements TypedWriterInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getDefaultMimeType(): string
     {
         return 'text/xml';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getFormat(): string
     {
         return 'xml';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->file = fopen($this->filename, 'wb', false);
@@ -88,9 +73,6 @@ class XmlWriter implements TypedWriterInterface
         fwrite($this->file, sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         fwrite($this->file, sprintf('</%s>', $this->mainElement));
@@ -98,9 +80,6 @@ class XmlWriter implements TypedWriterInterface
         fclose($this->file);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         fwrite($this->file, sprintf("<%s>\n", $this->childElement));
@@ -113,8 +92,7 @@ class XmlWriter implements TypedWriterInterface
     }
 
     /**
-     * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      */
     protected function generateNode(string $name, $value): void
     {

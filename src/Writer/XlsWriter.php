@@ -36,11 +36,10 @@ class XlsWriter implements TypedWriterInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
     /**
      * @param mixed $filename
-     * @param bool  $showHeaders
      *
      * @throws \RuntimeException
      */
@@ -48,50 +47,34 @@ class XlsWriter implements TypedWriterInterface
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
-        $this->position = 0;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getDefaultMimeType(): string
     {
         return 'application/vnd.ms-excel';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getFormat(): string
     {
         return 'xls';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->file = fopen($this->filename, 'wb', false);
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         fwrite($this->file, '</table></body></html>');
         fclose($this->file);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         $this->init($data);
@@ -105,10 +88,7 @@ class XlsWriter implements TypedWriterInterface
         ++$this->position;
     }
 
-    /**
-     * @param $data
-     */
-    protected function init($data): void
+    protected function init(array $data): void
     {
         if ($this->position > 0) {
             return;

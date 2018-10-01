@@ -42,63 +42,41 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
     /**
      * @var Statement
      */
     protected $statement;
 
-    /**
-     * @param Connection $connection
-     * @param            $query
-     * @param array      $parameters
-     */
-    public function __construct(Connection $connection, $query, array $parameters = [])
+    public function __construct(Connection $connection, string $query, array $parameters = [])
     {
         $this->connection = $connection;
         $this->query = $query;
         $this->parameters = $parameters;
-
-        $this->position = 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->current;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
         ++$this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return \is_array($this->current);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         if ($this->statement) {

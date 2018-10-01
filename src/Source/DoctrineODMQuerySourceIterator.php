@@ -34,7 +34,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @var array
      */
-    protected $propertyPaths;
+    protected $propertyPaths = [];
 
     /**
      * @var PropertyAccess
@@ -47,9 +47,8 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @param Query  $query          The Doctrine Query
-     * @param array  $fields         Fields to export
-     * @param string $dateTimeFormat
+     * @param Query $query  The Doctrine Query
+     * @param array $fields Fields to export
      */
     public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r')
     {
@@ -57,7 +56,6 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        $this->propertyPaths = [];
         foreach ($fields as $name => $field) {
             if (\is_string($name) && \is_string($field)) {
                 $this->propertyPaths[$name] = new PropertyPath($field);
@@ -69,9 +67,6 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         $current = $this->iterator->current();
@@ -87,33 +82,21 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->iterator->next();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->iterator->key();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         if ($this->iterator) {
@@ -124,26 +107,18 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         $this->iterator->rewind();
     }
 
-    /**
-     * @param string $dateTimeFormat
-     */
     public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    /**
-     * @return string
-     */
     public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }
 
     /**
-     * @param $value
-     *
-     * @return null|string
+     * @return mixed
      */
     protected function getValue($value)
     {

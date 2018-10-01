@@ -73,17 +73,11 @@ class GsaFeedWriter implements WriterInterface
         $this->bufferSize = 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->generateNewPart();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         $line = sprintf("        <record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",
@@ -100,9 +94,6 @@ class GsaFeedWriter implements WriterInterface
         $this->bufferSize += fwrite($this->buffer, $line);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         if ($this->buffer) {
@@ -145,9 +136,6 @@ XML
         );
     }
 
-    /**
-     * Closes the current feed.
-     */
     private function closeFeed(): void
     {
         fwrite($this->buffer, <<<'EOF'

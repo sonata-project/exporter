@@ -84,8 +84,6 @@ class SitemapWriter implements WriterInterface
 
     /**
      * Returns the status of auto generation of index site map.
-     *
-     * @return bool
      */
     public function isAutoIndex(): bool
     {
@@ -94,26 +92,18 @@ class SitemapWriter implements WriterInterface
 
     /**
      * Returns folder to store the sitemap.xml file.
-     *
-     * @return string
      */
     public function getFolder(): string
     {
         return $this->folder;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->bufferPart = 0;
         $this->generateNewPart();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         $data = $this->buildData($data);
@@ -137,9 +127,6 @@ class SitemapWriter implements WriterInterface
         $this->addSitemapLine($line);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         if ($this->buffer) {
@@ -208,8 +195,6 @@ class SitemapWriter implements WriterInterface
 
     /**
      * Add a new line into the sitemap part.
-     *
-     * @param string $line
      */
     protected function addSitemapLine(string $line): void
     {
@@ -230,10 +215,8 @@ class SitemapWriter implements WriterInterface
      * Build data with default parameters.
      *
      * @param array $data List of parameters
-     *
-     * @return array
      */
-    protected function buildData(array $data)
+    protected function buildData(array $data): array
     {
         $default = [
             'url' => null,
@@ -276,8 +259,6 @@ class SitemapWriter implements WriterInterface
      * Generate standard line of sitemap.
      *
      * @param array $data List of parameters
-     *
-     * @return string
      */
     protected function generateDefaultLine(array $data): string
     {
@@ -288,8 +269,6 @@ class SitemapWriter implements WriterInterface
      * Generate image line of sitemap.
      *
      * @param array $data List of parameters
-     *
-     * @return string
      */
     protected function generateImageLine(array $data): string
     {
@@ -321,8 +300,6 @@ class SitemapWriter implements WriterInterface
      * Generate video line of sitemap.
      *
      * @param array $data List of parameters
-     *
-     * @return string
      */
     protected function generateVideoLine(array $data): string
     {
@@ -340,8 +317,6 @@ class SitemapWriter implements WriterInterface
 
     /**
      * Generate additional header with namespace adapted to the content.
-     *
-     * @return string
      */
     protected function getHeaderByFlag(): string
     {
@@ -358,9 +333,6 @@ class SitemapWriter implements WriterInterface
         return $result;
     }
 
-    /**
-     * Close the sitemap part.
-     */
     protected function closeSitemap(): void
     {
         fwrite($this->buffer, '</urlset>');

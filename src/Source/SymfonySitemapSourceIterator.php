@@ -38,23 +38,18 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
      */
     protected $parameters;
 
-    /**
-     * @param SourceIteratorInterface $source
-     * @param RouterInterface         $router
-     * @param string                  $routeName
-     * @param array                   $parameters
-     */
-    public function __construct(SourceIteratorInterface $source, RouterInterface $router, string $routeName, array $parameters = [])
-    {
+    public function __construct(
+        SourceIteratorInterface $source,
+        RouterInterface $router,
+        string $routeName,
+        array $parameters = []
+    ) {
         $this->source = $source;
         $this->router = $router;
         $this->routeName = $routeName;
         $this->parameters = $parameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         $data = $this->source->current();
@@ -68,33 +63,21 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->source->next();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->source->key();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    public function valid(): bool
     {
         return $this->source->valid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         $this->source->rewind();

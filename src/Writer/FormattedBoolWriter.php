@@ -35,11 +35,6 @@ class FormattedBoolWriter implements WriterInterface
      */
     protected $falseLabel;
 
-    /**
-     * @param WriterInterface $writer
-     * @param string          $falseLabel
-     * @param string          $trueLabel
-     */
     public function __construct(WriterInterface $writer, string $trueLabel = 'yes', string $falseLabel = 'no')
     {
         $this->writer = $writer;
@@ -47,25 +42,16 @@ class FormattedBoolWriter implements WriterInterface
         $this->falseLabel = $falseLabel;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->writer->open();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         $this->writer->close();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         foreach ($data as $key => $value) {

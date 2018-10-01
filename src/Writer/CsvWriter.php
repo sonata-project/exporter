@@ -65,15 +65,6 @@ class CsvWriter implements TypedWriterInterface
      */
     private $terminate;
 
-    /**
-     * @param string $filename
-     * @param string $delimiter
-     * @param string $enclosure
-     * @param string $escape
-     * @param bool   $showHeaders
-     * @param bool   $withBom
-     * @param string $terminate
-     */
     public function __construct(
         string $filename,
         string $delimiter = ',',
@@ -97,25 +88,16 @@ class CsvWriter implements TypedWriterInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getDefaultMimeType(): string
     {
         return 'text/csv';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function getFormat(): string
     {
         return 'csv';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function open(): void
     {
         $this->file = fopen($this->filename, 'wb', false);
@@ -128,17 +110,11 @@ class CsvWriter implements TypedWriterInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function close(): void
     {
         fclose($this->file);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $data): void
     {
         if (0 == $this->position && $this->showHeaders) {
@@ -156,9 +132,6 @@ class CsvWriter implements TypedWriterInterface
         ++$this->position;
     }
 
-    /**
-     * @param array $data
-     */
     protected function addHeaders(array $data): void
     {
         $headers = [];

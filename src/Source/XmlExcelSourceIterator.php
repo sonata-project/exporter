@@ -20,19 +20,12 @@ namespace Sonata\Exporter\Source;
  */
 class XmlExcelSourceIterator extends AbstractXmlSourceIterator
 {
-    /**
-     * @param string $filename
-     * @param bool   $hasHeaders
-     */
-    public function __construct($filename, $hasHeaders = true)
+    public function __construct(string $filename, bool $hasHeaders = true)
     {
         parent::__construct($filename, $hasHeaders);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function tagStart($parser, string $name, $attributes = []): void
+    public function tagStart($parser, string $name, array $attributes = []): void
     {
         switch ($name) {
             case 'ss:Row':
@@ -49,9 +42,6 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function tagEnd($parser, string $name): void
     {
         switch ($name) {
@@ -70,9 +60,6 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function tagContent($parser, string $data): void
     {
         $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
