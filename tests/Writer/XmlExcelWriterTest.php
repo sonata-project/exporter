@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Exporter\Test\Writer;
+namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\XmlExcelWriter;

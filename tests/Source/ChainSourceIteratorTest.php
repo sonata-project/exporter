@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Exporter\Test\Source;
+namespace Sonata\Exporter\Tests\Source;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\ChainSourceIterator;
