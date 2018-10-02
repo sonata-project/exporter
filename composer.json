@@ -56,7 +56,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Sonata\\Exporter\\Test\\": "tests/"
+            "Sonata\\Exporter\\Tests\\": "tests/"
         }
     }
 }
