@@ -199,6 +199,10 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             }
         }
         
-        return 'P'.$datePart.($timePart !== '' ? 'T'.$timePart : '');
+        if ($datePart == '' && $timePart == '') {
+            return 'P0Y';
+        } else {
+            return 'P'.$datePart.($timePart !== '' ? 'T'.$timePart : '');
+        }
     }
 }
