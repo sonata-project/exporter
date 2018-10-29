@@ -174,21 +174,21 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      */
     public static function getDuration(\DateInterval $interval)
     {
-        $dataPartAttributes = array(
+        $datePartAttributes = [
             'y' => 'Y',
             'm' => 'M',
             'd' => 'D',
-        );
-        $timePartAttributes = array(
+        ];
+        $timePartAttributes = [
             'h' => 'H',
             'i' => 'M',
             's' => 'S',
-        );
+        ];
 
         $datePart = '';
-        foreach ($dataPartAttributes as $datePartAttribute => $dataPartAttributeString) {
+        foreach ($datePartAttributes as $datePartAttribute => $datePartAttributeString) {
             if ($dateInterval->$datePartAttribute !== 0) {
-                $datePart .= $dateInterval->$datePartAttribute.$dataPartAttributeString;
+                $datePart .= ($dateInterval->$datePartAttribute).$datePartAttributeString;
             }
         }
 
@@ -198,7 +198,6 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
                 $timePart .= $dateInterval->$timePartAttribute.$timePartAttributeString;
             }
         }
-
+        
         return 'P'.$datePart.($timePart !== '' ? 'T'.$timePart : '');
-    }
 }
