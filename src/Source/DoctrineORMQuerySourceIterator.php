@@ -172,7 +172,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      *
      * @return string An ISO8601 duration
      */
-    public static function getDuration(\DateInterval $interval)
+    public static function getDuration(\DateInterval $dateInterval)
     {
         $datePartAttributes = [
             'y' => 'Y',
