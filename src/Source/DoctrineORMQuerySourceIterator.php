@@ -148,27 +148,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param $value
-     *
-     * @return null|string
-     */
-    protected function getValue($value)
-    {
-        if (\is_array($value) || $value instanceof \Traversable) {
-            $value = null;
-        } elseif ($value instanceof \DateTimeInterface) {
-            $value = $value->format($this->dateTimeFormat);
-        } elseif ($value instanceof \DateInterval) {
-            $value = self::getDuration($value);
-        } elseif (\is_object($value)) {
-            $value = (string) $value;
-        }
-
-        return $value;
-    }
-
-    /**
-     * @param \DateInterval $interval
+     * @param \DateInterval $dateInterval
      *
      * @return string An ISO8601 duration
      */
@@ -198,11 +178,31 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
                 $timePart .= $dateInterval->$timePartAttribute.$timePartAttributeString;
             }
         }
-        
-        if ($datePart === '' && $timePart === '') {
+
+        if ('' === $datePart && '' === $timePart) {
             return 'P0Y';
-        } else {
-            return 'P'.$datePart.($timePart !== '' ? 'T'.$timePart : '');
         }
+
+        return 'P'.$datePart.('' !== $timePart ? 'T'.$timePart : '');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return null|string
+     */
+    protected function getValue($value)
+    {
+        if (\is_array($value) || $value instanceof \Traversable) {
+            $value = null;
+        } elseif ($value instanceof \DateTimeInterface) {
+            $value = $value->format($this->dateTimeFormat);
+        } elseif ($value instanceof \DateInterval) {
+            $value = self::getDuration($value);
+        } elseif (\is_object($value)) {
+            $value = (string) $value;
+        }
+
+        return $value;
     }
 }
