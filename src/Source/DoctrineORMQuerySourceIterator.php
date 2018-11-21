@@ -161,7 +161,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @return string An ISO8601 duration
      */
-    public static function getDuration(\DateInterval $dateInterval)
+    public function getDuration(\DateInterval $dateInterval)
     {
         $datePart = '';
         foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
@@ -196,7 +196,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         } elseif ($value instanceof \DateTimeInterface) {
             $value = $value->format($this->dateTimeFormat);
         } elseif ($value instanceof \DateInterval) {
-            $value = self::getDuration($value);
+            $value = $this->getDuration($value);
         } elseif (\is_object($value)) {
             $value = (string) $value;
         }
