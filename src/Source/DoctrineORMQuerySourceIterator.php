@@ -21,14 +21,14 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
     const DATE_PARTS = [
-            'y' => 'Y',
-            'm' => 'M',
-            'd' => 'D',
+        'y' => 'Y',
+        'm' => 'M',
+        'd' => 'D',
         ];
     const TIME_PARTS = [
-            'h' => 'H',
-            'i' => 'M',
-            's' => 'S',
+        'h' => 'H',
+        'i' => 'M',
+        's' => 'S',
         ];
 
     /**
