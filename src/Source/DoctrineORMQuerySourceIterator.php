@@ -20,6 +20,17 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
+    const DATE_PARTS = [
+            'y' => 'Y',
+            'm' => 'M',
+            'd' => 'D',
+        ];
+    const TIME_PARTS = [
+            'h' => 'H',
+            'i' => 'M',
+            's' => 'S',
+        ];
+
     /**
      * @var \Doctrine\ORM\Query
      */
@@ -152,26 +163,15 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
      */
     public static function getDuration(\DateInterval $dateInterval)
     {
-        $datePartAttributes = [
-            'y' => 'Y',
-            'm' => 'M',
-            'd' => 'D',
-        ];
-        $timePartAttributes = [
-            'h' => 'H',
-            'i' => 'M',
-            's' => 'S',
-        ];
-
         $datePart = '';
-        foreach ($datePartAttributes as $datePartAttribute => $datePartAttributeString) {
+        foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
             if ($dateInterval->$datePartAttribute !== 0) {
                 $datePart .= $dateInterval->$datePartAttribute.$datePartAttributeString;
             }
         }
 
         $timePart = '';
-        foreach ($timePartAttributes as $timePartAttribute => $timePartAttributeString) {
+        foreach (self::TIME_PARTS as $timePartAttribute => $timePartAttributeString) {
             if ($dateInterval->$timePartAttribute !== 0) {
                 $timePart .= $dateInterval->$timePartAttribute.$timePartAttributeString;
             }
