@@ -18,6 +18,9 @@ use Sonata\Exporter\Source\ChainSourceIterator;
 
 class ChainSourceIteratorTest extends TestCase
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testIterator(): void
     {
         $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
