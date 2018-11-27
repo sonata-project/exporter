@@ -18,17 +18,17 @@ namespace Sonata\Exporter\Source;
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
-class XmlSourceIterator extends AbstractXmlSourceIterator
+final class XmlSourceIterator extends AbstractXmlSourceIterator
 {
     /**
      * @var string
      */
-    protected $mainTag;
+    private $mainTag;
 
     /**
      * @var string
      */
-    protected $dataTag;
+    private $dataTag;
 
     public function __construct(string $filename, string $mainTag = 'datas', string $dataTag = 'data')
     {

@@ -15,12 +15,12 @@ namespace Sonata\Exporter\Source;
 
 use ArrayIterator;
 
-class ChainSourceIterator implements SourceIteratorInterface
+final class ChainSourceIterator implements SourceIteratorInterface
 {
     /**
      * @var ArrayIterator
      */
-    protected $sources;
+    private $sources;
 
     public function __construct(array $sources = [])
     {

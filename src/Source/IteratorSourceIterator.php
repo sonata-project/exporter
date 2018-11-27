@@ -34,7 +34,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * @return \Iterator
      */
-    public function getIterator(): \Iterator
+    final public function getIterator(): \Iterator
     {
         return $this->iterator;
     }
@@ -44,22 +44,22 @@ class IteratorSourceIterator implements SourceIteratorInterface
         return $this->iterator->current();
     }
 
-    public function next(): void
+    final public function next(): void
     {
         $this->iterator->next();
     }
 
-    public function key()
+    final public function key()
     {
         return $this->iterator->key();
     }
 
-    public function valid(): bool
+    final public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    public function rewind(): void
+    final public function rewind(): void
     {
         $this->iterator->rewind();
     }

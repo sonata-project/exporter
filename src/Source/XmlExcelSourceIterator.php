@@ -18,7 +18,7 @@ namespace Sonata\Exporter\Source;
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
-class XmlExcelSourceIterator extends AbstractXmlSourceIterator
+final class XmlExcelSourceIterator extends AbstractXmlSourceIterator
 {
     public function __construct(string $filename, bool $hasHeaders = true)
     {

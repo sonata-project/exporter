@@ -18,7 +18,7 @@ namespace Sonata\Exporter\Writer;
  *
  * @author Rémi Marseille <marseille@ekino.com>
  */
-class GsaFeedWriter implements WriterInterface
+final class GsaFeedWriter implements WriterInterface
 {
     public const LIMIT_SIZE = 31457280; // 30MB
 
