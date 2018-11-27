@@ -56,12 +56,12 @@ final class XmlWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'text/xml';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'xml';
     }

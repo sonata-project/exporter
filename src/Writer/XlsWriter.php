@@ -53,12 +53,12 @@ final class XlsWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'application/vnd.ms-excel';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'xls';
     }

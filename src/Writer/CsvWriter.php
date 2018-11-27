@@ -88,12 +88,12 @@ final class CsvWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'text/csv';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'csv';
     }

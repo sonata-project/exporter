@@ -42,12 +42,12 @@ final class JsonWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'application/json';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'json';
     }
