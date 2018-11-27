@@ -16,27 +16,27 @@ namespace Sonata\Exporter\Writer;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class XlsWriter implements TypedWriterInterface
+final class XlsWriter implements TypedWriterInterface
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var resource
      */
-    protected $file;
+    private $file;
 
     /**
      * @var bool
      */
-    protected $showHeaders;
+    private $showHeaders;
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     /**
      * @param mixed $filename
@@ -53,12 +53,12 @@ class XlsWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'application/vnd.ms-excel';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'xls';
     }
@@ -88,7 +88,7 @@ class XlsWriter implements TypedWriterInterface
         ++$this->position;
     }
 
-    protected function init(array $data): void
+    private function init(array $data): void
     {
         if ($this->position > 0) {
             return;

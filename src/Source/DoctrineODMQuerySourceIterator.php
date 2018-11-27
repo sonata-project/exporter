@@ -19,32 +19,32 @@ use Sonata\Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
-class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
+final class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
 {
     /**
      * @var Query
      */
-    protected $query;
+    private $query;
 
     /**
      * @var IterableResult
      */
-    protected $iterator;
+    private $iterator;
 
     /**
      * @var array
      */
-    protected $propertyPaths = [];
+    private $propertyPaths = [];
 
     /**
      * @var PropertyAccess
      */
-    protected $propertyAccessor;
+    private $propertyAccessor;
 
     /**
      * @var string default DateTime format
      */
-    protected $dateTimeFormat;
+    private $dateTimeFormat;
 
     /**
      * @param Query $query  The Doctrine Query
@@ -120,7 +120,7 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
-    protected function getValue($value)
+    private function getValue($value)
     {
         if (\is_array($value) || $value instanceof \Traversable) {
             $value = null;

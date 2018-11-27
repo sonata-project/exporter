@@ -15,6 +15,7 @@ namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\FormattedBoolWriter;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 
 /**
  * Format boolean before use another writer.
@@ -43,10 +44,8 @@ class FormattedBoolWriterTest extends TestCase
     {
         $data = ['john', 'doe', false, true];
         $expected = ['john', 'doe', 'no', 'yes'];
-        $mock = $this->getMockBuilder('Sonata\Exporter\Writer\XlsWriter')
-                       ->setConstructorArgs(['formatedbool.xls', false])
-                       ->getMock();
-        $mock->expects($this->any())
+        $mock = $this->createMock(TypedWriterInterface::class);
+        $mock->expects($this->once())
                ->method('write')
                ->with($this->equalTo($expected));
         $writer = new FormattedBoolWriter($mock, $this->trueLabel, $this->falseLabel);

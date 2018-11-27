@@ -17,37 +17,37 @@ use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Statement;
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 
-class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
+final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
     /**
      * @var Connection
      */
-    protected $connection;
+    private $connection;
 
     /**
      * @var string
      */
-    protected $query;
+    private $query;
 
     /**
      * @var array
      */
-    protected $parameters;
+    private $parameters;
 
     /**
      * @var mixed
      */
-    protected $current;
+    private $current;
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     /**
      * @var Statement
      */
-    protected $statement;
+    private $statement;
 
     public function __construct(Connection $connection, string $query, array $parameters = [])
     {

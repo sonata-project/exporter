@@ -72,7 +72,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    public function current()
+    final public function current()
     {
         $current = $this->iterator->current();
 
@@ -92,22 +92,22 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         return $data;
     }
 
-    public function next(): void
+    final public function next(): void
     {
         $this->iterator->next();
     }
 
-    public function key()
+    final public function key()
     {
         return $this->iterator->key();
     }
 
-    public function valid(): bool
+    final public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    public function rewind(): void
+    final public function rewind(): void
     {
         if ($this->iterator) {
             throw new InvalidMethodCallException('Cannot rewind a Doctrine\ORM\Query');
@@ -117,12 +117,12 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         $this->iterator->rewind();
     }
 
-    public function setDateTimeFormat(string $dateTimeFormat): void
+    final public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
-    public function getDateTimeFormat(): string
+    final public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }

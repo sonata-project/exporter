@@ -13,6 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Exception;
 
-class InvalidDataFormatException extends \RuntimeException implements SonataExporterException
+final class InvalidDataFormatException extends \RuntimeException implements SonataExporterException
 {
 }

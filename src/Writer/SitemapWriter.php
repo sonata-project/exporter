@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Writer;
 /**
  * Generates a sitemap site from.
  */
-class SitemapWriter implements WriterInterface
+final class SitemapWriter implements WriterInterface
 {
     public const LIMIT_SIZE = 10485760;
     public const LIMIT_URL = 50000;
@@ -24,47 +24,47 @@ class SitemapWriter implements WriterInterface
     /**
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      * @var string
      */
-    protected $pattern;
+    private $pattern;
 
     /**
      * @var string
      */
-    protected $groupName;
+    private $groupName;
 
     /**
      * @var bool
      */
-    protected $autoIndex;
+    private $autoIndex;
 
     /**
      * @var resource
      */
-    protected $buffer;
+    private $buffer;
 
     /**
      * @var array
      */
-    protected $headers;
+    private $headers;
 
     /**
      * @var int
      */
-    protected $bufferSize = 0;
+    private $bufferSize = 0;
 
     /**
      * @var int
      */
-    protected $bufferUrlCount = 0;
+    private $bufferUrlCount = 0;
 
     /**
      * @var int
      */
-    protected $bufferPart = 0;
+    private $bufferPart = 0;
 
     /**
      * @param string $folder    The folder to store the sitemap.xml file
@@ -172,7 +172,7 @@ class SitemapWriter implements WriterInterface
      *
      * @throws \RuntimeException
      */
-    protected function generateNewPart(): void
+    private function generateNewPart(): void
     {
         if ($this->buffer) {
             $this->closeSitemap();
@@ -196,7 +196,7 @@ class SitemapWriter implements WriterInterface
     /**
      * Add a new line into the sitemap part.
      */
-    protected function addSitemapLine(string $line): void
+    private function addSitemapLine(string $line): void
     {
         if ($this->bufferUrlCount >= self::LIMIT_URL) {
             $this->generateNewPart();
@@ -216,7 +216,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array $data List of parameters
      */
-    protected function buildData(array $data): array
+    private function buildData(array $data): array
     {
         $default = [
             'url' => null,
@@ -239,7 +239,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array &$data List of parameters
      */
-    protected function fixDataType(array &$data): void
+    private function fixDataType(array &$data): void
     {
         if ('default' === $data['type']) {
             return;
@@ -260,7 +260,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array $data List of parameters
      */
-    protected function generateDefaultLine(array $data): string
+    private function generateDefaultLine(array $data): string
     {
         return sprintf('    '.'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
     }
@@ -270,7 +270,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array $data List of parameters
      */
-    protected function generateImageLine(array $data): string
+    private function generateImageLine(array $data): string
     {
         $images = '';
 
@@ -301,7 +301,7 @@ class SitemapWriter implements WriterInterface
      *
      * @param array $data List of parameters
      */
-    protected function generateVideoLine(array $data): string
+    private function generateVideoLine(array $data): string
     {
         $videos = '';
         $builder = [
@@ -318,7 +318,7 @@ class SitemapWriter implements WriterInterface
     /**
      * Generate additional header with namespace adapted to the content.
      */
-    protected function getHeaderByFlag(): string
+    private function getHeaderByFlag(): string
     {
         $namespaces = [
             'video' => 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"',
@@ -333,7 +333,7 @@ class SitemapWriter implements WriterInterface
         return $result;
     }
 
-    protected function closeSitemap(): void
+    private function closeSitemap(): void
     {
         fwrite($this->buffer, '</urlset>');
         fclose($this->buffer);

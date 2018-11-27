@@ -23,32 +23,32 @@ use Symfony\Component\PropertyAccess\PropertyPath;
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
-class PropelCollectionSourceIterator implements SourceIteratorInterface
+final class PropelCollectionSourceIterator implements SourceIteratorInterface
 {
     /**
      * @var \PropelCollection
      */
-    protected $collection;
+    private $collection;
 
     /**
      * @var \ArrayIterator
      */
-    protected $iterator;
+    private $iterator;
 
     /**
      * @var array
      */
-    protected $propertyPaths = [];
+    private $propertyPaths = [];
 
     /**
      * @var PropertyAccessor
      */
-    protected $propertyAccessor;
+    private $propertyAccessor;
 
     /**
      * @var string default DateTime format
      */
-    protected $dateTimeFormat;
+    private $dateTimeFormat;
 
     /**
      * @param array $fields Fields to export
@@ -122,7 +122,7 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
-    protected function getValue($value)
+    private function getValue($value)
     {
         if (\is_array($value) || $value instanceof \Traversable) {
             $value = null;
