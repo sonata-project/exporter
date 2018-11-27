@@ -18,32 +18,32 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class XmlWriter implements TypedWriterInterface
+final class XmlWriter implements TypedWriterInterface
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var resource
      */
-    protected $file;
+    private $file;
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     /**
      * @var string
      */
-    protected $mainElement;
+    private $mainElement;
 
     /**
      * @var string
      */
-    protected $childElement;
+    private $childElement;
 
     public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
     {
@@ -56,12 +56,12 @@ class XmlWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'text/xml';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'xml';
     }
@@ -94,7 +94,7 @@ class XmlWriter implements TypedWriterInterface
     /**
      * @param mixed $value
      */
-    protected function generateNode(string $name, $value): void
+    private function generateNode(string $name, $value): void
     {
         if (\is_array($value)) {
             throw new \RuntimeException('Not implemented');

@@ -18,47 +18,47 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class CsvWriter implements TypedWriterInterface
+final class CsvWriter implements TypedWriterInterface
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var string
      */
-    protected $delimiter;
+    private $delimiter;
 
     /**
      * @var string
      */
-    protected $enclosure;
+    private $enclosure;
 
     /**
      * @var string
      */
-    protected $escape;
+    private $escape;
 
     /**
      * @var resource
      */
-    protected $file;
+    private $file;
 
     /**
      * @var bool
      */
-    protected $showHeaders;
+    private $showHeaders;
 
     /**
      * @var int
      */
-    protected $position;
+    private $position;
 
     /**
      * @var bool
      */
-    protected $withBom;
+    private $withBom;
 
     /**
      * @var string
@@ -88,12 +88,12 @@ class CsvWriter implements TypedWriterInterface
         }
     }
 
-    final public function getDefaultMimeType(): string
+    public function getDefaultMimeType(): string
     {
         return 'text/csv';
     }
 
-    final public function getFormat(): string
+    public function getFormat(): string
     {
         return 'csv';
     }
@@ -132,7 +132,7 @@ class CsvWriter implements TypedWriterInterface
         ++$this->position;
     }
 
-    protected function addHeaders(array $data): void
+    private function addHeaders(array $data): void
     {
         $headers = [];
         foreach ($data as $header => $value) {

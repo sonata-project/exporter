@@ -102,24 +102,24 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      */
     abstract public function tagContent($parser, string $data);
 
-    public function current()
+    final public function current()
     {
         return $this->currentRow;
     }
 
-    public function key()
+    final public function key()
     {
         return $this->position;
     }
 
-    public function next(): void
+    final public function next(): void
     {
         $this->parseRow();
         $this->prepareCurrentRow();
         ++$this->position;
     }
 
-    public function rewind(): void
+    final public function rewind(): void
     {
         $this->parser = xml_parser_create();
         xml_set_object($this->parser, $this);
@@ -142,7 +142,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         $this->prepareCurrentRow();
     }
 
-    public function valid(): bool
+    final public function valid(): bool
     {
         if (!\is_array($this->currentRow)) {
             xml_parser_free($this->parser);
@@ -157,7 +157,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * Parse until </Row> reached.
      */
-    protected function parseRow(): void
+    final protected function parseRow(): void
     {
         // only parse the next row if only one in buffer
         if (\count($this->bufferedRow) > 1) {

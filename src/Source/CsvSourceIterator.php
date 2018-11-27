@@ -18,57 +18,57 @@ namespace Sonata\Exporter\Source;
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
-class CsvSourceIterator implements SourceIteratorInterface
+final class CsvSourceIterator implements SourceIteratorInterface
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var resource|null
      */
-    protected $file;
+    private $file;
 
     /**
      * @var string
      */
-    protected $delimiter;
+    private $delimiter;
 
     /**
      * @var string
      */
-    protected $enclosure;
+    private $enclosure;
 
     /**
      * @var string
      */
-    protected $escape;
+    private $escape;
 
     /**
      * @var bool
      */
-    protected $hasHeaders;
+    private $hasHeaders;
 
     /**
      * @var array
      */
-    protected $lines = [];
+    private $lines = [];
 
     /**
      * @var array
      */
-    protected $columns = [];
+    private $columns = [];
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     /**
      * @var array
      */
-    protected $currentLine = [];
+    private $currentLine = [];
 
     public function __construct(
         string $filename,

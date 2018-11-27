@@ -18,12 +18,12 @@ namespace Sonata\Exporter\Source;
  *
  * @author Florent Denis <fdenis@ekino.com>
  */
-class IteratorCallbackSourceIterator extends IteratorSourceIterator
+final class IteratorCallbackSourceIterator extends IteratorSourceIterator
 {
     /**
      * @var \Closure
      */
-    protected $transformer;
+    private $transformer;
 
     /**
      * @param \Iterator $iterator    Iterator with string array elements
