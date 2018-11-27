@@ -13,3 +13,8 @@ Symfony support is dropped from 2.3 to 3.3 included.
 ## Namespace
 
 The namespace was changed from `Exporter` to `Sonata\Expoter`.
+
+## Closed API
+
+Many classes have been made final, meaning you can no longer extend them.
+Consider using decoration instead.

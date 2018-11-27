@@ -16,22 +16,22 @@ namespace Sonata\Exporter\Writer;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class JsonWriter implements TypedWriterInterface
+final class JsonWriter implements TypedWriterInterface
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var resource
      */
-    protected $file;
+    private $file;
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     public function __construct(string $filename)
     {

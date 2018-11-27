@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Writer;
 
-class InMemoryWriter implements WriterInterface
+final class InMemoryWriter implements WriterInterface
 {
     /**
      * @var array
      */
-    protected $elements;
+    private $elements;
 
     public function open(): void
     {

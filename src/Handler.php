@@ -16,17 +16,17 @@ namespace Sonata\Exporter;
 use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\WriterInterface;
 
-class Handler
+final class Handler
 {
     /**
      * @var SourceIteratorInterface
      */
-    protected $source;
+    private $source;
 
     /**
      * @var WriterInterface
      */
-    protected $writer;
+    private $writer;
 
     public function __construct(SourceIteratorInterface $source, WriterInterface $writer)
     {

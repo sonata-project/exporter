@@ -31,12 +31,12 @@ abstract class AbstractTypedWriterTestCase extends TestCase
         $this->writer = $this->getWriter();
     }
 
-    public function testFormatIsString(): void
+    final public function testFormatIsString(): void
     {
         $this->assertInternalType('string', $this->writer->getFormat());
     }
 
-    public function testDefaultMimeTypeIsString(): void
+    final public function testDefaultMimeTypeIsString(): void
     {
         $this->assertInternalType('string', $this->writer->getDefaultMimeType());
     }

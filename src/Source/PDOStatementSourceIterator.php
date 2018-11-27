@@ -15,27 +15,27 @@ namespace Sonata\Exporter\Source;
 
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 
-class PDOStatementSourceIterator implements SourceIteratorInterface
+final class PDOStatementSourceIterator implements SourceIteratorInterface
 {
     /**
      * @var \PDOStatement
      */
-    protected $statement;
+    private $statement;
 
     /**
      * @var mixed
      */
-    protected $current;
+    private $current;
 
     /**
      * @var int
      */
-    protected $position = 0;
+    private $position = 0;
 
     /**
      * @var bool
      */
-    protected $rewinded = false;
+    private $rewinded = false;
 
     public function __construct(\PDOStatement $statement)
     {

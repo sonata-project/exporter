@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-class ArraySourceIterator extends IteratorSourceIterator
+final class ArraySourceIterator extends IteratorSourceIterator
 {
     public function __construct(array $data)
     {
