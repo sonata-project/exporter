@@ -22,5 +22,6 @@
             <argument>%sonata.exporter.writer.xml.child_element%</argument>
         </service>
         <service id="sonata.exporter.exporter" class="Exporter\Exporter" public="true"/>
+        <service id="Exporter\Exporter" alias="sonata.exporter.exporter"/>
     </services>
 </container>
