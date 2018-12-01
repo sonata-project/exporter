@@ -39,11 +39,9 @@ final class XlsWriter implements TypedWriterInterface
     private $position = 0;
 
     /**
-     * @param mixed $filename
-     *
      * @throws \RuntimeException
      */
-    public function __construct($filename, bool $showHeaders = true)
+    public function __construct(string $filename, bool $showHeaders = true)
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
