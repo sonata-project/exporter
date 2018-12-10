@@ -24,7 +24,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         'y' => 'Y',
         'm' => 'M',
         'd' => 'D',
-        ];
+    ];
     const TIME_PARTS = [
         'h' => 'H',
         'i' => 'M',
