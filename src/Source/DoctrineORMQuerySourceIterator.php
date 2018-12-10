@@ -159,23 +159,23 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param \DateInterval $interval
+     * @param \DateInterval $dateInterval
      *
      * @return string An ISO8601 duration
      */
-    public function getDuration(\DateInterval $interval)
+    public function getDuration(\DateInterval $dateInterval)
     {
         $datePart = '';
         foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
-            if ($interval->$datePartAttribute !== 0) {
-                $datePart .= $interval->$datePartAttribute.$datePartAttributeString;
+            if ($dateInterval->$datePartAttribute !== 0) {
+                $datePart .= $dateInterval->$datePartAttribute.$datePartAttributeString;
             }
         }
 
         $timePart = '';
         foreach (self::TIME_PARTS as $timePartAttribute => $timePartAttributeString) {
-            if ($interval->$timePartAttribute !== 0) {
-                $timePart .= $interval->$timePartAttribute.$timePartAttributeString;
+            if ($dateInterval->$timePartAttribute !== 0) {
+                $timePart .= $dateInterval->$timePartAttribute.$timePartAttributeString;
             }
         }
 
