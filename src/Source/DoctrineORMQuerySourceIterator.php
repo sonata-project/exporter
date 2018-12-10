@@ -29,7 +29,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         'h' => 'H',
         'i' => 'M',
         's' => 'S',
-        ];
+    ];
 
     /**
      * @var \Doctrine\ORM\Query
