@@ -23,12 +23,12 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
-    const DATE_PARTS = [
+    private const DATE_PARTS = [
         'y' => 'Y',
         'm' => 'M',
         'd' => 'D',
     ];
-    const TIME_PARTS = [
+    private const TIME_PARTS = [
         'h' => 'H',
         'i' => 'M',
         's' => 'S',
@@ -139,11 +139,9 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param \DateInterval $interval
-     *
      * @return string An ISO8601 duration
      */
-    public function getDuration(\DateInterval $interval)
+    public function getDuration(\DateInterval $interval): string
     {
         $datePart = '';
         foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
