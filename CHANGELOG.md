@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.10.0](https://github.com/sonata-project/exporter/compare/1.9.1...1.10.0) - 2018-12-11
+### Changed
+- Added support for exporting `DateInterval` values
+
 ## [1.9.1](https://github.com/sonata-project/exporter/compare/1.9.0...1.9.1) - 2018-07-04
 
 - Made `sonata.exporter.exporter` service public
