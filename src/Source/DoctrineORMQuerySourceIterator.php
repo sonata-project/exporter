@@ -23,6 +23,17 @@ use Symfony\Component\PropertyAccess\PropertyPath;
 
 class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
 {
+    const DATE_PARTS = [
+        'y' => 'Y',
+        'm' => 'M',
+        'd' => 'D',
+    ];
+    const TIME_PARTS = [
+        'h' => 'H',
+        'i' => 'M',
+        's' => 'S',
+    ];
+
     /**
      * @var Query
      */
@@ -128,7 +139,35 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @param \DateInterval $interval
+     *
+     * @return string An ISO8601 duration
+     */
+    public function getDuration(\DateInterval $interval)
+    {
+        $datePart = '';
+        foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
+            if ($interval->$datePartAttribute !== 0) {
+                $datePart .= $interval->$datePartAttribute.$datePartAttributeString;
+            }
+        }
+
+        $timePart = '';
+        foreach (self::TIME_PARTS as $timePartAttribute => $timePartAttributeString) {
+            if ($interval->$timePartAttribute !== 0) {
+                $timePart .= $interval->$timePartAttribute.$timePartAttributeString;
+            }
+        }
+
+        if ('' === $datePart && '' === $timePart) {
+            return 'P0Y';
+        }
+
+        return 'P'.$datePart.('' !== $timePart ? 'T'.$timePart : '');
+    }
+
+    /**
+     * @return null|string
      */
     protected function getValue($value)
     {
@@ -136,6 +175,8 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
             $value = null;
         } elseif ($value instanceof \DateTimeInterface) {
             $value = $value->format($this->dateTimeFormat);
+        } elseif ($value instanceof \DateInterval) {
+            $value = $this->getDuration($value);
         } elseif (\is_object($value)) {
             $value = (string) $value;
         }

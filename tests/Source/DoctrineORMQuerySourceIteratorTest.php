@@ -61,6 +61,19 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
             [new ObjectWithToString('object with to string'), 'object with to string'],
             [$dateTimeImmutable, $dateTimeImmutable->format('r')],
             [$dateTimeImmutable, $dateTimeImmutable->format('Y-m-d H:i:s'), 'Y-m-d H:i:s'],
+            [new \DateInterval('P1Y'), 'P1Y'],
+            [new \DateInterval('P1M'), 'P1M'],
+            [new \DateInterval('P1D'), 'P1D'],
+            [new \DateInterval('PT1H'), 'PT1H'],
+            [new \DateInterval('PT1M'), 'PT1M'],
+            [new \DateInterval('PT1S'), 'PT1S'],
+            [new \DateInterval('P1Y1M'), 'P1Y1M'],
+            [new \DateInterval('P1Y1M1D'), 'P1Y1M1D'],
+            [new \DateInterval('P1Y1M1DT1H'), 'P1Y1M1DT1H'],
+            [new \DateInterval('P1Y1M1DT1H1M'), 'P1Y1M1DT1H1M'],
+            [new \DateInterval('P1Y1M1DT1H1M1S'), 'P1Y1M1DT1H1M1S'],
+            [new \DateInterval('P0Y'), 'P0Y'],
+            [new \DateInterval('PT0S'), 'P0Y'],
         ];
 
         return $data;
