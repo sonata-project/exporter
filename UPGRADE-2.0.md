@@ -12,7 +12,7 @@ Symfony support is dropped from 2.3 to 3.3 included.
 
 ## Namespace
 
-The namespace was changed from `Exporter` to `Sonata\Expoter`.
+The namespace was changed from `Exporter` to `Sonata\Exporter`.
 
 ## Closed API
 
