@@ -2,9 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.x]
+## [2.0.0](https://github.com/sonata-project/exporter/compare/1.10.0...2.0.0) - 2018-12-15
+## Added
+- parameter and return type hints
+
+## Changed
+- The namespace was changed from `Exporter` to `Sonata\Exporter`.
+- Many classes have been made final.
+
 ## Removed
 - Symfony 2.3 to 2.7 support dropped
+- php < 7.2 support
 
 ## [1.10.0](https://github.com/sonata-project/exporter/compare/1.9.1...1.10.0) - 2018-12-11
 ### Changed
