@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - 1.x
+    - 2.x
 
 language: php
 
