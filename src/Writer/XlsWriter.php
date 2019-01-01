@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
@@ -122,3 +122,5 @@ class XlsWriter implements TypedWriterInterface
         }
     }
 }
+
+class_exists(\Exporter\Writer\XlsWriter::class);

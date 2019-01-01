@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 interface WriterInterface
 {
@@ -22,3 +22,5 @@ interface WriterInterface
 
     public function close();
 }
+
+interface_exists(\Exporter\Writer\WriterInterfac::class);

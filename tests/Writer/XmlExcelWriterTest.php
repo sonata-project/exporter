@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Writer\XmlExcelWriter;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Writer\XmlExcelWriter;
 
 class XmlExcelWriterTest extends TestCase
 {

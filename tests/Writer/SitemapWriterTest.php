@@ -11,9 +11,9 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Writer\SitemapWriter;
 use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
+use Sonata\Exporter\Writer\SitemapWriter;
 
 class SitemapWriterTest extends TestCase
 {

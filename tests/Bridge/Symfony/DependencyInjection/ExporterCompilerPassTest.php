@@ -11,8 +11,8 @@
 
 namespace Exporter\Tests\Bridge\Symfony\DependencyInjection\Compiler;
 
-use Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
+use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;

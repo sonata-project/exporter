@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\PropelCollectionSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\PropelCollectionSourceIterator;
 
 /**
  * Tests the PropelCollectionSourceIterator class.

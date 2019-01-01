@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Writer\FormattedBoolWriter;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Writer\FormattedBoolWriter;
 
 /**
  * Format boolean before use another writer.

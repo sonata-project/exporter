@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * Filter CSV output to replace the default terminator while supporting active streams.
@@ -37,3 +37,5 @@ final class CsvWriterTerminate extends \php_user_filter
         return PSFS_PASS_ON;
     }
 }
+
+class_exists(\Exporter\Writer\CsvWriterTerminate::class);

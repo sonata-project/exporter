@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -98,3 +98,5 @@ class SymfonySitemapSourceIterator implements SourceIteratorInterface
         $this->source->rewind();
     }
 }
+
+class_exists(\Exporter\Source\SymfonySitemapSourceIterator::class);

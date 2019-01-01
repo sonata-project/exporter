@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\PDOStatementSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\PDOStatementSourceIterator;
 
 class PDOStatementSourceIteratorTest extends TestCase
 {

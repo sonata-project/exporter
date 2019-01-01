@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\XmlSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\XmlSourceIterator;
 
 class XmlSourceIteratorTest extends TestCase
 {

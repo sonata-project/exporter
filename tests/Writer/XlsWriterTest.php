@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Test\AbstractTypedWriterTestCase;
-use Exporter\Writer\XlsWriter;
+use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use Sonata\Exporter\Writer\XlsWriter;
 
 class XlsWriterTest extends AbstractTypedWriterTestCase
 {

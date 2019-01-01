@@ -11,8 +11,8 @@
 
 namespace Exporter\Tests\Bridge\Symfony\DependencyInjection;
 
-use Exporter\Bridge\Symfony\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\AbstractConfigurationTestCase;
+use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Configuration;
 
 class ConfigurationTest extends AbstractConfigurationTestCase
 {

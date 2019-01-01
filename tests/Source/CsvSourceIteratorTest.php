@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\CsvSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\CsvSourceIterator;
 
 class CsvSourceIteratorTest extends TestCase
 {
