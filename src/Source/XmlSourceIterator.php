@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * Read data from a Xml file.
@@ -110,3 +110,5 @@ class XmlSourceIterator extends AbstractXmlSourceIterator
         }
     }
 }
+
+class_exists(\Exporter\Source\XmlSourceIterator::class);

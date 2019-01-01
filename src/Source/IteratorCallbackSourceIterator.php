@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * IteratorCallbackSource is IteratorSource with callback executed each row.
@@ -42,3 +42,5 @@ class IteratorCallbackSourceIterator extends IteratorSourceIterator
         return \call_user_func($this->transformer, $this->iterator->current());
     }
 }
+
+class_exists(\Exporter\Source\IteratorCallbackSourceIterator::class);

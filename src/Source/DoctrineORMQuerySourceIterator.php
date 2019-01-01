@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Doctrine\ORM\Query;
 use Exporter\Exception\InvalidMethodCallException;
@@ -206,3 +206,5 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         return $value;
     }
 }
+
+class_exists(\Exporter\Source\DoctrineORMQuerySourceIterator::class);
