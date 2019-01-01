@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 class InMemoryWriter implements WriterInterface
 {
@@ -50,3 +50,5 @@ class InMemoryWriter implements WriterInterface
         return $this->elements;
     }
 }
+
+class_exists(\Exporter\Writer\InMemoryWriter::class);

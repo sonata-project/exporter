@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * Read data from a csv file.
@@ -155,3 +155,5 @@ class CsvSourceIterator implements SourceIteratorInterface
         return true;
     }
 }
+
+class_exists(\Exporter\Source\CsvSourceIterator::class);
