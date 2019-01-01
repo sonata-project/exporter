@@ -14,7 +14,7 @@ namespace Exporter\Test\Source\Fixtures;
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>
  */
-final class DoctrineORMQuerySourceIterator extends \Exporter\Source\DoctrineORMQuerySourceIterator
+final class DoctrineORMQuerySourceIterator extends \Sonata\Exporter\Source\DoctrineORMQuerySourceIterator
 {
     public function getValue($value)
     {

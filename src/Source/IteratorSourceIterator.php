@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * SourceIterator implementation based on Iterator.
@@ -77,3 +77,5 @@ class IteratorSourceIterator implements SourceIteratorInterface
         $this->iterator->rewind();
     }
 }
+
+class_exists(\Exporter\Source\IteratorSourceIterator::class);

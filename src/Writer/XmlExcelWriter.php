@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * Generate a Xml Excel file.
@@ -151,3 +151,5 @@ class XmlExcelWriter implements WriterInterface
         return $dataType;
     }
 }
+
+class_exists(\Exporter\Writer\XmlExcelWriter::class);

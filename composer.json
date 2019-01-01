@@ -51,7 +51,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Exporter\\": "src/"
+            "Exporter\\": "aliases/",
+            "Sonata\\Exporter\\": "src/"
         }
     },
     "autoload-dev": {

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Bridge\Symfony\DependencyInjection;
+namespace Sonata\Exporter\Bridge\Symfony\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -62,3 +62,5 @@ final class SonataExporterExtension extends Extension
         }
     }
 }
+
+class_exists(\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension::class);

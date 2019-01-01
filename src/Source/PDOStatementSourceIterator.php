@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
-use Exporter\Exception\InvalidMethodCallException;
+use Sonata\Exporter\Exception\InvalidMethodCallException;
 
 class PDOStatementSourceIterator implements SourceIteratorInterface
 {
@@ -91,3 +91,5 @@ class PDOStatementSourceIterator implements SourceIteratorInterface
         $this->rewinded = true;
     }
 }
+
+class_exists(\Exporter\Source\PDOStatementSourceIterator::class);

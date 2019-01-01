@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Doctrine\ORM\Query;
-use Exporter\Exception\InvalidMethodCallException;
+use Sonata\Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
@@ -206,3 +206,5 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
         return $value;
     }
 }
+
+class_exists(\Exporter\Source\DoctrineORMQuerySourceIterator::class);

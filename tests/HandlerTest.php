@@ -11,8 +11,8 @@
 
 namespace Exporter\Test;
 
-use Exporter\Handler;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Handler;
 
 class HandlerTest extends TestCase
 {

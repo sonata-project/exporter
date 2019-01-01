@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Bridge\Symfony\Bundle;
+namespace Sonata\Exporter\Bridge\Symfony\Bundle;
 
-use Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
+use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -33,3 +33,5 @@ final class SonataExporterBundle extends Bundle
         return 'Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension';
     }
 }
+
+class_exists(\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle::class);

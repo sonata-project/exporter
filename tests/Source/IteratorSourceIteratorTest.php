@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\IteratorSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\IteratorSourceIterator;
 
 class IteratorSourceIteratorTest extends TestCase
 {

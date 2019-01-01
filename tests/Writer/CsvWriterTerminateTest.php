@@ -11,9 +11,9 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Test\AbstractTypedWriterTestCase;
-use Exporter\Writer\CsvWriter;
-use Exporter\Writer\CsvWriterTerminate;
+use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use Sonata\Exporter\Writer\CsvWriter;
+use Sonata\Exporter\Writer\CsvWriterTerminate;
 
 class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
 {

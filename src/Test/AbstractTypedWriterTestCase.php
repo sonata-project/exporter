@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test;
+namespace Sonata\Exporter\Test;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
@@ -44,3 +44,5 @@ abstract class AbstractTypedWriterTestCase extends \PHPUnit\Framework\TestCase
      */
     abstract protected function getWriter();
 }
+
+class_exists(\Exporter\Test\AbstractTypedWriterTestCase::class);

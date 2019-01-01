@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * Generates a GSA feed.
@@ -157,3 +157,5 @@ EOF
         fclose($this->buffer);
     }
 }
+
+class_exists(\Exporter\Writer\GsaFeedWriter::class);

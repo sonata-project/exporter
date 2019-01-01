@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Bridge\Symfony\DependencyInjection;
+namespace Sonata\Exporter\Bridge\Symfony\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -123,3 +123,5 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 }
+
+class_exists(\Exporter\Bridge\Symfony\DependencyInjection\Configuration::class);

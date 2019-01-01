@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * Read data from a Xml file.
@@ -217,3 +217,5 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         }
     }
 }
+
+class_exists(\Exporter\Source\AbstractXmlSourceIterator::class);

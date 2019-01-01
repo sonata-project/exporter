@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Doctrine\ODM\MongoDB\Query\Query;
 use Doctrine\ORM\Internal\Hydration\IterableResult;
-use Exporter\Exception\InvalidMethodCallException;
+use Sonata\Exporter\Exception\InvalidMethodCallException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
@@ -156,3 +156,5 @@ class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
         return $value;
     }
 }
+
+class_exists(\Exporter\Source\DoctrineODMQuerySourceIterator::class);

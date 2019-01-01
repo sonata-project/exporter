@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Bridge\Symfony\DependencyInjection\Compiler;
+namespace Sonata\Exporter\Bridge\Symfony\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -37,3 +37,5 @@ final class ExporterCompilerPass implements CompilerPassInterface
         }
     }
 }
+
+class_exists(\Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass::class);

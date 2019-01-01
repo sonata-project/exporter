@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter;
+namespace Sonata\Exporter;
 
-use Exporter\Source\SourceIteratorInterface;
-use Exporter\Writer\TypedWriterInterface;
+use Sonata\Exporter\Source\SourceIteratorInterface;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -91,3 +91,5 @@ final class Exporter
         $this->writers[$writer->getFormat()] = $writer;
     }
 }
+
+class_exists(\Exporter\Exporter::class);

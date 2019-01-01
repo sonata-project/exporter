@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
-use Exporter\Exception\InvalidDataFormatException;
+use Sonata\Exporter\Exception\InvalidDataFormatException;
 
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
@@ -167,3 +167,5 @@ class CsvWriter implements TypedWriterInterface
         fputcsv($this->file, $headers, $this->delimiter, $this->enclosure, $this->escape);
     }
 }
+
+class_exists(\Exporter\Writer\CsvWriter::class);

@@ -11,7 +11,7 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
+use Sonata\Exporter\Test\AbstractTypedWriterTestCase as BaseTestCase;
 
 @trigger_error(
     'The '.__NAMESPACE__.'\AbstractTypedWriterTestCase class is deprecated since version 1.6 and will be removed in 2.0.'

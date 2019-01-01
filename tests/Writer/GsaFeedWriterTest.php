@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Writer;
 
-use Exporter\Writer\GsaFeedWriter;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Writer\GsaFeedWriter;
 
 /**
  * Tests the GSA feed writer class.

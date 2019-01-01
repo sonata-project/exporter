@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use PropelCollection;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -159,3 +159,5 @@ class PropelCollectionSourceIterator implements SourceIteratorInterface
         return $value;
     }
 }
+
+class_exists(\Exporter\Source\PropelCollectionSourceIterator::class);

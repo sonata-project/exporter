@@ -11,8 +11,8 @@
 
 namespace Exporter\Test\Source;
 
-use Exporter\Source\ChainSourceIterator;
 use PHPUnit\Framework\TestCase;
+use Sonata\Exporter\Source\ChainSourceIterator;
 
 class ChainSourceIteratorTest extends TestCase
 {
