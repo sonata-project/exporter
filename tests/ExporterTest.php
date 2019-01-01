@@ -11,13 +11,13 @@
 
 namespace Exporter\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Source\ArraySourceIterator;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\XlsWriter;
 use Sonata\Exporter\Writer\XmlWriter;
-use PHPUnit\Framework\TestCase;
 
 class ExporterTest extends TestCase
 {
