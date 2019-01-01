@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Test;
+namespace Sonata\Exporter\Test;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>

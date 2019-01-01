@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter;
+namespace Sonata\Exporter;
 
 use Exporter\Source\SourceIteratorInterface;
 use Exporter\Writer\TypedWriterInterface;

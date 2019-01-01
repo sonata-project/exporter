@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * Format boolean before use another writer.
@@ -74,3 +74,5 @@ class FormattedBoolWriter implements WriterInterface
         $this->writer->write($data);
     }
 }
+
+class_exists(\Exporter\Writer\FormattedBoolWriter::class);
