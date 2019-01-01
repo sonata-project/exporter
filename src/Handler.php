@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter;
+namespace Sonata\Exporter;
 
 use Exporter\Source\SourceIteratorInterface;
 use Exporter\Writer\WriterInterface;
@@ -58,3 +58,5 @@ class Handler
         return new self($source, $writer);
     }
 }
+
+class_exists(\Exporter\Handler::class);

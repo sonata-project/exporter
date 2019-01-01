@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use ArrayIterator;
 
@@ -92,3 +92,5 @@ class ChainSourceIterator implements SourceIteratorInterface
         }
     }
 }
+
+class_exists(\Exporter\Source\ChainSourceIterator::class);

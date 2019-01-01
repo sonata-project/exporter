@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 use Exporter\Exception\InvalidDataFormatException;
 
@@ -125,3 +125,5 @@ class XmlWriter implements TypedWriterInterface
         }
     }
 }
+
+class_exists(\Exporter\Writer\XmlWriter::class);
