@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Statement;
@@ -109,3 +109,5 @@ class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
         $this->next();
     }
 }
+
+class_exists(\Exporter\Source\DoctrineDBALConnectionSourceIterator::class);

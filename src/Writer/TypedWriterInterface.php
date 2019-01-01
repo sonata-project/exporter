@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Writer;
+namespace Sonata\Exporter\Writer;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
@@ -32,3 +32,5 @@ interface TypedWriterInterface extends WriterInterface
      */
     public function getFormat();
 }
+
+interface_exists(\Exporter\Writer\TypedWriterInterface::class);

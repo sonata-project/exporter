@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 /**
  * Read data from a Xml Excel file.
@@ -76,3 +76,5 @@ class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
     }
 }
+
+class_exists(\Exporter\Source\XmlExcelSourceIterator::class);

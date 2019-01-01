@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exporter\Source;
+namespace Sonata\Exporter\Source;
 
 class ArraySourceIterator extends IteratorSourceIterator
 {
@@ -21,3 +21,5 @@ class ArraySourceIterator extends IteratorSourceIterator
         parent::__construct(new \ArrayIterator($data));
     }
 }
+
+class_exists(\Exporter\Source\ArraySourceIterator::class);
