@@ -199,7 +199,7 @@ class SitemapWriter implements WriterInterface
 
         $filename = sprintf($this->pattern, $this->bufferPart);
 
-        $this->buffer = fopen($this->folder.'/'.$filename, 'wb');
+        $this->buffer = fopen($this->folder.'/'.$filename, 'w');
 
         $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
     }

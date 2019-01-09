@@ -122,7 +122,7 @@ class CsvSourceIterator implements SourceIteratorInterface
      */
     public function rewind()
     {
-        $this->file = fopen($this->filename, 'rb');
+        $this->file = fopen($this->filename, 'r');
         $this->position = 0;
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         if ($this->hasHeaders) {
