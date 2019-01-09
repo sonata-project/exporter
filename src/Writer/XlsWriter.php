@@ -74,7 +74,7 @@ class XlsWriter implements TypedWriterInterface
      */
     public function open()
     {
-        $this->file = fopen($this->filename, 'wb', false);
+        $this->file = fopen($this->filename, 'w', false);
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
     }
 
