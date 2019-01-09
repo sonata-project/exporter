@@ -189,7 +189,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     /**
      * @param $value
      *
-     * @return null|string
+     * @return string|null
      */
     protected function getValue($value)
     {
