@@ -165,7 +165,7 @@ class DoctrineORMQuerySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     protected function getValue($value)
     {

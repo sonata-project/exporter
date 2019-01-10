@@ -68,7 +68,7 @@ final class XmlWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'wb', false);
+        $this->file = fopen($this->filename, 'w', false);
 
         fwrite($this->file, sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
