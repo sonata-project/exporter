@@ -70,7 +70,7 @@ final class XmlExcelWriter implements WriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'wb');
+        $this->file = fopen($this->filename, 'w');
         fwrite($this->file, $this->header);
     }
 

@@ -128,7 +128,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, XML_OPTION_SKIP_WHITE, 0);
 
-        $this->file = fopen($this->filename, 'rb');
+        $this->file = fopen($this->filename, 'r');
 
         $this->bufferedRow = [];
         $this->currentRowIndex = 0;
