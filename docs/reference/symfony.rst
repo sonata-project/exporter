@@ -7,25 +7,17 @@ Doing so will make a ``sonata.exporter.exporter`` service available.
 This service is able to build a streamed response directly usable in a Symfony controller
 from a format, a filename, and a source.
 
-Registering the bundle
-----------------------
+Enable the Bundle
+-----------------
 
-.. code-block:: php
+Now, enable the bundle in ``bundles.php`` file::
 
-    // app/AppKernel.php
+    // config/bundles.php
 
-    public function registerBundles()
-    {
-        $bundles = array(
-            // …
-            new Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle(),
-        );
-
-        // …
-
-        return $bundles;
-    }
-
+    return [
+        // ...
+        new Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle::class => ['all' => true],
+    ];
 
 The default writers
 -------------------
@@ -36,6 +28,8 @@ Each service has its own parameters, documented below.
 Each service parameter has a configuration countepart:
 
 .. code-block:: yaml
+
+    # config/packages/sonata_exporter.yaml
 
     sonata_exporter:
         writers:
@@ -91,6 +85,8 @@ Configuring the default writers
 The default writers list can be altered through configuration:
 
 .. code-block:: yaml
+
+    # config/packages/sonata_exporter.yaml
 
     sonata_exporter:
         exporter:

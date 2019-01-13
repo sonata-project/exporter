@@ -16,5 +16,5 @@ You may export data from various sources:
 * Sitemap (Takes another iterator)
 * Chain (can aggregate data from several different iterators)
 
-You may also create your own. To do so, simply create a class that implements ``Exporter\Source\SourceIteratorInterface``.
+You may also create your own. To do so, create a class that implements ``Exporter\Source\SourceIteratorInterface``.
 

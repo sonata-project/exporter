@@ -1,22 +1,12 @@
-========================
-Sonata demo installation
-========================
-
-Pre-requisites
-==============
-
-- Git
-- PHP 5.3.3 and up
-- `Composer <https://getcomposer.org/>`_
+.. index::
+    single: Installation
+    single: Configuration
 
 Installation
 ============
 
-Add the project in your project dependencies:
+The easiest way to install is to require it with Composer:
 
 .. code-block:: bash
 
-    php composer.phar require sonata-project/exporter dev-master
-
-
-And voilà! You're ready to go.
+    composer require sonata-project/exporter

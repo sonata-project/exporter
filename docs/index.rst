@@ -2,7 +2,8 @@
 Sonata exporter
 ===============
 
-Sonata exporter is a library to export data from one source to an output in an efficient way. It is highly performance-oriented.
+Sonata exporter is a library to export data from one source to an output in an efficient way.
+It is highly performance-oriented.
 
 Summary
 =======
