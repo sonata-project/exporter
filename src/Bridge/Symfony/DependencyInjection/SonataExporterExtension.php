@@ -40,7 +40,7 @@ final class SonataExporterExtension extends Extension
     private function configureExporter(ContainerBuilder $container, array $config): void
     {
         foreach (['csv', 'json', 'xls', 'xml'] as $format) {
-            if (\in_array($format, $config['default_writers'])) {
+            if (\in_array($format, $config['default_writers'], true)) {
                 $container->getDefinition('sonata.exporter.writer.'.$format)->addTag(
                     'sonata.exporter.writer'
                 );

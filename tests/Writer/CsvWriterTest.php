@@ -60,7 +60,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $expected = '" john , """"2""",doe,1';
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     public function testEscapeFormating(): void
@@ -75,7 +75,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $expected = 'john,doe,\,"/"';
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     public function testWithTerminate(): void
@@ -90,7 +90,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $expected = "john,doe,1\r\njohn,doe,2";
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     public function testEnclosureFormatingWithExcel(): void
@@ -104,7 +104,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $expected = '"john , """"2""","doe ",1';
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     public function testWithHeaders(): void
@@ -118,7 +118,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
 
         $expected = 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     public function testWithBom(): void
@@ -131,7 +131,7 @@ class CsvWriterTest extends AbstractTypedWriterTestCase
         $writer->close();
 
         $expected = \chr(0xEF).\chr(0xBB).\chr(0xBF).'name,surname,year'."\n".'"Rémi , """"2""","doe ",2001';
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     protected function getWriter(): TypedWriterInterface
