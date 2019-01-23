@@ -50,7 +50,7 @@ class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
 
         $expected = "john,doe,1\r\njohn,doe,2";
 
-        $this->assertEquals($expected, trim(file_get_contents($this->filename)));
+        $this->assertSame($expected, trim(file_get_contents($this->filename)));
     }
 
     protected function getWriter(): TypedWriterInterface

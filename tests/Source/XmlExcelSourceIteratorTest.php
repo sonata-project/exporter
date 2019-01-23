@@ -54,13 +54,13 @@ class XmlExcelSourceIteratorTest extends TestCase
             $this->assertInternalType('array', $value);
             $this->assertCount(3, $value);
             $keys = array_keys($value);
-            $this->assertEquals($i, $iterator->key());
-            $this->assertEquals('sku', $keys[0]);
-            $this->assertEquals('ean', $keys[1]);
-            $this->assertEquals('name', $keys[2]);
+            $this->assertSame($i, $iterator->key());
+            $this->assertSame('sku', $keys[0]);
+            $this->assertSame('ean', $keys[1]);
+            $this->assertSame('name', $keys[2]);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
     }
 
     public function testHandlerSS(): void
@@ -72,13 +72,13 @@ class XmlExcelSourceIteratorTest extends TestCase
             $this->assertInternalType('array', $value);
             $this->assertCount(3, $value);
             $keys = array_keys($value);
-            $this->assertEquals($i, $iterator->key());
-            $this->assertEquals('sku', $keys[0]);
-            $this->assertEquals('ean', $keys[1]);
-            $this->assertEquals('name', $keys[2]);
+            $this->assertSame($i, $iterator->key());
+            $this->assertSame('sku', $keys[0]);
+            $this->assertSame('ean', $keys[1]);
+            $this->assertSame('name', $keys[2]);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
     }
 
     public function testNoHeaders(): void
@@ -89,10 +89,10 @@ class XmlExcelSourceIteratorTest extends TestCase
         foreach ($iterator as $value) {
             $this->assertInternalType('array', $value);
             $this->assertCount(3, $value);
-            $this->assertEquals($i, $iterator->key());
+            $this->assertSame($i, $iterator->key());
             ++$i;
         }
-        $this->assertEquals(4, $i);
+        $this->assertSame(4, $i);
     }
 
     public function testRewind(): void
@@ -105,7 +105,7 @@ class XmlExcelSourceIteratorTest extends TestCase
             $this->assertCount(3, $value);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
 
         $i = 0;
         foreach ($iterator as $value) {
@@ -113,6 +113,6 @@ class XmlExcelSourceIteratorTest extends TestCase
             $this->assertCount(3, $value);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
     }
 }

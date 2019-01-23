@@ -77,7 +77,7 @@ class SitemapWriterTest extends TestCase
 </urlset>
 XML;
 
-        $this->assertEquals(trim($expected), file_get_contents($generatedFiles[1]));
+        $this->assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
     public function testSimpleWriteAdvanced(): void
@@ -107,7 +107,7 @@ XML;
         $generatedFiles = $this->getFiles();
 
         $this->assertCount(1, $generatedFiles);
-        $this->assertEquals($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
+        $this->assertSame($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
 
         SitemapWriter::generateSitemapIndex($this->folder, 'https://sonata-project.org');
 
@@ -126,7 +126,7 @@ XML;
 </urlset>
 XML;
 
-        $this->assertEquals(trim($expected), file_get_contents($generatedFiles[1]));
+        $this->assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
     public function testLimitSize(): void
@@ -181,7 +181,7 @@ XML;
         $info = stat($generatedFiles[0]);
 
         $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
-        $this->assertEquals(SitemapWriter::LIMIT_URL, \count($file1->children()));
+        $this->assertSame(SitemapWriter::LIMIT_URL, \count($file1->children()));
         $this->assertCount(1, iterator_to_array($file2->children()));
     }
 
