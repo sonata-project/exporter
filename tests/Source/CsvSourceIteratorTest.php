@@ -50,13 +50,13 @@ EOF;
         foreach ($iterator as $value) {
             $this->assertInternalType('array', $value);
             $this->assertCount(2, $value);
-            $this->assertEquals($i, $iterator->key());
+            $this->assertSame($i, $iterator->key());
             $keys = array_keys($value);
-            $this->assertEquals('firstname', $keys[0]);
-            $this->assertEquals('name', $keys[1]);
+            $this->assertSame('firstname', $keys[0]);
+            $this->assertSame('name', $keys[1]);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
     }
 
     public function testNoHeaders(): void
@@ -67,10 +67,10 @@ EOF;
         foreach ($iterator as $value) {
             $this->assertInternalType('array', $value);
             $this->assertCount(2, $value);
-            $this->assertEquals($i, $iterator->key());
+            $this->assertSame($i, $iterator->key());
             ++$i;
         }
-        $this->assertEquals(4, $i);
+        $this->assertSame(4, $i);
     }
 
     public function testRewind(): void
@@ -83,7 +83,7 @@ EOF;
             $this->assertCount(2, $value);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
 
         $i = 0;
         foreach ($iterator as $value) {
@@ -91,6 +91,6 @@ EOF;
             $this->assertCount(2, $value);
             ++$i;
         }
-        $this->assertEquals(3, $i);
+        $this->assertSame(3, $i);
     }
 }

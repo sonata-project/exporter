@@ -104,7 +104,7 @@ class GsaFeedWriterTest extends TestCase
         $generatedFiles = $this->getFiles();
 
         $this->assertCount(1, $generatedFiles);
-        $this->assertEquals($this->folder.'/feed_00001.xml', $generatedFiles[0]);
+        $this->assertSame($this->folder.'/feed_00001.xml', $generatedFiles[0]);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), LIBXML_PARSEHUGE);
@@ -125,7 +125,7 @@ class GsaFeedWriterTest extends TestCase
 </gsafeed>
 XML;
 
-        $this->assertEquals(trim($expected), file_get_contents($generatedFiles[0]));
+        $this->assertSame(trim($expected), file_get_contents($generatedFiles[0]));
     }
 
     /**

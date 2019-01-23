@@ -39,7 +39,7 @@ class IteratorCallbackSourceIteratorTest extends TestCase
         $result = [1, 2, 4, 8];
 
         foreach ($this->sourceIterator as $key => $value) {
-            $this->assertEquals([$result[$key]], $value);
+            $this->assertSame([$result[$key]], $value);
         }
     }
 
