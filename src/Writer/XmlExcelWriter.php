@@ -76,7 +76,7 @@ final class XmlExcelWriter implements WriterInterface
 
     public function write(array $data): void
     {
-        if (0 == $this->position && $this->showHeaders) {
+        if (0 === $this->position && $this->showHeaders) {
             $header = array_keys($data);
             fwrite($this->file, $this->getXmlString($header));
             ++$this->position;
@@ -104,7 +104,7 @@ final class XmlExcelWriter implements WriterInterface
 
             $value = str_replace(["\r\n", "\r", "\n"], '&#10;', $value);
             $dataType = 'String';
-            if (0 != $this->position || !$this->showHeaders) {
+            if (0 !== $this->position || !$this->showHeaders) {
                 $dataType = $this->getDataType((string) $key, $value);
             }
             $xmlData[] = '<Cell><Data ss:Type="'.$dataType.'">'.$value.'</Data></Cell>';

@@ -45,7 +45,7 @@ class IteratorSourceIteratorTest extends TestCase
             ->method('current')
             ->will($this->returnValue(['current']));
 
-        self::assertEquals(['current'], $this->sourceIterator->current());
+        self::assertSame(['current'], $this->sourceIterator->current());
     }
 
     public function testNext(): void
@@ -64,7 +64,7 @@ class IteratorSourceIteratorTest extends TestCase
             ->method('key')
             ->will($this->returnValue('key'));
 
-        self::assertEquals('key', $this->sourceIterator->key());
+        self::assertSame('key', $this->sourceIterator->key());
     }
 
     public function testValid(): void
