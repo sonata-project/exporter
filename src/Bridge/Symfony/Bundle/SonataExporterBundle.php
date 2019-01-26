@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Bridge\Symfony\Bundle;
 
-use Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension;
 use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
+use Sonata\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
