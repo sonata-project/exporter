@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1](https://github.com/sonata-project/exporter/compare/2.0.0...2.0.1) - 2019-01-26
+### Fixed
+- Fixed wrong namespace usage
+
 ## [2.0.0](https://github.com/sonata-project/exporter/compare/1.10.0...2.0.0) - 2018-12-15
 ## Added
 - parameter and return type hints
