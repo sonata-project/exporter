@@ -121,7 +121,7 @@ final class XmlExcelWriter implements WriterInterface
             if (\is_string($this->columnsType)) {
                 $dataType = $this->columnsType;
             } elseif (\is_array($this->columnsType)) {
-                if (array_key_exists($key, $this->columnsType)) {
+                if (\array_key_exists($key, $this->columnsType)) {
                     $dataType = $this->columnsType[$key];
                 }
             }
