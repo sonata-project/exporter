@@ -44,7 +44,7 @@ final class Exporter
      */
     public function getResponse(string $format, string $filename, SourceIteratorInterface $source): StreamedResponse
     {
-        if (!array_key_exists($format, $this->writers)) {
+        if (!\array_key_exists($format, $this->writers)) {
             throw new \RuntimeException(sprintf(
                 'Invalid "%s" format, supported formats are : "%s"',
                 $format,
