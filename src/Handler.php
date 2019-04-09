@@ -16,7 +16,7 @@ namespace Sonata\Exporter;
 use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\WriterInterface;
 
-final class Handler
+class Handler
 {
     /**
      * @var SourceIteratorInterface
