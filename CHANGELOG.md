@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.11.1](https://github.com/sonata-project/exporter/compare/1.11.0...1.11.1) - 2019-04-17
+### Fixed
+- Fix namespace typo
+
 ## [1.11.0](https://github.com/sonata-project/exporter/compare/1.10.0...1.11.0) - 2019-01-10
 
 ### Added
