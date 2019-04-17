@@ -23,4 +23,4 @@ interface WriterInterface
     public function close();
 }
 
-interface_exists(\Exporter\Writer\WriterInterfac::class);
+interface_exists(\Exporter\Writer\WriterInterface::class);
