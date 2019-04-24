@@ -53,7 +53,7 @@ final class Exporter
         }
         $writer = $this->writers[$format];
 
-        $callback = function () use ($source, $writer): void {
+        $callback = static function () use ($source, $writer): void {
             $handler = Handler::create($source, $writer);
             $handler->export();
         };
