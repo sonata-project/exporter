@@ -27,7 +27,7 @@ class IteratorCallbackSourceIteratorTest extends TestCase
     protected function setUp(): void
     {
         $this->iterator = new \ArrayIterator([[0], [1], [2], [3]]);
-        $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, function ($data) {
+        $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, static function ($data) {
             $data[0] = 1 << $data[0];
 
             return $data;
