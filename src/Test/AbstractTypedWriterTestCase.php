@@ -33,12 +33,12 @@ abstract class AbstractTypedWriterTestCase extends TestCase
 
     final public function testFormatIsString(): void
     {
-        $this->assertInternalType('string', $this->writer->getFormat());
+        $this->assertIsString($this->writer->getFormat());
     }
 
     final public function testDefaultMimeTypeIsString(): void
     {
-        $this->assertInternalType('string', $this->writer->getDefaultMimeType());
+        $this->assertIsString($this->writer->getDefaultMimeType());
     }
 
     abstract protected function getWriter(): TypedWriterInterface;

@@ -74,7 +74,7 @@ class PropelCollectionSourceIteratorTest extends TestCase
 
         foreach ($data as $row) {
             $this->assertArrayHasKey('created_at', $row);
-            $this->assertInternalType('string', $row['created_at']);
+            $this->assertIsString($row['created_at']);
         }
     }
 
