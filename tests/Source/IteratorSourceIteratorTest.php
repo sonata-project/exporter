@@ -43,7 +43,7 @@ class IteratorSourceIteratorTest extends TestCase
         $this->iterator
             ->expects(self::once())
             ->method('current')
-            ->will($this->returnValue(['current']));
+            ->willReturn(['current']);
 
         self::assertSame(['current'], $this->sourceIterator->current());
     }
@@ -62,7 +62,7 @@ class IteratorSourceIteratorTest extends TestCase
         $this->iterator
             ->expects(self::once())
             ->method('key')
-            ->will($this->returnValue('key'));
+            ->willReturn('key');
 
         self::assertSame('key', $this->sourceIterator->key());
     }
@@ -72,7 +72,7 @@ class IteratorSourceIteratorTest extends TestCase
         $this->iterator
             ->expects(self::once())
             ->method('valid')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         self::assertTrue($this->sourceIterator->valid());
     }
