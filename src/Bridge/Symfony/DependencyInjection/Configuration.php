@@ -25,8 +25,14 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('sonata_exporter');
+        $treeBuilder = new TreeBuilder('sonata_exporter');
+
+        // Keep compatibility with symfony/config < 4.2
+        if (!method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->root('sonata_exporter');
+        } else {
+            $rootNode = $treeBuilder->getRootNode();
+        }
 
         $rootNode
             ->children()
