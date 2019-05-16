@@ -104,7 +104,7 @@ class GsaFeedWriterTest extends TestCase
         $generatedFiles = $this->getFiles();
 
         $this->assertCount(1, $generatedFiles);
-        $this->assertSame($this->folder.'/feed_00001.xml', $generatedFiles[0]);
+        $this->assertSame($this->folder->getRealPath().'/feed_00001.xml', $generatedFiles[0]);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), LIBXML_PARSEHUGE);
