@@ -51,7 +51,7 @@ class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(3, $value);
             $keys = array_keys($value);
             $this->assertSame($i, $iterator->key());
@@ -69,7 +69,7 @@ class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(3, $value);
             $keys = array_keys($value);
             $this->assertSame($i, $iterator->key());
@@ -87,7 +87,7 @@ class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(3, $value);
             $this->assertSame($i, $iterator->key());
             ++$i;
@@ -101,7 +101,7 @@ class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(3, $value);
             ++$i;
         }
@@ -109,7 +109,7 @@ class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(3, $value);
             ++$i;
         }
