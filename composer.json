@@ -25,7 +25,7 @@
         "doctrine/dbal": "^2.5",
         "doctrine/orm": "^2.4.5",
         "matthiasnoback/symfony-config-test": "^4.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^3.0",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "propel/propel1": "^1.6",
         "symfony/config": "^3.4 || ^4.0",
         "symfony/dependency-injection": "^3.4 || ^4.0",
