@@ -48,7 +48,7 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(2, $value);
             $this->assertSame($i, $iterator->key());
             $keys = array_keys($value);
@@ -65,7 +65,7 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(2, $value);
             $this->assertSame($i, $iterator->key());
             ++$i;
@@ -79,7 +79,7 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(2, $value);
             ++$i;
         }
@@ -87,7 +87,7 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertInternalType('array', $value);
+            $this->assertIsArray($value);
             $this->assertCount(2, $value);
             ++$i;
         }

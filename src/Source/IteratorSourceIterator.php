@@ -31,9 +31,6 @@ class IteratorSourceIterator implements SourceIteratorInterface
         $this->iterator = $iterator;
     }
 
-    /**
-     * @return \Iterator
-     */
     final public function getIterator(): \Iterator
     {
         return $this->iterator;
