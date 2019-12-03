@@ -33,6 +33,9 @@ final class JsonWriter implements TypedWriterInterface
      */
     private $position = 0;
 
+    /**
+     * @throws \RuntimeException
+     */
     public function __construct(string $filename)
     {
         $this->filename = $filename;

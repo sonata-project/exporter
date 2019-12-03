@@ -73,11 +73,17 @@ final class GsaFeedWriter implements WriterInterface
         $this->bufferSize = 0;
     }
 
+    /**
+     * @throws \RuntimeException
+     */
     public function open(): void
     {
         $this->generateNewPart();
     }
 
+    /**
+     * @throws \RuntimeException
+     */
     public function write(array $data): void
     {
         $line = sprintf("        <record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",

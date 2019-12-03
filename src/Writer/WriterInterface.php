@@ -15,8 +15,14 @@ namespace Sonata\Exporter\Writer;
 
 interface WriterInterface
 {
+    /**
+     * @throws \RuntimeException
+     */
     public function open();
 
+    /**
+     * @throws \RuntimeException
+     */
     public function write(array $data);
 
     public function close();

@@ -45,6 +45,9 @@ final class XmlWriter implements TypedWriterInterface
      */
     private $childElement;
 
+    /**
+     * @throws \RuntimeException
+     */
     public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
     {
         $this->filename = $filename;
@@ -80,6 +83,9 @@ final class XmlWriter implements TypedWriterInterface
         fclose($this->file);
     }
 
+    /**
+     * @throws \RuntimeException
+     */
     public function write(array $data): void
     {
         fwrite($this->file, sprintf("<%s>\n", $this->childElement));
@@ -93,6 +99,8 @@ final class XmlWriter implements TypedWriterInterface
 
     /**
      * @param mixed $value
+     *
+     * @throws \RuntimeException
      */
     private function generateNode(string $name, $value): void
     {
