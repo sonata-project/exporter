@@ -118,9 +118,6 @@ final class CsvWriter implements TypedWriterInterface
         fclose($this->file);
     }
 
-    /**
-     * @throws InvalidDataFormatException
-     */
     public function write(array $data): void
     {
         if (0 === $this->position && $this->showHeaders) {

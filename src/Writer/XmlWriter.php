@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Writer;
 
 use Sonata\Exporter\Exception\InvalidDataFormatException;
+use Sonata\Exporter\Exception\RuntimeException;
 
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
@@ -83,9 +84,6 @@ final class XmlWriter implements TypedWriterInterface
         fclose($this->file);
     }
 
-    /**
-     * @throws \RuntimeException
-     */
     public function write(array $data): void
     {
         fwrite($this->file, sprintf("<%s>\n", $this->childElement));
@@ -105,7 +103,7 @@ final class XmlWriter implements TypedWriterInterface
     private function generateNode(string $name, $value): void
     {
         if (\is_array($value)) {
-            throw new \RuntimeException('Not implemented');
+            throw new RuntimeException('Not implemented');
         } elseif (is_scalar($value) || null === $value) {
             fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, $value, $name));
         } else {

@@ -98,18 +98,12 @@ final class SitemapWriter implements WriterInterface
         return $this->folder;
     }
 
-    /**
-     * @throws \RuntimeException
-     */
     public function open(): void
     {
         $this->bufferPart = 0;
         $this->generateNewPart();
     }
 
-    /**
-     * @throws \RuntimeException
-     */
     public function write(array $data): void
     {
         $data = $this->buildData($data);
