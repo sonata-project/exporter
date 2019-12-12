@@ -56,6 +56,8 @@ final class XmlExcelWriter implements WriterInterface
      *                           If string: force all cells to the given type. e.g: 'Number'
      *                           If array: force only given cells. e.g: array('ean'=>'String', 'price'=>'Number')
      *                           If null: will guess the type. 'Number' if value is numeric, 'String' otherwise
+     *
+     * @throws \RuntimeException
      */
     public function __construct(string $filename, bool $showHeaders = true, $columnsType = null)
     {
