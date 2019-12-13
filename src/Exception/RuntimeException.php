@@ -13,6 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Exception;
 
-final class InvalidMethodCallException extends RuntimeException implements SonataExporterException
+class RuntimeException extends \RuntimeException implements SonataExporterException
 {
 }

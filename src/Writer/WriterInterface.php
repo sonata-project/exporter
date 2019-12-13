@@ -13,10 +13,18 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Writer;
 
+use Sonata\Exporter\Exception\SonataExporterException;
+
 interface WriterInterface
 {
+    /**
+     * @throws SonataExporterException
+     */
     public function open();
 
+    /**
+     * @throws SonataExporterException
+     */
     public function write(array $data);
 
     public function close();

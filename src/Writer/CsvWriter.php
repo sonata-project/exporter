@@ -65,6 +65,9 @@ final class CsvWriter implements TypedWriterInterface
      */
     private $terminate;
 
+    /**
+     * @throws \RuntimeException
+     */
     public function __construct(
         string $filename,
         string $delimiter = ',',
