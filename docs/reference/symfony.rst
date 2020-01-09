@@ -16,7 +16,7 @@ Now, enable the bundle in ``bundles.php`` file::
 
     return [
         // ...
-        new Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle::class => ['all' => true],
+        Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle::class => ['all' => true],
     ];
 
 The default writers
