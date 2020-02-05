@@ -11,7 +11,7 @@ Usage
 .. code-block:: php
 
     // This can be any instance of SourceIteratorInterface
-    $source = new ArraySourceIterator(array(/* your data */));
+    $source = new ArraySourceIterator([/* your data */]);
 
     // This could be any format supported
     $writer = new JsonWriter('php://output');
