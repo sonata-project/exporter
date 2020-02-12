@@ -80,7 +80,8 @@ final class GsaFeedWriter implements WriterInterface
 
     public function write(array $data): void
     {
-        $line = sprintf("        <record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",
+        $line = sprintf(
+            "        <record url=\"%s\" mimetype=\"%s\" action=\"%s\"/>\n",
             $data['url'],
             $data['mime_type'],
             $data['action']
@@ -121,7 +122,9 @@ final class GsaFeedWriter implements WriterInterface
 
         $this->buffer = fopen(sprintf('%s/feed_%05d.xml', $this->folder, $this->bufferPart), 'w');
 
-        $this->bufferSize += fwrite($this->buffer, <<<XML
+        $this->bufferSize += fwrite(
+            $this->buffer,
+            <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gsafeed PUBLIC "-//Google//DTD GSA Feeds//EN" "$this->dtd">
 <gsafeed>
@@ -138,7 +141,9 @@ XML
 
     private function closeFeed(): void
     {
-        fwrite($this->buffer, <<<'EOF'
+        fwrite(
+            $this->buffer,
+            <<<'EOF'
     </group>
 </gsafeed>
 EOF
