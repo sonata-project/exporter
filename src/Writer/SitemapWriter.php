@@ -155,7 +155,8 @@ final class SitemapWriter implements WriterInterface
         $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
         foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
             $stat = stat($file);
-            $content .= sprintf("\t".'<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>'."\n",
+            $content .= sprintf(
+                "\t".'<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>'."\n",
                 $baseUrl,
                 basename($file),
                 date('Y-m-d', $stat['mtime'])
