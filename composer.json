@@ -27,13 +27,13 @@
         "matthiasnoback/symfony-config-test": "^4.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "propel/propel1": "^1.6",
-        "symfony/config": "^3.4 || ^4.0 || ^5.0",
-        "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0",
-        "symfony/http-foundation": "^3.4 || ^4.0 || ^5.0",
-        "symfony/http-kernel": "^3.4 || ^4.0 || ^5.0",
+        "symfony/config": "^3.4 || ^4.3 || ^5.0",
+        "symfony/dependency-injection": "^3.4 || ^4.3 || ^5.0",
+        "symfony/http-foundation": "^3.4 || ^4.3 || ^5.0",
+        "symfony/http-kernel": "^3.4 || ^4.3 || ^5.0",
         "symfony/phpunit-bridge": "^4.3.8 || ^5.0",
-        "symfony/property-access": "^3.4 || ^4.0 || ^5.0",
-        "symfony/routing": "^3.4 || ^4.0 || ^5.0"
+        "symfony/property-access": "^3.4 || ^4.3 || ^5.0",
+        "symfony/routing": "^3.4 || ^4.3 || ^5.0"
     },
     "suggest": {
         "propel/propel1": "To export propel collections",
