@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0](https://github.com/sonata-project/exporter/compare/2.1.0...2.2.0) - 2020-03-17
+### Added
+- Compatibility with Symfony 5
+
 ## [2.1.0](https://github.com/sonata-project/exporter/compare/2.0.1...2.1.0) - 2020-02-06
 ### Changed
 - Exceptions extending `\RuntimeException` now do so indirectly through
