@@ -50,7 +50,7 @@ final class DoctrineODMQuerySourceIterator implements SourceIteratorInterface
      * @param Query $query  The Doctrine Query
      * @param array $fields Fields to export
      */
-    public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r')
+    public function __construct(Query $query, array $fields, string $dateTimeFormat = \DateTimeInterface::ATOM)
     {
         $this->query = clone $query;
 
