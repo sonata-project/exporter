@@ -20,7 +20,7 @@ class CsvSourceIteratorTest extends TestCase
 {
     protected $filename;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->filename = 'foobar.csv';
 
@@ -37,7 +37,7 @@ EOF;
         file_put_contents($this->filename, $csv);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         unlink($this->filename);
     }

@@ -25,7 +25,7 @@ class PropelCollectionSourceIteratorTest extends TestCase
 {
     protected $collection;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         if (!class_exists('PropelCollection')) {
             $this->markTestIncomplete('Propel is not available');

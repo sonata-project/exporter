@@ -24,7 +24,7 @@ class SitemapWriterTest extends TestCase
      */
     protected $folder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->folder = sys_get_temp_dir().'/sonata_exporter_test';
 
@@ -33,7 +33,7 @@ class SitemapWriterTest extends TestCase
         mkdir($this->folder);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         foreach ($this->getFiles() as $file) {
             unlink($file);
