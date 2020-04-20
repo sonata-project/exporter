@@ -28,7 +28,7 @@ class PDOStatementSourceIteratorTest extends TestCase
      */
     protected $pathToDb;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
 
@@ -56,7 +56,7 @@ class PDOStatementSourceIteratorTest extends TestCase
         }
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         $this->dbh = null;
 

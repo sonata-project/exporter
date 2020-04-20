@@ -34,7 +34,7 @@ class FormattedBoolWriterTest extends TestCase
      */
     protected $falseLabel;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->trueLabel = 'yes';
         $this->falseLabel = 'no';

@@ -46,7 +46,7 @@ class GsaFeedWriterTest extends TestCase
     /**
      * Creates the folder useful to this test.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $path = sys_get_temp_dir().\DIRECTORY_SEPARATOR.'sonata_exporter_test';
         $this->folder = new \SplFileInfo($path);
@@ -63,7 +63,7 @@ class GsaFeedWriterTest extends TestCase
     /**
      * Deletes the generated XML and the created folder.
      */
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         if ($this->folder->getRealPath()) {
             foreach ($this->getFiles() as $file) {
