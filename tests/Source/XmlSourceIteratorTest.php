@@ -21,7 +21,7 @@ class XmlSourceIteratorTest extends TestCase
     protected $filename;
     protected $filenameCustomTagNames;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->filename = 'source_xml.xml';
         $xml = '<?xml version="1.0" ?><datas><data><sku><![CDATA[123]]></sku><ean><![CDATA[1234567891234]]></ean><name><![CDATA[Product é]]></name></data><data><sku><![CDATA[124]]></sku><ean><![CDATA[1234567891235]]></ean><name><![CDATA[Product @]]></name></data><data><sku><![CDATA[125]]></sku><ean><![CDATA[1234567891236]]></ean><name><![CDATA[Product 3 ©]]></name></data></datas>';
@@ -33,7 +33,7 @@ class XmlSourceIteratorTest extends TestCase
         $this->createXmlFile($this->filenameCustomTagNames, $xml);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         unlink($this->filename);
         unlink($this->filenameCustomTagNames);

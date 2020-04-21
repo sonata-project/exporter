@@ -21,7 +21,7 @@ class XmlExcelSourceIteratorTest extends TestCase
     protected $filename;
     protected $headers = ['sku', 'ean', 'name'];
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->filename = 'foobar.xml';
         $this->filenameSS = 'foobar_ss.xml';
@@ -39,7 +39,7 @@ class XmlExcelSourceIteratorTest extends TestCase
         file_put_contents($this->filenameSS, $xmlSS);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         unlink($this->filename);
         unlink($this->filenameSS);

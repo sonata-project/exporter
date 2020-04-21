@@ -21,7 +21,7 @@ class XlsWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->filename = 'foobar.xls';
@@ -31,7 +31,7 @@ class XlsWriterTest extends AbstractTypedWriterTestCase
         }
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         if (is_file($this->filename)) {
             unlink($this->filename);
