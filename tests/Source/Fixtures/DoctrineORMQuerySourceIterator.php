@@ -20,8 +20,4 @@ use Sonata\Exporter\Source\DoctrineORMQuerySourceIterator as BaseDoctrineORMQuer
  */
 final class DoctrineORMQuerySourceIterator extends BaseDoctrineORMQuerySourceIterator
 {
-    public function getValue($value)
-    {
-        return parent::getValue($value);
-    }
 }
