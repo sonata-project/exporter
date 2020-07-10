@@ -48,12 +48,12 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     protected $dateTimeFormat;
 
     /**
-     * @var array<string>
+     * @var string[]
      */
     protected $fields = [];
 
     /**
-     * @param array<string> $fields Fields to export
+     * @param string[] $fields Fields to export
      */
     public function __construct(array $fields, string $dateTimeFormat = 'r')
     {
@@ -126,7 +126,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @param object|array $current
+     * @param object|mixed[] $current
      */
     protected function getCurrentData($current): array
     {
@@ -161,8 +161,9 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     {
         switch (true) {
             case \is_array($value):
+                return '['.implode(', ', array_map([$this, 'getValue'], $value)).']';
             case $value instanceof \Traversable:
-                return null;
+                return '['.implode(', ', array_map([$this, 'getValue'], iterator_to_array($value))).']';
             case $value instanceof \DateTimeInterface:
                 return $value->format($this->dateTimeFormat);
             case $value instanceof \DateInterval:

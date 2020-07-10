@@ -17,7 +17,7 @@ use Doctrine\ORM\Query;
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 
 /**
- * @final since sonata/exporter 2.x
+ * @final since sonata-project/exporter 2.x.
  */
 class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator implements SourceIteratorInterface
 {
