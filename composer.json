@@ -50,7 +50,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Sonata\\Exporter\\": "src/"
+            "Sonata\\Exporter\\": "src/",
+            "Sonata\\Exporter\\Bridge\\Symfony\\": "src/Bridge/Symfony/"
         }
     },
     "autoload-dev": {
