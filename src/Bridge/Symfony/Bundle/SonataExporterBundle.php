@@ -13,20 +13,24 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Bridge\Symfony\Bundle;
 
-use Sonata\Exporter\Bridge\Symfony\DependencyInjection\Compiler\ExporterCompilerPass;
-use Sonata\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Sonata\Exporter\Bridge\Symfony\SonataExporterBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class SonataExporterBundle extends Bundle
-{
-    public function build(ContainerBuilder $container): void
-    {
-        $container->addCompilerPass(new ExporterCompilerPass());
-    }
+@trigger_error(sprintf(
+    'The %s\SonataExporterBundle class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use %s instead.',
+    __NAMESPACE__,
+    SonataExporterBundle::class
+), E_USER_DEPRECATED);
 
-    protected function getContainerExtensionClass(): string
+if (false) {
+    /**
+     * NEXT_MAJOR: remove this class.
+     *
+     * @deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use Sonata\Exporter\Bridge\Symfony\SonataExporterBundle instead.
+     */
+    final class SonataExporterBundle extends Bundle
     {
-        return SonataExporterExtension::class;
     }
 }
+
+class_alias(SonataExporterBundle::class, __NAMESPACE__.'\SonataExporterBundle');
