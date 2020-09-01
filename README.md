@@ -50,7 +50,9 @@ If you think you found a bug or you have a feature idea to propose, feel free to
 
 ### Note for Symfony2 users
 
-* For Symfony >=2.3, use tag `^1.4`
-* For Symfony 2.2, use tag 1.3.1
-* For Symfony 2.1, use tag 1.2.3
-* For Symfony 2.0, use tag 1.1.0
+* For Symfony >=2.3, use tag >= [1.4.0](https://github.com/sonata-project/exporter/releases/tag/1.4.0)
+* For Symfony 2.2, use tag [1.3.1](https://github.com/sonata-project/exporter/releases/tag/1.3.1)
+* For Symfony 2.1, use tag [1.2.3](https://github.com/sonata-project/exporter/releases/tag/1.2.3)
+* For Symfony 2.0, use tag [1.1.0](https://github.com/sonata-project/exporter/releases/tag/1.1.0)
+
+
