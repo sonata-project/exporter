@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Source;
 
 use Doctrine\ODM\MongoDB\Query\Query;
-use Sonata\Exporter\Exception\InvalidMethodCallException;
 
 final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterator implements SourceIteratorInterface
 {
@@ -42,10 +41,6 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
 
     public function rewind(): void
     {
-        if ($this->iterator) {
-            throw new InvalidMethodCallException('Cannot rewind a Doctrine\ODM\Query');
-        }
-
         $this->iterator = $this->query->iterate();
         $this->iterator->rewind();
     }
