@@ -4,8 +4,8 @@
     "description": "Lightweight Exporter library",
     "keywords": [
         "client",
-        "csv",        
-        "data",        
+        "csv",
+        "data",
         "export",
         "xls"
     ],
