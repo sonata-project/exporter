@@ -5,10 +5,10 @@
     "keywords": [
         "bundle",
         "client",
-        "csv",        
-        "data",        
+        "csv",
+        "data",
         "export",
-        "symfony-bundle",        
+        "symfony-bundle",
         "xls"
     ],
     "homepage": "https://github.com/sonata-project/Exporter",
