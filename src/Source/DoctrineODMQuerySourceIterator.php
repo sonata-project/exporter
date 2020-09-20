@@ -41,7 +41,7 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
 
     public function rewind(): void
     {
-        $this->iterator = $this->query->iterate();
+        $this->iterator = $this->query->getIterator();
         $this->iterator->rewind();
     }
 }

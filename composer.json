@@ -23,8 +23,12 @@
     "require": {
         "php": "^7.2"
     },
+    "conflict": {
+        "doctrine/mongodb-odm": "<2.0"
+    },
     "require-dev": {
         "doctrine/dbal": "^2.5",
+        "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.4.5",
         "matthiasnoback/symfony-config-test": "^4.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
