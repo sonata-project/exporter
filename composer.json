@@ -3,11 +3,11 @@
     "type": "library",
     "description": "Lightweight Exporter library",
     "keywords": [
+        "client",
+        "csv",        
+        "data",        
         "export",
-        "csv",
-        "xls",
-        "data",
-        "client"
+        "xls"
     ],
     "homepage": "https://github.com/sonata-project/Exporter",
     "license": "MIT",
