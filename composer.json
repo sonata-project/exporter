@@ -3,10 +3,12 @@
     "type": "library",
     "description": "Lightweight Exporter library",
     "keywords": [
+        "bundle",
         "client",
         "csv",        
         "data",        
         "export",
+        "symfony-bundle",        
         "xls"
     ],
     "homepage": "https://github.com/sonata-project/Exporter",
