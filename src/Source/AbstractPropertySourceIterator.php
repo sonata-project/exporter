@@ -33,7 +33,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     ];
 
     /**
-     * @var IterableResult
+     * @var IterableResult|null
      */
     protected $iterator;
 

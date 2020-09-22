@@ -3,11 +3,13 @@
     "type": "library",
     "description": "Lightweight Exporter library",
     "keywords": [
-        "export",
+        "bundle",
+        "client",
         "csv",
-        "xls",
         "data",
-        "client"
+        "export",
+        "symfony-bundle",
+        "xls"
     ],
     "homepage": "https://github.com/sonata-project/Exporter",
     "license": "MIT",

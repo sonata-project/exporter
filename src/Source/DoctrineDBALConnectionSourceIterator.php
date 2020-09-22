@@ -15,7 +15,6 @@ namespace Sonata\Exporter\Source;
 
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Statement;
-use Sonata\Exporter\Exception\InvalidMethodCallException;
 
 final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
@@ -79,10 +78,6 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
 
     public function rewind(): void
     {
-        if ($this->statement) {
-            throw new InvalidMethodCallException('Cannot rewind a PDOStatement');
-        }
-
         $this->statement = $this->connection->prepare($this->query);
         $this->statement->execute($this->parameters);
 
