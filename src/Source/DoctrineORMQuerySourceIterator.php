@@ -43,7 +43,11 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator impl
     {
         $current = $this->iterator->current();
 
-        return $this->getCurrentData($current[0]);
+        $data = $this->getCurrentData($current[0]);
+
+        $this->query->getEntityManager()->clear();
+
+        return $data;
     }
 
     final public function rewind(): void

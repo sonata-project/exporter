@@ -36,7 +36,11 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
     {
         $current = $this->iterator->current();
 
-        return $this->getCurrentData($current[0]);
+        $data = $this->getCurrentData($current[0]);
+
+        $this->query->getDocumentManager()->clear();
+
+        return $data;
     }
 
     public function rewind(): void
