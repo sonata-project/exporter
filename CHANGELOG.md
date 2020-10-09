@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.1](https://github.com/sonata-project/exporter/compare/2.4.0...2.4.1) - 2020-10-09
+### Fixed
+- [[#387](https://github.com/sonata-project/exporter/pull/387)] Redeclared class `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle` ([@phansys](https://github.com/phansys))
+
 ## [2.4.0](sonata-project/exporter/compare/2.3.0...2.4.0) - 2020-10-09
 ### Added
 - [[#371](https://github.com/sonata-project/exporter/pull/371)] Add the ability to call the `rewind()` method multiple times for `DoctrineDBALConnectionSourceIterator`, `DoctrineODMQuerySourceIterator`, `DoctrineORMQuerySourceIterator` ([@VincentLanglet](https://github.com/VincentLanglet))
