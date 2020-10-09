@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0](sonata-project/exporter/compare/2.3.0...2.4.0) - 2020-10-09
+### Added
+- [[#371](https://github.com/sonata-project/exporter/pull/371)] Add the ability to call the `rewind()` method multiple times for `DoctrineDBALConnectionSourceIterator`, `DoctrineODMQuerySourceIterator`, `DoctrineORMQuerySourceIterator` ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#375](https://github.com/sonata-project/exporter/pull/375)] Added conflict with `doctrine/mongodb-odm` <1.3 ([@franmomu](https://github.com/franmomu))
+- [[#345](https://github.com/sonata-project/exporter/pull/345)] Added `Sonata\Exporter\Bridge\Symfony\SonataExporterBundle` ([@phansys](https://github.com/phansys))
+- [[#345](https://github.com/sonata-project/exporter/pull/345)] Added `Sonata\Exporter\Bridge\Symfony\SonataExporterSymfonyBundle` alias in order to fix Symfony Flex autodiscovery ([@phansys](https://github.com/phansys))
+
+### Deprecated
+- [[#345](https://github.com/sonata-project/exporter/pull/345)] Deprecated `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle` in favor of `Sonata\Exporter\Bridge\Symfony\SonataExporterBundle` ([@phansys](https://github.com/phansys))
+
+### Fixed
+- [[#380](https://github.com/sonata-project/exporter/pull/380)] Memory leaks in Doctrine source iterators ([@ossinkine](https://github.com/ossinkine))
+
+### Removed
+- [[#346](https://github.com/sonata-project/exporter/pull/346)] Removed support for "symfony/*:<4.4" ([@phansys](https://github.com/phansys))
+
 ## [2.3.0](https://github.com/sonata-project/exporter/compare/2.2.0...2.3.0) - 2020-07-13
 ### Added
 - [[#343](https://github.com/sonata-project/exporter/pull/343)] Added support for array and traversable in `DoctrineORMQuerySourceIterator`, `DoctrineODMQuerySourceIterator` and `PropelCollectionSourceIterator` ([@VincentLanglet](https://github.com/VincentLanglet))

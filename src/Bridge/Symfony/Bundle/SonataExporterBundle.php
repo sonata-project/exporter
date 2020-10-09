@@ -17,7 +17,7 @@ use Sonata\Exporter\Bridge\Symfony\SonataExporterBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 @trigger_error(sprintf(
-    'The %s\SonataExporterBundle class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use %s instead.',
+    'The %s\SonataExporterBundle class is deprecated since sonata-project/exporter 2.4, to be removed in version 3.0. Use %s instead.',
     __NAMESPACE__,
     SonataExporterBundle::class
 ), E_USER_DEPRECATED);
@@ -26,7 +26,7 @@ if (false) {
     /**
      * NEXT_MAJOR: remove this class.
      *
-     * @deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use Sonata\Exporter\Bridge\Symfony\SonataExporterBundle instead.
+     * @deprecated since sonata-project/exporter 2.4, to be removed in version 3.0. Use Sonata\Exporter\Bridge\Symfony\SonataExporterBundle instead.
      */
     final class SonataExporterBundle extends Bundle
     {
