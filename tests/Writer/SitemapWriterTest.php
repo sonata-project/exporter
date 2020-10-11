@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
-use SimpleXMLElement;
 use Sonata\Exporter\Writer\SitemapWriter;
 
 class SitemapWriterTest extends TestCase
@@ -68,7 +67,7 @@ class SitemapWriterTest extends TestCase
         $this->assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
-        new SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
         $expected = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -116,7 +115,7 @@ XML;
         $this->assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
-        new SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
         $expected = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -148,8 +147,8 @@ XML;
         $this->assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
-        new SimpleXMLElement(file_get_contents($generatedFiles[1]));
-        new SimpleXMLElement(file_get_contents($generatedFiles[2]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement(file_get_contents($generatedFiles[2]));
 
         $info = stat($generatedFiles[1]);
 
@@ -175,8 +174,8 @@ XML;
         $this->assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
-        $file1 = new SimpleXMLElement(file_get_contents($generatedFiles[1]));
-        $file2 = new SimpleXMLElement(file_get_contents($generatedFiles[2]));
+        $file1 = new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        $file2 = new \SimpleXMLElement(file_get_contents($generatedFiles[2]));
 
         $info = stat($generatedFiles[0]);
 
