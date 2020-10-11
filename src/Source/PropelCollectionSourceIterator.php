@@ -30,7 +30,7 @@ final class PropelCollectionSourceIterator extends AbstractPropertySourceIterato
     /**
      * @param array<string> $fields Fields to export
      */
-    public function __construct(PropelCollection $collection, array $fields, string $dateTimeFormat = 'r')
+    public function __construct(\PropelCollection $collection, array $fields, string $dateTimeFormat = 'r')
     {
         $this->collection = clone $collection;
 
