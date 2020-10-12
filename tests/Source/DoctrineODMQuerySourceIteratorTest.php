@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
-use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Query\Query;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\DoctrineODMQuerySourceIterator;
@@ -26,6 +25,6 @@ class DoctrineODMQuerySourceIteratorTest extends TestCase
 
         $iterator = new DoctrineODMQuerySourceIterator($query, []);
 
-        self::assertSame(DateTimeInterface::ATOM, $iterator->getDateTimeFormat());
+        self::assertSame(\DateTimeInterface::ATOM, $iterator->getDateTimeFormat());
     }
 }
