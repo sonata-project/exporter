@@ -13,18 +13,16 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-use ArrayIterator;
-
 final class ChainSourceIterator implements SourceIteratorInterface
 {
     /**
-     * @var ArrayIterator
+     * @var \ArrayIterator
      */
     private $sources;
 
     public function __construct(array $sources = [])
     {
-        $this->sources = new ArrayIterator();
+        $this->sources = new \ArrayIterator();
 
         foreach ($sources as $source) {
             $this->addSource($source);
