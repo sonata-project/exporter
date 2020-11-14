@@ -126,6 +126,12 @@ final class CsvWriter implements TypedWriterInterface
             ++$this->position;
         }
 
+        if (1 !== \strlen($this->delimiter) ||
+            1 !== \strlen($this->enclosure) ||
+            1 !== \strlen($this->escape)) {
+            throw new InvalidDataFormatException();
+        }
+
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
 
         if (!$result) {
