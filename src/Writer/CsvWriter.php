@@ -134,8 +134,7 @@ final class CsvWriter implements TypedWriterInterface
             Problem: delimiter, enclosure or escape character is actually a
             string longer than just one character
             Solution: pick an actual character
-            EXCEPTION
-            );
+            EXCEPTION);
         }
 
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
