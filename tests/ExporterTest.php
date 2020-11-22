@@ -36,12 +36,8 @@ class ExporterTest extends TestCase
 
     public function testConstructorRejectsNonTypedWriters(): void
     {
-        $this->expectException(
-            version_compare(PHP_VERSION, '7.0.0', '<') ? 'PHPUnit_Framework_Error' : 'TypeError'
-        );
-        $this->expectExceptionMessage(
-            'must implement interface'
-        );
+        $this->expectException(\TypeError::class);
+
         new Exporter(['Not even an object']);
     }
 
