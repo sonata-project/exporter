@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.0](https://github.com/sonata-project/exporter/compare/2.4.1...2.5.0) - 2021-01-04
+### Added
+- [[#424](https://github.com/sonata-project/exporter/pull/424)] Support for PHP8 ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.4.1](https://github.com/sonata-project/exporter/compare/2.4.0...2.4.1) - 2020-10-09
 ### Fixed
 - [[#387](https://github.com/sonata-project/exporter/pull/387)] Redeclared class `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle` ([@phansys](https://github.com/phansys))
