@@ -79,10 +79,12 @@ final class XlsWriter implements TypedWriterInterface
 
         fwrite($this->file, '<tr>');
         // prevent xls injection
-        $patterns = ['/^=/', '/^\+/', '/^-/', '/^@/'];
-        $replace = ['!=', '!+', '!-', '!@'];
         foreach ($data as $value) {
-            fwrite($this->file, sprintf('<td>%s</td>', preg_replace($patterns, $replace, $value)));
+            fwrite($this->file, sprintf('<td>%s</td>', preg_replace(
+                ['/^=/', '/^\+/', '/^-/', '/^@/'],
+                ['\'=', '\'+', '\'-', '\'@'],
+                $value
+            )));
         }
         fwrite($this->file, '</tr>');
 
