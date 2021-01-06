@@ -137,6 +137,13 @@ final class CsvWriter implements TypedWriterInterface
             EXCEPTION);
         }
 
+        // prevent csv injection
+        $patterns = ['/^=/', '/^\+/', '/^-/', '/^@/'];
+        $replace = ['!=', '!+', '!-', '!@'];
+        foreach ($data as $key => $value) {
+            $data[$key] = preg_replace($patterns, $replace, $value);
+        }
+
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
 
         if (!$result) {
