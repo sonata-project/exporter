@@ -8,6 +8,7 @@
             <argument>%sonata.exporter.writer.csv.escape%</argument>
             <argument>%sonata.exporter.writer.csv.show_headers%</argument>
             <argument>%sonata.exporter.writer.csv.with_bom%</argument>
+            <argument>%sonata.exporter.writer.csv.safe_cells%</argument>
         </service>
         <service id="sonata.exporter.writer.json" class="Sonata\Exporter\Writer\JsonWriter" public="false">
             <argument>%sonata.exporter.writer.json.filename%</argument>
@@ -15,6 +16,7 @@
         <service id="sonata.exporter.writer.xls" class="Sonata\Exporter\Writer\XlsWriter" public="false">
             <argument>%sonata.exporter.writer.xls.filename%</argument>
             <argument>%sonata.exporter.writer.xls.show_headers%</argument>
+            <argument>%sonata.exporter.writer.xls.safe_cells%</argument>
         </service>
         <service id="sonata.exporter.writer.xml" class="Sonata\Exporter\Writer\XmlWriter" public="false">
             <argument>%sonata.exporter.writer.xml.filename%</argument>

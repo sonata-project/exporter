@@ -66,6 +66,11 @@ final class CsvWriter implements TypedWriterInterface
     private $terminate;
 
     /**
+     * @var bool
+     */
+    private $safeCells;
+
+    /**
      * @throws \RuntimeException
      */
     public function __construct(
@@ -75,7 +80,8 @@ final class CsvWriter implements TypedWriterInterface
         string $escape = '\\',
         bool $showHeaders = true,
         bool $withBom = false,
-        string $terminate = "\n"
+        string $terminate = "\n",
+        bool $safeCells = false
     ) {
         $this->filename = $filename;
         $this->delimiter = $delimiter;
@@ -85,6 +91,7 @@ final class CsvWriter implements TypedWriterInterface
         $this->terminate = $terminate;
         $this->position = 0;
         $this->withBom = $withBom;
+        $this->safeCells = $safeCells;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -138,12 +145,14 @@ final class CsvWriter implements TypedWriterInterface
         }
 
         // prevent csv injection
-        foreach ($data as $key => $value) {
-            $data[$key] = preg_replace(
-                ['/^=/', '/^\+/', '/^-/', '/^@/'],
-                ['\'=', '\'+', '\'-', '\'@'],
-                $value
-            );
+        if (true === $this->safeCells) {
+            foreach ($data as $key => $value) {
+                $data[$key] = preg_replace(
+                    ['/^=/', '/^\+/', '/^-/', '/^@/'],
+                    ['\'=', '\'+', '\'-', '\'@'],
+                    $value
+                );
+            }
         }
 
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
