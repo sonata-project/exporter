@@ -49,6 +49,10 @@ jobs:
                       dependencies: highest
                       allowed-to-fail: false
                       variant: 'symfony/symfony:"4.4.*"'
+                    - php-version: '7.4'
+                      dependencies: highest
+                      allowed-to-fail: false
+                      variant: 'symfony/symfony:"5.2.*"'
 
         steps:
             - name: Checkout
