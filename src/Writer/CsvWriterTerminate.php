@@ -34,6 +34,6 @@ final class CsvWriterTerminate extends \php_user_filter
             stream_bucket_append($out, $bucket);
         }
 
-        return PSFS_PASS_ON;
+        return \PSFS_PASS_ON;
     }
 }
