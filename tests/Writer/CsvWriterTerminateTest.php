@@ -43,7 +43,7 @@ class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
     {
         $file = fopen($this->filename, 'w', false);
         stream_filter_register('filter', CsvWriterTerminate::class);
-        stream_filter_append($file, 'filter', STREAM_FILTER_WRITE, ['terminate' => "\r\n"]);
+        stream_filter_append($file, 'filter', \STREAM_FILTER_WRITE, ['terminate' => "\r\n"]);
         @fputcsv($file, ['john', 'doe', '1']);
         @fputcsv($file, ['john', 'doe', '2']);
         fclose($file);

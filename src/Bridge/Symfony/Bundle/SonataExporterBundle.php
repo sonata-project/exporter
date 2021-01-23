@@ -20,7 +20,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
     'The %s\SonataExporterBundle class is deprecated since sonata-project/exporter 2.4, to be removed in version 3.0. Use %s instead.',
     __NAMESPACE__,
     ForwardCompatibleSonataExporterBundle::class
-), E_USER_DEPRECATED);
+), \E_USER_DEPRECATED);
 
 if (false) {
     /**
