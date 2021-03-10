@@ -63,7 +63,7 @@ jobs:
               with:
                   php-version: ${{ matrix.php-version }}
                   coverage: pcov
-                  tools: composer:v2, pecl
+                  tools: composer:v2
                   extensions: mongodb-1.9.0
 
             - name: Add PHPUnit matcher
