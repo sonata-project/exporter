@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.2](https://github.com/sonata-project/exporter/compare/2.5.1...2.5.2) - 2021-03-21
+### Fixed
+- [[#458](https://github.com/sonata-project/exporter/pull/458)] Fixed iterating over documents when using `DoctrineODMQuerySourceIterator`. ([@franmomu](https://github.com/franmomu))
+
 ## [2.5.1](https://github.com/sonata-project/exporter/compare/2.5.0...2.5.1) - 2021-02-15
 ### Fixed
 - [[#431](https://github.com/sonata-project/exporter/pull/431)] Php version constraint ([@franmomu](https://github.com/franmomu))
