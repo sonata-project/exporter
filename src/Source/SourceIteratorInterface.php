@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
+/**
+ * @phpstan-template T
+ * @phpstan-extends \Iterator<T>
+ */
 interface SourceIteratorInterface extends \Iterator
 {
 }
