@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.2](https://github.com/sonata-project/exporter/compare/2.6.1...2.6.2) - 2021-04-09
+### Fixed
+- [[#475](https://github.com/sonata-project/exporter/pull/475)] Allow `AbstractPropertySourceIterator::getValue()` to return `bool|int|float` value. ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.6.1](https://github.com/sonata-project/exporter/compare/2.6.0...2.6.1) - 2021-03-26
 ### Fixed
 - [[#465](https://github.com/sonata-project/exporter/pull/465)] Restrict `SourceIteratorInterface` template ([@VincentLanglet](https://github.com/VincentLanglet))
