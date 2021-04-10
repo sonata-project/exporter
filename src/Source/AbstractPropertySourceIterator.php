@@ -155,7 +155,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     /**
      * @param mixed $value
      *
-     * @return string|null
+     * @return bool|int|float|string|null
      */
     protected function getValue($value)
     {
