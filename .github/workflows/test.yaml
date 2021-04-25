@@ -19,6 +19,9 @@ jobs:
 
         continue-on-error: ${{ matrix.allowed-to-fail }}
 
+        env:
+            SYMFONY_REQUIRE: ${{matrix.symfony-require}}
+
         services:
             mongo:
                 image: mongo
@@ -32,6 +35,7 @@ jobs:
                     - '7.4'
                 dependencies: [highest]
                 allowed-to-fail: [false]
+                symfony-require: [""]
                 variant: [normal]
                 include:
                     - php-version: '7.3'
@@ -45,10 +49,12 @@ jobs:
                     - php-version: '7.4'
                       dependencies: highest
                       allowed-to-fail: false
+                      symfony-require: 4.4.*
                       variant: 'symfony/symfony:"4.4.*"'
                     - php-version: '7.4'
                       dependencies: highest
                       allowed-to-fail: false
+                      symfony-require: 5.2.*
                       variant: 'symfony/symfony:"5.2.*"'
 
         steps:
@@ -70,8 +76,12 @@ jobs:
               if: matrix.php-version == '8.0'
               run: composer config platform.php 7.4.99
 
+            - name: "Globally install symfony/flex"
+              if: matrix.symfony-require != ''
+              run: "composer global require --no-progress --no-scripts --no-plugins symfony/flex"
+
             - name: Install variant
-              if: matrix.variant != 'normal'
+              if: matrix.variant != 'normal' && !startsWith(matrix.variant, 'symfony/symfony')
               run: composer require ${{ matrix.variant }} --no-update
 
             - name: "Install Composer dependencies (${{ matrix.dependencies }})"
