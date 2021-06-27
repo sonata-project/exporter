@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.7.0](https://github.com/sonata-project/exporter/compare/2.6.2...2.7.0) - 2021-06-27
 ### Changed
-- [[#485](https://github.com/sonata-project/exporter/pull/485)] Clear entity manager every 100 results to improve ORM iterator performances ([@EmmanuelVella](https://github.com/EmmanuelVella))
+- [[#485](https://github.com/sonata-project/exporter/pull/485)] Clear entity manager every 100 results to improve ORM iterator performance ([@EmmanuelVella](https://github.com/EmmanuelVella))
 
 ## [2.6.2](https://github.com/sonata-project/exporter/compare/2.6.1...2.6.2) - 2021-04-09
 ### Fixed
