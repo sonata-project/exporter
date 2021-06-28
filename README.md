@@ -23,6 +23,8 @@ composer require sonata-project/exporter
 
 ## Usage
 
+### Standalone
+
 ```php
 <?php
 
@@ -42,6 +44,30 @@ $writer = new CsvWriter('data.csv');
 
 // Export the data
 Handler::create($source, $writer)->export();
+```
+
+### Symfony bridge
+
+You can directly return an export as a streamed response like this:
+
+```php
+final class InvoicesExport
+{
+    /**
+     * @Route("/invoices", name="invoices_export")
+     */
+    public function __invoke(Request $request, Exporter $exporter): Response
+    {
+        $invoices = $this->getMyInvoices();
+        $format = $request->getRequestFormat();
+    
+        return $exporter->getResponse(
+            $format,
+            'invoices.'.$format,
+            new ArraySourceIterator($invoices)
+        );
+    }
+}
 ```
 
 ## Documentation
