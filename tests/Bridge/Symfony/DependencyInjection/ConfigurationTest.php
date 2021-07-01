@@ -42,6 +42,7 @@ class ConfigurationTest extends TestCase
                     'escape' => '\\',
                     'show_headers' => true,
                     'with_bom' => false,
+                    'safe_cells' => false,
                 ],
                 'json' => [
                     'filename' => 'php://output',
@@ -49,6 +50,7 @@ class ConfigurationTest extends TestCase
                 'xls' => [
                     'filename' => 'php://output',
                     'show_headers' => true,
+                    'safe_cells' => false,
                 ],
                 'xml' => [
                     'filename' => 'php://output',

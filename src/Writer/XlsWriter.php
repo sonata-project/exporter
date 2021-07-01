@@ -39,12 +39,18 @@ final class XlsWriter implements TypedWriterInterface
     private $position = 0;
 
     /**
+     * @var bool
+     */
+    private $safeCells;
+
+    /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, bool $showHeaders = true)
+    public function __construct(string $filename, bool $showHeaders = true, bool $safeCells = false)
     {
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
+        $this->safeCells = $safeCells;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exists', $filename));
@@ -78,8 +84,19 @@ final class XlsWriter implements TypedWriterInterface
         $this->init($data);
 
         fwrite($this->file, '<tr>');
-        foreach ($data as $value) {
-            fwrite($this->file, sprintf('<td>%s</td>', $value));
+        // prevent xls injection
+        if (true === $this->safeCells) {
+            foreach ($data as $value) {
+                fwrite($this->file, sprintf('<td>%s</td>', preg_replace(
+                    ['/^=/', '/^\+/', '/^-/', '/^@/'],
+                    ['\'=', '\'+', '\'-', '\'@'],
+                    $value
+                )));
+            }
+        } else {
+            foreach ($data as $value) {
+                fwrite($this->file, sprintf('<td>%s</td>', $value));
+            }
         }
         fwrite($this->file, '</tr>');
 

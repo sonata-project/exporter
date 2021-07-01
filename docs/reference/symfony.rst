@@ -46,6 +46,7 @@ This service can be configured throught the following parameters:
 * ``sonata.exporter.writer.csv.escape``: defaults to ``\\``
 * ``sonata.exporter.writer.csv.show_headers``: defaults to ``true``
 * ``sonata.exporter.writer.csv.with_bom``: defaults to ``false``
+* ``sonata.exporter.writer.csv.safe_cells``: defaults to ``false``
 
 The JSON writer service
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,6 +61,7 @@ This service can be configured throught the following parameters:
 
 * ``sonata.exporter.writer.xls.filename``: defaults to ``php://output``
 * ``sonata.exporter.writer.xls.show_headers``: defaults to ``true``
+* ``sonata.exporter.writer.xls.safe_cells``: defaults to ``false``
 
 The XML writer service
 ~~~~~~~~~~~~~~~~~~~~~~~
