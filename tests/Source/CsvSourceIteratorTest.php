@@ -48,15 +48,15 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(2, $value);
-            $this->assertSame($i, $iterator->key());
+            static::assertIsArray($value);
+            static::assertCount(2, $value);
+            static::assertSame($i, $iterator->key());
             $keys = array_keys($value);
-            $this->assertSame('firstname', $keys[0]);
-            $this->assertSame('name', $keys[1]);
+            static::assertSame('firstname', $keys[0]);
+            static::assertSame('name', $keys[1]);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
     }
 
     public function testNoHeaders(): void
@@ -65,12 +65,12 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(2, $value);
-            $this->assertSame($i, $iterator->key());
+            static::assertIsArray($value);
+            static::assertCount(2, $value);
+            static::assertSame($i, $iterator->key());
             ++$i;
         }
-        $this->assertSame(4, $i);
+        static::assertSame(4, $i);
     }
 
     public function testRewind(): void
@@ -79,18 +79,18 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(2, $value);
+            static::assertIsArray($value);
+            static::assertCount(2, $value);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(2, $value);
+            static::assertIsArray($value);
+            static::assertCount(2, $value);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
     }
 }

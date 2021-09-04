@@ -33,7 +33,7 @@ class PDOStatementSourceIteratorTest extends TestCase
         $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
 
         if (!\in_array('sqlite', \PDO::getAvailableDrivers(), true)) {
-            $this->markTestSkipped('the sqlite extension is not available');
+            static::markTestSkipped('the sqlite extension is not available');
         }
 
         if (is_file($this->pathToDb)) {
@@ -77,6 +77,6 @@ class PDOStatementSourceIteratorTest extends TestCase
             $data[] = $user;
         }
 
-        $this->assertCount(3, $data);
+        static::assertCount(3, $data);
     }
 }

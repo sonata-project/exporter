@@ -30,8 +30,8 @@ class ArraySourceIteratorTest extends TestCase
         $iterator = new ArraySourceIterator($data);
 
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(3, $value);
+            static::assertIsArray($value);
+            static::assertCount(3, $value);
         }
     }
 }

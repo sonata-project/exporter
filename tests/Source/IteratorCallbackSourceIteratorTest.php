@@ -39,17 +39,17 @@ class IteratorCallbackSourceIteratorTest extends TestCase
         $result = [1, 2, 4, 8];
 
         foreach ($this->sourceIterator as $key => $value) {
-            $this->assertSame([$result[$key]], $value);
+            static::assertSame([$result[$key]], $value);
         }
     }
 
     public function testExtends(): void
     {
-        $this->assertInstanceOf('Sonata\Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
+        static::assertInstanceOf('Sonata\Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
     }
 
     public function testGetIterator(): void
     {
-        $this->assertSame($this->iterator, $this->sourceIterator->getIterator());
+        static::assertSame($this->iterator, $this->sourceIterator->getIterator());
     }
 }
