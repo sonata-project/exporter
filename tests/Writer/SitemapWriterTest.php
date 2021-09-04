@@ -64,7 +64,7 @@ class SitemapWriterTest extends TestCase
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(2, $generatedFiles);
+        static::assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -76,7 +76,7 @@ class SitemapWriterTest extends TestCase
 </urlset>
 XML;
 
-        $this->assertSame(trim($expected), file_get_contents($generatedFiles[1]));
+        static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
     public function testSimpleWriteAdvanced(): void
@@ -105,14 +105,14 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(1, $generatedFiles);
-        $this->assertSame($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
+        static::assertCount(1, $generatedFiles);
+        static::assertSame($this->folder.'/sitemap_test_00001.xml', $generatedFiles[0]);
 
         SitemapWriter::generateSitemapIndex($this->folder, 'https://sonata-project.org');
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(2, $generatedFiles);
+        static::assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -125,7 +125,7 @@ XML;
 </urlset>
 XML;
 
-        $this->assertSame(trim($expected), file_get_contents($generatedFiles[1]));
+        static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }
 
     public function testLimitSize(): void
@@ -144,7 +144,7 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(3, $generatedFiles);
+        static::assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -152,7 +152,7 @@ XML;
 
         $info = stat($generatedFiles[1]);
 
-        $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
+        static::assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
     }
 
     public function testLimitUrl(): void
@@ -171,7 +171,7 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(3, $generatedFiles);
+        static::assertCount(3, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         $file1 = new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
@@ -179,9 +179,9 @@ XML;
 
         $info = stat($generatedFiles[0]);
 
-        $this->assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
-        $this->assertSame(SitemapWriter::LIMIT_URL, \count($file1->children()));
-        $this->assertCount(1, iterator_to_array($file2->children()));
+        static::assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
+        static::assertSame(SitemapWriter::LIMIT_URL, \count($file1->children()));
+        static::assertCount(1, iterator_to_array($file2->children()));
     }
 
     /**

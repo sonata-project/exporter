@@ -51,14 +51,14 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
         $expected = '[["john \"2","doe","1"],["john 3","doe","1"]]';
         $content = file_get_contents($this->filename);
 
-        $this->assertSame($expected, $content);
+        static::assertSame($expected, $content);
 
         $expected = [
             ['john "2', 'doe', '1'],
             ['john 3', 'doe', '1'],
         ];
 
-        $this->assertSame($expected, json_decode($content, false));
+        static::assertSame($expected, json_decode($content, false));
     }
 
     protected function getWriter(): TypedWriterInterface

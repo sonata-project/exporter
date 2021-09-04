@@ -74,7 +74,7 @@ class XmlWriterTest extends AbstractTypedWriterTestCase
 </datas>
 XML;
 
-        $this->assertSame($expected, file_get_contents($this->filename));
+        static::assertSame($expected, file_get_contents($this->filename));
     }
 
     protected function getWriter(): TypedWriterInterface

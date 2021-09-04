@@ -103,8 +103,8 @@ class GsaFeedWriterTest extends TestCase
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(1, $generatedFiles);
-        $this->assertSame($this->folder->getRealPath().'/feed_00001.xml', $generatedFiles[0]);
+        static::assertCount(1, $generatedFiles);
+        static::assertSame($this->folder->getRealPath().'/feed_00001.xml', $generatedFiles[0]);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), \LIBXML_PARSEHUGE);
@@ -125,7 +125,7 @@ class GsaFeedWriterTest extends TestCase
 </gsafeed>
 XML;
 
-        $this->assertSame(trim($expected), file_get_contents($generatedFiles[0]));
+        static::assertSame(trim($expected), file_get_contents($generatedFiles[0]));
     }
 
     /**
@@ -148,7 +148,7 @@ XML;
 
         $generatedFiles = $this->getFiles();
 
-        $this->assertCount(2, $generatedFiles);
+        static::assertCount(2, $generatedFiles);
 
         // this will throw an exception if the xml is invalid
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), \LIBXML_PARSEHUGE);
@@ -156,7 +156,7 @@ XML;
 
         $info = stat($generatedFiles[0]);
 
-        $this->assertLessThan(GsaFeedWriter::LIMIT_SIZE, $info['size']);
+        static::assertLessThan(GsaFeedWriter::LIMIT_SIZE, $info['size']);
     }
 
     /**

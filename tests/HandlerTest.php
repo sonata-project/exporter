@@ -22,8 +22,8 @@ class HandlerTest extends TestCase
     {
         $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
         $writer = $this->createMock('Sonata\Exporter\Writer\WriterInterface');
-        $writer->expects($this->once())->method('open');
-        $writer->expects($this->once())->method('close');
+        $writer->expects(static::once())->method('open');
+        $writer->expects(static::once())->method('close');
 
         $exporter = new Handler($source, $writer);
         $exporter->export();

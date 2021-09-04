@@ -28,7 +28,7 @@ class PropelCollectionSourceIteratorTest extends TestCase
     protected function setUp(): void
     {
         if (!class_exists('PropelCollection')) {
-            $this->markTestIncomplete('Propel is not available');
+            static::markTestIncomplete('Propel is not available');
         }
 
         $data = [
@@ -45,14 +45,14 @@ class PropelCollectionSourceIteratorTest extends TestCase
     {
         $data = $this->extract($this->collection, ['id' => '[id]', 'name' => '[name]']);
 
-        $this->assertCount(3, $data);
+        static::assertCount(3, $data);
     }
 
     public function testFieldsExtraction(): void
     {
         $data = $this->extract($this->collection, ['id' => '[id]', 'name' => '[name]']);
 
-        $this->assertSame([
+        static::assertSame([
              [
                 'id' => 1,
                 'name' => 'john',
@@ -73,8 +73,8 @@ class PropelCollectionSourceIteratorTest extends TestCase
         $data = $this->extract($this->collection, ['id' => '[id]', 'created_at' => '[created_at]']);
 
         foreach ($data as $row) {
-            $this->assertArrayHasKey('created_at', $row);
-            $this->assertIsString($row['created_at']);
+            static::assertArrayHasKey('created_at', $row);
+            static::assertIsString($row['created_at']);
         }
     }
 

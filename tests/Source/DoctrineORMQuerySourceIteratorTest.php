@@ -33,7 +33,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
     protected function setUp(): void
     {
         if (!\extension_loaded('pdo_sqlite') || !class_exists(Driver\PDO\SQLite\Driver::class)) {
-            $this->markTestSkipped('The sqlite extension is not available.');
+            static::markTestSkipped('The sqlite extension is not available.');
         }
 
         $this->em = EntityManager::create($this->createConnection(), $this->createConfiguration());
@@ -72,7 +72,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
         $iterator = new DoctrineORMQuerySourceIterator($query, ['id'], 'r', $batchSize);
 
         foreach ($iterator as $i => $item) {
-            $this->assertSame(0 === $i % $batchSize ? 0 : $i, $this->em->getUnitOfWork()->size());
+            static::assertSame(0 === $i % $batchSize ? 0 : $i, $this->em->getUnitOfWork()->size());
         }
     }
 
