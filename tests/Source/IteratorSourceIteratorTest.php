@@ -35,23 +35,23 @@ class IteratorSourceIteratorTest extends TestCase
 
     public function testGetIterator(): void
     {
-        self::assertSame($this->iterator, $this->sourceIterator->getIterator());
+        static::assertSame($this->iterator, $this->sourceIterator->getIterator());
     }
 
     public function testCurrent(): void
     {
         $this->iterator
-            ->expects(self::once())
+            ->expects(static::once())
             ->method('current')
             ->willReturn(['current']);
 
-        self::assertSame(['current'], $this->sourceIterator->current());
+        static::assertSame(['current'], $this->sourceIterator->current());
     }
 
     public function testNext(): void
     {
         $this->iterator
-            ->expects(self::once())
+            ->expects(static::once())
             ->method('next');
 
         $this->sourceIterator->next();
@@ -60,27 +60,27 @@ class IteratorSourceIteratorTest extends TestCase
     public function testKey(): void
     {
         $this->iterator
-            ->expects(self::once())
+            ->expects(static::once())
             ->method('key')
             ->willReturn('key');
 
-        self::assertSame('key', $this->sourceIterator->key());
+        static::assertSame('key', $this->sourceIterator->key());
     }
 
     public function testValid(): void
     {
         $this->iterator
-            ->expects(self::once())
+            ->expects(static::once())
             ->method('valid')
             ->willReturn(true);
 
-        self::assertTrue($this->sourceIterator->valid());
+        static::assertTrue($this->sourceIterator->valid());
     }
 
     public function testRewind(): void
     {
         $this->iterator
-            ->expects(self::once())
+            ->expects(static::once())
             ->method('rewind');
 
         $this->sourceIterator->rewind();

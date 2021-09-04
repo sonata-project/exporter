@@ -36,7 +36,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
             }
         };
 
-        $this->assertSame($expected, $iterator->getValue($value));
+        static::assertSame($expected, $iterator->getValue($value));
     }
 
     public function getValueProvider()

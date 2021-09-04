@@ -27,7 +27,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
     protected function setUp(): void
     {
         if (!\extension_loaded('mongodb')) {
-            $this->markTestSkipped('The mongodb extension is not available.');
+            static::markTestSkipped('The mongodb extension is not available.');
         }
 
         $this->dm = DocumentManager::create(null, $this->createConfiguration());
@@ -56,7 +56,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
 
         $iterator = new DoctrineODMQuerySourceIterator($query, ['id']);
 
-        $this->assertCount(3, iterator_to_array($iterator));
+        static::assertCount(3, iterator_to_array($iterator));
     }
 
     private function createConfiguration(): Configuration

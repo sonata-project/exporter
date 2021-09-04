@@ -44,11 +44,11 @@ class ExporterTest extends TestCase
     public function testGetAvailableFormats(): void
     {
         $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
-        $writer->expects($this->once())
+        $writer->expects(static::once())
             ->method('getFormat')
             ->willReturn('whatever');
         $exporter = new Exporter([$writer]);
-        $this->assertSame(['whatever'], $exporter->getAvailableFormats());
+        static::assertSame(['whatever'], $exporter->getAvailableFormats());
     }
 
     /**
@@ -60,10 +60,10 @@ class ExporterTest extends TestCase
             ['foo' => 'bar'],
         ]);
         $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
-        $writer->expects($this->any())
+        $writer->expects(static::any())
             ->method('getFormat')
             ->willReturn('made-up');
-        $writer->expects($this->any())
+        $writer->expects(static::any())
             ->method('getDefaultMimeType')
             ->willReturn('application/made-up');
 
@@ -76,9 +76,9 @@ class ExporterTest extends TestCase
         ]);
         $response = $exporter->getResponse($format, $filename, $source);
 
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
-        $this->assertSame($contentType, $response->headers->get('Content-Type'));
-        $this->assertSame('attachment; filename="'.$filename.'"', $response->headers->get('Content-Disposition'));
+        static::assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
+        static::assertSame($contentType, $response->headers->get('Content-Type'));
+        static::assertSame('attachment; filename="'.$filename.'"', $response->headers->get('Content-Disposition'));
         $this->expectOutputRegex($expectedOutput);
         $response->sendContent();
     }

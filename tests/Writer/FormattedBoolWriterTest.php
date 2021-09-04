@@ -45,9 +45,9 @@ class FormattedBoolWriterTest extends TestCase
         $data = ['john', 'doe', false, true];
         $expected = ['john', 'doe', 'no', 'yes'];
         $mock = $this->createMock(TypedWriterInterface::class);
-        $mock->expects($this->once())
+        $mock->expects(static::once())
                ->method('write')
-               ->with($this->equalTo($expected));
+               ->with(static::equalTo($expected));
         $writer = new FormattedBoolWriter($mock, $this->trueLabel, $this->falseLabel);
         $writer->open();
         $writer->write($data);

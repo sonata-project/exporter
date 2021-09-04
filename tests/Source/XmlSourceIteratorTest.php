@@ -45,16 +45,16 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(3, $value);
+            static::assertIsArray($value);
+            static::assertCount(3, $value);
             $keys = array_keys($value);
-            $this->assertSame($i, $iterator->key());
-            $this->assertSame('sku', $keys[0]);
-            $this->assertSame('ean', $keys[1]);
-            $this->assertSame('name', $keys[2]);
+            static::assertSame($i, $iterator->key());
+            static::assertSame('sku', $keys[0]);
+            static::assertSame('ean', $keys[1]);
+            static::assertSame('name', $keys[2]);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
     }
 
     public function testRewind(): void
@@ -63,19 +63,19 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(3, $value);
+            static::assertIsArray($value);
+            static::assertCount(3, $value);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(3, $value);
+            static::assertIsArray($value);
+            static::assertCount(3, $value);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
     }
 
     public function testCustomTagNames(): void
@@ -84,16 +84,16 @@ class XmlSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            $this->assertIsArray($value);
-            $this->assertCount(3, $value);
+            static::assertIsArray($value);
+            static::assertCount(3, $value);
             $keys = array_keys($value);
-            $this->assertSame($i, $iterator->key());
-            $this->assertSame('sku', $keys[0]);
-            $this->assertSame('ean', $keys[1]);
-            $this->assertSame('name', $keys[2]);
+            static::assertSame($i, $iterator->key());
+            static::assertSame('sku', $keys[0]);
+            static::assertSame('ean', $keys[1]);
+            static::assertSame('name', $keys[2]);
             ++$i;
         }
-        $this->assertSame(3, $i);
+        static::assertSame(3, $i);
     }
 
     protected function createXmlFile($filename, $content): void
