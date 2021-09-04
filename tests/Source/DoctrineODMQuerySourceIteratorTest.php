@@ -56,7 +56,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
 
         $iterator = new DoctrineODMQuerySourceIterator($query, []);
 
-        self::assertSame(\DateTimeInterface::ATOM, $iterator->getDateTimeFormat());
+        static::assertSame(\DateTimeInterface::ATOM, $iterator->getDateTimeFormat());
     }
 
     public function testHandler(): void
