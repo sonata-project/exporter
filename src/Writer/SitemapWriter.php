@@ -42,7 +42,7 @@ final class SitemapWriter implements WriterInterface
     private $autoIndex;
 
     /**
-     * @var resource
+     * @var resource|null
      */
     private $buffer;
 
@@ -79,7 +79,7 @@ final class SitemapWriter implements WriterInterface
         $this->headers = $headers;
         $this->autoIndex = $autoIndex;
 
-        $this->pattern = 'sitemap_'.($this->groupName ? $this->groupName.'_' : '').'%05d.xml';
+        $this->pattern = 'sitemap_'.('' !== $this->groupName ? $this->groupName.'_' : '').'%05d.xml';
     }
 
     /**
@@ -129,15 +129,15 @@ final class SitemapWriter implements WriterInterface
 
     public function close(): void
     {
-        if ($this->buffer) {
+        if (null !== $this->buffer) {
             $this->closeSitemap();
         }
 
         if ($this->autoIndex) {
             self::generateSitemapIndex(
                 $this->folder,
-                'sitemap_'.($this->groupName ? $this->groupName.'_' : '').'*.xml',
-                'sitemap'.($this->groupName ? '_'.$this->groupName : '').'.xml'
+                'sitemap_'.('' !== $this->groupName ? $this->groupName.'_' : '').'*.xml',
+                'sitemap'.('' !== $this->groupName ? '_'.$this->groupName : '').'.xml'
             );
         }
     }
@@ -175,7 +175,7 @@ final class SitemapWriter implements WriterInterface
      */
     private function generateNewPart(): void
     {
-        if ($this->buffer) {
+        if (null !== $this->buffer) {
             $this->closeSitemap();
         }
 
@@ -238,7 +238,7 @@ final class SitemapWriter implements WriterInterface
      * Fix type of data, if data type is specific,
      * he must to be defined in data and he must to be a array.
      *
-     * @param array &$data List of parameters
+     * @param array $data List of parameters
      */
     private function fixDataType(array &$data): void
     {
