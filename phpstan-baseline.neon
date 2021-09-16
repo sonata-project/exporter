@@ -1,0 +1,5 @@
+parameters:
+    ignoreErrors:
+        - # Disallow VariableMethodCallRule and VariablePropertyFetchRule
+            message: '#^Variable (method call|property access)#'
+            path: .

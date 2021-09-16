@@ -32,14 +32,22 @@
         "doctrine/orm": "^2.4.5",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.84",
+        "phpstan/phpstan-phpunit": "^0.12.18",
+        "phpstan/phpstan-strict-rules": "^0.12.10",
+        "phpstan/phpstan-symfony": "^0.12.21",
         "propel/propel1": "^1.6",
+        "psalm/plugin-phpunit": "^0.16",
+        "psalm/plugin-symfony": "^2.0",
         "symfony/config": "^4.4 || ^5.2",
         "symfony/dependency-injection": "^4.4 || ^5.2",
         "symfony/http-foundation": "^4.4 || ^5.2",
         "symfony/http-kernel": "^4.4 || ^5.2",
         "symfony/phpunit-bridge": "^5.2",
         "symfony/property-access": "^4.4 || ^5.2",
-        "symfony/routing": "^4.4 || ^5.2"
+        "symfony/routing": "^4.4 || ^5.2",
+        "vimeo/psalm": "^4.9.2"
     },
     "suggest": {
         "propel/propel1": "To export propel collections",
@@ -64,5 +72,13 @@
         "psr-4": {
             "Sonata\\Exporter\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
+        ],
+        "post-update-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
+        ]
     }
 }

@@ -47,7 +47,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
         $data = [
             [[1, 2, 3], '[1, 2, 3]'],
             [new \ArrayIterator([1, 2, 3]), '[1, 2, 3]'],
-            [(static function () { yield from [1, 2, 3]; })(), '[1, 2, 3]'],
+            [(static function (): \Generator { yield from [1, 2, 3]; })(), '[1, 2, 3]'],
             [$datetime, $datetime->format('r')],
             [$datetime, $datetime->format('Y-m-d H:i:s'), 'Y-m-d H:i:s'],
             [123, 123],

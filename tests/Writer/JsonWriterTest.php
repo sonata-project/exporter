@@ -40,7 +40,7 @@ class JsonWriterTest extends AbstractTypedWriterTestCase
 
     public function testWrite(): void
     {
-        $writer = new JsonWriter($this->filename, ',', '');
+        $writer = new JsonWriter($this->filename);
         $writer->open();
 
         $writer->write(['john "2', 'doe', '1']);
