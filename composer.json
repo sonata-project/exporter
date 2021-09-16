@@ -27,6 +27,7 @@
         "doctrine/mongodb-odm": "<2.0"
     },
     "require-dev": {
+        "doctrine/annotations": "^1.13",
         "doctrine/dbal": "^2.5",
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.4.5",
