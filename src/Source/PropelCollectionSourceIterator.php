@@ -39,7 +39,7 @@ final class PropelCollectionSourceIterator extends AbstractPropertySourceIterato
 
     public function rewind(): void
     {
-        if (!$this->iterator) {
+        if (null === $this->iterator) {
             $this->iterator = $this->collection->getIterator();
         }
 

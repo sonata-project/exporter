@@ -50,7 +50,7 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator impl
     {
         $current = $this->iterator->current();
 
-        $data = $this->getCurrentData($current[0]);
+        $data = $this->getCurrentData($current);
 
         if (0 === ($this->iterator->key() % $this->batchSize)) {
             $this->query->getEntityManager()->clear();
@@ -61,7 +61,19 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator impl
 
     final public function rewind(): void
     {
-        $this->iterator = $this->query->iterate();
+        $this->iterator = $this->iterableToIterator($this->query->toIterable());
         $this->iterator->rewind();
+    }
+
+    private function iterableToIterator(iterable $iterable): \Iterator
+    {
+        if ($iterable instanceof \Iterator) {
+            return $iterable;
+        }
+        if (\is_array($iterable)) {
+            return new \ArrayIterator($iterable);
+        }
+
+        return new \ArrayIterator(iterator_to_array($iterable));
     }
 }

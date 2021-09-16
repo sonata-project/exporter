@@ -48,7 +48,7 @@ final class GsaFeedWriter implements WriterInterface
     private $bufferPart;
 
     /**
-     * @var resource
+     * @var resource|null
      */
     private $buffer;
 
@@ -97,7 +97,7 @@ final class GsaFeedWriter implements WriterInterface
 
     public function close(): void
     {
-        if ($this->buffer) {
+        if (null !== $this->buffer) {
             $this->closeFeed();
         }
     }
@@ -109,7 +109,7 @@ final class GsaFeedWriter implements WriterInterface
      */
     private function generateNewPart(): void
     {
-        if ($this->buffer) {
+        if (null !== $this->buffer) {
             $this->closeFeed();
         }
 
