@@ -85,7 +85,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return mixed
      */
     public function current()
     {
@@ -93,7 +93,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return mixed
      */
     public function key()
     {

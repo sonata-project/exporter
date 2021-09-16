@@ -102,11 +102,17 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      */
     abstract public function tagContent($parser, string $data);
 
+    /**
+     * @return mixed
+     */
     final public function current()
     {
         return $this->currentRow;
     }
 
+    /**
+     * @return mixed
+     */
     final public function key()
     {
         return $this->position;
