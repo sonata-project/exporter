@@ -36,6 +36,9 @@ final class IteratorCallbackSourceIterator extends IteratorSourceIterator
         $this->transformer = $transformer;
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return \call_user_func($this->transformer, $this->iterator->current());

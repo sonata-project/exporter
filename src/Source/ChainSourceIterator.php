@@ -34,6 +34,9 @@ final class ChainSourceIterator implements SourceIteratorInterface
         $this->sources->append($source);
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return $this->sources->current()->current();
@@ -44,6 +47,9 @@ final class ChainSourceIterator implements SourceIteratorInterface
         $this->sources->current()->next();
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return $this->sources->current()->key();

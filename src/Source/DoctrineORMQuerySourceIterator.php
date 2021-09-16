@@ -46,6 +46,9 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator impl
         parent::__construct($fields, $dateTimeFormat);
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         $current = $this->iterator->current();
