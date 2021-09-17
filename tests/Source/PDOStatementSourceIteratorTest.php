@@ -58,7 +58,7 @@ class PDOStatementSourceIteratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        $this->dbh = null;
+        unset($this->dbh);
 
         if (is_file($this->pathToDb)) {
             unlink($this->pathToDb);

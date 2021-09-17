@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-use Doctrine\ORM\Internal\Hydration\IterableResult;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
@@ -33,7 +32,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     ];
 
     /**
-     * @var IterableResult|null
+     * @var \Iterator|null
      */
     protected $iterator;
 
@@ -63,6 +62,9 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         $current = $this->iterator->current();
@@ -75,6 +77,9 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
         $this->iterator->next();
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return $this->iterator->key();

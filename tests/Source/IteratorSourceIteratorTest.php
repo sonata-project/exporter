@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\IteratorSourceIterator;
 
@@ -22,14 +23,15 @@ class IteratorSourceIteratorTest extends TestCase
      * @var IteratorSourceIterator
      */
     protected $sourceIterator;
+
     /**
-     * @var \Iterator|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Iterator&MockObject
      */
     protected $iterator;
 
     protected function setUp(): void
     {
-        $this->iterator = $this->createMock('Iterator');
+        $this->iterator = $this->createMock(\Iterator::class);
         $this->sourceIterator = new IteratorSourceIterator($this->iterator);
     }
 

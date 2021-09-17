@@ -102,11 +102,17 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      */
     abstract public function tagContent($parser, string $data);
 
+    /**
+     * @return mixed
+     */
     final public function current()
     {
         return $this->currentRow;
     }
 
+    /**
+     * @return mixed
+     */
     final public function key()
     {
         return $this->position;
@@ -123,8 +129,8 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     {
         $this->parser = xml_parser_create();
         xml_set_object($this->parser, $this);
-        xml_set_element_handler($this->parser, 'tagStart', 'tagEnd');
-        xml_set_character_data_handler($this->parser, 'tagContent');
+        xml_set_element_handler($this->parser, [$this, 'tagStart'], [$this, 'tagEnd']);
+        xml_set_character_data_handler($this->parser, [$this, 'tagContent']);
         xml_parser_set_option($this->parser, \XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, \XML_OPTION_SKIP_WHITE, 0);
 

@@ -42,6 +42,9 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
         $this->statement = $statement;
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return $this->current;
@@ -53,6 +56,9 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
         ++$this->position;
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return $this->position;

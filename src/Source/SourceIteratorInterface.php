@@ -14,8 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Source;
 
 /**
- * @phpstan-template T of array
- * @phpstan-extends \Iterator<T>
+ * @phpstan-extends \Iterator<array<mixed>>
  */
 interface SourceIteratorInterface extends \Iterator
 {

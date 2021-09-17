@@ -85,7 +85,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return mixed
      */
     public function current()
     {
@@ -93,16 +93,13 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return mixed
      */
     public function key()
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
@@ -117,9 +114,6 @@ final class CsvSourceIterator implements SourceIteratorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         $this->file = fopen($this->filename, 'r');
@@ -139,9 +133,6 @@ final class CsvSourceIterator implements SourceIteratorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function valid(): bool
     {
         if (!\is_array($this->currentLine)) {
