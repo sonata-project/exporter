@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.8.0](https://github.com/sonata-project/exporter/compare/2.7.0...2.8.0) - 2021-09-21
+### Changed
+- [[#519](https://github.com/sonata-project/exporter/pull/519)] `SourceIteratorInterface` is not generic anymore ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Fixed
+- [[#519](https://github.com/sonata-project/exporter/pull/519)] Doctrine/orm deprecation ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#518](https://github.com/sonata-project/exporter/pull/518)] Fixed deprecations with Symfony 5.4 ([@jordisala1991](https://github.com/jordisala1991))
+- [[#514](https://github.com/sonata-project/exporter/pull/514)] `AbstractPropertySourceIterator::$iterator` phpdoc ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Removed
+- [[#518](https://github.com/sonata-project/exporter/pull/518)] Removed support for Symfony 5.2 ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [2.7.0](https://github.com/sonata-project/exporter/compare/2.6.2...2.7.0) - 2021-06-27
 ### Changed
 - [[#485](https://github.com/sonata-project/exporter/pull/485)] Clear entity manager every 100 results to improve ORM iterator performance ([@EmmanuelVella](https://github.com/EmmanuelVella))
