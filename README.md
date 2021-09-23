@@ -41,14 +41,12 @@ This package is available under the [MIT license](LICENSE).
 [test_stable_link]: https://github.com/sonata-project/exporter/actions?query=workflow:test+branch:2.x
 [test_unstable_badge]: https://github.com/sonata-project/exporter/workflows/Test/badge.svg?branch=3.x
 [test_unstable_link]: https://github.com/sonata-project/exporter/actions?query=workflow:test+branch:3.x
-
 [coverage_stable_badge]: https://codecov.io/gh/sonata-project/exporter/branch/2.x/graph/badge.svg
 [coverage_stable_link]: https://codecov.io/gh/sonata-project/exporter/branch/2.x
 [coverage_unstable_badge]: https://codecov.io/gh/sonata-project/exporter/branch/3.x/graph/badge.svg
 [coverage_unstable_link]: https://codecov.io/gh/sonata-project/exporter/branch/3.x
 [shepherd_stable_badge]: https://shepherd.dev/github/sonata-project/exporter/coverage.svg
 [shepherd_stable_link]: https://shepherd.dev/github/sonata-project/exporter
-
 [documentation_stable_badge]: https://readthedocs.org/projects/sonata-project-exporter/badge/?version=2.x
 [documentation_stable_link]: https://docs.sonata-project.org/projects/exporter/en/2.x/?badge=2.x
 [documentation_unstable_badge]: https://readthedocs.org/projects/sonata-project-exporter/badge/?version=3.x
