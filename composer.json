@@ -11,7 +11,7 @@
         "symfony-bundle",
         "xls"
     ],
-    "homepage": "https://github.com/sonata-project/Exporter",
+    "homepage": "https://docs.sonata-project.org/projects/exporter",
     "license": "MIT",
     "authors": [
         {
@@ -24,13 +24,14 @@
         "php": "^7.3 || ^8.0"
     },
     "conflict": {
-        "doctrine/mongodb-odm": "<2.0"
+        "doctrine/mongodb-odm": "<2.0",
+        "doctrine/orm": "<2.8"
     },
     "require-dev": {
         "doctrine/annotations": "^1.13",
-        "doctrine/dbal": "^2.5",
+        "doctrine/dbal": "^2.10",
         "doctrine/mongodb-odm": "^2.0",
-        "doctrine/orm": "^2.4.5",
+        "doctrine/orm": "^2.8",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "phpstan/extension-installer": "^1.0",
