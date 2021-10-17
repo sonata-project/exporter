@@ -39,6 +39,7 @@
         "phpstan/phpstan-phpunit": "^0.12.18",
         "phpstan/phpstan-strict-rules": "^0.12.10",
         "phpstan/phpstan-symfony": "^0.12.21",
+        "phpunit/phpunit": "^9.5",
         "propel/propel1": "^1.6",
         "psalm/plugin-phpunit": "^0.16",
         "psalm/plugin-symfony": "^2.0",
@@ -74,13 +75,5 @@
         "psr-4": {
             "Sonata\\Exporter\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ],
-        "post-update-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ]
     }
 }
