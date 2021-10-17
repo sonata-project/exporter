@@ -68,6 +68,18 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         static::assertCount(3, iterator_to_array($iterator));
     }
 
+    public function testEntityManagerClear(): void
+    {
+        $query = $this->dm->createQueryBuilder(Document::class)->getQuery();
+
+        $batchSize = 2;
+        $iterator = new DoctrineODMQuerySourceIterator($query, ['id'], 'r', $batchSize);
+
+        foreach ($iterator as $i => $item) {
+            static::assertSame(0 === $i % $batchSize ? 0 : $i, $this->dm->getUnitOfWork()->size());
+        }
+    }
+
     private function createConfiguration(): Configuration
     {
         $config = new Configuration();
