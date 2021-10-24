@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Source;
 
 use Doctrine\DBAL\Driver\Connection;
-use Doctrine\DBAL\Driver\Statement;
+use Doctrine\DBAL\Driver\Result;
 
 final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
@@ -44,9 +44,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     private $position = 0;
 
     /**
-     * @var Statement
+     * @var Result
      */
-    private $statement;
+    private $result;
 
     public function __construct(Connection $connection, string $query, array $parameters = [])
     {
@@ -62,7 +62,7 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
 
     public function next(): void
     {
-        $this->current = $this->statement->fetch(\PDO::FETCH_ASSOC);
+        $this->current = $this->result->fetchAssociative();
         ++$this->position;
     }
 
@@ -78,8 +78,8 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
 
     public function rewind(): void
     {
-        $this->statement = $this->connection->prepare($this->query);
-        $this->statement->execute($this->parameters);
+        $statement = $this->connection->prepare($this->query);
+        $this->result = $statement->execute($this->parameters);
 
         $this->next();
     }
