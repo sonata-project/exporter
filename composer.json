@@ -29,9 +29,9 @@
     },
     "require-dev": {
         "doctrine/annotations": "^1.13",
-        "doctrine/dbal": "^2.10",
+        "doctrine/dbal": "^2.13 || ^3.0",
         "doctrine/mongodb-odm": "^2.0",
-        "doctrine/orm": "^2.8",
+        "doctrine/orm": "^2.9",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "phpstan/extension-installer": "^1.0",
