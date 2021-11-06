@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.9.0](https://github.com/sonata-project/exporter/compare/2.8.0...2.9.0) - 2021-11-06
+### Added
+- [[#540](https://github.com/sonata-project/exporter/pull/540)] Added compatibility with Doctrine DBAL 3. ([@jordisala1991](https://github.com/jordisala1991))
+- [[#517](https://github.com/sonata-project/exporter/pull/517)] Added support for Symfony 6. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Changed
+- [[#535](https://github.com/sonata-project/exporter/pull/535)] Clear document manager every 100 results to improve ODM iterator performances ([@nicolas-joubert](https://github.com/nicolas-joubert))
+
+### Deprecated
+- [[#532](https://github.com/sonata-project/exporter/pull/532)] `SourceIteratorInterface` ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Fixed
+- [[#533](https://github.com/sonata-project/exporter/pull/533)] Added missing conflict with doctrine/orm < 2.8 ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.8.0](https://github.com/sonata-project/exporter/compare/2.7.0...2.8.0) - 2021-09-21
 ### Changed
 - [[#519](https://github.com/sonata-project/exporter/pull/519)] `SourceIteratorInterface` is not generic anymore ([@VincentLanglet](https://github.com/VincentLanglet))

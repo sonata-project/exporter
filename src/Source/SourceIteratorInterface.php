@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Source;
 /**
  * NEXT_MAJOR: Remove this interface.
  *
- * @deprecated since 2.x use \Iterator instead.
+ * @deprecated since 2.9 use \Iterator instead.
  *
  * @phpstan-extends \Iterator<array<mixed>>
  */
