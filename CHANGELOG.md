@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.9.1](https://github.com/sonata-project/exporter/compare/2.9.0...2.9.1) - 2021-11-12
 ### Fixed
-- [[#550](https://github.com/sonata-project/exporter/pull/550)] Fixed compatibility with Doctrine DBAL ^2.13. ([@jordisala1991](https://github.com/jordisala1991))
+- [[#550](https://github.com/sonata-project/exporter/pull/550)] Fixed compatibility with doctrine/dbal ^2.13 ([@jordisala1991](https://github.com/jordisala1991))
 
 ## [2.9.0](https://github.com/sonata-project/exporter/compare/2.8.0...2.9.0) - 2021-11-06
 ### Added
