@@ -80,6 +80,7 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     {
         $statement = $this->connection->prepare($this->query);
 
+        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
         if (method_exists($statement, 'executeQuery')) {
             $this->result = $statement->executeQuery($this->parameters);
         } else {
