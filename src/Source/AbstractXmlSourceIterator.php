@@ -105,6 +105,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     final public function current()
     {
         return $this->currentRow;
@@ -113,6 +114,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     final public function key()
     {
         return $this->position;

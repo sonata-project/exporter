@@ -45,6 +45,7 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->current;
@@ -59,6 +60,7 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
