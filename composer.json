@@ -10,7 +10,8 @@
         "data",
         "export",
         "symfony-bundle",
-        "xls"
+        "xls",
+        "xlsx"
     ],
     "authors": [
         {
