@@ -104,7 +104,7 @@ final class Configuration implements ConfigurationInterface
                                     ->defaultValue(true)
                                     ->info('add column names as the first line')
                                 ->end()
-                                ->booleanNode('show_headers')
+                                ->booleanNode('show_filters')
                                     ->defaultValue(true)
                                     ->info('add filters in the first line')
                                 ->end()
