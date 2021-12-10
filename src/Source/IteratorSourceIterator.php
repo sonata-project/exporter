@@ -39,6 +39,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->iterator->current();
@@ -52,6 +53,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     final public function key()
     {
         return $this->iterator->key();

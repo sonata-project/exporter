@@ -65,6 +65,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $current = $this->iterator->current();
@@ -80,6 +81,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     /**
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->iterator->key();
