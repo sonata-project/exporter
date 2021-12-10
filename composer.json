@@ -30,6 +30,7 @@
         "doctrine/orm": "^2.9",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
+        "phpoffice/phpspreadsheet": "^1.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
@@ -53,6 +54,7 @@
         "doctrine/orm": "<2.8"
     },
     "suggest": {
+        "phpoffice/phpspreadsheet": "To be able to export the data in XLSX",
         "propel/propel1": "To export propel collections",
         "symfony/property-access": "To be able to export from database entities",
         "symfony/routing": "To be able to export the routes of a Symfony app"
