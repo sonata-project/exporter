@@ -15,6 +15,7 @@ namespace Sonata\Exporter\Writer;
 
 use DateTime;
 use DateTimeInterface;
+use LogicException;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -70,7 +71,7 @@ final class XlsxWriter implements TypedWriterInterface
         $this->position = 1;
 
         if (!class_exists(Spreadsheet::class)) {
-            throw new RuntimeException('You need the "phpoffice/spreadsheet" component in order to use the XLSX export.');
+            throw new LogicException('You need the "phpoffice/spreadsheet" component in order to use the XLSX export.');
         }
 
         if (is_file($filename)) {
