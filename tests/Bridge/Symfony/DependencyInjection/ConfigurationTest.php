@@ -50,6 +50,11 @@ class ConfigurationTest extends TestCase
                     'filename' => 'php://output',
                     'show_headers' => true,
                 ],
+                'xlsx' => [
+                    'filename' => 'php://output',
+                    'show_headers' => true,
+                    'show_filters' => true,
+                ],
                 'xml' => [
                     'filename' => 'php://output',
                     'show_headers' => true,

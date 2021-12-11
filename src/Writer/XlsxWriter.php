@@ -14,8 +14,6 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Writer;
 
 use DateTime;
-use DateTimeInterface;
-use LogicException;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -23,7 +21,6 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\Exception as WriterException;
-use RuntimeException;
 
 /**
  * @author Willem Verspyck <willemverspyck@users.noreply.github.com>
@@ -61,7 +58,8 @@ final class XlsxWriter implements TypedWriterInterface
     private $position;
 
     /**
-     * @throws RuntimeException
+     * @throws \LogicException
+     * @throws \RuntimeException
      */
     public function __construct(string $filename, bool $showHeaders = true, bool $showFilters = true)
     {
@@ -71,11 +69,11 @@ final class XlsxWriter implements TypedWriterInterface
         $this->position = 1;
 
         if (!class_exists(Spreadsheet::class)) {
-            throw new LogicException('You need the "phpoffice/spreadsheet" component in order to use the XLSX export.');
+            throw new \LogicException('You need the "phpoffice/spreadsheet" component in order to use the XLSX export.');
         }
 
         if (is_file($filename)) {
-            throw new RuntimeException(sprintf('The file "%s" already exist', $filename));
+            throw new \RuntimeException(sprintf('The file "%s" already exist', $filename));
         }
     }
 
@@ -152,7 +150,7 @@ final class XlsxWriter implements TypedWriterInterface
     }
 
     /**
-     * Get the type of the Spreadsheet cell
+     * Get the type of the Spreadsheet cell.
      */
     private function getDataType($value): string
     {
@@ -160,15 +158,15 @@ final class XlsxWriter implements TypedWriterInterface
             return DataType::TYPE_NULL;
         }
 
-        if (is_bool($value)) {
+        if (\is_bool($value)) {
             return DataType::TYPE_BOOL;
         }
 
-        if ($this->getDateTime($value) instanceof DateTimeInterface) {
+        if ($this->getDateTime($value) instanceof \DateTimeInterface) {
             return DataType::TYPE_NUMERIC;
         }
 
-        if (is_string($value)) {
+        if (\is_string($value)) {
             return DataType::TYPE_STRING;
         }
 
@@ -186,7 +184,7 @@ final class XlsxWriter implements TypedWriterInterface
 
         $dateTime = $this->getDateTime($value);
 
-        if ($dateTime instanceof DateTimeInterface) {
+        if ($dateTime instanceof \DateTimeInterface) {
             return Date::PHPToExcel($dateTime);
         }
 
@@ -200,7 +198,7 @@ final class XlsxWriter implements TypedWriterInterface
     {
         $dateTime = $this->getDateTime($value);
 
-        if ($dateTime instanceof DateTimeInterface) {
+        if ($dateTime instanceof \DateTimeInterface) {
             return sprintf('%s hh:mm:ss', NumberFormat::FORMAT_DATE_DDMMYYYY);
         }
 
@@ -208,14 +206,14 @@ final class XlsxWriter implements TypedWriterInterface
     }
 
     /**
-     * Check if the field is a DateTime
+     * Check if the field is a DateTime.
      */
-    private function getDateTime($value): ?DateTimeInterface
+    private function getDateTime($value): ?\DateTimeInterface
     {
-        if (is_string($value)) {
-            $dateTime = DateTime::createFromFormat(DateTimeInterface::RFC1123, $value);
+        if (\is_string($value)) {
+            $dateTime = \DateTime::createFromFormat(\DateTimeInterface::RFC1123, $value);
 
-            if ($dateTime instanceof DateTimeInterface) {
+            if ($dateTime instanceof \DateTimeInterface) {
                 return $dateTime;
             }
         }
