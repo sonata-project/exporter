@@ -19,7 +19,7 @@ use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsxWriter;
 
-class XlsxWriterTest extends AbstractTypedWriterTestCase
+final class XlsxWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
     protected $filenameCsv;
