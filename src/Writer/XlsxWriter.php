@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Writer;
 
-use DateTime;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;

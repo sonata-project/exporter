@@ -68,7 +68,6 @@ final class XlsxWriterTest extends AbstractTypedWriterTestCase
         $expected = sprintf('"john ""2","doe","1"%s', \PHP_EOL);
 
         static::assertSame($expected, file_get_contents($this->filenameCsv));
-
     }
 
     public function testWithHeaders(): void
