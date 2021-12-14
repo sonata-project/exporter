@@ -32,7 +32,7 @@ class ConfigurationTest extends TestCase
             [],
         ], [
             'exporter' => ['default_writers' => [
-                'csv', 'json', 'xls', 'xml',
+                'csv', 'json', 'xls', 'xml', 'xlsx',
             ]],
             'writers' => [
                 'csv' => [

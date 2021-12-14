@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Bridge\Symfony\DependencyInjection;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -34,7 +35,7 @@ final class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('default_writers')
-                            ->defaultValue(['csv', 'json', 'xls', 'xml'])
+                            ->defaultValue($this->getDefaultWriters())
                             ->prototype('scalar')->end()
                         ->end()
                     ->end()
@@ -136,5 +137,16 @@ final class Configuration implements ConfigurationInterface
             ->end();
 
         return $treeBuilder;
+    }
+
+    private function getDefaultWriters(): array
+    {
+        $fields = ['csv', 'json', 'xls', 'xml'];
+
+        if (class_exists(Spreadsheet::class)) {
+            $fields[] = 'xlsx';
+        }
+
+        return $fields;
     }
 }
