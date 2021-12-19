@@ -15,7 +15,9 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity
+ */
 class Entity
 {
     /**

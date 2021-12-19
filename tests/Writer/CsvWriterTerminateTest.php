@@ -18,8 +18,11 @@ use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\CsvWriterTerminate;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 
-class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
+final class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

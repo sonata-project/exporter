@@ -29,12 +29,12 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     private $query;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     private $parameters;
 
     /**
-     * @var mixed
+     * @var array<string, mixed>
      */
     private $current;
 
@@ -48,6 +48,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
      */
     private $result;
 
+    /**
+     * @param mixed[] $parameters
+     */
     public function __construct(Connection $connection, string $query, array $parameters = [])
     {
         $this->connection = $connection;
@@ -55,6 +58,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function current()
     {
         return $this->current;
@@ -80,13 +86,11 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     {
         $statement = $this->connection->prepare($this->query);
 
-        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
+        // TODO: Keep only the else part when dropping support for Doctrine DBAL < 3.1
         if (method_exists($statement, 'executeQuery')) {
             $this->result = $statement->executeQuery($this->parameters);
         } else {
-            $statement->execute($this->parameters);
-
-            $this->result = $statement;
+            $this->result = $statement->execute($this->parameters);
         }
 
         $this->next();

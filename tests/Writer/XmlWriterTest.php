@@ -17,7 +17,7 @@ use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XmlWriter;
 
-class XmlWriterTest extends AbstractTypedWriterTestCase
+final class XmlWriterTest extends AbstractTypedWriterTestCase
 {
     protected $filename;
 

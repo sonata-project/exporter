@@ -17,8 +17,11 @@ use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsWriter;
 
-class XlsWriterTest extends AbstractTypedWriterTestCase
+final class XlsWriterTest extends AbstractTypedWriterTestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

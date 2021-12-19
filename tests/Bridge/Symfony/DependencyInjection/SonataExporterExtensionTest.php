@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Tests\Bridge\Symfony\DependencyInjection;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Sonata\Exporter\Bridge\Symfony\DependencyInjection\SonataExporterExtension;
 
-class SonataExporterExtensionTest extends AbstractExtensionTestCase
+final class SonataExporterExtensionTest extends AbstractExtensionTestCase
 {
     public function testExporterServiceIsPresent(): void
     {

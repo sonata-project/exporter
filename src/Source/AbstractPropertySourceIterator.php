@@ -63,7 +63,7 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @return array<string, mixed>
      */
     #[\ReturnTypeWillChange]
     public function current()
@@ -134,6 +134,8 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
 
     /**
      * @param object|mixed[] $current
+     *
+     * @return array<string, mixed>
      */
     protected function getCurrentData($current): array
     {

@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Tests\Writer;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\SitemapWriter;
 
-class SitemapWriterTest extends TestCase
+final class SitemapWriterTest extends TestCase
 {
     /**
      * @var string

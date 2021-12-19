@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Tests\Source;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\PDOStatementSourceIterator;
 
-class PDOStatementSourceIteratorTest extends TestCase
+final class PDOStatementSourceIteratorTest extends TestCase
 {
     /**
      * @var \PDO

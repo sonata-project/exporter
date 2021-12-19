@@ -21,7 +21,7 @@ use Sonata\Exporter\Writer\GsaFeedWriter;
  *
  * @author Rémi Marseille <marseille@ekino.com>
  */
-class GsaFeedWriterTest extends TestCase
+final class GsaFeedWriterTest extends TestCase
 {
     /**
      * @var \SplFileInfo
