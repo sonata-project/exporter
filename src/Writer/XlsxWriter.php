@@ -62,17 +62,17 @@ final class XlsxWriter implements TypedWriterInterface
      */
     public function __construct(string $filename, bool $showHeaders = true, bool $showFilters = true)
     {
+        if (!class_exists(Spreadsheet::class)) {
+            throw new \LogicException('You need the "phpoffice/spreadsheet" package in order to use the XLSX export.');
+        }
+
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
         $this->showFilters = $showFilters;
         $this->position = 1;
 
-        if (!class_exists(Spreadsheet::class)) {
-            throw new \LogicException('You need the "phpoffice/spreadsheet" component in order to use the XLSX export.');
-        }
-
         if (is_file($filename)) {
-            throw new \RuntimeException(sprintf('The file "%s" already exist', $filename));
+            throw new \RuntimeException(sprintf('The file "%s" already exists.', $filename));
         }
     }
 
@@ -137,6 +137,9 @@ final class XlsxWriter implements TypedWriterInterface
         ++$this->position;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     private function addHeaders(array $data): void
     {
         $column = 1;
@@ -150,6 +153,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the type of the Spreadsheet cell.
+     *
+     * @param mixed $value
      */
     private function getDataType($value): string
     {
@@ -174,6 +179,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the value of the Spreadsheet cell. DateTime fields must be converted in order to work properly.
+     *
+     * @param mixed $value
      */
     private function getDataValue($value)
     {
@@ -192,6 +199,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the format of the spreadsheet cell.
+     *
+     * @param mixed $value
      */
     private function getDataFormat($value): ?string
     {
@@ -206,6 +215,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Check if the field is a DateTime.
+     *
+     * @param mixed $value
      */
     private function getDateTime($value): ?\DateTimeInterface
     {

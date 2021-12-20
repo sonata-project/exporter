@@ -20,8 +20,8 @@ use Sonata\Exporter\Writer\XlsxWriter;
 
 final class XlsxWriterTest extends AbstractTypedWriterTestCase
 {
-    protected $filename;
-    protected $filenameCsv;
+    private $filename;
+    private $filenameCsv;
 
     protected function setUp(): void
     {
