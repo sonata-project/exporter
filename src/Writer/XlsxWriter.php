@@ -58,7 +58,7 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * @throws \LogicException
-     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
      */
     public function __construct(string $filename, bool $showHeaders = true, bool $showFilters = true)
     {
@@ -66,14 +66,14 @@ final class XlsxWriter implements TypedWriterInterface
             throw new \LogicException('You need the "phpoffice/spreadsheet" package in order to use the XLSX export.');
         }
 
+        if (is_file($filename)) {
+            throw new \InvalidArgumentException(sprintf('The file "%s" already exists.', $filename));
+        }
+
         $this->filename = $filename;
         $this->showHeaders = $showHeaders;
         $this->showFilters = $showFilters;
         $this->position = 1;
-
-        if (is_file($filename)) {
-            throw new \RuntimeException(sprintf('The file "%s" already exists.', $filename));
-        }
     }
 
     public function getDefaultMimeType(): string

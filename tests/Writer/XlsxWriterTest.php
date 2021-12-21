@@ -20,7 +20,14 @@ use Sonata\Exporter\Writer\XlsxWriter;
 
 final class XlsxWriterTest extends AbstractTypedWriterTestCase
 {
+    /**
+     * @var string
+     */
     private $filename;
+
+    /**
+     * @var string
+     */
     private $filenameCsv;
 
     protected function setUp(): void
@@ -93,6 +100,6 @@ final class XlsxWriterTest extends AbstractTypedWriterTestCase
 
     protected function getWriter(): TypedWriterInterface
     {
-        return new XlsxWriter('/tmp/whatever.xlsx', false);
+        return new XlsxWriter(sprintf('%s/whatever.xlsx', sys_get_temp_dir()), false);
     }
 }
