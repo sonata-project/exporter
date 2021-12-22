@@ -13,6 +13,7 @@ You may export data from various sources:
 * PHP Iterator with a callback on current
 * XML
 * Excel XML
+* XLSX (SpreadsheetML format for Microsoft Excel)
 * Sitemap (Takes another iterator)
 * Chain (can aggregate data from several different iterators)
 

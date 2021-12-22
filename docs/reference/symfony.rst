@@ -25,7 +25,7 @@ The default writers
 Under the hood, the exporter uses one service for each available format.
 Each service has its own parameters, documented below.
 
-Each service parameter has a configuration countepart:
+Each service parameter has a configuration counterpart:
 
 .. code-block:: yaml
 
@@ -38,7 +38,7 @@ Each service parameter has a configuration countepart:
 
 The CSV writer service
 ~~~~~~~~~~~~~~~~~~~~~~
-This service can be configured throught the following parameters:
+This service can be configured through the following parameters:
 
 * ``sonata.exporter.writer.csv.filename``: defaults to ``php://output``
 * ``sonata.exporter.writer.csv.delimiter``: defaults to ``,``
@@ -56,15 +56,24 @@ Only the filename may be configured for this service:
 The XLS writer service
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This service can be configured throught the following parameters:
+This service can be configured through the following parameters:
 
 * ``sonata.exporter.writer.xls.filename``: defaults to ``php://output``
 * ``sonata.exporter.writer.xls.show_headers``: defaults to ``true``
 
+The XLSX writer service
+~~~~~~~~~~~~~~~~~~~~~~~
+
+This service can be configured through the following parameters:
+
+* ``sonata.exporter.writer.xlsx.filename``: defaults to ``php://output``
+* ``sonata.exporter.writer.xlsx.show_headers``: defaults to ``true``
+* ``sonata.exporter.writer.xlsx.show_filters``: defaults to ``true``
+
 The XML writer service
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This service can be configured throught the following parameters:
+This service can be configured through the following parameters:
 
 * ``sonata.exporter.writer.xml.filename``: defaults to ``php://output``
 * ``sonata.exporter.writer.xml.show_headers``: defaults to ``true``
