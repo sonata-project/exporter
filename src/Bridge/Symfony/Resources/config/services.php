@@ -11,10 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\XlsWriter;
+use Sonata\Exporter\Writer\XlsxWriter;
 use Sonata\Exporter\Writer\XmlWriter;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -42,6 +44,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             '%sonata.exporter.writer.xls.filename%',
             '%sonata.exporter.writer.xls.show_headers%',
         ]);
+
+    if (class_exists(Spreadsheet::class)) {
+        $services->set('sonata.exporter.writer.xlsx', XlsxWriter::class)
+            ->args([
+                '%sonata.exporter.writer.xlsx.filename%',
+                '%sonata.exporter.writer.xlsx.show_headers%',
+                '%sonata.exporter.writer.xlsx.show_filters%',
+            ]);
+    }
 
     $services->set('sonata.exporter.writer.xml', XmlWriter::class)
         ->args([

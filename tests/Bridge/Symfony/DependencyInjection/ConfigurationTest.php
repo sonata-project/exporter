@@ -32,7 +32,7 @@ class ConfigurationTest extends TestCase
             [],
         ], [
             'exporter' => ['default_writers' => [
-                'csv', 'json', 'xls', 'xml',
+                'csv', 'json', 'xls', 'xml', 'xlsx',
             ]],
             'writers' => [
                 'csv' => [
@@ -49,6 +49,11 @@ class ConfigurationTest extends TestCase
                 'xls' => [
                     'filename' => 'php://output',
                     'show_headers' => true,
+                ],
+                'xlsx' => [
+                    'filename' => 'php://output',
+                    'show_headers' => true,
+                    'show_filters' => true,
                 ],
                 'xml' => [
                     'filename' => 'php://output',
