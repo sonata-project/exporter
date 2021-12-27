@@ -72,6 +72,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         ++$this->position;
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return $this->position;
