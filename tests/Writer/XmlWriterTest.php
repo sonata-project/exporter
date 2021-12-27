@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Writer;
 
-use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XmlWriter;
 
-final class XmlWriterTest extends AbstractTypedWriterTestCase
+final class XmlWriterTest extends TestCase
 {
     protected $filename;
 

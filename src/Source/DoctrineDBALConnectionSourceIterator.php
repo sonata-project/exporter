@@ -34,7 +34,7 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     private $parameters;
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, mixed>|false
      */
     private $current;
 
@@ -59,7 +59,7 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<string, mixed>|false
      */
     #[\ReturnTypeWillChange]
     public function current()
@@ -97,9 +97,10 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         $result = $statement->execute($this->parameters);
 
         // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
+        // @phpstan-ignore-next-line
         if ($result instanceof Result) {
             $this->result = $result;
-        } else {
+        } else { // @phpstan-ignore-line
             // @phpstan-ignore-next-line
             $this->result = $statement;
         }

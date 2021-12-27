@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Tests\Writer;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsxWriter;
 
-final class XlsxWriterTest extends AbstractTypedWriterTestCase
+final class XlsxWriterTest extends TestCase
 {
     /**
      * @var string
