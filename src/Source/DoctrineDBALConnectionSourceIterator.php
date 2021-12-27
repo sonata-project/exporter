@@ -61,6 +61,7 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     /**
      * @return array<string, mixed>
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->current;
@@ -73,8 +74,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     }
 
     /**
-     * @return mixed
+     * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -85,6 +87,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         return \is_array($this->current);
     }
 
+    /**
+     * @psalm-suppress InvalidPropertyAssignmentValue
+     */
     public function rewind(): void
     {
         $statement = $this->connection->prepare($this->query);

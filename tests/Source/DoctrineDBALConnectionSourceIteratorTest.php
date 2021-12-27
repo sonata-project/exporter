@@ -32,7 +32,7 @@ final class DoctrineDBALConnectionSourceIteratorTest extends TestCase
         $connection = DriverManager::getConnection(['url' => 'sqlite:///:memory:']);
         $driverConnection = $connection->getWrappedConnection();
 
-        $iterator = new DoctrineDBALConnectionSourceIterator($driverConnection, '');
+        $iterator = new DoctrineDBALConnectionSourceIterator($driverConnection, ' ');
         $iterator->rewind();
 
         static::assertCount(0, iterator_to_array($iterator));
