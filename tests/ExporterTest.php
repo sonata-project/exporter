@@ -44,6 +44,7 @@ final class ExporterTest extends TestCase
     {
         $this->expectException(\TypeError::class);
 
+        // @phpstan-ignore-next-line
         new Exporter(['Not even an object']);
     }
 
