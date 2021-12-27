@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Tests\Writer;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\XmlExcelWriter;
 
-class XmlExcelWriterTest extends TestCase
+final class XmlExcelWriterTest extends TestCase
 {
     protected $filename;
 

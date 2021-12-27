@@ -47,7 +47,7 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator impl
     }
 
     /**
-     * @return mixed
+     * @return array<string, mixed>
      */
     public function current()
     {

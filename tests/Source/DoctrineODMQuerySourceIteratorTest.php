@@ -21,7 +21,9 @@ use Sonata\Exporter\Tests\Source\Fixtures\Document;
 
 final class DoctrineODMQuerySourceIteratorTest extends TestCase
 {
-    /** @var DocumentManager */
+    /**
+     * @var DocumentManager
+     */
     private $dm;
 
     protected function setUp(): void

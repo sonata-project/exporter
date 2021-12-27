@@ -27,14 +27,11 @@ final class XmlWriter implements TypedWriterInterface
     private $filename;
 
     /**
-     * @var resource
+     * @var resource|null
+     * @phpstan-var resource|null
+     * @psalm-var resource|closed-resource|null
      */
     private $file;
-
-    /**
-     * @var int
-     */
-    private $position = 0;
 
     /**
      * @var string

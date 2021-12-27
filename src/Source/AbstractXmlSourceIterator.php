@@ -27,6 +27,8 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 
     /**
      * @var resource|null
+     * @phpstan-var resource|null
+     * @psalm-var resource|closed-resource|null
      */
     protected $file;
 
@@ -41,7 +43,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected $columns = [];
 
     /**
-     * @var resource|null
+     * @var \XMLParser|null
      */
     protected $parser;
 

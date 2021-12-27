@@ -22,7 +22,7 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class FormattedBoolWriterTest extends TestCase
+final class FormattedBoolWriterTest extends TestCase
 {
     /**
      * @var string

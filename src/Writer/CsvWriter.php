@@ -41,7 +41,9 @@ final class CsvWriter implements TypedWriterInterface
     private $escape;
 
     /**
-     * @var resource
+     * @var resource|null
+     * @phpstan-var resource|null
+     * @psalm-var resource|closed-resource|null
      */
     private $file;
 

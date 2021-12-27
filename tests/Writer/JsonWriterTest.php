@@ -17,8 +17,11 @@ use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 
-class JsonWriterTest extends AbstractTypedWriterTestCase
+final class JsonWriterTest extends AbstractTypedWriterTestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

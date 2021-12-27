@@ -15,13 +15,18 @@ namespace Sonata\Exporter\Tests\Source;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\IteratorCallbackSourceIterator;
+use Sonata\Exporter\Source\IteratorSourceIterator;
 
-class IteratorCallbackSourceIteratorTest extends TestCase
+final class IteratorCallbackSourceIteratorTest extends TestCase
 {
-    /** @var IteratorCallbackSourceIterator */
+    /**
+     * @var IteratorCallbackSourceIterator
+     */
     protected $sourceIterator;
 
-    /** @var \ArrayIterator */
+    /**
+     * @var \ArrayIterator
+     */
     protected $iterator;
 
     protected function setUp(): void
@@ -45,7 +50,7 @@ class IteratorCallbackSourceIteratorTest extends TestCase
 
     public function testExtends(): void
     {
-        static::assertInstanceOf('Sonata\Exporter\Source\IteratorSourceIterator', $this->sourceIterator);
+        static::assertInstanceOf(IteratorSourceIterator::class, $this->sourceIterator);
     }
 
     public function testGetIterator(): void

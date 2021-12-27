@@ -16,8 +16,11 @@ namespace Sonata\Exporter\Tests\Source;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\CsvSourceIterator;
 
-class CsvSourceIteratorTest extends TestCase
+final class CsvSourceIteratorTest extends TestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

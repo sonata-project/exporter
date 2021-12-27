@@ -21,13 +21,16 @@ use Sonata\Exporter\Source\PropelCollectionSourceIterator;
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
-class PropelCollectionSourceIteratorTest extends TestCase
+final class PropelCollectionSourceIteratorTest extends TestCase
 {
+    /**
+     * @var \PropelCollection
+     */
     protected $collection;
 
     protected function setUp(): void
     {
-        if (!class_exists('PropelCollection')) {
+        if (!class_exists(\PropelCollection::class)) {
             static::markTestIncomplete('Propel is not available');
         }
 

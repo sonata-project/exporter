@@ -17,7 +17,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\IteratorSourceIterator;
 
-class IteratorSourceIteratorTest extends TestCase
+final class IteratorSourceIteratorTest extends TestCase
 {
     /**
      * @var IteratorSourceIterator
