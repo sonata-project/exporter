@@ -141,12 +141,8 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     {
         $data = [];
         foreach ($this->fields as $key => $field) {
-            if (\is_string($field)) {
-                $name = \is_string($key) ? $key : $field;
-                $propertyPath = $field;
-            } else {
-                throw new \TypeError('Unsupported field type. Field should be a string.');
-            }
+            $name = \is_string($key) ? $key : $field;
+            $propertyPath = $field;
 
             try {
                 $propertyValue = $this->propertyAccessor->getValue($current, new PropertyPath($propertyPath));

@@ -58,7 +58,7 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     #[\ReturnTypeWillChange]
     public function key()

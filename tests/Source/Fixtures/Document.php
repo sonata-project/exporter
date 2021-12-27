@@ -25,10 +25,5 @@ class Document
      *
      * @var string
      */
-    private $id;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
+    public $id;
 }

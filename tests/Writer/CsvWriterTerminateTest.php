@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Writer;
 
-use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\CsvWriterTerminate;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 
-final class CsvWriterTerminateTest extends AbstractTypedWriterTestCase
+final class CsvWriterTerminateTest extends TestCase
 {
     /**
      * @var string

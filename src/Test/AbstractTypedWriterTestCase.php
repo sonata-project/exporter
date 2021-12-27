@@ -18,6 +18,10 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
 
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
+ *
+ * NEXT_MAJOR: Remove this class.
+ *
+ * @deprecated since sonata-project/exporter 2.x, to be removed in version 3.0.
  */
 abstract class AbstractTypedWriterTestCase extends TestCase
 {
@@ -33,11 +37,13 @@ abstract class AbstractTypedWriterTestCase extends TestCase
 
     final public function testFormatIsString(): void
     {
+        // @phpstan-ignore-next-line
         static::assertIsString($this->writer->getFormat());
     }
 
     final public function testDefaultMimeTypeIsString(): void
     {
+        // @phpstan-ignore-next-line
         static::assertIsString($this->writer->getDefaultMimeType());
     }
 

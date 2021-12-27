@@ -180,7 +180,9 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         }
 
         $this->currentRowEnded = false;
+
         // read file until row is ended
+        // @phpstan-ignore-next-line: The currentRowEnded value is updated when parsing the data
         while (!$this->currentRowEnded && !feof($this->file)) {
             $data = fread($this->file, 1024);
             xml_parse($this->parser, $data);
