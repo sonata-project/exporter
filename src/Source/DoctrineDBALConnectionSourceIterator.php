@@ -29,12 +29,12 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     private $query;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     private $parameters;
 
     /**
-     * @var mixed
+     * @var array<string, mixed>|false
      */
     private $current;
 
@@ -48,6 +48,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
      */
     private $result;
 
+    /**
+     * @param mixed[] $parameters
+     */
     public function __construct(Connection $connection, string $query, array $parameters = [])
     {
         $this->connection = $connection;
@@ -55,6 +58,10 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return array<string, mixed>|false
+     */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->current;
@@ -66,6 +73,10 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         ++$this->position;
     }
 
+    /**
+     * @return int
+     */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -76,16 +87,21 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         return \is_array($this->current);
     }
 
+    /**
+     * @psalm-suppress InvalidPropertyAssignmentValue
+     */
     public function rewind(): void
     {
         $statement = $this->connection->prepare($this->query);
 
-        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
-        if (method_exists($statement, 'executeQuery')) {
-            $this->result = $statement->executeQuery($this->parameters);
-        } else {
-            $statement->execute($this->parameters);
+        $result = $statement->execute($this->parameters);
 
+        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
+        // @phpstan-ignore-next-line
+        if ($result instanceof Result) {
+            $this->result = $result;
+        } else { // @phpstan-ignore-line
+            // @phpstan-ignore-next-line
             $this->result = $statement;
         }
 

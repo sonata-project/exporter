@@ -27,6 +27,8 @@ final class CsvSourceIterator implements SourceIteratorInterface
 
     /**
      * @var resource|null
+     * @phpstan-var resource|null
+     * @psalm-var resource|closed-resource|null
      */
     private $file;
 
@@ -53,11 +55,6 @@ final class CsvSourceIterator implements SourceIteratorInterface
     /**
      * @var array
      */
-    private $lines = [];
-
-    /**
-     * @var array
-     */
     private $columns = [];
 
     /**
@@ -66,7 +63,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     private $position = 0;
 
     /**
-     * @var array
+     * @var array|false
      */
     private $currentLine = [];
 
@@ -85,7 +82,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @return array|false
      */
     #[\ReturnTypeWillChange]
     public function current()
@@ -94,7 +91,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     #[\ReturnTypeWillChange]
     public function key()

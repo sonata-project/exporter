@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Writer;
 
-use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsWriter;
 
-class XlsWriterTest extends AbstractTypedWriterTestCase
+final class XlsWriterTest extends TestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

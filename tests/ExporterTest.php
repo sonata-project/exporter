@@ -16,34 +16,41 @@ namespace Sonata\Exporter\Tests;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Source\ArraySourceIterator;
+use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
+use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsWriter;
 use Sonata\Exporter\Writer\XmlWriter;
+use Symfony\Component\HttpFoundation\Response;
 
-class ExporterTest extends TestCase
+final class ExporterTest extends TestCase
 {
     public function testFilter(): void
     {
-        $this->expectException('RuntimeException');
+        $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Invalid "foo" format');
-        $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
-        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $source = $this->createMock(SourceIteratorInterface::class);
+        $writer = $this->createMock(TypedWriterInterface::class);
 
         $exporter = new Exporter([$writer]);
         $exporter->getResponse('foo', 'foo', $source);
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function testConstructorRejectsNonTypedWriters(): void
     {
         $this->expectException(\TypeError::class);
 
+        // @phpstan-ignore-next-line
         new Exporter(['Not even an object']);
     }
 
     public function testGetAvailableFormats(): void
     {
-        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock(TypedWriterInterface::class);
         $writer->expects(static::once())
             ->method('getFormat')
             ->willReturn('whatever');
@@ -59,7 +66,7 @@ class ExporterTest extends TestCase
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],
         ]);
-        $writer = $this->createMock('Sonata\Exporter\Writer\TypedWriterInterface');
+        $writer = $this->createMock(TypedWriterInterface::class);
         $writer->expects(static::any())
             ->method('getFormat')
             ->willReturn('made-up');
@@ -76,7 +83,7 @@ class ExporterTest extends TestCase
         ]);
         $response = $exporter->getResponse($format, $filename, $source);
 
-        static::assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
+        static::assertInstanceOf(Response::class, $response);
         static::assertSame($contentType, $response->headers->get('Content-Type'));
         static::assertSame('attachment; filename="'.$filename.'"', $response->headers->get('Content-Disposition'));
         $this->expectOutputRegex($expectedOutput);

@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Writer;
 
-use Sonata\Exporter\Test\AbstractTypedWriterTestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 
-class JsonWriterTest extends AbstractTypedWriterTestCase
+final class JsonWriterTest extends TestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
 
     protected function setUp(): void

@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class ExporterCompilerPassTest extends AbstractCompilerPassTestCase
+final class ExporterCompilerPassTest extends AbstractCompilerPassTestCase
 {
     public function testWritersAreAddedToTheExporter(): void
     {

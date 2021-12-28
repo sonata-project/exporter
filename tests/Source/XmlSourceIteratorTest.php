@@ -16,9 +16,16 @@ namespace Sonata\Exporter\Tests\Source;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\XmlSourceIterator;
 
-class XmlSourceIteratorTest extends TestCase
+final class XmlSourceIteratorTest extends TestCase
 {
+    /**
+     * @var string
+     */
     protected $filename;
+
+    /**
+     * @var string
+     */
     protected $filenameCustomTagNames;
 
     protected function setUp(): void

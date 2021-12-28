@@ -15,7 +15,9 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-/** @ODM\Document */
+/**
+ * @ODM\Document
+ */
 class Document
 {
     /**
@@ -23,10 +25,5 @@ class Document
      *
      * @var string
      */
-    private $id;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
+    public $id;
 }

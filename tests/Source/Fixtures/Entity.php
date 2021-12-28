@@ -15,7 +15,9 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity
+ */
 class Entity
 {
     /**
@@ -25,10 +27,5 @@ class Entity
      *
      * @var int
      */
-    private $id;
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    public $id;
 }

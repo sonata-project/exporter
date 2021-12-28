@@ -15,15 +15,16 @@ namespace Sonata\Exporter\Tests\Source;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\ChainSourceIterator;
+use Sonata\Exporter\Source\SourceIteratorInterface;
 
-class ChainSourceIteratorTest extends TestCase
+final class ChainSourceIteratorTest extends TestCase
 {
     /**
      * @doesNotPerformAssertions
      */
     public function testIterator(): void
     {
-        $source = $this->createMock('Sonata\Exporter\Source\SourceIteratorInterface');
+        $source = $this->createMock(SourceIteratorInterface::class);
 
         $iterator = new ChainSourceIterator([$source]);
 

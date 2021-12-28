@@ -40,7 +40,7 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
     }
 
     /**
-     * @return mixed
+     * @return array<string, mixed>
      */
     public function current()
     {

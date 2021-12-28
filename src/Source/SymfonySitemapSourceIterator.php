@@ -50,6 +50,9 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return array
+     */
     public function current()
     {
         $data = $this->source->current();
