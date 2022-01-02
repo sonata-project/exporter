@@ -21,7 +21,7 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
  *
  * NEXT_MAJOR: Remove this class.
  *
- * @deprecated since sonata-project/exporter 2.x, to be removed in version 3.0.
+ * @deprecated since sonata-project/exporter 2.10, to be removed in version 3.0.
  */
 abstract class AbstractTypedWriterTestCase extends TestCase
 {
