@@ -18,7 +18,7 @@ use Doctrine\ORM\Query;
 /**
  * @final since sonata-project/exporter 2.4.
  */
-class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator implements SourceIteratorInterface
+class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
 {
     /**
      * @var Query

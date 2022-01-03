@@ -43,7 +43,7 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return mixed
+     * @return array<mixed>
      */
     #[\ReturnTypeWillChange]
     public function current()

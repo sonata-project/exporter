@@ -37,7 +37,7 @@ final class IteratorCallbackSourceIterator extends IteratorSourceIterator
     }
 
     /**
-     * @return mixed
+     * @return array<mixed>
      */
     public function current()
     {
