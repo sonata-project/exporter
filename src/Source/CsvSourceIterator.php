@@ -17,8 +17,6 @@ namespace Sonata\Exporter\Source;
  * Read data from a csv file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
- *
- * @phpstan-implements SourceIteratorInterface<int, array>
  */
 final class CsvSourceIterator implements SourceIteratorInterface
 {

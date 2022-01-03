@@ -18,9 +18,7 @@ namespace Sonata\Exporter\Source;
  *
  * @deprecated since sonata-project/exporter 2.9 use \Iterator instead.
  *
- * @phpstan-template TKey
- * @phpstan-template TValue
- * @phpstan-extends \Iterator<TKey, TValue>
+ * @phpstan-extends \Iterator<array<mixed>>
  */
 interface SourceIteratorInterface extends \Iterator
 {

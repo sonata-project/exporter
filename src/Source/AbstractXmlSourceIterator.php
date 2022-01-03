@@ -17,8 +17,6 @@ namespace Sonata\Exporter\Source;
  * Read data from a Xml file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
- *
- * @phpstan-implements SourceIteratorInterface<mixed, mixed>
  */
 abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 {
@@ -60,7 +58,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected $currentColumnIndex = 0;
 
     /**
-     * @var mixed
+     * @var array<mixed>|null
      */
     protected $currentRow;
 
@@ -107,11 +105,13 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     abstract public function tagContent($parser, string $data);
 
     /**
-     * @return mixed
+     * @return array<mixed>
      */
     #[\ReturnTypeWillChange]
     final public function current()
     {
+        \assert(\is_array($this->currentRow));
+
         return $this->currentRow;
     }
 
