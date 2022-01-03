@@ -1,6 +1,9 @@
 # UPGRADE 2.x
 
-### `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle`
+UPGRADE FROM 2.3 to 2.4
+=======================
 
-Deprecated `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle`. Use `Sonata\Exporter\Bridge\Symfony\SonataExporterBundle`
-instead.
+## `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle`
+
+Deprecated `Sonata\Exporter\Bridge\Symfony\Bundle\SonataExporterBundle`.
+Use `Sonata\Exporter\Bridge\Symfony\SonataExporterBundle` instead.
