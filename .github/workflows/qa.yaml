@@ -32,7 +32,7 @@ jobs:
                   extensions: mongodb
 
             - name: Install Composer dependencies (highest)
-              uses: ramsey/composer-install@v1
+              uses: ramsey/composer-install@v2
               with:
                   dependency-versions: highest
                   composer-options: --prefer-dist --prefer-stable
@@ -57,7 +57,7 @@ jobs:
                   extensions: mongodb
 
             - name: Install Composer dependencies (highest)
-              uses: ramsey/composer-install@v1
+              uses: ramsey/composer-install@v2
               with:
                   dependency-versions: highest
                   composer-options: --prefer-dist --prefer-stable
