@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.10.1](https://github.com/sonata-project/exporter/compare/2.10.0...2.10.1) - 2022-01-03
+### Fixed
+- [[#567](https://github.com/sonata-project/exporter/pull/567)] SourceIteratorInterface unresolvable generics ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.10.0](https://github.com/sonata-project/exporter/compare/2.9.1...2.10.0) - 2022-01-02
 ### Added
 - [[#560](https://github.com/sonata-project/exporter/pull/560)] Added class `XlsxWriter` that uses "phpoffice/phpspreadsheet" as suggested package. ([@willemverspyck](https://github.com/willemverspyck))
