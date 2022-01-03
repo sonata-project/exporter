@@ -17,6 +17,8 @@ namespace Sonata\Exporter\Source;
  * Read data from a csv file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
+ *
+ * @phpstan-implements SourceIteratorInterface<int, array>
  */
 final class CsvSourceIterator implements SourceIteratorInterface
 {
@@ -82,11 +84,13 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return array|false
+     * @return array
      */
     #[\ReturnTypeWillChange]
     public function current()
     {
+        \assert(\is_array($this->currentLine));
+
         return $this->currentLine;
     }
 

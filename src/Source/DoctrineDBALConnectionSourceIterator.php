@@ -16,6 +16,9 @@ namespace Sonata\Exporter\Source;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Result;
 
+/**
+ * @phpstan-implements SourceIteratorInterface<mixed, array>
+ */
 final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
     /**
@@ -59,11 +62,13 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     }
 
     /**
-     * @return array<string, mixed>|false
+     * @return array<string, mixed>
      */
     #[\ReturnTypeWillChange]
     public function current()
     {
+        \assert(\is_array($this->current));
+
         return $this->current;
     }
 

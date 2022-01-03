@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
+/**
+ * @phpstan-implements SourceIteratorInterface<mixed, mixed>
+ */
 final class ChainSourceIterator implements SourceIteratorInterface
 {
     /**

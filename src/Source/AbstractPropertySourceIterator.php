@@ -18,6 +18,9 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
+/**
+ * @phpstan-implements SourceIteratorInterface<mixed, array>
+ */
 abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
 {
     private const DATE_PARTS = [

@@ -17,6 +17,8 @@ namespace Sonata\Exporter\Source;
  * Read data from a Xml file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
+ *
+ * @phpstan-implements SourceIteratorInterface<mixed, mixed>
  */
 abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 {
