@@ -31,4 +31,15 @@ final class ChainSourceIteratorTest extends TestCase
         foreach ($iterator as $data) {
         }
     }
+
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testEmptyIterator(): void
+    {
+        $iterator = new ChainSourceIterator([]);
+
+        foreach ($iterator as $data) {
+        }
+    }
 }

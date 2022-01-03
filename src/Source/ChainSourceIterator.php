@@ -62,6 +62,10 @@ final class ChainSourceIterator implements SourceIteratorInterface
 
     public function valid(): bool
     {
+        if (!$this->sources->valid()) {
+            return false;
+        }
+
         while (!$this->sources->current()->valid()) {
             $this->sources->next();
 
@@ -77,7 +81,7 @@ final class ChainSourceIterator implements SourceIteratorInterface
 
     public function rewind(): void
     {
-        if ($this->sources->current()) {
+        if ($this->sources->valid()) {
             $this->sources->current()->rewind();
         }
     }
