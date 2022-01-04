@@ -15,7 +15,7 @@ namespace Sonata\Exporter\Source;
 
 use Doctrine\ODM\MongoDB\Query\Query;
 
-final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterator implements SourceIteratorInterface
+final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterator
 {
     /**
      * @var Query

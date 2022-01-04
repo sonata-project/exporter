@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.10.1](https://github.com/sonata-project/exporter/compare/2.10.0...2.10.1) - 2022-01-03
+### Fixed
+- [[#567](https://github.com/sonata-project/exporter/pull/567)] SourceIteratorInterface unresolvable generics ([@VincentLanglet](https://github.com/VincentLanglet))
+
+## [2.10.0](https://github.com/sonata-project/exporter/compare/2.9.1...2.10.0) - 2022-01-02
+### Added
+- [[#560](https://github.com/sonata-project/exporter/pull/560)] Added class `XlsxWriter` that uses "phpoffice/phpspreadsheet" as suggested package. ([@willemverspyck](https://github.com/willemverspyck))
+- [[#560](https://github.com/sonata-project/exporter/pull/560)] Default the XLSX export is not enabled. You can enable it by adding "xlsx" to "default_writers" in configuration. ([@willemverspyck](https://github.com/willemverspyck))
+- [[#560](https://github.com/sonata-project/exporter/pull/560)] Added tests for the `XlsxWriter` class. ([@willemverspyck](https://github.com/willemverspyck))
+
+### Deprecated
+- [[#565](https://github.com/sonata-project/exporter/pull/565)] AbstractTypedWriterTestCase ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Fixed
+- [[#562](https://github.com/sonata-project/exporter/pull/562)] DBAL v3 compatibility ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.9.1](https://github.com/sonata-project/exporter/compare/2.9.0...2.9.1) - 2021-11-12
 ### Fixed
 - [[#550](https://github.com/sonata-project/exporter/pull/550)] Fixed compatibility with doctrine/dbal ^2.13 ([@jordisala1991](https://github.com/jordisala1991))

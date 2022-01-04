@@ -20,7 +20,7 @@ use PropelCollection;
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
  */
-final class PropelCollectionSourceIterator extends AbstractPropertySourceIterator implements SourceIteratorInterface
+final class PropelCollectionSourceIterator extends AbstractPropertySourceIterator
 {
     /**
      * @var \PropelCollection

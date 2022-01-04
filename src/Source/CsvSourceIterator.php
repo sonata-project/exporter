@@ -82,11 +82,13 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return array|false
+     * @return array
      */
     #[\ReturnTypeWillChange]
     public function current()
     {
+        \assert(\is_array($this->currentLine));
+
         return $this->currentLine;
     }
 
