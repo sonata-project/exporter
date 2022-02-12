@@ -10,7 +10,7 @@ Usage
 
 .. code-block:: php
 
-    // This can be any instance of SourceIteratorInterface
+    // This can be any instance of \Iterator
     $source = new ArraySourceIterator([/* your data */]);
 
     // This could be any format supported

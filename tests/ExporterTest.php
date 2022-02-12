@@ -16,7 +16,6 @@ namespace Sonata\Exporter\Tests;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Source\ArraySourceIterator;
-use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\TypedWriterInterface;
@@ -30,7 +29,7 @@ final class ExporterTest extends TestCase
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Invalid "foo" format');
-        $source = $this->createMock(SourceIteratorInterface::class);
+        $source = $this->createMock(\Iterator::class);
         $writer = $this->createMock(TypedWriterInterface::class);
 
         $exporter = new Exporter([$writer]);
