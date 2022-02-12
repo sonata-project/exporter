@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter;
 
-use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\TypedWriterInterface;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -42,7 +41,7 @@ final class Exporter
     /**
      * @throws \RuntimeException
      */
-    public function getResponse(string $format, string $filename, SourceIteratorInterface $source): StreamedResponse
+    public function getResponse(string $format, string $filename, \Iterator $source): StreamedResponse
     {
         if (!\array_key_exists($format, $this->writers)) {
             throw new \RuntimeException(sprintf(

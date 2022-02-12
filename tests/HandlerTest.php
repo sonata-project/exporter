@@ -11,18 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Exporter\Test;
+namespace Sonata\Exporter\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Handler;
-use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\WriterInterface;
 
 final class HandlerTest extends TestCase
 {
     public function testHandler(): void
     {
-        $source = $this->createMock(SourceIteratorInterface::class);
+        $source = $this->createMock(\Iterator::class);
         $writer = $this->createMock(WriterInterface::class);
         $writer->expects(static::once())->method('open');
         $writer->expects(static::once())->method('close');
