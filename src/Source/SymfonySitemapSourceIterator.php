@@ -24,7 +24,7 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
     private $router;
 
     /**
-     * @var SourceIteratorInterface
+     * @var \Iterator
      */
     private $source;
 
@@ -39,7 +39,7 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
     private $parameters;
 
     public function __construct(
-        SourceIteratorInterface $source,
+        \Iterator $source,
         RouterInterface $router,
         string $routeName,
         array $parameters = []

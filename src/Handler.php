@@ -13,13 +13,12 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter;
 
-use Sonata\Exporter\Source\SourceIteratorInterface;
 use Sonata\Exporter\Writer\WriterInterface;
 
 final class Handler
 {
     /**
-     * @var SourceIteratorInterface
+     * @var \Iterator
      */
     private $source;
 
@@ -28,7 +27,7 @@ final class Handler
      */
     private $writer;
 
-    public function __construct(SourceIteratorInterface $source, WriterInterface $writer)
+    public function __construct(\Iterator $source, WriterInterface $writer)
     {
         $this->source = $source;
         $this->writer = $writer;
@@ -45,7 +44,7 @@ final class Handler
         $this->writer->close();
     }
 
-    public static function create(SourceIteratorInterface $source, WriterInterface $writer): self
+    public static function create(\Iterator $source, WriterInterface $writer): self
     {
         return new self($source, $writer);
     }
