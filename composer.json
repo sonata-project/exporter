@@ -29,6 +29,7 @@
         "doctrine/dbal": "^2.13 || ^3.0",
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.9",
+        "friendsofphp/php-cs-fixer": "^3.4",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "phpoffice/phpspreadsheet": "^1.0",
@@ -72,6 +73,10 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpstan/extension-installer": true
+        },
         "sort-packages": true
     }
 }
