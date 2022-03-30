@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Bridge\Symfony;
 
-// This file and its class alias is required in order to let Symfony Flex
-// autodiscovery to find the bundle.
-// The string "Symfony\Component\HttpKernel\Bundle\Bundle" must also be present.
-// @see https://github.com/symfony/flex/pull/612/files.
+@trigger_error(sprintf(
+    'The %s\SonataExporterSymfonyBundle class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use %s instead.',
+    __NAMESPACE__,
+    SonataExporterBundle::class
+), \E_USER_DEPRECATED);
+
 class_alias(SonataExporterBundle::class, __NAMESPACE__.'\SonataExporterSymfonyBundle');
