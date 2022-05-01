@@ -60,7 +60,7 @@ final class ExporterTest extends TestCase
     /**
      * @dataProvider getGetResponseTests
      */
-    public function testGetResponse($format, $filename, $contentType, $expectedOutput): void
+    public function testGetResponse(string $format, string $filename, string $contentType, string $expectedOutput): void
     {
         $source = new ArraySourceIterator([
             ['foo' => 'bar'],
@@ -89,7 +89,10 @@ final class ExporterTest extends TestCase
         $response->sendContent();
     }
 
-    public function getGetResponseTests()
+    /**
+     * @return array<array{string, string, string, string}>
+     */
+    public function getGetResponseTests(): array
     {
         return [
             ['json', 'foo.json', 'application/json', '#foo#'],

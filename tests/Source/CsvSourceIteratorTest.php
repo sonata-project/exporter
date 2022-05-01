@@ -21,7 +21,7 @@ final class CsvSourceIteratorTest extends TestCase
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     protected function setUp(): void
     {

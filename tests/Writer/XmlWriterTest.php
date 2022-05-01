@@ -14,12 +14,14 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XmlWriter;
 
 final class XmlWriterTest extends TestCase
 {
-    protected $filename;
+    /**
+     * @var string
+     */
+    private $filename;
 
     protected function setUp(): void
     {
@@ -75,10 +77,5 @@ final class XmlWriterTest extends TestCase
 XML;
 
         static::assertSame($expected, file_get_contents($this->filename));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new XmlWriter('/tmp/whatever.xml');
     }
 }

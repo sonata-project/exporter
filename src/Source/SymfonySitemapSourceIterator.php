@@ -34,10 +34,13 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
     private $routeName;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     private $parameters;
 
+    /**
+     * @param array<string, mixed> $parameters
+     */
     public function __construct(
         \Iterator $source,
         RouterInterface $router,
@@ -51,7 +54,7 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function current()
     {

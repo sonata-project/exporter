@@ -22,12 +22,12 @@ final class IteratorCallbackSourceIteratorTest extends TestCase
     /**
      * @var IteratorCallbackSourceIterator
      */
-    protected $sourceIterator;
+    private $sourceIterator;
 
     /**
-     * @var \ArrayIterator
+     * @var \ArrayIterator<int, array{int}>
      */
-    protected $iterator;
+    private $iterator;
 
     protected function setUp(): void
     {

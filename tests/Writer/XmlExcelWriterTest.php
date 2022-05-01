@@ -18,7 +18,10 @@ use Sonata\Exporter\Writer\XmlExcelWriter;
 
 final class XmlExcelWriterTest extends TestCase
 {
-    protected $filename;
+    /**
+     * @var string
+     */
+    private $filename;
 
     protected function setUp(): void
     {
@@ -39,13 +42,12 @@ final class XmlExcelWriterTest extends TestCase
         $writer = new XmlExcelWriter($this->filename, false);
         $writer->open();
 
-        $writer->write([' john', 'doe &', 'é']);
-
+        $writer->write(['firstname' => ' john', 'lastname' => 'doe &', 'extra' => 'é']);
         $writer->close();
 
         $expected = '<Row><Cell><Data ss:Type="String"> john</Data></Cell><Cell><Data ss:Type="String">doe &amp;</Data></Cell><Cell><Data ss:Type="String">é</Data></Cell></Row>';
 
-        static::assertTrue(false !== strstr(file_get_contents($this->filename), $expected));
+        static::assertStringContainsString($expected, file_get_contents($this->filename));
     }
 
     public function testWithHeaders(): void

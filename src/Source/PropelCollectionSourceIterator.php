@@ -13,12 +13,14 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-use PropelCollection;
-
 /**
  * Read data from a PropelCollection.
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
+ *
+ * NEXT_MAJOR: Remove this class.
+ *
+ * @deprecated since exporter 2.x to be removed in 3.0.
  */
 final class PropelCollectionSourceIterator extends AbstractPropertySourceIterator
 {
@@ -32,6 +34,11 @@ final class PropelCollectionSourceIterator extends AbstractPropertySourceIterato
      */
     public function __construct(\PropelCollection $collection, array $fields, string $dateTimeFormat = 'r')
     {
+        @trigger_error(sprintf(
+            'The %s class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0.',
+            __CLASS__,
+        ), \E_USER_DEPRECATED);
+
         $this->collection = clone $collection;
 
         parent::__construct($fields, $dateTimeFormat);

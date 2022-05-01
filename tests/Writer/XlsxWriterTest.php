@@ -15,7 +15,6 @@ namespace Sonata\Exporter\Tests\Writer;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PHPUnit\Framework\TestCase;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsxWriter;
 
 final class XlsxWriterTest extends TestCase
@@ -61,7 +60,7 @@ final class XlsxWriterTest extends TestCase
         $writer = new XlsxWriter($this->filename, false);
         $writer->open();
 
-        $writer->write(['john "2', 'doe', '1']);
+        $writer->write(['firstname' => 'john "2', 'lastname' => 'doe', 'age' => '1']);
         $writer->close();
 
         $reader = IOFactory::createReader('Xlsx');
@@ -96,10 +95,5 @@ final class XlsxWriterTest extends TestCase
         $expected = sprintf('"firtname","surname","year"%s"john ""2","doe","1"%s', \PHP_EOL, \PHP_EOL);
 
         static::assertSame($expected, file_get_contents($this->filenameCsv));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new XlsxWriter(sprintf('%s/whatever.xlsx', sys_get_temp_dir()), false);
     }
 }

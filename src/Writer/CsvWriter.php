@@ -123,7 +123,7 @@ final class CsvWriter implements TypedWriterInterface
     public function write(array $data): void
     {
         if (0 === $this->position && $this->showHeaders) {
-            $this->addHeaders($data);
+            fputcsv($this->file, array_keys($data), $this->delimiter, $this->enclosure, $this->escape);
 
             ++$this->position;
         }
@@ -146,15 +146,5 @@ final class CsvWriter implements TypedWriterInterface
         }
 
         ++$this->position;
-    }
-
-    private function addHeaders(array $data): void
-    {
-        $headers = [];
-        foreach ($data as $header => $value) {
-            $headers[] = $header;
-        }
-
-        fputcsv($this->file, $headers, $this->delimiter, $this->enclosure, $this->escape);
     }
 }

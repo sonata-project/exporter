@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Writer;
 final class InMemoryWriter implements WriterInterface
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $elements;
 
@@ -25,9 +25,9 @@ final class InMemoryWriter implements WriterInterface
         $this->elements = [];
     }
 
-    public function close()
+    public function close(): void
     {
-        return $this->elements;
+        unset($this->elements);
     }
 
     public function write(array $data): void
@@ -35,6 +35,9 @@ final class InMemoryWriter implements WriterInterface
         $this->elements[] = $data;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getElements(): array
     {
         return $this->elements;

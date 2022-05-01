@@ -139,6 +139,9 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
+    /**
+     * @return string[]
+     */
     private function getDefaultWriters(): array
     {
         $fields = ['csv', 'json', 'xls', 'xml'];

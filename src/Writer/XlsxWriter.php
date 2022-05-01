@@ -138,7 +138,7 @@ final class XlsxWriter implements TypedWriterInterface
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param array<mixed> $data
      */
     private function addHeaders(array $data): void
     {
@@ -181,6 +181,8 @@ final class XlsxWriter implements TypedWriterInterface
      * Get the value of the Spreadsheet cell. DateTime fields must be converted in order to work properly.
      *
      * @param mixed $value
+     *
+     * @return mixed
      */
     private function getDataValue($value)
     {

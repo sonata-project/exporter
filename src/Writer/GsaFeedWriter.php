@@ -119,10 +119,10 @@ final class GsaFeedWriter implements WriterInterface
         ++$this->bufferPart;
 
         if (!$this->folder->isWritable()) {
-            throw new \RuntimeException(sprintf('Unable to write to folder: %s', $this->folder));
+            throw new \RuntimeException(sprintf('Unable to write to folder: %s', (string) $this->folder));
         }
 
-        $this->buffer = fopen(sprintf('%s/feed_%05d.xml', $this->folder, $this->bufferPart), 'w');
+        $this->buffer = fopen(sprintf('%s/feed_%05d.xml', (string) $this->folder, $this->bufferPart), 'w');
 
         $this->bufferSize += fwrite(
             $this->buffer,
