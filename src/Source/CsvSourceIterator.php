@@ -53,7 +53,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     private $hasHeaders;
 
     /**
-     * @var array
+     * @var array<string|null>
      */
     private $columns = [];
 
@@ -63,7 +63,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     private $position = 0;
 
     /**
-     * @var array|false
+     * @var array<string|null>|false
      */
     private $currentLine = [];
 
@@ -82,7 +82,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * @return array
+     * @return array<string|null>
      */
     #[\ReturnTypeWillChange]
     public function current()

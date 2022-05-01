@@ -14,16 +14,14 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
-use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\CsvWriterTerminate;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 
 final class CsvWriterTerminateTest extends TestCase
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     protected function setUp(): void
     {
@@ -54,10 +52,5 @@ final class CsvWriterTerminateTest extends TestCase
         $expected = "john,doe,1\r\njohn,doe,2";
 
         static::assertSame($expected, trim(file_get_contents($this->filename)));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new CsvWriter('/tmp/whatever.csv');
     }
 }

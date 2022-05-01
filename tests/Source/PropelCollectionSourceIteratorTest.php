@@ -20,13 +20,17 @@ use Sonata\Exporter\Source\PropelCollectionSourceIterator;
  * Tests the PropelCollectionSourceIterator class.
  *
  * @author Kévin Gomez <contact@kevingomez.fr>
+ *
+ * NEXT_MAJOR: Remove this test.
+ *
+ * @group legacy
  */
 final class PropelCollectionSourceIteratorTest extends TestCase
 {
     /**
      * @var \PropelCollection
      */
-    protected $collection;
+    private $collection;
 
     protected function setUp(): void
     {
@@ -81,7 +85,12 @@ final class PropelCollectionSourceIteratorTest extends TestCase
         }
     }
 
-    protected function extract(\PropelCollection $collection, array $fields)
+    /**
+     * @param string[] $fields
+     *
+     * @return array<mixed>
+     */
+    private function extract(\PropelCollection $collection, array $fields): array
     {
         $iterator = new PropelCollectionSourceIterator($collection, $fields);
 

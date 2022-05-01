@@ -88,6 +88,9 @@ final class XlsWriter implements TypedWriterInterface
         ++$this->position;
     }
 
+    /**
+     * @param array<string> $data
+     */
     private function init(array $data): void
     {
         if ($this->position > 0) {
@@ -97,7 +100,7 @@ final class XlsWriter implements TypedWriterInterface
         if ($this->showHeaders) {
             fwrite($this->file, '<tr>');
             foreach ($data as $header => $value) {
-                fwrite($this->file, sprintf('<th>%s</th>', $header));
+                fwrite($this->file, sprintf('<th>%s</th>', (string) $header));
             }
             fwrite($this->file, '</tr>');
             ++$this->position;

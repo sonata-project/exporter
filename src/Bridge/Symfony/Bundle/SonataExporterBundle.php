@@ -22,8 +22,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
     ForwardCompatibleSonataExporterBundle::class
 ), \E_USER_DEPRECATED);
 
-// @phpstan-ignore-next-line
-if (false) {
+/** @psalm-suppress TypeDoesNotContainType */
+if (false) { // @phpstan-ignore-line
     /**
      * NEXT_MAJOR: remove this class.
      *

@@ -24,6 +24,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 final class SonataExporterExtension extends Extension
 {
+    /**
+     * @param array<mixed> $configs
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $processor = new Processor();
@@ -37,6 +40,9 @@ final class SonataExporterExtension extends Extension
         $this->configureWriters($container, $config['writers']);
     }
 
+    /**
+     * @param array<string, array<string>> $config
+     */
     private function configureExporter(ContainerBuilder $container, array $config): void
     {
         foreach (['csv', 'json', 'xls', 'xlsx', 'xml'] as $format) {
@@ -48,6 +54,9 @@ final class SonataExporterExtension extends Extension
         }
     }
 
+    /**
+     * @param array<string, array<string, mixed>> $config
+     */
     private function configureWriters(ContainerBuilder $container, array $config): void
     {
         foreach ($config as $format => $settings) {

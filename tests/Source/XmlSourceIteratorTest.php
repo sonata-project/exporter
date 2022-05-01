@@ -21,12 +21,12 @@ final class XmlSourceIteratorTest extends TestCase
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var string
      */
-    protected $filenameCustomTagNames;
+    private $filenameCustomTagNames;
 
     protected function setUp(): void
     {
@@ -103,7 +103,7 @@ final class XmlSourceIteratorTest extends TestCase
         static::assertSame(3, $i);
     }
 
-    protected function createXmlFile($filename, $content): void
+    private function createXmlFile(string $filename, string $content): void
     {
         if (is_file($filename)) {
             unlink($filename);

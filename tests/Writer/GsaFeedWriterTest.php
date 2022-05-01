@@ -162,9 +162,9 @@ XML;
     /**
      * Gets an array of files of the main folder.
      *
-     * @return array
+     * @return string[]
      */
-    public function getFiles()
+    public function getFiles(): array
     {
         $files = glob($this->folder->getRealPath().'/*.xml');
 

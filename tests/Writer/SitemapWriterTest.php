@@ -21,7 +21,7 @@ final class SitemapWriterTest extends TestCase
     /**
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     protected function setUp(): void
     {
@@ -185,9 +185,9 @@ XML;
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function getFiles()
+    public function getFiles(): array
     {
         $files = glob($this->folder.'/*.xml');
 

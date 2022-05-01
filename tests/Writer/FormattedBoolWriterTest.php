@@ -27,12 +27,12 @@ final class FormattedBoolWriterTest extends TestCase
     /**
      * @var string
      */
-    protected $trueLabel;
+    private $trueLabel;
 
     /**
      * @var string
      */
-    protected $falseLabel;
+    private $falseLabel;
 
     protected function setUp(): void
     {

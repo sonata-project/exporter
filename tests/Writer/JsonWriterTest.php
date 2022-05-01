@@ -15,14 +15,13 @@ namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Writer\JsonWriter;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 
 final class JsonWriterTest extends TestCase
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     protected function setUp(): void
     {
@@ -62,10 +61,5 @@ final class JsonWriterTest extends TestCase
         ];
 
         static::assertSame($expected, json_decode($content, false));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new JsonWriter('/tmp/whatever.json');
     }
 }

@@ -16,14 +16,13 @@ namespace Sonata\Exporter\Tests\Writer;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exception\InvalidDataFormatException;
 use Sonata\Exporter\Writer\CsvWriter;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 
 final class CsvWriterTest extends TestCase
 {
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     protected function setUp(): void
     {
@@ -135,10 +134,5 @@ final class CsvWriterTest extends TestCase
 
         $expected = \chr(0xEF).\chr(0xBB).\chr(0xBF).'name,surname,year'."\n".'"Rémi , """"2""","doe ",2001';
         static::assertSame($expected, trim(file_get_contents($this->filename)));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new CsvWriter('/tmp/whatever.csv');
     }
 }

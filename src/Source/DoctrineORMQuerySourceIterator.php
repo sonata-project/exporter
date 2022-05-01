@@ -68,6 +68,9 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
         $this->iterator->rewind();
     }
 
+    /**
+     * @param iterable<mixed> $iterable
+     */
     private function iterableToIterator(iterable $iterable): \Iterator
     {
         if ($iterable instanceof \Iterator) {

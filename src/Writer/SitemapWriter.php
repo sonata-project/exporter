@@ -49,7 +49,7 @@ final class SitemapWriter implements WriterInterface
     private $buffer;
 
     /**
-     * @var array
+     * @var string[]
      */
     private $headers;
 
@@ -69,10 +69,10 @@ final class SitemapWriter implements WriterInterface
     private $bufferPart = 0;
 
     /**
-     * @param string $folder    The folder to store the sitemap.xml file
-     * @param mixed  $groupName Name of sub-sitemap (optional)
-     * @param array  $headers   Indicate the need for namespace in the header sitemap
-     * @param bool   $autoIndex If you want to generate index of sitemap (optional)
+     * @param string   $folder    The folder to store the sitemap.xml file
+     * @param mixed    $groupName Name of sub-sitemap (optional)
+     * @param string[] $headers   Indicate the need for namespace in the header sitemap
+     * @param bool     $autoIndex If you want to generate index of sitemap (optional)
      */
     public function __construct(string $folder, $groupName = false, array $headers = [], bool $autoIndex = true)
     {
@@ -217,7 +217,9 @@ final class SitemapWriter implements WriterInterface
     /**
      * Build data with default parameters.
      *
-     * @param array $data List of parameters
+     * @param array<string, mixed> $data List of parameters
+     *
+     * @return array<string, mixed>
      */
     private function buildData(array $data): array
     {
@@ -240,7 +242,7 @@ final class SitemapWriter implements WriterInterface
      * Fix type of data, if data type is specific,
      * he must to be defined in data and he must to be a array.
      *
-     * @param array $data List of parameters
+     * @param array<string, mixed> $data List of parameters
      */
     private function fixDataType(array &$data): void
     {
@@ -253,7 +255,10 @@ final class SitemapWriter implements WriterInterface
             'video' => 'video',
         ];
 
-        if (!isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]]) || !\is_array($data[$valid_var_name[$data['type']]])) {
+        if (
+            !isset($valid_var_name[$data['type']], $data[$valid_var_name[$data['type']]])
+            || !\is_array($data[$valid_var_name[$data['type']]])
+        ) {
             $data['type'] = 'default';
         }
     }
@@ -261,7 +266,7 @@ final class SitemapWriter implements WriterInterface
     /**
      * Generate standard line of sitemap.
      *
-     * @param array $data List of parameters
+     * @param array<string, mixed> $data List of parameters
      */
     private function generateDefaultLine(array $data): string
     {
@@ -271,7 +276,7 @@ final class SitemapWriter implements WriterInterface
     /**
      * Generate image line of sitemap.
      *
-     * @param array $data List of parameters
+     * @param array<string, mixed> $data List of parameters
      */
     private function generateImageLine(array $data): string
     {
@@ -302,7 +307,7 @@ final class SitemapWriter implements WriterInterface
     /**
      * Generate video line of sitemap.
      *
-     * @param array $data List of parameters
+     * @param array<string, mixed> $data List of parameters
      */
     private function generateVideoLine(array $data): string
     {
