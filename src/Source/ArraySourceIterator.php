@@ -15,6 +15,9 @@ namespace Sonata\Exporter\Source;
 
 final class ArraySourceIterator extends IteratorSourceIterator
 {
+    /**
+     * @param array<mixed> $data
+     */
     public function __construct(array $data)
     {
         parent::__construct(new \ArrayIterator($data));

@@ -22,12 +22,12 @@ final class IteratorSourceIteratorTest extends TestCase
     /**
      * @var IteratorSourceIterator
      */
-    protected $sourceIterator;
+    private $sourceIterator;
 
     /**
-     * @var \Iterator&MockObject
+     * @var \Iterator<mixed, mixed>&MockObject
      */
-    protected $iterator;
+    private $iterator;
 
     protected function setUp(): void
     {

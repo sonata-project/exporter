@@ -70,6 +70,9 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         static::assertCount(3, iterator_to_array($iterator));
     }
 
+    /**
+     * @psalm-suppress InternalMethod
+     */
     public function testEntityManagerClear(): void
     {
         $query = $this->dm->createQueryBuilder(Document::class)->getQuery();

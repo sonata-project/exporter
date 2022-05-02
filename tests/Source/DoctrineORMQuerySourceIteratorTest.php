@@ -78,6 +78,9 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
         }
     }
 
+    /**
+     * @psalm-suppress InternalMethod
+     */
     private function createConnection(): Connection
     {
         return new Connection([], new Driver\PDO\SQLite\Driver());

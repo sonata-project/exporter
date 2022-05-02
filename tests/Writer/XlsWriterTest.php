@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
-use Sonata\Exporter\Writer\TypedWriterInterface;
 use Sonata\Exporter\Writer\XlsWriter;
 
 final class XlsWriterTest extends TestCase
@@ -22,7 +21,7 @@ final class XlsWriterTest extends TestCase
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     protected function setUp(): void
     {
@@ -46,7 +45,7 @@ final class XlsWriterTest extends TestCase
         $writer = new XlsWriter($this->filename, false);
         $writer->open();
 
-        $writer->write(['john "2', 'doe', '1']);
+        $writer->write(['firstname' => 'john "2', 'lastname' => 'doe', 'age' => '1']);
         $writer->close();
 
         $expected = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table><tr><td>john "2</td><td>doe</td><td>1</td></tr></table></body></html>';
@@ -65,10 +64,5 @@ final class XlsWriterTest extends TestCase
         $expected = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table><tr><th>firtname</th><th>surname</th><th>year</th></tr><tr><td>john "2</td><td>doe</td><td>1</td></tr></table></body></html>';
 
         static::assertSame($expected, trim(file_get_contents($this->filename)));
-    }
-
-    protected function getWriter(): TypedWriterInterface
-    {
-        return new XlsWriter('/tmp/whatever.xls', false);
     }
 }

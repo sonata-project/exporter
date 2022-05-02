@@ -22,12 +22,12 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 final class Exporter
 {
     /**
-     * @var TypedWriterInterface[]
+     * @var array<TypedWriterInterface>
      */
     private $writers;
 
     /**
-     * @param TypedWriterInterface[] $writers an array of allowed typed writers, indexed by format name
+     * @param array<TypedWriterInterface> $writers an array of allowed typed writers, indexed by format name
      */
     public function __construct(array $writers = [])
     {

@@ -63,7 +63,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected $currentRow;
 
     /**
-     * @var array
+     * @var array<string, array<string>>
      */
     protected $bufferedRow = [];
 
@@ -86,7 +86,10 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     /**
      * Start element handler.
      *
-     * @param resource $parser
+     * @param resource              $parser
+     * @param array<string, string> $attributes
+     *
+     * @return void
      */
     abstract public function tagStart($parser, string $name, array $attributes = []);
 
@@ -94,6 +97,8 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      * End element handler.
      *
      * @param resource $parser
+     *
+     * @return void
      */
     abstract public function tagEnd($parser, string $name);
 
@@ -101,6 +106,8 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      * Tag content handler.
      *
      * @param resource $parser
+     *
+     * @return void
      */
     abstract public function tagContent($parser, string $data);
 

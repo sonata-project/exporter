@@ -21,17 +21,12 @@ final class XmlExcelSourceIteratorTest extends TestCase
     /**
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var string
      */
-    protected $filenameSS;
-
-    /**
-     * @var string[]
-     */
-    protected $headers = ['sku', 'ean', 'name'];
+    private $filenameSS;
 
     protected function setUp(): void
     {

@@ -21,12 +21,12 @@ final class PDOStatementSourceIteratorTest extends TestCase
     /**
      * @var \PDO
      */
-    protected $dbh;
+    private $dbh;
 
     /**
      * @var string
      */
-    protected $pathToDb;
+    private $pathToDb;
 
     protected function setUp(): void
     {
