@@ -17,15 +17,9 @@ use Sonata\Exporter\Writer\WriterInterface;
 
 final class Handler
 {
-    /**
-     * @var \Iterator
-     */
-    private $source;
+    private \Iterator $source;
 
-    /**
-     * @var WriterInterface
-     */
-    private $writer;
+    private WriterInterface $writer;
 
     public function __construct(\Iterator $source, WriterInterface $writer)
     {

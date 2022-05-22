@@ -19,10 +19,7 @@ use Sonata\Exporter\Source\IteratorSourceIterator;
 
 final class IteratorSourceIteratorTest extends TestCase
 {
-    /**
-     * @var IteratorSourceIterator
-     */
-    private $sourceIterator;
+    private IteratorSourceIterator $sourceIterator;
 
     /**
      * @var \Iterator<mixed, mixed>&MockObject

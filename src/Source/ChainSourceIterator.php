@@ -18,7 +18,7 @@ final class ChainSourceIterator implements SourceIteratorInterface
     /**
      * @var \ArrayIterator<array-key, \Iterator>
      */
-    private $sources;
+    private \ArrayIterator $sources;
 
     /**
      * @param array<\Iterator> $sources

@@ -19,15 +19,12 @@ use Sonata\Exporter\Source\IteratorSourceIterator;
 
 final class IteratorCallbackSourceIteratorTest extends TestCase
 {
-    /**
-     * @var IteratorCallbackSourceIterator
-     */
-    private $sourceIterator;
+    private IteratorCallbackSourceIterator $sourceIterator;
 
     /**
      * @var \ArrayIterator<int, array{int}>
      */
-    private $iterator;
+    private \ArrayIterator $iterator;
 
     protected function setUp(): void
     {

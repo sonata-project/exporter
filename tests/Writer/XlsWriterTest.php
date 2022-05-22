@@ -18,10 +18,7 @@ use Sonata\Exporter\Writer\XlsWriter;
 
 final class XlsWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     protected function setUp(): void
     {

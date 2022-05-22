@@ -18,10 +18,7 @@ use Sonata\Exporter\Writer\JsonWriter;
 
 final class JsonWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     protected function setUp(): void
     {

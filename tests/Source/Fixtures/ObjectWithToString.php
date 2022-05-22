@@ -18,10 +18,7 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
  */
 final class ObjectWithToString
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
     public function __construct(string $name)
     {

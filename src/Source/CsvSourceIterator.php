@@ -20,10 +20,7 @@ namespace Sonata\Exporter\Source;
  */
 final class CsvSourceIterator implements SourceIteratorInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     /**
      * @var resource|null
@@ -32,35 +29,20 @@ final class CsvSourceIterator implements SourceIteratorInterface
      */
     private $file;
 
-    /**
-     * @var string
-     */
-    private $delimiter;
+    private string $delimiter;
 
-    /**
-     * @var string
-     */
-    private $enclosure;
+    private string $enclosure;
 
-    /**
-     * @var string
-     */
-    private $escape;
+    private string $escape;
 
-    /**
-     * @var bool
-     */
-    private $hasHeaders;
+    private bool $hasHeaders;
 
     /**
      * @var array<string|null>
      */
-    private $columns = [];
+    private array $columns = [];
 
-    /**
-     * @var int
-     */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * @var array<string|null>|false

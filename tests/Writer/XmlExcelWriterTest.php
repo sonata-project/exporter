@@ -18,10 +18,7 @@ use Sonata\Exporter\Writer\XmlExcelWriter;
 
 final class XmlExcelWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     protected function setUp(): void
     {

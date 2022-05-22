@@ -21,10 +21,7 @@ use Sonata\Exporter\Exception\RuntimeException;
  */
 final class XmlWriter implements TypedWriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     /**
      * @var resource|null
@@ -33,15 +30,9 @@ final class XmlWriter implements TypedWriterInterface
      */
     private $file;
 
-    /**
-     * @var string
-     */
-    private $mainElement;
+    private string $mainElement;
 
-    /**
-     * @var string
-     */
-    private $childElement;
+    private string $childElement;
 
     /**
      * @throws \RuntimeException

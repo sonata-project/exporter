@@ -19,10 +19,7 @@ use Sonata\Exporter\Writer\CsvWriter;
 
 final class CsvWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     protected function setUp(): void
     {

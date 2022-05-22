@@ -18,10 +18,7 @@ use Sonata\Exporter\Source\CsvSourceIterator;
 
 final class CsvSourceIteratorTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     protected function setUp(): void
     {
