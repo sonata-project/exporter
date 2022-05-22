@@ -18,15 +18,9 @@ use Sonata\Exporter\Source\PDOStatementSourceIterator;
 
 final class PDOStatementSourceIteratorTest extends TestCase
 {
-    /**
-     * @var \PDO
-     */
-    private $dbh;
+    private \PDO $dbh;
 
-    /**
-     * @var string
-     */
-    private $pathToDb;
+    private string $pathToDb;
 
     protected function setUp(): void
     {

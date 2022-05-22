@@ -18,10 +18,7 @@ namespace Sonata\Exporter\Writer;
  */
 final class JsonWriter implements TypedWriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     /**
      * @var resource|null
@@ -30,10 +27,7 @@ final class JsonWriter implements TypedWriterInterface
      */
     private $file;
 
-    /**
-     * @var int
-     */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * @throws \RuntimeException
@@ -73,7 +67,7 @@ final class JsonWriter implements TypedWriterInterface
 
     public function write(array $data): void
     {
-        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data));
+        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data, \JSON_THROW_ON_ERROR));
 
         ++$this->position;
     }

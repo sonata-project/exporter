@@ -27,10 +27,7 @@ use Sonata\Exporter\Tests\Source\Fixtures\Entity;
 
 final class DoctrineORMQuerySourceIteratorTest extends TestCase
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
+    private EntityManager $em;
 
     protected function setUp(): void
     {
@@ -101,6 +98,6 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
 
     private function createMetadataDriverImplementation(): MappingDriver
     {
-        return new AnnotationDriver(new AnnotationReader());
+        return new AnnotationDriver(new AnnotationReader()); // @phpstan-ignore-line
     }
 }

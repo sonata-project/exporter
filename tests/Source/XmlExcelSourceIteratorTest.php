@@ -18,15 +18,9 @@ use Sonata\Exporter\Source\XmlExcelSourceIterator;
 
 final class XmlExcelSourceIteratorTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var string
-     */
-    private $filenameSS;
+    private string $filenameSS;
 
     protected function setUp(): void
     {

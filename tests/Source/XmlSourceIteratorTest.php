@@ -18,15 +18,9 @@ use Sonata\Exporter\Source\XmlSourceIterator;
 
 final class XmlSourceIteratorTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var string
-     */
-    private $filenameCustomTagNames;
+    private string $filenameCustomTagNames;
 
     protected function setUp(): void
     {

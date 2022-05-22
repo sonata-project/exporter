@@ -17,15 +17,9 @@ use Doctrine\ODM\MongoDB\Query\Query;
 
 final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterator
 {
-    /**
-     * @var Query
-     */
-    private $query;
+    private Query $query;
 
-    /**
-     * @var int
-     */
-    private $batchSize;
+    private int $batchSize;
 
     /**
      * @param array<string> $fields Fields to export

@@ -21,10 +21,7 @@ use Sonata\Exporter\Tests\Source\Fixtures\Document;
 
 final class DoctrineODMQuerySourceIteratorTest extends TestCase
 {
-    /**
-     * @var DocumentManager
-     */
-    private $dm;
+    private DocumentManager $dm;
 
     protected function setUp(): void
     {
@@ -88,7 +85,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         $config->setHydratorNamespace('Hydrators');
         $config->setPersistentCollectionDir($directory);
         $config->setPersistentCollectionNamespace('PersistentCollections');
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver()); // @phpstan-ignore-line
 
         return $config;
     }

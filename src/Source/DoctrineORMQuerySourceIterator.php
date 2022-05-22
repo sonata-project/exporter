@@ -20,15 +20,9 @@ use Doctrine\ORM\Query;
  */
 class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
 {
-    /**
-     * @var Query
-     */
-    protected $query;
+    protected Query $query;
 
-    /**
-     * @var int
-     */
-    private $batchSize;
+    private int $batchSize;
 
     /**
      * @param array<string> $fields Fields to export

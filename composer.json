@@ -22,7 +22,7 @@
     ],
     "homepage": "https://docs.sonata-project.org/projects/exporter",
     "require": {
-        "php": "^7.3 || ^8.0"
+        "php": "^7.4 || ^8.0"
     },
     "require-dev": {
         "doctrine/annotations": "^1.13",
@@ -42,6 +42,7 @@
         "propel/propel1": "^1.6",
         "psalm/plugin-phpunit": "^0.16",
         "psalm/plugin-symfony": "^3.0",
+        "rector/rector": "^0.12",
         "symfony/config": "^4.4 || ^5.3 || ^6.0",
         "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
         "symfony/http-foundation": "^4.4 || ^5.3 || ^6.0",

@@ -23,25 +23,13 @@ use Sonata\Exporter\Writer\GsaFeedWriter;
  */
 final class GsaFeedWriterTest extends TestCase
 {
-    /**
-     * @var \SplFileInfo
-     */
-    private $folder;
+    private \SplFileInfo $folder;
 
-    /**
-     * @var string
-     */
-    private $dtd;
+    private string $dtd;
 
-    /**
-     * @var string
-     */
-    private $datasource;
+    private string $datasource;
 
-    /**
-     * @var string
-     */
-    private $feedtype;
+    private string $feedtype;
 
     /**
      * Creates the folder useful to this test.

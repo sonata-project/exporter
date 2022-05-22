@@ -27,10 +27,7 @@ use Sonata\Exporter\Source\PropelCollectionSourceIterator;
  */
 final class PropelCollectionSourceIteratorTest extends TestCase
 {
-    /**
-     * @var \PropelCollection
-     */
-    private $collection;
+    private \PropelCollection $collection;
 
     protected function setUp(): void
     {
