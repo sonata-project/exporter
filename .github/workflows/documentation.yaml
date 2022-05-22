@@ -13,6 +13,9 @@ on:
             - 3.x
     pull_request:
 
+permissions:
+    contents: read
+
 jobs:
     build:
         name: Sphinx build
