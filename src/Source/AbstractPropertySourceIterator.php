@@ -18,7 +18,10 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
-abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+abstract class AbstractPropertySourceIterator implements \Iterator
 {
     private const DATE_PARTS = [
         'y' => 'Y',
@@ -105,34 +108,6 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
     }
 
     /**
-     * NEXT_MAJOR: Change the method visibility to private.
-     *
-     * @return string An ISO8601 duration
-     */
-    public function getDuration(\DateInterval $interval): string
-    {
-        $datePart = '';
-        foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
-            if ($interval->$datePartAttribute !== 0) {
-                $datePart .= $interval->$datePartAttribute.$datePartAttributeString;
-            }
-        }
-
-        $timePart = '';
-        foreach (self::TIME_PARTS as $timePartAttribute => $timePartAttributeString) {
-            if ($interval->$timePartAttribute !== 0) {
-                $timePart .= $interval->$timePartAttribute.$timePartAttributeString;
-            }
-        }
-
-        if ('' === $datePart && '' === $timePart) {
-            return 'P0Y';
-        }
-
-        return 'P'.$datePart.('' !== $timePart ? 'T'.$timePart : '');
-    }
-
-    /**
      * @param object|mixed[] $current
      *
      * @return array<string, mixed>
@@ -178,5 +153,31 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
             default:
                 return $value;
         }
+    }
+
+    /**
+     * @return string An ISO8601 duration
+     */
+    private function getDuration(\DateInterval $interval): string
+    {
+        $datePart = '';
+        foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
+            if ($interval->$datePartAttribute !== 0) {
+                $datePart .= $interval->$datePartAttribute.$datePartAttributeString;
+            }
+        }
+
+        $timePart = '';
+        foreach (self::TIME_PARTS as $timePartAttribute => $timePartAttributeString) {
+            if ($interval->$timePartAttribute !== 0) {
+                $timePart .= $interval->$timePartAttribute.$timePartAttributeString;
+            }
+        }
+
+        if ('' === $datePart && '' === $timePart) {
+            return 'P0Y';
+        }
+
+        return 'P'.$datePart.('' !== $timePart ? 'T'.$timePart : '');
     }
 }

@@ -15,7 +15,10 @@ namespace Sonata\Exporter\Source;
 
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 
-final class PDOStatementSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class PDOStatementSourceIterator implements \Iterator
 {
     private \PDOStatement $statement;
 

@@ -16,7 +16,10 @@ namespace Sonata\Exporter\Source;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Driver\Result;
 
-final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class DoctrineDBALConnectionSourceIterator implements \Iterator
 {
     private Connection $connection;
 

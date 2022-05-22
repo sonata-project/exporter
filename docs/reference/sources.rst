@@ -8,7 +8,6 @@ You may export data from various sources:
 * CSV
 * Doctrine Query (ORM & ODM supported)
 * PDO Statement
-* Propel Collection
 * PHP Iterator instance
 * PHP Iterator with a callback on current
 * XML

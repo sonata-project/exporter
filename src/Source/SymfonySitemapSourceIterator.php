@@ -16,7 +16,10 @@ namespace Sonata\Exporter\Source;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-final class SymfonySitemapSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class SymfonySitemapSourceIterator implements \Iterator
 {
     private RouterInterface $router;
 
