@@ -15,8 +15,10 @@ namespace Sonata\Exporter\Source;
 
 /**
  * SourceIterator implementation based on Iterator.
+ *
+ * @phpstan-implements \Iterator<array<mixed>>
  */
-class IteratorSourceIterator implements SourceIteratorInterface
+class IteratorSourceIterator implements \Iterator
 {
     /**
      * @var \Iterator<mixed, array<mixed>>

@@ -13,7 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-final class ChainSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class ChainSourceIterator implements \Iterator
 {
     /**
      * @var \ArrayIterator<array-key, \Iterator>
