@@ -98,6 +98,6 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
 
     private function createMetadataDriverImplementation(): MappingDriver
     {
-        return new AnnotationDriver(new AnnotationReader());
+        return new AnnotationDriver(new AnnotationReader()); // @phpstan-ignore-line
     }
 }
