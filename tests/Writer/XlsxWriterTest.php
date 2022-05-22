@@ -19,15 +19,9 @@ use Sonata\Exporter\Writer\XlsxWriter;
 
 final class XlsxWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var string
-     */
-    private $filenameCsv;
+    private string $filenameCsv;
 
     protected function setUp(): void
     {

@@ -27,10 +27,7 @@ use Sonata\Exporter\Tests\Source\Fixtures\Entity;
 
 final class DoctrineORMQuerySourceIteratorTest extends TestCase
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
+    private EntityManager $em;
 
     protected function setUp(): void
     {

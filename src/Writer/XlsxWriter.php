@@ -26,35 +26,17 @@ use PhpOffice\PhpSpreadsheet\Writer\Exception as WriterException;
  */
 final class XlsxWriter implements TypedWriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var bool
-     */
-    private $showHeaders;
+    private bool $showHeaders;
 
-    /**
-     * @var bool
-     */
-    private $showFilters;
+    private bool $showFilters;
 
-    /**
-     * @var Spreadsheet
-     */
-    private $spreadsheet;
+    private ?Spreadsheet $spreadsheet = null;
 
-    /**
-     * @var Worksheet
-     */
-    private $worksheet;
+    private ?Worksheet $worksheet = null;
 
-    /**
-     * @var int
-     */
-    private $position;
+    private int $position;
 
     /**
      * @throws \LogicException

@@ -25,10 +25,7 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
  */
 abstract class AbstractTypedWriterTestCase extends TestCase
 {
-    /**
-     * @var TypedWriterInterface
-     */
-    private $writer;
+    private TypedWriterInterface $writer;
 
     protected function setUp(): void
     {

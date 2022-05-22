@@ -20,25 +20,13 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
  */
 final class CsvWriter implements TypedWriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var string
-     */
-    private $delimiter;
+    private string $delimiter;
 
-    /**
-     * @var string
-     */
-    private $enclosure;
+    private string $enclosure;
 
-    /**
-     * @var string
-     */
-    private $escape;
+    private string $escape;
 
     /**
      * @var resource|null
@@ -47,25 +35,13 @@ final class CsvWriter implements TypedWriterInterface
      */
     private $file;
 
-    /**
-     * @var bool
-     */
-    private $showHeaders;
+    private bool $showHeaders;
 
-    /**
-     * @var int
-     */
-    private $position;
+    private int $position;
 
-    /**
-     * @var bool
-     */
-    private $withBom;
+    private bool $withBom;
 
-    /**
-     * @var string
-     */
-    private $terminate;
+    private string $terminate;
 
     /**
      * @throws \RuntimeException

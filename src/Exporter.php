@@ -24,7 +24,7 @@ final class Exporter
     /**
      * @var array<TypedWriterInterface>
      */
-    private $writers;
+    private array $writers;
 
     /**
      * @param array<TypedWriterInterface> $writers an array of allowed typed writers, indexed by format name

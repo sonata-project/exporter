@@ -18,30 +18,21 @@ use Doctrine\DBAL\Driver\Result;
 
 final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
-    /**
-     * @var Connection
-     */
-    private $connection;
+    private Connection $connection;
 
-    /**
-     * @var string
-     */
-    private $query;
+    private string $query;
 
     /**
      * @var mixed[]
      */
-    private $parameters;
+    private array $parameters;
 
     /**
      * @var array<string, mixed>|false
      */
     private $current;
 
-    /**
-     * @var int
-     */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * @var Result

@@ -20,32 +20,17 @@ namespace Sonata\Exporter\Writer;
  */
 final class GsaFeedWriter implements WriterInterface
 {
-    public const LIMIT_SIZE = 31457280; // 30MB
+    public const LIMIT_SIZE = 31_457_280;
 
-    /**
-     * @var \SplFileInfo
-     */
-    private $folder;
+    private \SplFileInfo $folder;
 
-    /**
-     * @var string
-     */
-    private $dtd;
+    private string $dtd;
 
-    /**
-     * @var string
-     */
-    private $datasource;
+    private string $datasource;
 
-    /**
-     * @var string
-     */
-    private $feedtype;
+    private string $feedtype;
 
-    /**
-     * @var int
-     */
-    private $bufferPart;
+    private int $bufferPart;
 
     /**
      * @var resource|null
@@ -54,10 +39,7 @@ final class GsaFeedWriter implements WriterInterface
      */
     private $buffer;
 
-    /**
-     * @var int
-     */
-    private $bufferSize;
+    private int $bufferSize;
 
     /**
      * @param \SplFileInfo $folder     The folder to store the generated feed(s)

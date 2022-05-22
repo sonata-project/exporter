@@ -24,15 +24,9 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
  */
 final class FormattedBoolWriterTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $trueLabel;
+    private string $trueLabel;
 
-    /**
-     * @var string
-     */
-    private $falseLabel;
+    private string $falseLabel;
 
     protected function setUp(): void
     {

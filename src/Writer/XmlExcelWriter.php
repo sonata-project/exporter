@@ -20,10 +20,7 @@ namespace Sonata\Exporter\Writer;
  */
 final class XmlExcelWriter implements WriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     /**
      * @var resource|null
@@ -32,30 +29,18 @@ final class XmlExcelWriter implements WriterInterface
      */
     private $file;
 
-    /**
-     * @var bool
-     */
-    private $showHeaders;
+    private bool $showHeaders;
 
     /**
      * @var mixed|null
      */
     private $columnsType;
 
-    /**
-     * @var int
-     */
-    private $position = 0;
+    private int $position = 0;
 
-    /**
-     * @var string
-     */
-    private $header = '<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet"><OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office"></OfficeDocumentSettings><ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel"></ExcelWorkbook><Worksheet ss:Name="Sheet 1"><Table>';
+    private string $header = '<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet"><OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office"></OfficeDocumentSettings><ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel"></ExcelWorkbook><Worksheet ss:Name="Sheet 1"><Table>';
 
-    /**
-     * @var string
-     */
-    private $footer = '</Table></Worksheet></Workbook>';
+    private string $footer = '</Table></Worksheet></Workbook>';
 
     /**
      * @param mixed $columnsType Define cells type to use

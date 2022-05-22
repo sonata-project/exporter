@@ -18,28 +18,16 @@ namespace Sonata\Exporter\Writer;
  */
 final class SitemapWriter implements WriterInterface
 {
-    public const LIMIT_SIZE = 10485760;
+    public const LIMIT_SIZE = 10_485_760;
     public const LIMIT_URL = 50000;
 
-    /**
-     * @var string
-     */
-    private $folder;
+    private string $folder;
 
-    /**
-     * @var string
-     */
-    private $pattern;
+    private string $pattern;
 
-    /**
-     * @var string
-     */
-    private $groupName;
+    private string $groupName;
 
-    /**
-     * @var bool
-     */
-    private $autoIndex;
+    private bool $autoIndex;
 
     /**
      * @var resource|null
@@ -51,22 +39,13 @@ final class SitemapWriter implements WriterInterface
     /**
      * @var string[]
      */
-    private $headers;
+    private array $headers;
 
-    /**
-     * @var int
-     */
-    private $bufferSize = 0;
+    private int $bufferSize = 0;
 
-    /**
-     * @var int
-     */
-    private $bufferUrlCount = 0;
+    private int $bufferUrlCount = 0;
 
-    /**
-     * @var int
-     */
-    private $bufferPart = 0;
+    private int $bufferPart = 0;
 
     /**
      * @param string   $folder    The folder to store the sitemap.xml file

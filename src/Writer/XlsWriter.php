@@ -18,10 +18,7 @@ namespace Sonata\Exporter\Writer;
  */
 final class XlsWriter implements TypedWriterInterface
 {
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
     /**
      * @var resource|null
@@ -30,15 +27,9 @@ final class XlsWriter implements TypedWriterInterface
      */
     private $file;
 
-    /**
-     * @var bool
-     */
-    private $showHeaders;
+    private bool $showHeaders;
 
-    /**
-     * @var int
-     */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * @throws \RuntimeException
