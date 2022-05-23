@@ -13,6 +13,9 @@ on:
             - 3.x
     pull_request:
 
+permissions:
+    contents: read
+
 jobs:
     phpstan:
         name: PHPStan
@@ -81,6 +84,7 @@ jobs:
                   php-version: '8.1'
                   coverage: none
                   tools: composer:v2
+                  extensions: mongodb
 
             - name: Install Composer dependencies (highest)
               uses: ramsey/composer-install@v2
