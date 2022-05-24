@@ -21,23 +21,16 @@ use Doctrine\DBAL\Driver\Result;
  */
 final class DoctrineDBALConnectionSourceIterator implements \Iterator
 {
-    private Connection $connection;
-
-    private string $query;
-
-    /**
-     * @var mixed[]
-     */
-    private array $parameters;
-
     /**
      * @var array<string, mixed>|false
      */
-    private $current;
+    private array | false $current = false;
 
     private int $position = 0;
 
     /**
+     * Add type hint when dropping support for Doctrine DBAL < 3.1.
+     *
      * @var Result
      */
     private $result;
@@ -45,18 +38,14 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
     /**
      * @param mixed[] $parameters
      */
-    public function __construct(Connection $connection, string $query, array $parameters = [])
+    public function __construct(private Connection $connection, private string $query, private array $parameters = [])
     {
-        $this->connection = $connection;
-        $this->query = $query;
-        $this->parameters = $parameters;
     }
 
     /**
      * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         \assert(\is_array($this->current));
 
@@ -69,11 +58,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
         ++$this->position;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }

@@ -23,11 +23,6 @@ namespace Sonata\Exporter\Source;
 abstract class AbstractXmlSourceIterator implements \Iterator
 {
     /**
-     * @var string
-     */
-    protected $filename;
-
-    /**
      * @var resource|null
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
@@ -35,100 +30,62 @@ abstract class AbstractXmlSourceIterator implements \Iterator
     protected $file;
 
     /**
-     * @var bool
-     */
-    protected $hasHeaders;
-
-    /**
      * @var string[]
      */
-    protected $columns = [];
+    protected array $columns = [];
 
-    /**
-     * @var \XMLParser|null
-     */
-    protected $parser;
+    protected ?\XMLParser $parser = null;
 
-    /**
-     * @var int
-     */
-    protected $currentRowIndex = 0;
+    protected int $currentRowIndex = 0;
 
-    /**
-     * @var int
-     */
-    protected $currentColumnIndex = 0;
+    protected int $currentColumnIndex = 0;
 
     /**
      * @var array<mixed>|null
      */
-    protected $currentRow;
+    protected ?array $currentRow = null;
 
     /**
      * @var array<string, array<string>>
      */
     protected $bufferedRow = [];
 
-    /**
-     * @var bool
-     */
-    protected $currentRowEnded = false;
+    protected bool $currentRowEnded = false;
 
-    /**
-     * @var int
-     */
-    protected $position = 0;
+    protected int $position = 0;
 
-    public function __construct(string $filename, bool $hasHeaders = true)
+    public function __construct(protected string $filename, protected bool $hasHeaders = true)
     {
-        $this->filename = $filename;
-        $this->hasHeaders = $hasHeaders;
     }
 
     /**
      * Start element handler.
      *
-     * @param resource              $parser
      * @param array<string, string> $attributes
-     *
-     * @return void
      */
-    abstract public function tagStart($parser, string $name, array $attributes = []);
+    abstract public function tagStart(\XMLParser $parser, string $name, array $attributes = []): void;
 
     /**
      * End element handler.
-     *
-     * @param resource $parser
-     *
-     * @return void
      */
-    abstract public function tagEnd($parser, string $name);
+    abstract public function tagEnd(\XMLParser $parser, string $name): void;
 
     /**
      * Tag content handler.
-     *
-     * @param resource $parser
-     *
-     * @return void
      */
-    abstract public function tagContent($parser, string $data);
+    abstract public function tagContent(\XMLParser $parser, string $data): void;
 
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    final public function current()
+    final public function current(): array
     {
         \assert(\is_array($this->currentRow));
 
         return $this->currentRow;
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    final public function key()
+    final public function key(): mixed
     {
         return $this->position;
     }

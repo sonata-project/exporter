@@ -18,8 +18,6 @@ namespace Sonata\Exporter\Writer;
  */
 final class XlsWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -27,18 +25,13 @@ final class XlsWriter implements TypedWriterInterface
      */
     private $file;
 
-    private bool $showHeaders;
-
     private int $position = 0;
 
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, bool $showHeaders = true)
+    public function __construct(private string $filename, private bool $showHeaders = true)
     {
-        $this->filename = $filename;
-        $this->showHeaders = $showHeaders;
-
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }

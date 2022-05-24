@@ -52,7 +52,6 @@ final class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(3, $value);
             $keys = array_keys($value);
             static::assertSame($i, $iterator->key());
@@ -70,7 +69,6 @@ final class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(3, $value);
             $keys = array_keys($value);
             static::assertSame($i, $iterator->key());
@@ -88,7 +86,6 @@ final class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(3, $value);
             static::assertSame($i, $iterator->key());
             ++$i;
@@ -102,7 +99,6 @@ final class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(3, $value);
             ++$i;
         }
@@ -110,7 +106,6 @@ final class XmlExcelSourceIteratorTest extends TestCase
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(3, $value);
             ++$i;
         }

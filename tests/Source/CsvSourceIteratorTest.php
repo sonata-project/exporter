@@ -48,7 +48,6 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(2, $value);
             static::assertSame($i, $iterator->key());
             $keys = array_keys($value);
@@ -65,7 +64,6 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(2, $value);
             static::assertSame($i, $iterator->key());
             ++$i;
@@ -79,7 +77,6 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(2, $value);
             ++$i;
         }
@@ -87,7 +84,6 @@ EOF;
 
         $i = 0;
         foreach ($iterator as $value) {
-            static::assertIsArray($value);
             static::assertCount(2, $value);
             ++$i;
         }

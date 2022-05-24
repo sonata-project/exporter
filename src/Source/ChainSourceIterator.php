@@ -43,8 +43,7 @@ final class ChainSourceIterator implements \Iterator
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         return $this->sources->current()->current();
     }
@@ -54,11 +53,7 @@ final class ChainSourceIterator implements \Iterator
         $this->sources->current()->next();
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): mixed
     {
         return $this->sources->current()->key();
     }

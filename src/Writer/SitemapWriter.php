@@ -21,13 +21,7 @@ final class SitemapWriter implements WriterInterface
     public const LIMIT_SIZE = 10_485_760;
     public const LIMIT_URL = 50000;
 
-    private string $folder;
-
     private string $pattern;
-
-    private string $groupName;
-
-    private bool $autoIndex;
 
     /**
      * @var resource|null
@@ -35,11 +29,6 @@ final class SitemapWriter implements WriterInterface
      * @psalm-var resource|closed-resource|null
      */
     private $buffer;
-
-    /**
-     * @var string[]
-     */
-    private array $headers;
 
     private int $bufferSize = 0;
 
@@ -49,17 +38,12 @@ final class SitemapWriter implements WriterInterface
 
     /**
      * @param string   $folder    The folder to store the sitemap.xml file
-     * @param mixed    $groupName Name of sub-sitemap (optional)
+     * @param string   $groupName Name of sub-sitemap (optional)
      * @param string[] $headers   Indicate the need for namespace in the header sitemap
      * @param bool     $autoIndex If you want to generate index of sitemap (optional)
      */
-    public function __construct(string $folder, $groupName = false, array $headers = [], bool $autoIndex = true)
+    public function __construct(private string $folder, private string $groupName = '', private array $headers = [], private bool $autoIndex = true)
     {
-        $this->folder = $folder;
-        $this->groupName = \is_string($groupName) ? $groupName : '';
-        $this->headers = $headers;
-        $this->autoIndex = $autoIndex;
-
         $this->pattern = 'sitemap_'.('' !== $this->groupName ? $this->groupName.'_' : '').'%05d.xml';
     }
 
@@ -89,21 +73,11 @@ final class SitemapWriter implements WriterInterface
     {
         $data = $this->buildData($data);
 
-        switch ($data['type']) {
-            case 'video':
-                $line = $this->generateVideoLine($data);
-
-                break;
-
-            case 'image':
-                $line = $this->generateImageLine($data);
-
-                break;
-
-            case 'default':
-            default:
-                $line = $this->generateDefaultLine($data);
-        }
+        $line = match ($data['type']) {
+            'video' => $this->generateVideoLine($data),
+            'image' => $this->generateImageLine($data),
+            default => $this->generateDefaultLine($data),
+        };
 
         $this->addSitemapLine($line);
     }

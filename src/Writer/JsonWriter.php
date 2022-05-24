@@ -18,8 +18,6 @@ namespace Sonata\Exporter\Writer;
  */
 final class JsonWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -32,10 +30,8 @@ final class JsonWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename)
+    public function __construct(private string $filename)
     {
-        $this->filename = $filename;
-
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }

@@ -25,7 +25,7 @@ final class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         parent::__construct($filename, $hasHeaders);
     }
 
-    public function tagStart($parser, string $name, array $attributes = []): void
+    public function tagStart(\XMLParser $parser, string $name, array $attributes = []): void
     {
         switch ($name) {
             case 'ss:Row':
@@ -42,7 +42,7 @@ final class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    public function tagEnd($parser, string $name): void
+    public function tagEnd(\XMLParser $parser, string $name): void
     {
         switch ($name) {
             case 'ss:Row':
@@ -60,7 +60,7 @@ final class XmlExcelSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    public function tagContent($parser, string $data): void
+    public function tagContent(\XMLParser $parser, string $data): void
     {
         $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] .= $data;
     }

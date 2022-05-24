@@ -19,22 +19,15 @@ interface WriterInterface
 {
     /**
      * @throws SonataExporterException
-     *
-     * @return void
      */
-    public function open();
+    public function open(): void;
 
     /**
      * @param mixed[] $data
      *
      * @throws SonataExporterException
-     *
-     * @return void
      */
-    public function write(array $data);
+    public function write(array $data): void;
 
-    /**
-     * @return void
-     */
-    public function close();
+    public function close(): void;
 }

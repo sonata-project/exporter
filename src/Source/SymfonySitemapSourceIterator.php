@@ -21,36 +21,17 @@ use Symfony\Component\Routing\RouterInterface;
  */
 final class SymfonySitemapSourceIterator implements \Iterator
 {
-    private RouterInterface $router;
-
-    private \Iterator $source;
-
-    private string $routeName;
-
-    /**
-     * @var array<string, mixed>
-     */
-    private array $parameters;
-
     /**
      * @param array<string, mixed> $parameters
      */
-    public function __construct(
-        \Iterator $source,
-        RouterInterface $router,
-        string $routeName,
-        array $parameters = []
-    ) {
-        $this->source = $source;
-        $this->router = $router;
-        $this->routeName = $routeName;
-        $this->parameters = $parameters;
+    public function __construct(private \Iterator $source, private RouterInterface $router, private string $routeName, private array $parameters = [])
+    {
     }
 
     /**
      * @return array<string, mixed>
      */
-    public function current()
+    public function current(): array
     {
         $data = $this->source->current();
 
@@ -68,7 +49,7 @@ final class SymfonySitemapSourceIterator implements \Iterator
         $this->source->next();
     }
 
-    public function key()
+    public function key(): mixed
     {
         return $this->source->key();
     }
