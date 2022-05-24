@@ -20,7 +20,7 @@ namespace Sonata\Exporter\Source;
  *
  * NEXT_MAJOR: Remove this class.
  *
- * @deprecated since exporter 2.x to be removed in 3.0.
+ * @deprecated since exporter 2.12 to be removed in 3.0.
  */
 final class PropelCollectionSourceIterator extends AbstractPropertySourceIterator
 {
@@ -32,7 +32,7 @@ final class PropelCollectionSourceIterator extends AbstractPropertySourceIterato
     public function __construct(\PropelCollection $collection, array $fields, string $dateTimeFormat = 'r')
     {
         @trigger_error(sprintf(
-            'The %s class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0.',
+            'The %s class is deprecated since sonata-project/exporter 2.12, to be removed in version 3.0.',
             self::class,
         ), \E_USER_DEPRECATED);
 

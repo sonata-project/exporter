@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Bridge\Symfony;
 
 @trigger_error(sprintf(
-    'The %s\SonataExporterSymfonyBundle class is deprecated since sonata-project/exporter 2.x, to be removed in version 3.0. Use %s instead.',
+    'The %s\SonataExporterSymfonyBundle class is deprecated since sonata-project/exporter 2.12, to be removed in version 3.0. Use %s instead.',
     __NAMESPACE__,
     SonataExporterBundle::class
 ), \E_USER_DEPRECATED);
