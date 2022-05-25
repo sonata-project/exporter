@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.12.0](https://github.com/sonata-project/exporter/compare/2.11.0...2.12.0) - 2022-05-24
+### Deprecated
+- [[#581](https://github.com/sonata-project/exporter/pull/581)] PropelCollectionSourceIterator ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#580](https://github.com/sonata-project/exporter/pull/580)] Deprecated custom bundle file for flex recipe. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Removed
+- [[#583](https://github.com/sonata-project/exporter/pull/583)] Support for PHP 7.3 ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.11.0](https://github.com/sonata-project/exporter/compare/2.10.1...2.11.0) - 2022-02-13
 ### Changed
 - [[#573](https://github.com/sonata-project/exporter/pull/573)] Some typehint from SourceIteratorInterface to \Iterator to allow using this library without deprecation. ([@VincentLanglet](https://github.com/VincentLanglet))
