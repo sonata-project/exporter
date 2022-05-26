@@ -28,12 +28,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
 
     private int $position = 0;
 
-    /**
-     * Add type hint when dropping support for Doctrine DBAL < 3.1.
-     *
-     * @var Result
-     */
-    private $result;
+    private Result $result;
 
     /**
      * @param mixed[] $parameters
@@ -78,16 +73,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
     {
         $statement = $this->connection->prepare($this->query);
 
-        $result = $statement->execute($this->parameters);
-
-        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
-        // @phpstan-ignore-next-line
-        if ($result instanceof Result) {
-            $this->result = $result;
-        } else { // @phpstan-ignore-line
-            // @phpstan-ignore-next-line
-            $this->result = $statement;
-        }
+        $this->result = $statement->execute($this->parameters);
 
         $this->next();
     }

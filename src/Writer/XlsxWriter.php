@@ -38,8 +38,11 @@ final class XlsxWriter implements TypedWriterInterface
      * @throws \LogicException
      * @throws \InvalidArgumentException
      */
-    public function __construct(string $filename, private bool $showHeaders = true, private bool $showFilters = true)
-    {
+    public function __construct(
+        string $filename,
+        private bool $showHeaders = true,
+        private bool $showFilters = true
+    ) {
         if (!class_exists(Spreadsheet::class)) {
             throw new \LogicException('You need the "phpoffice/spreadsheet" package in order to use the XLSX export.');
         }

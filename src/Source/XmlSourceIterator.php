@@ -20,8 +20,11 @@ namespace Sonata\Exporter\Source;
  */
 final class XmlSourceIterator extends AbstractXmlSourceIterator
 {
-    public function __construct(string $filename, private string $mainTag = 'datas', private string $dataTag = 'data')
-    {
+    public function __construct(
+        string $filename,
+        private string $mainTag = 'datas',
+        private string $dataTag = 'data'
+    ) {
         parent::__construct($filename, false);
     }
 

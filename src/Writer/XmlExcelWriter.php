@@ -44,7 +44,7 @@ final class XmlExcelWriter implements WriterInterface
     public function __construct(
         private string $filename,
         private bool $showHeaders = true,
-        private $columnsType = null
+        private mixed $columnsType = null
     ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
