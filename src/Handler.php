@@ -17,14 +17,10 @@ use Sonata\Exporter\Writer\WriterInterface;
 
 final class Handler
 {
-    private \Iterator $source;
-
-    private WriterInterface $writer;
-
-    public function __construct(\Iterator $source, WriterInterface $writer)
-    {
-        $this->source = $source;
-        $this->writer = $writer;
+    public function __construct(
+        private \Iterator $source,
+        private WriterInterface $writer
+    ) {
     }
 
     public function export(): void

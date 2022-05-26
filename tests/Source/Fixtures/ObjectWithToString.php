@@ -16,16 +16,13 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 /**
  * @author Joseph Maarek <josephmaarek@gmail.com>
  */
-final class ObjectWithToString
+final class ObjectWithToString implements \Stringable
 {
-    private string $name;
-
-    public function __construct(string $name)
+    public function __construct(private string $name)
     {
-        $this->name = $name;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
     }

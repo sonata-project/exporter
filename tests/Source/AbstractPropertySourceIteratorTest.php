@@ -20,12 +20,9 @@ use Sonata\Exporter\Tests\Source\Fixtures\ObjectWithToString;
 final class AbstractPropertySourceIteratorTest extends TestCase
 {
     /**
-     * @param mixed $value
-     * @param mixed $expected
-     *
      * @dataProvider getValueProvider
      */
-    public function testGetValue($value, $expected, string $dateFormat = 'r'): void
+    public function testGetValue(mixed $value, mixed $expected, string $dateFormat = 'r'): void
     {
         $iterator = new class([], $dateFormat) extends AbstractPropertySourceIterator {
             public function rewind(): void
@@ -33,7 +30,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
                 $this->iterator->rewind();
             }
 
-            public function getValue($value)
+            public function getValue(mixed $value): bool | int | float | string | null
             {
                 return parent::getValue($value);
             }

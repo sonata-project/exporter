@@ -15,27 +15,24 @@ namespace Sonata\Exporter\Source;
 
 use Doctrine\ORM\Query;
 
-/**
- * @final since sonata-project/exporter 2.4.
- */
-class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
+final class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
 {
     protected Query $query;
-
-    private int $batchSize;
 
     /**
      * @param array<string> $fields Fields to export
      */
-    public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r', int $batchSize = 100)
-    {
+    public function __construct(
+        Query $query,
+        array $fields,
+        string $dateTimeFormat = 'r',
+        private int $batchSize = 100
+    ) {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
         foreach ($query->getHints() as $name => $value) {
             $this->query->setHint($name, $value);
         }
-
-        $this->batchSize = $batchSize;
 
         parent::__construct($fields, $dateTimeFormat);
     }
@@ -43,7 +40,7 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
     /**
      * @return array<string, mixed>
      */
-    public function current()
+    public function current(): array
     {
         $current = $this->iterator->current();
 
@@ -56,7 +53,7 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
         return $data;
     }
 
-    final public function rewind(): void
+    public function rewind(): void
     {
         $this->iterator = $this->iterableToIterator($this->query->toIterable());
         $this->iterator->rewind();

@@ -22,22 +22,12 @@ namespace Sonata\Exporter\Source;
  */
 final class CsvSourceIterator implements \Iterator
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */
     private $file;
-
-    private string $delimiter;
-
-    private string $enclosure;
-
-    private string $escape;
-
-    private bool $hasHeaders;
 
     /**
      * @var array<string|null>
@@ -49,38 +39,28 @@ final class CsvSourceIterator implements \Iterator
     /**
      * @var array<string|null>|false
      */
-    private $currentLine = [];
+    private array | false $currentLine = [];
 
     public function __construct(
-        string $filename,
-        string $delimiter = ',',
-        string $enclosure = '"',
-        string $escape = '\\',
-        bool $hasHeaders = true
+        private string $filename,
+        private string $delimiter = ',',
+        private string $enclosure = '"',
+        private string $escape = '\\',
+        private bool $hasHeaders = true
     ) {
-        $this->filename = $filename;
-        $this->delimiter = $delimiter;
-        $this->enclosure = $enclosure;
-        $this->escape = $escape;
-        $this->hasHeaders = $hasHeaders;
     }
 
     /**
      * @return array<string|null>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         \assert(\is_array($this->currentLine));
 
         return $this->currentLine;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }

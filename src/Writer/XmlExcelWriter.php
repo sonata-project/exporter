@@ -20,21 +20,12 @@ namespace Sonata\Exporter\Writer;
  */
 final class XmlExcelWriter implements WriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */
     private $file;
-
-    private bool $showHeaders;
-
-    /**
-     * @var mixed|null
-     */
-    private $columnsType;
 
     private int $position = 0;
 
@@ -50,12 +41,11 @@ final class XmlExcelWriter implements WriterInterface
      *
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, bool $showHeaders = true, $columnsType = null)
-    {
-        $this->filename = $filename;
-        $this->showHeaders = $showHeaders;
-        $this->columnsType = $columnsType;
-
+    public function __construct(
+        private string $filename,
+        private bool $showHeaders = true,
+        private mixed $columnsType = null
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }

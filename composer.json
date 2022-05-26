@@ -22,11 +22,11 @@
     ],
     "homepage": "https://docs.sonata-project.org/projects/exporter",
     "require": {
-        "php": "^7.4 || ^8.0"
+        "php": "^8.0"
     },
     "require-dev": {
         "doctrine/annotations": "^1.13",
-        "doctrine/dbal": "^2.13 || ^3.0",
+        "doctrine/dbal": "^3.1",
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.9",
         "friendsofphp/php-cs-fixer": "^3.4",
@@ -42,13 +42,13 @@
         "psalm/plugin-phpunit": "^0.16",
         "psalm/plugin-symfony": "^3.0",
         "rector/rector": "^0.12",
-        "symfony/config": "^4.4 || ^5.3 || ^6.0",
-        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
-        "symfony/http-foundation": "^4.4 || ^5.3 || ^6.0",
-        "symfony/http-kernel": "^4.4 || ^5.3 || ^6.0",
+        "symfony/config": "^5.4 || ^6.0",
+        "symfony/dependency-injection": "^5.4 || ^6.0",
+        "symfony/http-foundation": "^5.4 || ^6.0",
+        "symfony/http-kernel": "^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.0",
-        "symfony/property-access": "^4.4 || ^5.3 || ^6.0",
-        "symfony/routing": "^4.4 || ^5.3 || ^6.0",
+        "symfony/property-access": "^5.4 || ^6.0",
+        "symfony/routing": "^5.4 || ^6.0",
         "vimeo/psalm": "^4.9.2"
     },
     "conflict": {

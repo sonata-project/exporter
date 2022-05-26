@@ -20,18 +20,15 @@ namespace Sonata\Exporter\Source;
  */
 final class XmlSourceIterator extends AbstractXmlSourceIterator
 {
-    private string $mainTag;
-
-    private string $dataTag;
-
-    public function __construct(string $filename, string $mainTag = 'datas', string $dataTag = 'data')
-    {
+    public function __construct(
+        string $filename,
+        private string $mainTag = 'datas',
+        private string $dataTag = 'data'
+    ) {
         parent::__construct($filename, false);
-        $this->mainTag = $mainTag;
-        $this->dataTag = $dataTag;
     }
 
-    public function tagStart($parser, string $name, array $attributes = []): void
+    public function tagStart(\XMLParser $parser, string $name, array $attributes = []): void
     {
         switch ($name) {
             case $this->mainTag:
@@ -51,7 +48,7 @@ final class XmlSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    public function tagEnd($parser, string $name): void
+    public function tagEnd(\XMLParser $parser, string $name): void
     {
         switch ($name) {
             case $this->mainTag:
@@ -69,7 +66,7 @@ final class XmlSourceIterator extends AbstractXmlSourceIterator
         }
     }
 
-    public function tagContent($parser, string $data): void
+    public function tagContent(\XMLParser $parser, string $data): void
     {
         if (isset(
             $this->bufferedRow['i_'.$this->currentRowIndex],

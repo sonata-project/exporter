@@ -19,16 +19,16 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
 {
     private Query $query;
 
-    private int $batchSize;
-
     /**
      * @param array<string> $fields Fields to export
      */
-    public function __construct(Query $query, array $fields, string $dateTimeFormat = \DateTimeInterface::ATOM, int $batchSize = 100)
-    {
+    public function __construct(
+        Query $query,
+        array $fields,
+        string $dateTimeFormat = \DateTimeInterface::ATOM,
+        private int $batchSize = 100
+    ) {
         $this->query = clone $query;
-
-        $this->batchSize = $batchSize;
 
         parent::__construct($fields, $dateTimeFormat);
     }
@@ -36,7 +36,7 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
     /**
      * @return array<string, mixed>
      */
-    public function current()
+    public function current(): array
     {
         $current = $this->iterator->current();
 

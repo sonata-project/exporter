@@ -20,10 +20,7 @@ namespace Sonata\Exporter\Source;
  */
 final class IteratorCallbackSourceIterator extends IteratorSourceIterator
 {
-    /**
-     * @var \Closure
-     */
-    private $transformer;
+    private \Closure $transformer;
 
     /**
      * @param \Iterator $iterator    Iterator with string array elements
@@ -39,7 +36,7 @@ final class IteratorCallbackSourceIterator extends IteratorSourceIterator
     /**
      * @return array<mixed>
      */
-    public function current()
+    public function current(): array
     {
         return \call_user_func($this->transformer, $this->iterator->current());
     }

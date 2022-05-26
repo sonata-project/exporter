@@ -21,42 +21,29 @@ use Doctrine\DBAL\Driver\Result;
  */
 final class DoctrineDBALConnectionSourceIterator implements \Iterator
 {
-    private Connection $connection;
-
-    private string $query;
-
-    /**
-     * @var mixed[]
-     */
-    private array $parameters;
-
     /**
      * @var array<string, mixed>|false
      */
-    private $current;
+    private array | false $current = false;
 
     private int $position = 0;
 
-    /**
-     * @var Result
-     */
-    private $result;
+    private ?Result $result = null;
 
     /**
      * @param mixed[] $parameters
      */
-    public function __construct(Connection $connection, string $query, array $parameters = [])
-    {
-        $this->connection = $connection;
-        $this->query = $query;
-        $this->parameters = $parameters;
+    public function __construct(
+        private Connection $connection,
+        private string $query,
+        private array $parameters = []
+    ) {
     }
 
     /**
      * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         \assert(\is_array($this->current));
 
@@ -65,15 +52,13 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
 
     public function next(): void
     {
+        \assert(null !== $this->result);
+
         $this->current = $this->result->fetchAssociative();
         ++$this->position;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
@@ -83,23 +68,11 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
         return \is_array($this->current);
     }
 
-    /**
-     * @psalm-suppress InvalidPropertyAssignmentValue
-     */
     public function rewind(): void
     {
         $statement = $this->connection->prepare($this->query);
 
-        $result = $statement->execute($this->parameters);
-
-        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
-        // @phpstan-ignore-next-line
-        if ($result instanceof Result) {
-            $this->result = $result;
-        } else { // @phpstan-ignore-line
-            // @phpstan-ignore-next-line
-            $this->result = $statement;
-        }
+        $this->result = $statement->execute($this->parameters);
 
         $this->next();
     }

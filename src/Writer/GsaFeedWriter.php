@@ -22,14 +22,6 @@ final class GsaFeedWriter implements WriterInterface
 {
     public const LIMIT_SIZE = 31_457_280;
 
-    private \SplFileInfo $folder;
-
-    private string $dtd;
-
-    private string $datasource;
-
-    private string $feedtype;
-
     private int $bufferPart;
 
     /**
@@ -47,12 +39,12 @@ final class GsaFeedWriter implements WriterInterface
      * @param string       $datasource A datasouce
      * @param string       $feedtype   A feedtype (full|incremental|metadata-and-url)
      */
-    public function __construct(\SplFileInfo $folder, string $dtd, string $datasource, string $feedtype)
-    {
-        $this->folder = $folder;
-        $this->dtd = $dtd;
-        $this->datasource = $datasource;
-        $this->feedtype = $feedtype;
+    public function __construct(
+        private \SplFileInfo $folder,
+        private string $dtd,
+        private string $datasource,
+        private string $feedtype
+    ) {
         $this->bufferPart = 0;
         $this->bufferSize = 0;
     }

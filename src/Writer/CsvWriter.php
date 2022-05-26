@@ -20,14 +20,6 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
  */
 final class CsvWriter implements TypedWriterInterface
 {
-    private string $filename;
-
-    private string $delimiter;
-
-    private string $enclosure;
-
-    private string $escape;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -35,34 +27,21 @@ final class CsvWriter implements TypedWriterInterface
      */
     private $file;
 
-    private bool $showHeaders;
-
     private int $position;
-
-    private bool $withBom;
-
-    private string $terminate;
 
     /**
      * @throws \RuntimeException
      */
     public function __construct(
-        string $filename,
-        string $delimiter = ',',
-        string $enclosure = '"',
-        string $escape = '\\',
-        bool $showHeaders = true,
-        bool $withBom = false,
-        string $terminate = "\n"
+        private string $filename,
+        private string $delimiter = ',',
+        private string $enclosure = '"',
+        private string $escape = '\\',
+        private bool $showHeaders = true,
+        private bool $withBom = false,
+        private string $terminate = "\n"
     ) {
-        $this->filename = $filename;
-        $this->delimiter = $delimiter;
-        $this->enclosure = $enclosure;
-        $this->escape = $escape;
-        $this->showHeaders = $showHeaders;
-        $this->terminate = $terminate;
         $this->position = 0;
-        $this->withBom = $withBom;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));

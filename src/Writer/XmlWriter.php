@@ -21,8 +21,6 @@ use Sonata\Exporter\Exception\RuntimeException;
  */
 final class XmlWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -30,19 +28,14 @@ final class XmlWriter implements TypedWriterInterface
      */
     private $file;
 
-    private string $mainElement;
-
-    private string $childElement;
-
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
-    {
-        $this->filename = $filename;
-        $this->mainElement = $mainElement;
-        $this->childElement = $childElement;
-
+    public function __construct(
+        private string $filename,
+        private string $mainElement = 'datas',
+        private string $childElement = 'data'
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
@@ -84,11 +77,9 @@ final class XmlWriter implements TypedWriterInterface
     }
 
     /**
-     * @param mixed $value
-     *
      * @throws \RuntimeException
      */
-    private function generateNode(string $name, $value): void
+    private function generateNode(string $name, mixed $value): void
     {
         if (\is_array($value)) {
             throw new RuntimeException('Not implemented');
