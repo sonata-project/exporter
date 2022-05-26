@@ -28,7 +28,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
 
     private int $position = 0;
 
-    private Result $result;
+    private ?Result $result = null;
 
     /**
      * @param mixed[] $parameters
@@ -52,6 +52,8 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
 
     public function next(): void
     {
+        \assert(null !== $this->result);
+
         $this->current = $this->result->fetchAssociative();
         ++$this->position;
     }
@@ -66,9 +68,6 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
         return \is_array($this->current);
     }
 
-    /**
-     * @psalm-suppress InvalidPropertyAssignmentValue
-     */
     public function rewind(): void
     {
         $statement = $this->connection->prepare($this->query);
