@@ -42,8 +42,12 @@ final class SitemapWriter implements WriterInterface
      * @param string[] $headers   Indicate the need for namespace in the header sitemap
      * @param bool     $autoIndex If you want to generate index of sitemap (optional)
      */
-    public function __construct(private string $folder, private string $groupName = '', private array $headers = [], private bool $autoIndex = true)
-    {
+    public function __construct(
+        private string $folder,
+        private string $groupName = '',
+        private array $headers = [],
+        private bool $autoIndex = true
+    ) {
         $this->pattern = 'sitemap_'.('' !== $this->groupName ? $this->groupName.'_' : '').'%05d.xml';
     }
 

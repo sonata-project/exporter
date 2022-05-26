@@ -39,8 +39,12 @@ final class GsaFeedWriter implements WriterInterface
      * @param string       $datasource A datasouce
      * @param string       $feedtype   A feedtype (full|incremental|metadata-and-url)
      */
-    public function __construct(private \SplFileInfo $folder, private string $dtd, private string $datasource, private string $feedtype)
-    {
+    public function __construct(
+        private \SplFileInfo $folder,
+        private string $dtd,
+        private string $datasource,
+        private string $feedtype
+    ) {
         $this->bufferPart = 0;
         $this->bufferSize = 0;
     }

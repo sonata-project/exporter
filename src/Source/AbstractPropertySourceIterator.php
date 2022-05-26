@@ -41,8 +41,10 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     /**
      * @param string[] $fields Fields to export
      */
-    public function __construct(protected array $fields, protected string $dateTimeFormat = 'r')
-    {
+    public function __construct(
+        protected array $fields,
+        protected string $dateTimeFormat = 'r'
+    ) {
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
     }
 
@@ -84,7 +86,7 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     }
 
     /**
-     * @phpstan-param object|array<mixed> $current
+     * @phpstan-param object|array<mixed> $current TODO: Change to param when https://github.com/rectorphp/rector/issues/7186 is released
      *
      * @return array<string, mixed>
      */

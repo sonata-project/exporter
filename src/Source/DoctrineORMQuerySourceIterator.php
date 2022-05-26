@@ -22,8 +22,12 @@ final class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterato
     /**
      * @param array<string> $fields Fields to export
      */
-    public function __construct(Query $query, array $fields, string $dateTimeFormat = 'r', private int $batchSize = 100)
-    {
+    public function __construct(
+        Query $query,
+        array $fields,
+        string $dateTimeFormat = 'r',
+        private int $batchSize = 100
+    ) {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
         foreach ($query->getHints() as $name => $value) {

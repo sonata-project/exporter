@@ -30,8 +30,10 @@ final class XlsWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      */
-    public function __construct(private string $filename, private bool $showHeaders = true)
-    {
+    public function __construct(
+        private string $filename,
+        private bool $showHeaders = true
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }

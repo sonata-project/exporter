@@ -54,8 +54,10 @@ abstract class AbstractXmlSourceIterator implements \Iterator
 
     protected int $position = 0;
 
-    public function __construct(protected string $filename, protected bool $hasHeaders = true)
-    {
+    public function __construct(
+        protected string $filename,
+        protected bool $hasHeaders = true
+    ) {
     }
 
     /**

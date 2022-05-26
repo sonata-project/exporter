@@ -31,8 +31,11 @@ final class XmlWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      */
-    public function __construct(private string $filename, private string $mainElement = 'datas', private string $childElement = 'data')
-    {
+    public function __construct(
+        private string $filename,
+        private string $mainElement = 'datas',
+        private string $childElement = 'data'
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }

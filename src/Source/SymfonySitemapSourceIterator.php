@@ -24,8 +24,12 @@ final class SymfonySitemapSourceIterator implements \Iterator
     /**
      * @param array<string, mixed> $parameters
      */
-    public function __construct(private \Iterator $source, private RouterInterface $router, private string $routeName, private array $parameters = [])
-    {
+    public function __construct(
+        private \Iterator $source,
+        private RouterInterface $router,
+        private string $routeName,
+        private array $parameters = []
+    ) {
     }
 
     /**

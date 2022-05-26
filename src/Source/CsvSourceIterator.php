@@ -41,8 +41,13 @@ final class CsvSourceIterator implements \Iterator
      */
     private array | false $currentLine = [];
 
-    public function __construct(private string $filename, private string $delimiter = ',', private string $enclosure = '"', private string $escape = '\\', private bool $hasHeaders = true)
-    {
+    public function __construct(
+        private string $filename,
+        private string $delimiter = ',',
+        private string $enclosure = '"',
+        private string $escape = '\\',
+        private bool $hasHeaders = true
+    ) {
     }
 
     /**

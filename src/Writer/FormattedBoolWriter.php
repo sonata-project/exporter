@@ -20,8 +20,11 @@ namespace Sonata\Exporter\Writer;
  */
 final class FormattedBoolWriter implements WriterInterface
 {
-    public function __construct(private WriterInterface $writer, private string $trueLabel = 'yes', private string $falseLabel = 'no')
-    {
+    public function __construct(
+        private WriterInterface $writer,
+        private string $trueLabel = 'yes',
+        private string $falseLabel = 'no'
+    ) {
     }
 
     public function open(): void
