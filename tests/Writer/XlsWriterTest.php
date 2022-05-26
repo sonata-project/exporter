@@ -47,7 +47,9 @@ final class XlsWriterTest extends TestCase
 
         $expected = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table><tr><td>john "2</td><td>doe</td><td>1</td></tr></table></body></html>';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testWithHeaders(): void
@@ -60,6 +62,8 @@ final class XlsWriterTest extends TestCase
 
         $expected = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table><tr><th>firtname</th><th>surname</th><th>year</th></tr><tr><td>john "2</td><td>doe</td><td>1</td></tr></table></body></html>';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 }

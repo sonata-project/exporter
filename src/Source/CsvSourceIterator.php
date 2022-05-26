@@ -81,7 +81,12 @@ final class CsvSourceIterator implements \Iterator
 
     public function rewind(): void
     {
-        $this->file = fopen($this->filename, 'r');
+        $file = fopen($this->filename, 'r');
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
+
         $this->position = 0;
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         if ($this->hasHeaders) {

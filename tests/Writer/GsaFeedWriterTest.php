@@ -53,7 +53,7 @@ final class GsaFeedWriterTest extends TestCase
      */
     protected function tearDown(): void
     {
-        if ($this->folder->getRealPath()) {
+        if (false !== $this->folder->getRealPath()) {
             foreach ($this->getFiles() as $file) {
                 unlink($file);
             }
@@ -94,8 +94,11 @@ final class GsaFeedWriterTest extends TestCase
         static::assertCount(1, $generatedFiles);
         static::assertSame($this->folder->getRealPath().'/feed_00001.xml', $generatedFiles[0]);
 
+        $generatedFile = file_get_contents($generatedFiles[0]);
+        static::assertIsString($generatedFile);
+
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[0]), \LIBXML_PARSEHUGE);
+        new \SimpleXMLElement($generatedFile, \LIBXML_PARSEHUGE);
 
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -113,7 +116,7 @@ final class GsaFeedWriterTest extends TestCase
 </gsafeed>
 XML;
 
-        static::assertSame(trim($expected), file_get_contents($generatedFiles[0]));
+        static::assertSame(trim($expected), $generatedFile);
     }
 
     /**
@@ -138,11 +141,17 @@ XML;
 
         static::assertCount(2, $generatedFiles);
 
+        $generatedFile1 = file_get_contents($generatedFiles[0]);
+        static::assertIsString($generatedFile1);
+        $generatedFile2 = file_get_contents($generatedFiles[1]);
+        static::assertIsString($generatedFile2);
+
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[0]), \LIBXML_PARSEHUGE);
-        new \SimpleXMLElement(file_get_contents($generatedFiles[1]), \LIBXML_PARSEHUGE);
+        new \SimpleXMLElement($generatedFile1, \LIBXML_PARSEHUGE);
+        new \SimpleXMLElement($generatedFile2, \LIBXML_PARSEHUGE);
 
         $info = stat($generatedFiles[0]);
+        static::assertNotFalse($info);
 
         static::assertLessThan(GsaFeedWriter::LIMIT_SIZE, $info['size']);
     }
@@ -155,6 +164,7 @@ XML;
     public function getFiles(): array
     {
         $files = glob($this->folder->getRealPath().'/*.xml');
+        static::assertNotFalse($files);
 
         sort($files);
 

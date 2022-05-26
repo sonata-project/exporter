@@ -44,7 +44,9 @@ final class XmlExcelWriterTest extends TestCase
 
         $expected = '<Row><Cell><Data ss:Type="String"> john</Data></Cell><Cell><Data ss:Type="String">doe &amp;</Data></Cell><Cell><Data ss:Type="String">é</Data></Cell></Row>';
 
-        static::assertStringContainsString($expected, file_get_contents($this->filename));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertStringContainsString($expected, $content);
     }
 
     public function testWithHeaders(): void
@@ -59,7 +61,9 @@ final class XmlExcelWriterTest extends TestCase
         $expected = '<Row><Cell><Data ss:Type="String">name</Data></Cell><Cell><Data ss:Type="String">surname</Data></Cell><Cell><Data ss:Type="String">year</Data></Cell></Row>';
         $expected .= '<Row><Cell><Data ss:Type="String">john</Data></Cell><Cell><Data ss:Type="String">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row';
 
-        static::assertTrue(str_contains(file_get_contents($this->filename), $expected));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertStringContainsString($expected, $content);
     }
 
     public function testForceTypes(): void
@@ -74,7 +78,9 @@ final class XmlExcelWriterTest extends TestCase
 
         $expected = '<Row><Cell><Data ss:Type="Number">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row>';
 
-        static::assertTrue(str_contains(file_get_contents($this->filename), $expected));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertStringContainsString($expected, $content);
     }
 
     public function testForceTypesWithHeaders(): void
@@ -90,7 +96,9 @@ final class XmlExcelWriterTest extends TestCase
         $expected = '<Row><Cell><Data ss:Type="String">name</Data></Cell><Cell><Data ss:Type="String">surname</Data></Cell><Cell><Data ss:Type="String">year</Data></Cell></Row>';
         $expected .= '<Row><Cell><Data ss:Type="Number">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="Number">2001</Data></Cell></Row>';
 
-        static::assertTrue(str_contains(file_get_contents($this->filename), $expected));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertStringContainsString($expected, $content);
     }
 
     public function testSpecificTypes(): void
@@ -105,6 +113,8 @@ final class XmlExcelWriterTest extends TestCase
 
         $expected = '<Row><Cell><Data ss:Type="String">john</Data></Cell><Cell><Data ss:Type="Number">doe </Data></Cell><Cell><Data ss:Type="String">2001</Data></Cell></Row>';
 
-        static::assertTrue(str_contains(file_get_contents($this->filename), $expected));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertStringContainsString($expected, $content);
     }
 }

@@ -24,7 +24,9 @@ final class PDOStatementSourceIteratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->pathToDb = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
+        $path = tempnam(sys_get_temp_dir(), 'Sonata_exporter_');
+        static::assertNotFalse($path);
+        $this->pathToDb = $path;
 
         if (!\in_array('sqlite', \PDO::getAvailableDrivers(), true)) {
             static::markTestSkipped('the sqlite extension is not available');

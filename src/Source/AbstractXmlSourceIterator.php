@@ -108,7 +108,11 @@ abstract class AbstractXmlSourceIterator implements \Iterator
         xml_parser_set_option($this->parser, \XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, \XML_OPTION_SKIP_WHITE, 0);
 
-        $this->file = fopen($this->filename, 'r');
+        $file = fopen($this->filename, 'r');
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
 
         $this->bufferedRow = [];
         $this->currentRowIndex = 0;

@@ -49,8 +49,12 @@ final class JsonWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
 
+        $this->file = $file;
         fwrite($this->file, '[');
     }
 

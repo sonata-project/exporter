@@ -59,7 +59,9 @@ final class CsvWriterTest extends TestCase
 
         $expected = '" john , """"2""",doe,1';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testEscapeFormating(): void
@@ -74,7 +76,9 @@ final class CsvWriterTest extends TestCase
 
         $expected = 'john,doe,\,"/"';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testWithTerminate(): void
@@ -89,7 +93,9 @@ final class CsvWriterTest extends TestCase
 
         $expected = "john,doe,1\r\njohn,doe,2";
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testEnclosureFormatingWithExcel(): void
@@ -103,7 +109,9 @@ final class CsvWriterTest extends TestCase
 
         $expected = '"john , """"2""","doe ",1';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testWithHeaders(): void
@@ -117,7 +125,9 @@ final class CsvWriterTest extends TestCase
 
         $expected = 'name,surname,year'."\n".'"john , """"2""","doe ",2001';
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 
     public function testWithBom(): void
@@ -130,6 +140,9 @@ final class CsvWriterTest extends TestCase
         $writer->close();
 
         $expected = \chr(0xEF).\chr(0xBB).\chr(0xBF).'name,surname,year'."\n".'"Rémi , """"2""","doe ",2001';
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 }
