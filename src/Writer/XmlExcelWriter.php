@@ -53,7 +53,12 @@ final class XmlExcelWriter implements WriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w');
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+
+        $this->file = $file;
         fwrite($this->file, $this->header);
     }
 

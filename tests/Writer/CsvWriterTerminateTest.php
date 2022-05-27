@@ -40,6 +40,8 @@ final class CsvWriterTerminateTest extends TestCase
     public function testFilter(): void
     {
         $file = fopen($this->filename, 'w', false);
+        static::assertNotFalse($file);
+
         stream_filter_register('filter', CsvWriterTerminate::class);
         stream_filter_append($file, 'filter', \STREAM_FILTER_WRITE, ['terminate' => "\r\n"]);
         @fputcsv($file, ['john', 'doe', '1']);
@@ -48,6 +50,8 @@ final class CsvWriterTerminateTest extends TestCase
 
         $expected = "john,doe,1\r\njohn,doe,2";
 
-        static::assertSame($expected, trim(file_get_contents($this->filename)));
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
     }
 }

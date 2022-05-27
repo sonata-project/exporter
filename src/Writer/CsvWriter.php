@@ -60,7 +60,12 @@ final class CsvWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
+
         if ("\n" !== $this->terminate) {
             stream_filter_register('filterTerminate', CsvWriterTerminate::class);
             stream_filter_append($this->file, 'filterTerminate', \STREAM_FILTER_WRITE, ['terminate' => $this->terminate]);
@@ -96,7 +101,7 @@ final class CsvWriter implements TypedWriterInterface
 
         $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
 
-        if (!$result) {
+        if (false === $result) {
             throw new InvalidDataFormatException();
         }
 

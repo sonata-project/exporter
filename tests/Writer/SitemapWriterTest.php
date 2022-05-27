@@ -63,8 +63,11 @@ final class SitemapWriterTest extends TestCase
 
         static::assertCount(2, $generatedFiles);
 
+        $generatedFile = file_get_contents($generatedFiles[1]);
+        static::assertIsString($generatedFile);
+
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement($generatedFile);
 
         $expected = <<<'XML_WRAP'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -73,7 +76,7 @@ final class SitemapWriterTest extends TestCase
 </urlset>
 XML_WRAP;
 
-        static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
+        static::assertSame(trim($expected), $generatedFile);
     }
 
     public function testSimpleWriteAdvanced(): void
@@ -111,8 +114,11 @@ XML_WRAP;
 
         static::assertCount(2, $generatedFiles);
 
+        $generatedFile = file_get_contents($generatedFiles[1]);
+        static::assertIsString($generatedFile);
+
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
+        new \SimpleXMLElement($generatedFile);
 
         $expected = <<<'XML_WRAP'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -122,7 +128,7 @@ XML_WRAP;
 </urlset>
 XML_WRAP;
 
-        static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
+        static::assertSame(trim($expected), $generatedFile);
     }
 
     public function testLimitSize(): void
@@ -143,11 +149,17 @@ XML_WRAP;
 
         static::assertCount(3, $generatedFiles);
 
+        $generatedFile1 = file_get_contents($generatedFiles[1]);
+        static::assertIsString($generatedFile1);
+        $generatedFile2 = file_get_contents($generatedFiles[2]);
+        static::assertIsString($generatedFile2);
+
         // this will throw an exception if the xml is invalid
-        new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
-        new \SimpleXMLElement(file_get_contents($generatedFiles[2]));
+        new \SimpleXMLElement($generatedFile1);
+        new \SimpleXMLElement($generatedFile2);
 
         $info = stat($generatedFiles[1]);
+        static::assertNotFalse($info);
 
         static::assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
     }
@@ -170,11 +182,17 @@ XML_WRAP;
 
         static::assertCount(3, $generatedFiles);
 
+        $generatedFile1 = file_get_contents($generatedFiles[1]);
+        static::assertIsString($generatedFile1);
+        $generatedFile2 = file_get_contents($generatedFiles[2]);
+        static::assertIsString($generatedFile2);
+
         // this will throw an exception if the xml is invalid
-        $file1 = new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
-        $file2 = new \SimpleXMLElement(file_get_contents($generatedFiles[2]));
+        $file1 = new \SimpleXMLElement($generatedFile1);
+        $file2 = new \SimpleXMLElement($generatedFile2);
 
         $info = stat($generatedFiles[0]);
+        static::assertNotFalse($info);
 
         static::assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
         static::assertCount(SitemapWriter::LIMIT_URL, $file1->children());
@@ -187,6 +205,7 @@ XML_WRAP;
     public function getFiles(): array
     {
         $files = glob($this->folder.'/*.xml');
+        static::assertNotFalse($files);
 
         sort($files);
 
