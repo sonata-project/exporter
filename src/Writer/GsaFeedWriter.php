@@ -140,12 +140,10 @@ EOF
 
     /**
      * @return resource
-     * @phpstan-return resource
-     * @psalm-return resource|closed-resource
      */
     private function getBuffer()
     {
-        if (null === $this->buffer) {
+        if (!\is_resource($this->buffer)) {
             throw new \LogicException('You MUST open the file first');
         }
 

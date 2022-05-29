@@ -108,12 +108,23 @@ final class SitemapWriter implements WriterInterface
      * @param string $baseUrl  A base URL
      * @param string $pattern  A sitemap pattern, optional
      * @param string $filename A sitemap file name, optional
+     *
+     * @throws \RuntimeException
      */
     public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml'): void
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
-        foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
+        $files = glob(sprintf('%s/%s', $folder, $pattern));
+        if (false === $files) {
+            throw new \RuntimeException('Cannot find sitemap files.');
+        }
+
+        foreach ($files as $file) {
             $stat = stat($file);
+            if (false === $stat) {
+                throw new \RuntimeException(sprintf('Cannot access to stats of the file %s.', $file));
+            }
+
             $content .= sprintf(
                 "\t".'<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>'."\n",
                 $baseUrl,
@@ -315,12 +326,10 @@ final class SitemapWriter implements WriterInterface
 
     /**
      * @return resource
-     * @phpstan-return resource
-     * @psalm-return resource|closed-resource
      */
     private function getBuffer()
     {
-        if (null === $this->buffer) {
+        if (!\is_resource($this->buffer)) {
             throw new \LogicException('You MUST open the file first');
         }
 

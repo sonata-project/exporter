@@ -23,7 +23,7 @@ class Document
     /**
      * @ODM\Id
      *
-     * @var string
+     * @var string|null
      */
     public $id;
 }

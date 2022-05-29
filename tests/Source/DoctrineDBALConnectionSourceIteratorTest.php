@@ -27,6 +27,11 @@ final class DoctrineDBALConnectionSourceIteratorTest extends TestCase
         }
     }
 
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @see https://github.com/doctrine/dbal/pull/4966#issuecomment-1140517232
+     */
     public function testRewindWithEmptyQuery(): void
     {
         $connection = DriverManager::getConnection(['url' => 'sqlite:///:memory:']);

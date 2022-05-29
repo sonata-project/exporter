@@ -120,7 +120,7 @@ abstract class AbstractXmlSourceIterator implements \Iterator
         $this->position = 0;
         $this->parseRow();
         if ($this->hasHeaders) {
-            $this->columns = array_shift($this->bufferedRow);
+            $this->columns = array_shift($this->bufferedRow) ?? [];
             $this->parseRow();
         }
         $this->prepareCurrentRow();
@@ -128,6 +128,9 @@ abstract class AbstractXmlSourceIterator implements \Iterator
 
     final public function valid(): bool
     {
+        \assert(null !== $this->parser);
+        \assert(\is_resource($this->file));
+
         if (!\is_array($this->currentRow)) {
             xml_parser_free($this->parser);
             fclose($this->file);
@@ -143,11 +146,15 @@ abstract class AbstractXmlSourceIterator implements \Iterator
      */
     final protected function parseRow(): void
     {
+        if (null === $this->parser) {
+            throw new \LogicException('A parser MUST be set to parse a row.');
+        }
+
         // only parse the next row if only one in buffer
         if (\count($this->bufferedRow) > 1) {
             return;
         }
-        if (feof($this->file)) {
+        if (!\is_resource($this->file) || feof($this->file)) {
             $this->currentRow = null;
 
             return;
@@ -159,6 +166,10 @@ abstract class AbstractXmlSourceIterator implements \Iterator
         // @phpstan-ignore-next-line: The currentRowEnded value is updated when parsing the data
         while (!$this->currentRowEnded && !feof($this->file)) {
             $data = fread($this->file, 1024);
+            if (false === $data) {
+                throw new \RuntimeException('Cannot read the ressource');
+            }
+
             xml_parse($this->parser, $data);
         }
     }
