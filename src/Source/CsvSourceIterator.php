@@ -39,7 +39,7 @@ final class CsvSourceIterator implements \Iterator
     /**
      * @var array<string|null>|false
      */
-    private array | false $currentLine = [];
+    private array|false $currentLine = [];
 
     public function __construct(
         private string $filename,
