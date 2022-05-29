@@ -25,7 +25,7 @@ class Entity
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @var int
+     * @var int|null
      */
     public $id;
 }

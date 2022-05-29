@@ -30,14 +30,14 @@ final class CsvSourceIterator implements \Iterator
     private $file;
 
     /**
-     * @var array<string|null>
+     * @var array<string>
      */
     private array $columns = [];
 
     private int $position = 0;
 
     /**
-     * @var array<string|null>|false
+     * @var array<string>|false
      */
     private array|false $currentLine = [];
 
@@ -67,6 +67,8 @@ final class CsvSourceIterator implements \Iterator
 
     public function next(): void
     {
+        \assert(\is_resource($this->file));
+
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
         ++$this->position;
@@ -89,7 +91,7 @@ final class CsvSourceIterator implements \Iterator
 
         $this->position = 0;
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
-        if ($this->hasHeaders) {
+        if ($this->hasHeaders && \is_array($line)) {
             $this->columns = $line;
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }

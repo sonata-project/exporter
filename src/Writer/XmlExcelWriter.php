@@ -135,12 +135,10 @@ final class XmlExcelWriter implements WriterInterface
 
     /**
      * @return resource
-     * @phpstan-return resource
-     * @psalm-return resource|closed-resource
      */
     private function getFile()
     {
-        if (null === $this->file) {
+        if (!\is_resource($this->file)) {
             throw new \LogicException('You MUST open the file first');
         }
 
