@@ -27,6 +27,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
         $iterator = new class([], $dateFormat) extends AbstractPropertySourceIterator {
             public function rewind(): void
             {
+                $this->iterator = new \ArrayIterator();
                 $this->iterator->rewind();
             }
 

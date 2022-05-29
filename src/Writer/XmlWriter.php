@@ -62,22 +62,26 @@ final class XmlWriter implements TypedWriterInterface
         fwrite($this->file, sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, sprintf('</%s>', $this->mainElement));
-
-        fclose($this->file);
+        fwrite($this->getFile(), sprintf('</%s>', $this->mainElement));
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
-        fwrite($this->file, sprintf("<%s>\n", $this->childElement));
+        fwrite($this->getFile(), sprintf("<%s>\n", $this->childElement));
 
         foreach ($data as $k => $v) {
             $this->generateNode($k, $v);
         }
 
-        fwrite($this->file, sprintf("</%s>\n", $this->childElement));
+        fwrite($this->getFile(), sprintf("</%s>\n", $this->childElement));
     }
 
     /**
@@ -88,9 +92,23 @@ final class XmlWriter implements TypedWriterInterface
         if (\is_array($value)) {
             throw new RuntimeException('Not implemented');
         } elseif (\is_scalar($value) || null === $value) {
-            fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
+            fwrite($this->getFile(), sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
         } else {
             throw new InvalidDataFormatException('Invalid data');
         }
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getFile()
+    {
+        if (null === $this->file) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

@@ -71,19 +71,24 @@ final class CsvWriter implements TypedWriterInterface
             stream_filter_append($this->file, 'filterTerminate', \STREAM_FILTER_WRITE, ['terminate' => $this->terminate]);
         }
         if (true === $this->withBom) {
-            fprintf($this->file, \chr(0xEF).\chr(0xBB).\chr(0xBF));
+            fprintf($this->getFile(), \chr(0xEF).\chr(0xBB).\chr(0xBF));
         }
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fclose($this->file);
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
         if (0 === $this->position && $this->showHeaders) {
-            fputcsv($this->file, array_keys($data), $this->delimiter, $this->enclosure, $this->escape);
+            fputcsv($this->getFile(), array_keys($data), $this->delimiter, $this->enclosure, $this->escape);
 
             ++$this->position;
         }
@@ -99,12 +104,26 @@ final class CsvWriter implements TypedWriterInterface
             EXCEPTION);
         }
 
-        $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
+        $result = @fputcsv($this->getFile(), $data, $this->delimiter, $this->enclosure, $this->escape);
 
         if (false === $result) {
             throw new InvalidDataFormatException();
         }
 
         ++$this->position;
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getFile()
+    {
+        if (null === $this->file) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

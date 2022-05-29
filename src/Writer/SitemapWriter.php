@@ -172,7 +172,7 @@ final class SitemapWriter implements WriterInterface
 
         ++$this->bufferUrlCount;
 
-        $this->bufferSize += fwrite($this->buffer, $line);
+        $this->bufferSize += fwrite($this->getBuffer(), $line);
     }
 
     /**
@@ -302,9 +302,28 @@ final class SitemapWriter implements WriterInterface
         return $result;
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     private function closeSitemap(): void
     {
-        fwrite($this->buffer, '</urlset>');
-        fclose($this->buffer);
+        fwrite($this->getBuffer(), '</urlset>');
+        fclose($this->getBuffer());
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getBuffer()
+    {
+        if (null === $this->buffer) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->buffer;
     }
 }

@@ -38,11 +38,11 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
      */
     public function current(): array
     {
-        $current = $this->iterator->current();
+        $current = $this->getIterator()->current();
 
         $data = $this->getCurrentData($current);
 
-        if (0 === ($this->iterator->key() % $this->batchSize)) {
+        if (0 === ($this->getIterator()->key() % $this->batchSize)) {
             $this->query->getDocumentManager()->clear();
         }
 
