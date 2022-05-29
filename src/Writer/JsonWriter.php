@@ -58,17 +58,35 @@ final class JsonWriter implements TypedWriterInterface
         fwrite($this->file, '[');
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, ']');
-
-        fclose($this->file);
+        fwrite($this->getFile(), ']');
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
-        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data, \JSON_THROW_ON_ERROR));
+        fwrite($this->getFile(), ($this->position > 0 ? ',' : '').json_encode($data, \JSON_THROW_ON_ERROR));
 
         ++$this->position;
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getFile()
+    {
+        if (null === $this->file) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

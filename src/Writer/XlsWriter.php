@@ -60,21 +60,26 @@ final class XlsWriter implements TypedWriterInterface
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, '</table></body></html>');
-        fclose($this->file);
+        fwrite($this->getFile(), '</table></body></html>');
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
         $this->init($data);
 
-        fwrite($this->file, '<tr>');
+        fwrite($this->getFile(), '<tr>');
         foreach ($data as $value) {
-            fwrite($this->file, sprintf('<td>%s</td>', $value));
+            fwrite($this->getFile(), sprintf('<td>%s</td>', $value));
         }
-        fwrite($this->file, '</tr>');
+        fwrite($this->getFile(), '</tr>');
 
         ++$this->position;
     }
@@ -89,12 +94,26 @@ final class XlsWriter implements TypedWriterInterface
         }
 
         if ($this->showHeaders) {
-            fwrite($this->file, '<tr>');
+            fwrite($this->getFile(), '<tr>');
             foreach ($data as $header => $value) {
-                fwrite($this->file, sprintf('<th>%s</th>', (string) $header));
+                fwrite($this->getFile(), sprintf('<th>%s</th>', (string) $header));
             }
-            fwrite($this->file, '</tr>');
+            fwrite($this->getFile(), '</tr>');
             ++$this->position;
         }
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getFile()
+    {
+        if (null === $this->file) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

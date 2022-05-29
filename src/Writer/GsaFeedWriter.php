@@ -68,7 +68,7 @@ final class GsaFeedWriter implements WriterInterface
             $this->generateNewPart();
         }
 
-        $this->bufferSize += fwrite($this->buffer, $line);
+        $this->bufferSize += fwrite($this->getBuffer(), $line);
     }
 
     public function close(): void
@@ -120,16 +120,35 @@ XML
         );
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     private function closeFeed(): void
     {
         fwrite(
-            $this->buffer,
+            $this->getBuffer(),
             <<<'EOF'
     </group>
 </gsafeed>
 EOF
         );
 
-        fclose($this->buffer);
+        fclose($this->getBuffer());
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getBuffer()
+    {
+        if (null === $this->buffer) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->buffer;
     }
 }

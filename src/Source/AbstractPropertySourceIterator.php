@@ -53,24 +53,24 @@ abstract class AbstractPropertySourceIterator implements \Iterator
      */
     public function current(): array
     {
-        $current = $this->iterator->current();
+        $current = $this->getIterator()->current();
 
         return $this->getCurrentData($current);
     }
 
     public function next(): void
     {
-        $this->iterator->next();
+        $this->getIterator()->next();
     }
 
     public function key(): mixed
     {
-        return $this->iterator->key();
+        return $this->getIterator()->key();
     }
 
     public function valid(): bool
     {
-        return $this->iterator->valid();
+        return $this->getIterator()->valid();
     }
 
     abstract public function rewind(): void;
@@ -83,6 +83,15 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
+    }
+
+    protected function getIterator(): \Iterator
+    {
+        if (null === $this->iterator) {
+            throw new \LogicException('The iterator MUST be set in the "rewind()" method.');
+        }
+
+        return $this->iterator;
     }
 
     /**

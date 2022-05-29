@@ -66,18 +66,23 @@ final class XmlExcelWriter implements WriterInterface
     {
         if (0 === $this->position && $this->showHeaders) {
             $header = array_keys($data);
-            fwrite($this->file, $this->getXmlString($header));
+            fwrite($this->getFile(), $this->getXmlString($header));
             ++$this->position;
         }
 
-        fwrite($this->file, $this->getXmlString($data));
+        fwrite($this->getFile(), $this->getXmlString($data));
         ++$this->position;
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, $this->footer);
-        fclose($this->file);
+        fwrite($this->getFile(), $this->footer);
+        fclose($this->getFile());
     }
 
     /**
@@ -126,5 +131,19 @@ final class XmlExcelWriter implements WriterInterface
         }
 
         return $dataType;
+    }
+
+    /**
+     * @return resource
+     * @phpstan-return resource
+     * @psalm-return resource|closed-resource
+     */
+    private function getFile()
+    {
+        if (null === $this->file) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }
