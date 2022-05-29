@@ -90,7 +90,7 @@ abstract class AbstractPropertySourceIterator implements \Iterator
      *
      * @return array<string, mixed>
      */
-    protected function getCurrentData(object | array $current): array
+    protected function getCurrentData(object|array $current): array
     {
         $data = [];
         foreach ($this->fields as $key => $field) {
@@ -110,7 +110,7 @@ abstract class AbstractPropertySourceIterator implements \Iterator
         return $data;
     }
 
-    protected function getValue(mixed $value): bool | int | float | string | null
+    protected function getValue(mixed $value): bool|int|float|string|null
     {
         return match (true) {
             \is_array($value) => '['.implode(', ', array_map([$this, 'getValue'], $value)).']',

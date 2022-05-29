@@ -24,7 +24,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
     /**
      * @var array<string, mixed>|false
      */
-    private array | false $current = false;
+    private array|false $current = false;
 
     private int $position = 0;
 

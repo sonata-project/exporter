@@ -30,7 +30,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
                 $this->iterator->rewind();
             }
 
-            public function getValue(mixed $value): bool | int | float | string | null
+            public function getValue(mixed $value): bool|int|float|string|null
             {
                 return parent::getValue($value);
             }
