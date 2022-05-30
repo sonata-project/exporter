@@ -13,12 +13,17 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-use Doctrine\DBAL\Driver\Connection;
-use Doctrine\DBAL\Driver\Result;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\Connection as DriverConnection;
+use Doctrine\DBAL\Driver\Result as DriverResult;
+use Doctrine\DBAL\Result;
 
 final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
 {
-    private Connection $connection;
+    /**
+     * @var Connection|DriverConnection
+     */
+    private $connection;
 
     private string $query;
 
@@ -35,15 +40,25 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     private int $position = 0;
 
     /**
-     * @var Result
+     * @var Result|DriverResult
      */
     private $result;
 
     /**
-     * @param mixed[] $parameters
+     * @param Connection|DriverConnection $connection
+     * @param mixed[]                     $parameters
      */
-    public function __construct(Connection $connection, string $query, array $parameters = [])
+    public function __construct($connection, string $query, array $parameters = [])
     {
+        if (!$connection instanceof Connection) {
+            @trigger_error(sprintf(
+                'Passing an instance of %s as argument 1 is deprecated since sonata-project/exporter 2.13'
+                .' and will not work in 3.0. You MUST pass an instance of %s instead',
+                \get_class($connection),
+                Connection::class
+            ), \E_USER_DEPRECATED);
+        }
+
         $this->connection = $connection;
         $this->query = $query;
         $this->parameters = $parameters;
@@ -91,9 +106,9 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
 
         // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
         // @phpstan-ignore-next-line
-        if ($result instanceof Result) {
+        if ($result instanceof Result || $result instanceof DriverResult) {
             $this->result = $result;
-        } else { // @phpstan-ignore-line
+        } else {
             // @phpstan-ignore-next-line
             $this->result = $statement;
         }
