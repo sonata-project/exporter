@@ -51,6 +51,15 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
     public function __construct($connection, string $query, array $parameters = [])
     {
         if (!$connection instanceof Connection) {
+            if (!$connection instanceof DriverConnection) {
+                throw new \TypeError(sprintf(
+                    '%s: Argument 1 is expected to be an instance of %s, got %s.',
+                    __METHOD__,
+                    Connection::class,
+                    \get_class($connection)
+                ));
+            }
+
             @trigger_error(sprintf(
                 'Passing an instance of %s as argument 1 is deprecated since sonata-project/exporter 2.13'
                 .' and will not work in 3.0. You MUST pass an instance of %s instead',
