@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-use Doctrine\DBAL\Driver\Connection;
-use Doctrine\DBAL\Driver\Result;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Result;
 
 /**
  * @phpstan-implements \Iterator<array<mixed>>
@@ -72,7 +72,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
     {
         $statement = $this->connection->prepare($this->query);
 
-        $this->result = $statement->execute($this->parameters);
+        $this->result = $statement->executeQuery($this->parameters);
 
         $this->next();
     }
