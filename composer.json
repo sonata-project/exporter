@@ -46,7 +46,7 @@
         "symfony/dependency-injection": "^5.4 || ^6.0",
         "symfony/http-foundation": "^5.4 || ^6.0",
         "symfony/http-kernel": "^5.4 || ^6.0",
-        "symfony/phpunit-bridge": "^6.0",
+        "symfony/phpunit-bridge": "^6.1",
         "symfony/property-access": "^5.4 || ^6.0",
         "symfony/routing": "^5.4 || ^6.0",
         "vimeo/psalm": "^4.9.2"
