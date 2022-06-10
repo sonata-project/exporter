@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.13.0](https://github.com/sonata-project/exporter/compare/2.12.0...2.13.0) - 2022-06-10
+### Deprecated
+- [[#595](https://github.com/sonata-project/exporter/pull/595)] Passing  an instance of `Doctrine\DBAL\Driver\Connection` to `DoctrineDBALConnectionSourceIterator::__construct()` ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Removed
+- [[#596](https://github.com/sonata-project/exporter/pull/596)] Support of Symfony 5.3 ([@franmomu](https://github.com/franmomu))
+
 ## [2.12.0](https://github.com/sonata-project/exporter/compare/2.11.0...2.12.0) - 2022-05-24
 ### Deprecated
 - [[#581](https://github.com/sonata-project/exporter/pull/581)] PropelCollectionSourceIterator ([@VincentLanglet](https://github.com/VincentLanglet))
