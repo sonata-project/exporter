@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0-alpha-1](https://github.com/sonata-project/exporter/compare/2.x...3.0.0-alpha-1) - 2022-06-14
+### Removed
+- [[#587](https://github.com/sonata-project/exporter/pull/587)] Support for PHP 7.4 ([@VincentLanglet](https://github.com/VincentLanglet))
+
+See UPGRADE-3.0.md for all changes
+
 ## [2.13.0](https://github.com/sonata-project/exporter/compare/2.12.0...2.13.0) - 2022-06-10
 ### Deprecated
 - [[#595](https://github.com/sonata-project/exporter/pull/595)] Passing  an instance of `Doctrine\DBAL\Driver\Connection` to `DoctrineDBALConnectionSourceIterator::__construct()` ([@VincentLanglet](https://github.com/VincentLanglet))
