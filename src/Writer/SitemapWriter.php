@@ -267,7 +267,7 @@ final class SitemapWriter implements WriterInterface
             $images .= '<image:image>';
 
             foreach ($image as $key => $element) {
-                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', ($builder[$key] ?? $key), $element);
+                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', $builder[$key] ?? $key, $element);
             }
 
             $images .= '</image:image>';
@@ -289,7 +289,7 @@ final class SitemapWriter implements WriterInterface
         ];
 
         foreach ($data['video'] as $key => $video) {
-            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', ($builder[$key] ?? $key), $video);
+            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', $builder[$key] ?? $key, $video);
         }
 
         return sprintf('    '.'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
