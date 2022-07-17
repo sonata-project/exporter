@@ -42,7 +42,7 @@
         "propel/propel1": "^1.6",
         "psalm/plugin-phpunit": "^0.16",
         "psalm/plugin-symfony": "^3.0",
-        "rector/rector": "^0.12",
+        "rector/rector": "^0.13",
         "symfony/config": "^4.4 || ^5.4 || ^6.0",
         "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.0",
         "symfony/http-foundation": "^4.4 || ^5.4 || ^6.0",
