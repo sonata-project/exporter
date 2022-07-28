@@ -43,4 +43,4 @@ rules:
 
 whitelist:
     lines:
-        - '.. versionadded:: 2.x'
+        - '.. versionadded:: 3.x'
