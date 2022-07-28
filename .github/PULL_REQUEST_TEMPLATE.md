@@ -6,9 +6,9 @@
 <!--
     Show us you choose the right branch.
     Different branches are used for different things :
-    - 2.x is for everything backwards compatible, like patches, features and deprecation notices
-    - 3.x is for deprecation removals and other changes that cannot be done without a BC-break
-    More details here: https://github.com/sonata-project/exporter/blob/2.x/CONTRIBUTING.md#base-branch
+    - 3.x is for everything backwards compatible, like patches, features and deprecation notices
+    - 4.x is for deprecation removals and other changes that cannot be done without a BC-break
+    More details here: https://github.com/sonata-project/exporter/blob/3.x/CONTRIBUTING.md#base-branch
 -->
 I am targeting this branch, because {reason}.
 
