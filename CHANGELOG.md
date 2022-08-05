@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0](https://github.com/sonata-project/exporter/compare/3.0.0-alpha-1...3.0.0) - 2022-07-27
+- No significant changes
+
 ## [3.0.0-alpha-1](https://github.com/sonata-project/exporter/compare/2.x...3.0.0-alpha-1) - 2022-06-14
 ### Removed
 - [[#587](https://github.com/sonata-project/exporter/pull/587)] Support for PHP 7.4 ([@VincentLanglet](https://github.com/VincentLanglet))

@@ -53,7 +53,8 @@
     },
     "conflict": {
         "doctrine/mongodb-odm": "<2.0",
-        "doctrine/orm": "<2.8"
+        "doctrine/orm": "<2.8",
+        "symfony/config": "<5.4"
     },
     "suggest": {
         "phpoffice/phpspreadsheet": "To be able to export the data in XLSX",
