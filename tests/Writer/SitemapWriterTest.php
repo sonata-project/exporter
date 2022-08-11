@@ -67,11 +67,11 @@ final class SitemapWriterTest extends TestCase
         new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
         $expected = <<<'XML_WRAP'
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-</urlset>
-XML_WRAP;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+            </urlset>
+            XML_WRAP;
 
         static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }
@@ -115,12 +115,12 @@ XML_WRAP;
         new \SimpleXMLElement(file_get_contents($generatedFiles[1]));
 
         $expected = <<<'XML_WRAP'
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-    <url><loc>https://sonata-project.org/bundle/</loc><image:image><image:loc>https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg</image:loc><image:caption>sonata img</image:caption></image:image></url>
-</urlset>
-XML_WRAP;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+                <url><loc>https://sonata-project.org/bundle/</loc><lastmod>2012-12-26</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+                <url><loc>https://sonata-project.org/bundle/</loc><image:image><image:loc>https://sonata-project.org/uploads/media/default/0001/01/thumb_1_default_small.jpg</image:loc><image:caption>sonata img</image:caption></image:image></url>
+            </urlset>
+            XML_WRAP;
 
         static::assertSame(trim($expected), file_get_contents($generatedFiles[1]));
     }

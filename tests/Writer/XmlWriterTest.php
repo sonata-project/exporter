@@ -58,20 +58,20 @@ final class XmlWriterTest extends TestCase
         $writer->close();
 
         $expected = <<<'XML'
-<?xml version="1.0" ?>
-<datas>
-<data>
-<firstname><![CDATA[john 1]]></firstname>
-<lastname><![CDATA[doe]]></lastname>
-<id><![CDATA[1]]></id>
-</data>
-<data>
-<firstname><![CDATA[john 3]]></firstname>
-<lastname><![CDATA[doe]]></lastname>
-<id><![CDATA[1]]></id>
-</data>
-</datas>
-XML;
+            <?xml version="1.0" ?>
+            <datas>
+            <data>
+            <firstname><![CDATA[john 1]]></firstname>
+            <lastname><![CDATA[doe]]></lastname>
+            <id><![CDATA[1]]></id>
+            </data>
+            <data>
+            <firstname><![CDATA[john 3]]></firstname>
+            <lastname><![CDATA[doe]]></lastname>
+            <id><![CDATA[1]]></id>
+            </data>
+            </datas>
+            XML;
 
         static::assertSame($expected, file_get_contents($this->filename));
     }
