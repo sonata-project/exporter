@@ -98,20 +98,20 @@ final class GsaFeedWriterTest extends TestCase
         new \SimpleXMLElement(file_get_contents($generatedFiles[0]), \LIBXML_PARSEHUGE);
 
         $expected = <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE gsafeed PUBLIC "-//Google//DTD GSA Feeds//EN" "$this->dtd">
-<gsafeed>
-    <header>
-        <datasource>$this->datasource</datasource>
-        <feedtype>$this->feedtype</feedtype>
-    </header>
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE gsafeed PUBLIC "-//Google//DTD GSA Feeds//EN" "$this->dtd">
+            <gsafeed>
+                <header>
+                    <datasource>$this->datasource</datasource>
+                    <feedtype>$this->feedtype</feedtype>
+                </header>
 
-    <group>
-        <record url="https://sonata-project.org/about" mimetype="text/html" action="add"/>
-        <record url="https://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
-    </group>
-</gsafeed>
-XML;
+                <group>
+                    <record url="https://sonata-project.org/about" mimetype="text/html" action="add"/>
+                    <record url="https://sonata-project.org/bundles/" mimetype="text/html" action="delete"/>
+                </group>
+            </gsafeed>
+            XML;
 
         static::assertSame(trim($expected), file_get_contents($generatedFiles[0]));
     }
