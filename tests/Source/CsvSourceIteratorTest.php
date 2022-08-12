@@ -29,11 +29,11 @@ final class CsvSourceIteratorTest extends TestCase
         }
 
         $csv = <<<'EOF'
-firstname,name
-John 1,Doe
-John 2,Doe
-"John, 3", Doe
-EOF;
+            firstname,name
+            John 1,Doe
+            John 2,Doe
+            "John, 3", Doe
+            EOF;
         file_put_contents($this->filename, $csv);
     }
 
