@@ -106,17 +106,17 @@ final class GsaFeedWriter implements WriterInterface
         $this->bufferSize += fwrite(
             $this->buffer,
             <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE gsafeed PUBLIC "-//Google//DTD GSA Feeds//EN" "$this->dtd">
-<gsafeed>
-    <header>
-        <datasource>$this->datasource</datasource>
-        <feedtype>$this->feedtype</feedtype>
-    </header>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <!DOCTYPE gsafeed PUBLIC "-//Google//DTD GSA Feeds//EN" "$this->dtd">
+                <gsafeed>
+                    <header>
+                        <datasource>$this->datasource</datasource>
+                        <feedtype>$this->feedtype</feedtype>
+                    </header>
 
-    <group>
+                    <group>
 
-XML
+                XML
         );
     }
 
@@ -130,9 +130,9 @@ XML
         fwrite(
             $this->getBuffer(),
             <<<'EOF'
-    </group>
-</gsafeed>
-EOF
+                    </group>
+                </gsafeed>
+                EOF
         );
 
         fclose($this->getBuffer());

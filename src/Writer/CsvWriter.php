@@ -97,11 +97,11 @@ final class CsvWriter implements TypedWriterInterface
             1 !== \strlen($this->enclosure) ||
             1 !== \strlen($this->escape)) {
             throw new InvalidDataFormatException(<<<'EXCEPTION'
-            Context: trying to write CSV data
-            Problem: delimiter, enclosure or escape character is actually a
-            string longer than just one character
-            Solution: pick an actual character
-            EXCEPTION);
+                Context: trying to write CSV data
+                Problem: delimiter, enclosure or escape character is actually a
+                string longer than just one character
+                Solution: pick an actual character
+                EXCEPTION);
         }
 
         $result = @fputcsv($this->getFile(), $data, $this->delimiter, $this->enclosure, $this->escape);
