@@ -18,18 +18,18 @@ use Sonata\Exporter\Exception\SonataExporterException;
 interface WriterInterface
 {
     /**
-     * @throws SonataExporterException
-     *
      * @return void
+     *
+     * @throws SonataExporterException
      */
     public function open();
 
     /**
      * @param mixed[] $data
      *
-     * @throws SonataExporterException
-     *
      * @return void
+     *
+     * @throws SonataExporterException
      */
     public function write(array $data);
 
