@@ -39,6 +39,7 @@ final class IteratorCallbackSourceIterator extends IteratorSourceIterator
     /**
      * @return array<mixed>
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return \call_user_func($this->transformer, $this->iterator->current());

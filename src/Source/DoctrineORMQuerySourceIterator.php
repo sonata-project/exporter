@@ -43,6 +43,7 @@ class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterator
     /**
      * @return array<string, mixed>
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $current = $this->iterator->current();
