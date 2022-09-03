@@ -47,6 +47,7 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
     /**
      * @return array<string, mixed>
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $data = $this->source->current();
@@ -65,6 +66,7 @@ final class SymfonySitemapSourceIterator implements SourceIteratorInterface
         $this->source->next();
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->source->key();

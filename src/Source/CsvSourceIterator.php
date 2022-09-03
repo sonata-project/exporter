@@ -24,6 +24,7 @@ final class CsvSourceIterator implements SourceIteratorInterface
 
     /**
      * @var resource|null
+     *
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */
