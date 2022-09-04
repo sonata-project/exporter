@@ -20,6 +20,7 @@ final class JsonWriter implements TypedWriterInterface
 {
     /**
      * @var resource|null
+     *
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */

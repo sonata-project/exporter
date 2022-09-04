@@ -25,6 +25,7 @@ final class SitemapWriter implements WriterInterface
 
     /**
      * @var resource|null
+     *
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */

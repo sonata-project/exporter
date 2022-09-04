@@ -24,6 +24,7 @@ final class CsvSourceIterator implements \Iterator
 {
     /**
      * @var resource|null
+     *
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */
