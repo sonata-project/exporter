@@ -95,9 +95,9 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     }
 
     /**
-     * @phpstan-param object|array<mixed> $current TODO: Change to param when https://github.com/rectorphp/rector/issues/7186 is released
-     *
      * @return array<string, mixed>
+     *
+     * @phpstan-param object|array<mixed> $current TODO: Change to param when https://github.com/rectorphp/rector/issues/7186 is released
      */
     protected function getCurrentData(object|array $current): array
     {
