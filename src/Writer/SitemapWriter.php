@@ -134,7 +134,7 @@ final class SitemapWriter implements WriterInterface
      */
     public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml'): void
     {
-        $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
+        $content = "<?xml version='1.0' encoding='UTF-8'?>\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
         foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
             $stat = stat($file);
             $content .= sprintf(
@@ -250,7 +250,7 @@ final class SitemapWriter implements WriterInterface
      */
     private function generateDefaultLine(array $data): string
     {
-        return sprintf('    '.'<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
+        return sprintf('    <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
     }
 
     /**
@@ -281,7 +281,7 @@ final class SitemapWriter implements WriterInterface
             $images .= '</image:image>';
         }
 
-        return sprintf('    '.'<url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
+        return sprintf('    <url><loc>%s</loc>%s</url>'."\n", $data['url'], $images);
     }
 
     /**
@@ -300,7 +300,7 @@ final class SitemapWriter implements WriterInterface
             $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', $builder[$key] ?? $key, $video);
         }
 
-        return sprintf('    '.'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
+        return sprintf('    <url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
     }
 
     /**

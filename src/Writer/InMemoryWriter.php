@@ -18,7 +18,7 @@ final class InMemoryWriter implements WriterInterface
     /**
      * @var array<mixed>
      */
-    private $elements;
+    private array $elements = [];
 
     public function open(): void
     {
