@@ -35,6 +35,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
             static::markTestSkipped('The sqlite extension is not available.');
         }
 
+        /** @psalm-suppress DeprecatedMethod */
         $this->em = EntityManager::create($this->createConnection(), $this->createConfiguration());
 
         $schemaTool = new SchemaTool($this->em);

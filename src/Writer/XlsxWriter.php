@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Writer;
 
+use PhpOffice\PhpSpreadsheet\Cell\CellAddress;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -79,7 +80,7 @@ final class XlsxWriter implements TypedWriterInterface
     {
         if ($this->showHeaders && $this->showFilters) {
             $this->getWorksheet()->setAutoFilter($this->getWorksheet()->calculateWorksheetDimension());
-            $this->getWorksheet()->setSelectedCellByColumnAndRow(1, 1);
+            $this->getWorksheet()->setSelectedCell('A1');
         }
 
         $excelWriter = IOFactory::createWriter($this->getSpreadsheet(), 'Xlsx');
@@ -101,14 +102,18 @@ final class XlsxWriter implements TypedWriterInterface
             $dataValue = $this->getDataValue($value);
 
             if (null !== $dataFormat) {
-                $this->getWorksheet()->getStyleByColumnAndRow($column, $this->position)
+                $this->getWorksheet()->getStyle(CellAddress::fromColumnAndRow($column, $this->position))
                     ->getNumberFormat()
                     ->setFormatCode($dataFormat);
             }
 
             $dataType = $this->getDataType($value);
 
-            $this->getWorksheet()->setCellValueExplicitByColumnAndRow($column, $this->position, $dataValue, $dataType);
+            $this->getWorksheet()->setCellValueExplicit(
+                CellAddress::fromColumnAndRow($column, $this->position),
+                $dataValue,
+                $dataType
+            );
 
             ++$column;
         }
@@ -124,7 +129,11 @@ final class XlsxWriter implements TypedWriterInterface
         $column = 1;
 
         foreach (array_keys($data) as $value) {
-            $this->getWorksheet()->setCellValueExplicitByColumnAndRow($column, $this->position, $value, DataType::TYPE_STRING);
+            $this->getWorksheet()->setCellValueExplicit(
+                CellAddress::fromColumnAndRow($column, $this->position),
+                $value,
+                DataType::TYPE_STRING
+            );
 
             ++$column;
         }
