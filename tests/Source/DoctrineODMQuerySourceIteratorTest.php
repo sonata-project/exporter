@@ -85,7 +85,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         $config->setHydratorNamespace('Hydrators');
         $config->setPersistentCollectionDir($directory);
         $config->setPersistentCollectionNamespace('PersistentCollections');
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver()); // @phpstan-ignore-line
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
 
         return $config;
     }
