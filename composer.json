@@ -32,7 +32,7 @@
         "friendsofphp/php-cs-fixer": "^3.4",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
-        "phpoffice/phpspreadsheet": "^1.0",
+        "phpoffice/phpspreadsheet": "^1.23",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
@@ -54,6 +54,7 @@
     "conflict": {
         "doctrine/mongodb-odm": "<2.0",
         "doctrine/orm": "<2.8",
+        "phpoffice/phpspreadsheet": "<1.23",
         "symfony/config": "<5.4"
     },
     "suggest": {
