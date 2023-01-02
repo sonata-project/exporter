@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 /**
  * @author Grégoire Paris <postmaster@greg0ire.fr>
  */
-final class Exporter
+final class Exporter implements ExporterInterface
 {
     /**
      * @var array<TypedWriterInterface>
