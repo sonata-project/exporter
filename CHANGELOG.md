@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.1](https://github.com/sonata-project/exporter/compare/3.1.0...3.1.1) - 2023-01-02
+### Fixed
+- [[#621](https://github.com/sonata-project/exporter/pull/621)] Missing alias for ExporterInterface ([@pkameisha](https://github.com/pkameisha))
+
+## [3.1.0](https://github.com/sonata-project/exporter/compare/3.0.0...3.1.0) - 2023-01-02
+### Added
+- [[#618](https://github.com/sonata-project/exporter/pull/618)] Added ExporterInterface; ([@pkameisha](https://github.com/pkameisha))
+- [[#618](https://github.com/sonata-project/exporter/pull/618)] Added implementation ExporterInterface by Exporter. ([@pkameisha](https://github.com/pkameisha))
+
 ## [3.0.0](https://github.com/sonata-project/exporter/compare/3.0.0-alpha-1...3.0.0) - 2022-07-27
 - No significant changes
 

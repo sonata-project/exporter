@@ -15,6 +15,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Sonata\Exporter\Exporter;
+use Sonata\Exporter\ExporterInterface;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\XlsWriter;
@@ -65,4 +66,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->public();
 
     $services->alias(Exporter::class, 'sonata.exporter.exporter');
+    $services->alias(ExporterInterface::class, 'sonata.exporter.exporter');
 };
