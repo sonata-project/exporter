@@ -166,7 +166,12 @@ final class SitemapWriter implements WriterInterface
         }
         $this->buffer = $buffer;
 
-        $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
+        $written = fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
+        if (false === $written) {
+            throw new \Exception(sprintf('Cannot write file %s.', $this->folder.'/'.$filename));
+        }
+
+        $this->bufferSize += $written;
     }
 
     /**
@@ -184,7 +189,12 @@ final class SitemapWriter implements WriterInterface
 
         ++$this->bufferUrlCount;
 
-        $this->bufferSize += fwrite($this->getBuffer(), $line);
+        $written = fwrite($this->getBuffer(), $line);
+        if (false === $written) {
+            throw new \Exception(sprintf('Cannot write line %s in the buffer.', $line));
+        }
+
+        $this->bufferSize += $written;
     }
 
     /**
