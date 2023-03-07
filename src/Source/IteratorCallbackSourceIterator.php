@@ -20,17 +20,15 @@ namespace Sonata\Exporter\Source;
  */
 final class IteratorCallbackSourceIterator extends IteratorSourceIterator
 {
-    private \Closure $transformer;
-
     /**
      * @param \Iterator $iterator    Iterator with string array elements
      * @param \Closure  $transformer Altering a data row
      */
-    public function __construct(\Iterator $iterator, \Closure $transformer)
-    {
+    public function __construct(
+        \Iterator $iterator,
+        private \Closure $transformer
+    ) {
         parent::__construct($iterator);
-
-        $this->transformer = $transformer;
     }
 
     /**

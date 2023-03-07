@@ -69,7 +69,12 @@ final class GsaFeedWriter implements WriterInterface
             $this->generateNewPart();
         }
 
-        $this->bufferSize += fwrite($this->getBuffer(), $line);
+        $written = fwrite($this->getBuffer(), $line);
+        if (false === $written) {
+            throw new \Exception(sprintf('Cannot write line %s in the buffer.', $line));
+        }
+
+        $this->bufferSize += $written;
     }
 
     public function close(): void
@@ -104,7 +109,7 @@ final class GsaFeedWriter implements WriterInterface
         }
         $this->buffer = $buffer;
 
-        $this->bufferSize += fwrite(
+        $written = fwrite(
             $this->buffer,
             <<<XML
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -119,6 +124,11 @@ final class GsaFeedWriter implements WriterInterface
 
                 XML
         );
+        if (false === $written) {
+            throw new \Exception(sprintf('Cannot write file %s.', $filename));
+        }
+
+        $this->bufferSize += $written;
     }
 
     /**
