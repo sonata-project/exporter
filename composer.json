@@ -25,7 +25,7 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "doctrine/annotations": "^1.13",
+        "doctrine/annotations": "^1.13 || ^2.0",
         "doctrine/dbal": "^3.1",
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.9",
