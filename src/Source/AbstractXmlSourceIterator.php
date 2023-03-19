@@ -165,7 +165,7 @@ abstract class AbstractXmlSourceIterator implements \Iterator
 
         /**
          * Read file until row is ended
-         * The currentRowEnded value is updated when parsing the data
+         * The currentRowEnded value is updated when parsing the data.
          *
          * @phpstan-ignore-next-line
          * @psalm-suppress RedundantCondition
