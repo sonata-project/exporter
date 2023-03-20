@@ -15,6 +15,8 @@ namespace Sonata\Exporter\Tests\Source;
 
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\ODM\MongoDB\Mapping\Driver\AttributeDriver;
+use Doctrine\ODM\MongoDB\Mapping\Driver\AttributeReader;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\DoctrineODMQuerySourceIterator;
 use Sonata\Exporter\Tests\Source\Fixtures\Document;
@@ -94,7 +96,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         $config->setHydratorNamespace('Hydrators');
         $config->setPersistentCollectionDir($directory);
         $config->setPersistentCollectionNamespace('PersistentCollections');
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
+        $config->setMetadataDriverImpl(new AttributeDriver([], new AttributeReader()));
 
         return $config;
     }
