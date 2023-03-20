@@ -15,15 +15,9 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-/**
- * @ODM\Document
- */
+#[ODM\Document]
 class Document
 {
-    /**
-     * @ODM\Id
-     *
-     * @var string|null
-     */
-    public $id;
+    #[ODM\Id]
+    public ?string $id = null;
 }
