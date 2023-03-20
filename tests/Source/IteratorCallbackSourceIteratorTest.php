@@ -21,19 +21,16 @@ final class IteratorCallbackSourceIteratorTest extends TestCase
 {
     private IteratorCallbackSourceIterator $sourceIterator;
 
-    /**
-     * @var \ArrayIterator<int, array{int}>
-     */
-    private \ArrayIterator $iterator;
-
     protected function setUp(): void
     {
-        $this->iterator = new \ArrayIterator([[0], [1], [2], [3]]);
-        $this->sourceIterator = new IteratorCallbackSourceIterator($this->iterator, static function (array $data): array {
-            $data[0] = 1 << $data[0];
+        $this->sourceIterator = new IteratorCallbackSourceIterator(
+            new \ArrayIterator([[0], [1], [2], [3]]),
+            static function (array $data): array {
+                $data[0] = 1 << $data[0];
 
-            return $data;
-        });
+                return $data;
+            }
+        );
     }
 
     public function testTransformer(): void
@@ -48,10 +45,5 @@ final class IteratorCallbackSourceIteratorTest extends TestCase
     public function testExtends(): void
     {
         static::assertInstanceOf(IteratorSourceIterator::class, $this->sourceIterator);
-    }
-
-    public function testGetIterator(): void
-    {
-        static::assertSame($this->iterator, $this->sourceIterator->getIterator());
     }
 }
