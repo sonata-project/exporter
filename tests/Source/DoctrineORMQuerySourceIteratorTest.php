@@ -13,14 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver;
-use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
-use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\DoctrineORMQuerySourceIterator;
 use Sonata\Exporter\Tests\Source\Fixtures\Entity;
@@ -35,8 +32,10 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
             static::markTestSkipped('The sqlite extension is not available.');
         }
 
-        /** @psalm-suppress DeprecatedMethod */
-        $this->em = EntityManager::create($this->createConnection(), $this->createConfiguration());
+        $this->em = new EntityManager(
+            $this->createConnection(),
+            ORMSetup::createAttributeMetadataConfiguration([], true),
+        );
 
         $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
@@ -82,23 +81,5 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
     private function createConnection(): Connection
     {
         return new Connection([], new Driver\PDO\SQLite\Driver());
-    }
-
-    private function createConfiguration(): Configuration
-    {
-        $config = new Configuration();
-
-        $directory = sys_get_temp_dir().'/sqlite';
-
-        $config->setProxyDir($directory);
-        $config->setProxyNamespace('Proxies');
-        $config->setMetadataDriverImpl($this->createMetadataDriverImplementation());
-
-        return $config;
-    }
-
-    private function createMetadataDriverImplementation(): MappingDriver
-    {
-        return new AnnotationDriver(new AnnotationReader());
     }
 }

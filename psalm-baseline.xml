@@ -2,17 +2,8 @@
 <files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
     <!-- https://github.com/vimeo/psalm/issues/8033 -->
     <file src="src/Source/AbstractXmlSourceIterator.php">
-        <RedundantCondition occurrences="1">
-            <code>[]</code>
-        </RedundantCondition>
         <TypeDoesNotContainType occurrences="1">
             <code>array_shift($this-&gt;bufferedRow)</code>
         </TypeDoesNotContainType>
-    </file>
-    <!-- https://github.com/vimeo/psalm/pull/8032 -->
-    <file src="src/Writer/SitemapWriter.php">
-        <PossiblyFalseArgument occurrences="1">
-            <code>date('Y-m-d', $stat['mtime'])</code>
-        </PossiblyFalseArgument>
     </file>
 </files>
