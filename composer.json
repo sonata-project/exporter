@@ -39,7 +39,7 @@
         "phpstan/phpstan-symfony": "^1.0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.18",
-        "psalm/plugin-symfony": "^4.0 || ^5.0",
+        "psalm/plugin-symfony": "^5.0",
         "rector/rector": "^0.15",
         "symfony/config": "^5.4 || ^6.2",
         "symfony/dependency-injection": "^5.4 || ^6.2",
@@ -48,7 +48,7 @@
         "symfony/phpunit-bridge": "^6.2",
         "symfony/property-access": "^5.4 || ^6.2",
         "symfony/routing": "^5.4 || ^6.2",
-        "vimeo/psalm": "^4.9.2 || ^5.0"
+        "vimeo/psalm": "^5.0"
     },
     "conflict": {
         "doctrine/mongodb-odm": "<2.3",
