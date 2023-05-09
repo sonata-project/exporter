@@ -195,8 +195,14 @@ final class SitemapWriterTest extends TestCase
         static::assertNotFalse($info);
 
         static::assertLessThan(SitemapWriter::LIMIT_SIZE, $info['size']);
-        static::assertCount(SitemapWriter::LIMIT_URL, $file1->children());
-        static::assertCount(1, iterator_to_array($file2->children()));
+
+        $file1Children = $file1->children();
+        $file2Children = $file2->children();
+
+        static::assertNotNull($file1Children);
+        static::assertNotNull($file2Children);
+        static::assertCount(SitemapWriter::LIMIT_URL, $file1Children);
+        static::assertCount(1, iterator_to_array($file2Children));
     }
 
     /**

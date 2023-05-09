@@ -253,7 +253,13 @@ final class SitemapWriter implements WriterInterface
      */
     private function generateDefaultLine(array $data): string
     {
-        return sprintf('    <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n", $data['url'], date('Y-m-d', strtotime($data['lastmod'])), $data['changefreq'], $data['priority']);
+        return sprintf(
+            '    <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>'."\n",
+            $data['url'],
+            (new \DateTime($data['lastmod']))->format('Y-m-d'),
+            $data['changefreq'],
+            $data['priority']
+        );
     }
 
     /**
