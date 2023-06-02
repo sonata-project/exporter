@@ -18,6 +18,9 @@ use Sonata\Exporter\Writer\SitemapWriter;
 
 final class SitemapWriterTest extends TestCase
 {
+    /**
+     * @phpstan-var non-empty-string
+     */
     private string $folder;
 
     protected function setUp(): void

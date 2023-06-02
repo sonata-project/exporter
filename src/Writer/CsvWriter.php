@@ -94,9 +94,9 @@ final class CsvWriter implements TypedWriterInterface
             ++$this->position;
         }
 
-        if (1 !== \strlen($this->delimiter) ||
-            1 !== \strlen($this->enclosure) ||
-            1 !== \strlen($this->escape)) {
+        if (1 !== \strlen($this->delimiter)
+            || 1 !== \strlen($this->enclosure)
+            || 1 !== \strlen($this->escape)) {
             throw new InvalidDataFormatException(<<<'EXCEPTION'
                 Context: trying to write CSV data
                 Problem: delimiter, enclosure or escape character is actually a
