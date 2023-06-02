@@ -42,6 +42,8 @@ final class SitemapWriter implements WriterInterface
      * @param string   $groupName Name of sub-sitemap (optional)
      * @param string[] $headers   Indicate the need for namespace in the header sitemap
      * @param bool     $autoIndex If you want to generate index of sitemap (optional)
+     *
+     * @phpstan-param non-empty-string $folder
      */
     public function __construct(
         private string $folder,
@@ -111,6 +113,9 @@ final class SitemapWriter implements WriterInterface
      * @param string $filename A sitemap file name, optional
      *
      * @throws \RuntimeException
+     *
+     * @phpstan-param non-empty-string $folder
+     * @phpstan-param non-empty-string $pattern
      */
     public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml'): void
     {
