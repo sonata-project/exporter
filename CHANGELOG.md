@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.2.0](https://github.com/sonata-project/exporter/compare/3.1.1...3.2.0) - 2023-07-22
+### Removed
+- [[#631](https://github.com/sonata-project/exporter/pull/631)] Drop support for older versions of doctrine orm and mongodb-odm ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [3.1.1](https://github.com/sonata-project/exporter/compare/3.1.0...3.1.1) - 2023-01-02
 ### Fixed
 - [[#621](https://github.com/sonata-project/exporter/pull/621)] Missing alias for ExporterInterface ([@pkameisha](https://github.com/pkameisha))
