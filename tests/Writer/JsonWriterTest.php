@@ -57,6 +57,6 @@ final class JsonWriterTest extends TestCase
             ['john 3', 'doe', '1'],
         ];
 
-        static::assertSame($expected, json_decode($content, false));
+        static::assertSame($expected, json_decode($content, false, 512, \JSON_THROW_ON_ERROR));
     }
 }
