@@ -20,7 +20,7 @@ use Sonata\Exporter\Tests\Source\Fixtures\ObjectWithToString;
 final class AbstractPropertySourceIteratorTest extends TestCase
 {
     /**
-     * @dataProvider getValueProvider
+     * @dataProvider provideGetValueCases
      */
     public function testGetValue(mixed $value, mixed $expected, string $dateFormat = 'r'): void
     {
@@ -41,9 +41,9 @@ final class AbstractPropertySourceIteratorTest extends TestCase
     }
 
     /**
-     * @return array<array{0: mixed, 1: mixed, 2?: string}>
+     * @return iterable<array{0: mixed, 1: mixed, 2?: string}>
      */
-    public function getValueProvider(): array
+    public function provideGetValueCases(): iterable
     {
         $datetime = new \DateTime();
         $dateTimeImmutable = new \DateTimeImmutable();

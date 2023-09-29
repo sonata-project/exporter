@@ -58,7 +58,7 @@ final class ExporterTest extends TestCase
     }
 
     /**
-     * @dataProvider getGetResponseTests
+     * @dataProvider provideGetResponseCases
      */
     public function testGetResponse(string $format, string $filename, string $contentType, string $expectedOutput): void
     {
@@ -90,16 +90,14 @@ final class ExporterTest extends TestCase
     }
 
     /**
-     * @return array<array{string, string, string, string}>
+     * @return iterable<array{string, string, string, string}>
      */
-    public function getGetResponseTests(): array
+    public function provideGetResponseCases(): iterable
     {
-        return [
-            ['json', 'foo.json', 'application/json', '#foo#'],
-            ['xml', 'foo.xml', 'text/xml', '#foo#'],
-            ['xls', 'foo.xls', 'application/vnd.ms-excel', '#foo#'],
-            ['csv', 'foo.csv', 'text/csv', '#foo#'],
-            ['made-up', 'foo.made-up', 'application/made-up', '##'],
-        ];
+        yield ['json', 'foo.json', 'application/json', '#foo#'];
+        yield ['xml', 'foo.xml', 'text/xml', '#foo#'];
+        yield ['xls', 'foo.xls', 'application/vnd.ms-excel', '#foo#'];
+        yield ['csv', 'foo.csv', 'text/csv', '#foo#'];
+        yield ['made-up', 'foo.made-up', 'application/made-up', '##'];
     }
 }
