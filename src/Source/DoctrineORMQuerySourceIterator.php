@@ -26,7 +26,8 @@ final class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterato
         Query $query,
         array $fields,
         string $dateTimeFormat = 'r',
-        private int $batchSize = 100
+        private int $batchSize = 100,
+        bool $useBackedEnumValue = true,
     ) {
         $this->query = clone $query;
         $this->query->setParameters($query->getParameters());
@@ -34,7 +35,7 @@ final class DoctrineORMQuerySourceIterator extends AbstractPropertySourceIterato
             $this->query->setHint($name, $value);
         }
 
-        parent::__construct($fields, $dateTimeFormat);
+        parent::__construct($fields, $dateTimeFormat, $useBackedEnumValue);
     }
 
     /**
