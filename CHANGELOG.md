@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.3.0](https://github.com/sonata-project/exporter/compare/3.2.0...3.3.0) - 2023-10-23
+### Added
+- [[#648](https://github.com/sonata-project/exporter/pull/648)] Support for enum types in exported values. ([@phansys](https://github.com/phansys))
+
 ## [3.2.0](https://github.com/sonata-project/exporter/compare/3.1.1...3.2.0) - 2023-07-22
 ### Removed
 - [[#631](https://github.com/sonata-project/exporter/pull/631)] Drop support for older versions of doctrine orm and mongodb-odm ([@jordisala1991](https://github.com/jordisala1991))
