@@ -15,6 +15,11 @@ namespace Sonata\Exporter\Tests\Writer;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exception\InvalidDataFormatException;
+use Sonata\Exporter\Formatter\BoolFormatter;
+use Sonata\Exporter\Formatter\DateTimeFormatter;
+use Sonata\Exporter\Formatter\EnumFormatter;
+use Sonata\Exporter\Formatter\IterableFormatter;
+use Sonata\Exporter\Tests\Source\Fixtures\Suit;
 use Sonata\Exporter\Writer\CsvWriter;
 
 final class CsvWriterTest extends TestCase
@@ -140,6 +145,40 @@ final class CsvWriterTest extends TestCase
         $writer->close();
 
         $expected = \chr(0xEF).\chr(0xBB).\chr(0xBF).'name,surname,year'."\n".'"Rémi , """"2""","doe ",2001';
+
+        $content = file_get_contents($this->filename);
+        static::assertIsString($content);
+        static::assertSame($expected, trim($content));
+    }
+
+    /**
+     * @requires PHP >= 8.1
+     */
+    public function testValueFormatting(): void
+    {
+        $writer = new CsvWriter($this->filename, ',', '"', '\\', false);
+        $writer->addFormatter(new BoolFormatter());
+        $writer->addFormatter(new DateTimeFormatter());
+        $writer->addFormatter(new EnumFormatter());
+        $writer->addFormatter(new IterableFormatter());
+        $writer->open();
+
+        $writer->write([
+            ' john , ""2"',
+            'doe',
+            '1',
+            true,
+            new \DateTimeImmutable('1986-03-22 19:45:54', new \DateTimeZone('America/Argentina/Buenos_Aires')),
+            Suit::Hearts,
+            [
+                'foo' => ['bool', 'float'],
+                'bar' => ['string', 'int'],
+            ],
+        ]);
+
+        $writer->close();
+
+        $expected = '" john , """"2""",doe,1,yes,"Sat, 22 Mar 1986 19:45:54 -0300",H,"[Array, Array]"';
 
         $content = file_get_contents($this->filename);
         static::assertIsString($content);

@@ -25,7 +25,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Exception as WriterException;
 /**
  * @author Willem Verspyck <willemverspyck@users.noreply.github.com>
  */
-final class XlsxWriter implements TypedWriterInterface
+final class XlsxWriter extends AbstractWriter implements TypedWriterInterface
 {
     private string $filename;
 
@@ -97,7 +97,7 @@ final class XlsxWriter implements TypedWriterInterface
 
         $column = 1;
 
-        foreach ($data as $value) {
+        foreach ($this->format($data) as $value) {
             $dataFormat = $this->getDataFormat($value);
             $dataValue = $this->getDataValue($value);
 

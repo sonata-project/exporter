@@ -38,6 +38,7 @@ Each service parameter has a configuration counterpart:
 
 The CSV writer service
 ~~~~~~~~~~~~~~~~~~~~~~
+
 This service can be configured through the following parameters:
 
 * ``sonata.exporter.writer.csv.filename``: defaults to ``php://output``
@@ -102,3 +103,14 @@ The default writers list can be altered through configuration:
             default_writers:
                 - csv
                 - json
+
+The default formatters
+----------------------
+
+* ``sonata.exporter.formatter.bool``
+* ``sonata.exporter.formatter.dateinterval``
+* ``sonata.exporter.formatter.datetime``
+* ``sonata.exporter.formatter.enum``
+* ``sonata.exporter.formatter.iterable``
+* ``sonata.exporter.formatter.stringable``
+* ``sonata.exporter.formatter.symfony_translator``

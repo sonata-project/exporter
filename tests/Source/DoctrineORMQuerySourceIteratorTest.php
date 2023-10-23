@@ -68,7 +68,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
             ->getQuery();
 
         $batchSize = 2;
-        $iterator = new DoctrineORMQuerySourceIterator($query, ['id'], 'r', $batchSize);
+        $iterator = new DoctrineORMQuerySourceIterator($query, ['id'], null, $batchSize);
 
         foreach ($iterator as $i => $item) {
             static::assertSame(0 === $i % $batchSize ? 0 : $i, $this->em->getUnitOfWork()->size());

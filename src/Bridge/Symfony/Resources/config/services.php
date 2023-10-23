@@ -16,11 +16,19 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\ExporterInterface;
+use Sonata\Exporter\Formatter\BoolFormatter;
+use Sonata\Exporter\Formatter\DateIntervalFormatter;
+use Sonata\Exporter\Formatter\DateTimeFormatter;
+use Sonata\Exporter\Formatter\EnumFormatter;
+use Sonata\Exporter\Formatter\IterableFormatter;
+use Sonata\Exporter\Formatter\StringableFormatter;
+use Sonata\Exporter\Formatter\SymfonyTranslationFormatter;
 use Sonata\Exporter\Writer\CsvWriter;
 use Sonata\Exporter\Writer\JsonWriter;
 use Sonata\Exporter\Writer\XlsWriter;
 use Sonata\Exporter\Writer\XlsxWriter;
 use Sonata\Exporter\Writer\XmlWriter;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
@@ -67,4 +75,22 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->alias(Exporter::class, 'sonata.exporter.exporter');
     $services->alias(ExporterInterface::class, 'sonata.exporter.exporter');
+
+    $services->set('sonata.exporter.formatter.bool', BoolFormatter::class)
+        ->tag('sonata.exporter.formatter');
+    $services->set('sonata.exporter.formatter.dateinterval', DateIntervalFormatter::class)
+        ->tag('sonata.exporter.formatter');
+    $services->set('sonata.exporter.formatter.datetime', DateTimeFormatter::class)
+        ->tag('sonata.exporter.formatter');
+    $services->set('sonata.exporter.formatter.enum', EnumFormatter::class)
+        ->tag('sonata.exporter.formatter');
+    $services->set('sonata.exporter.formatter.iterable', IterableFormatter::class)
+        ->tag('sonata.exporter.formatter');
+    $services->set('sonata.exporter.formatter.stringable', StringableFormatter::class)
+        ->tag('sonata.exporter.formatter');
+
+    if (interface_exists(TranslatorInterface::class)) {
+        $services->set('sonata.exporter.formatter.symfony_translator', SymfonyTranslationFormatter::class)
+            ->tag('sonata.exporter.formatter');
+    }
 };

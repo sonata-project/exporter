@@ -17,6 +17,8 @@ namespace Sonata\Exporter\Writer;
  * Format boolean before use another writer.
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
+ *
+ * @deprecated since version 3.x, use `\Sonata\Exporter\Formatter\BoolFormatter` instead.
  */
 final class FormattedBoolWriter implements WriterInterface
 {

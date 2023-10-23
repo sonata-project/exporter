@@ -16,6 +16,7 @@ namespace Sonata\Exporter\Bridge\Symfony\DependencyInjection;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -75,6 +76,10 @@ final class Configuration implements ConfigurationInterface
                                     ->defaultValue(false)
                                     ->info('include the byte order mark')
                                 ->end()
+                                ->arrayNode('formatters')
+                                    ->defaultValue($this->getDefaultFormatters())
+                                    ->prototype('scalar')->end()
+                                ->end()
                             ->end()
                         ->end()
                         ->arrayNode('json')
@@ -83,6 +88,10 @@ final class Configuration implements ConfigurationInterface
                                 ->scalarNode('filename')
                                     ->defaultValue('php://output')
                                     ->info('path to the output file')
+                                ->end()
+                                ->arrayNode('formatters')
+                                    ->defaultValue($this->getDefaultFormatters())
+                                    ->prototype('scalar')->end()
                                 ->end()
                             ->end()
                         ->end()
@@ -96,6 +105,10 @@ final class Configuration implements ConfigurationInterface
                                 ->booleanNode('show_headers')
                                     ->defaultValue(true)
                                     ->info('add column names as the first line')
+                                ->end()
+                                ->arrayNode('formatters')
+                                    ->defaultValue($this->getDefaultFormatters())
+                                    ->prototype('scalar')->end()
                                 ->end()
                             ->end()
                         ->end()
@@ -113,6 +126,10 @@ final class Configuration implements ConfigurationInterface
                                 ->booleanNode('show_filters')
                                     ->defaultValue(true)
                                     ->info('add filters in the first line')
+                                ->end()
+                                ->arrayNode('formatters')
+                                    ->defaultValue($this->getDefaultFormatters())
+                                    ->prototype('scalar')->end()
                                 ->end()
                             ->end()
                         ->end()
@@ -135,6 +152,10 @@ final class Configuration implements ConfigurationInterface
                                     ->defaultValue('data')
                                     ->info('name of elements corresponding to rows')
                                 ->end()
+                                ->arrayNode('formatters')
+                                    ->defaultValue($this->getDefaultFormatters())
+                                    ->prototype('scalar')->end()
+                                ->end()
                             ->end()
                         ->end()
                     ->end()
@@ -156,5 +177,19 @@ final class Configuration implements ConfigurationInterface
         }
 
         return $fields;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getDefaultFormatters(): array
+    {
+        $formatters = ['bool', 'dateinterval', 'datetime', 'enum', 'iterable', 'stringable'];
+
+        if (interface_exists(TranslatorInterface::class)) {
+            $formatters[] = 'symfony_translator';
+        }
+
+        return $formatters;
     }
 }

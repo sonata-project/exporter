@@ -18,7 +18,7 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-final class CsvWriter implements TypedWriterInterface
+final class CsvWriter extends AbstractWriter implements TypedWriterInterface
 {
     /**
      * @var resource|null
@@ -105,7 +105,7 @@ final class CsvWriter implements TypedWriterInterface
                 EXCEPTION);
         }
 
-        $result = @fputcsv($this->getFile(), $data, $this->delimiter, $this->enclosure, $this->escape);
+        $result = @fputcsv($this->getFile(), $this->format($data), $this->delimiter, $this->enclosure, $this->escape);
 
         if (false === $result) {
             throw new InvalidDataFormatException();

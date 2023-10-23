@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
+use Sonata\Exporter\Formatter\DateTimeFormatter;
+use Sonata\Exporter\Formatter\EnumFormatter;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
@@ -23,11 +25,18 @@ use Symfony\Component\PropertyAccess\PropertyPath;
  */
 abstract class AbstractPropertySourceIterator implements \Iterator
 {
+    /**
+     * NEXT_MAJOR: Remove this constant.
+     */
     private const DATE_PARTS = [
         'y' => 'Y',
         'm' => 'M',
         'd' => 'D',
     ];
+
+    /**
+     * NEXT_MAJOR: Remove this constant.
+     */
     private const TIME_PARTS = [
         'h' => 'H',
         'i' => 'M',
@@ -39,14 +48,56 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     protected PropertyAccessor $propertyAccessor;
 
     /**
+     * @deprecated since sonata-project/exporter 3.x.
+     */
+    protected string $dateTimeFormat = 'r';
+
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     */
+    protected bool $useBackedEnumValue = true;
+
+    /**
      * @param string[] $fields Fields to export
      */
     public function __construct(
         protected array $fields,
-        protected string $dateTimeFormat = 'r',
-        protected bool $useBackedEnumValue = true
+        ?string $dateTimeFormat = null,
+        ?bool $useBackedEnumValue = null,
+        /**
+         * NEXT_MAJOR: Remove this property.
+         */
+        private bool $disableSourceFormatters = false
     ) {
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+
+        if ($this->disableSourceFormatters) {
+            return;
+        }
+
+        if (null !== $dateTimeFormat) {
+            @trigger_error(sprintf(
+                'Passing a value as argument 2 in "%s()" is deprecated since sonata-project/exporter 3.x and will be removed in version 4.0,'
+                .' use "%s" instead.',
+                __METHOD__,
+                DateTimeFormatter::class,
+            ), \E_USER_DEPRECATED);
+
+            /** @psalm-suppress DeprecatedProperty */
+            $this->dateTimeFormat = $dateTimeFormat;
+        }
+
+        if (null !== $useBackedEnumValue) {
+            @trigger_error(sprintf(
+                'Passing a value as argument 3 in "%s()" is deprecated since sonata-project/exporter 3.x and will be removed in version 4.0,'
+                .' use "%s" instead.',
+                __METHOD__,
+                EnumFormatter::class,
+            ), \E_USER_DEPRECATED);
+
+            /** @psalm-suppress DeprecatedProperty */
+            $this->useBackedEnumValue = $useBackedEnumValue;
+        }
     }
 
     /**
@@ -76,21 +127,41 @@ abstract class AbstractPropertySourceIterator implements \Iterator
 
     abstract public function rewind(): void;
 
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     *
+     * @psalm-suppress DeprecatedProperty
+     */
     public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
     }
 
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     *
+     * @psalm-suppress DeprecatedProperty
+     */
     public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
     }
 
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     *
+     * @psalm-suppress DeprecatedProperty
+     */
     public function useBackedEnumValue(bool $useBackedEnumValue): void
     {
         $this->useBackedEnumValue = $useBackedEnumValue;
     }
 
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     *
+     * @psalm-suppress DeprecatedProperty
+     */
     public function isBackedEnumValueInUse(): bool
     {
         return $this->useBackedEnumValue;
@@ -120,7 +191,13 @@ abstract class AbstractPropertySourceIterator implements \Iterator
             try {
                 $propertyValue = $this->propertyAccessor->getValue($current, new PropertyPath($propertyPath));
 
-                $data[$name] = $this->getValue($propertyValue);
+                // NEXT_MAJOR: Remove this condition.
+                if (!$this->disableSourceFormatters) {
+                    /** @psalm-suppress DeprecatedMethod */
+                    $propertyValue = $this->getValue($propertyValue);
+                }
+
+                $data[$name] = $propertyValue;
             } catch (UnexpectedTypeException) {
                 // Non existent object in path will be ignored but a wrong path will still throw exceptions
                 $data[$name] = null;
@@ -130,6 +207,11 @@ abstract class AbstractPropertySourceIterator implements \Iterator
         return $data;
     }
 
+    /**
+     * @deprecated since sonata-project/exporter 3.x.
+     *
+     * @psalm-suppress DeprecatedMethod, DeprecatedProperty
+     */
     protected function getValue(mixed $value): bool|int|float|string|null
     {
         return match (true) {
