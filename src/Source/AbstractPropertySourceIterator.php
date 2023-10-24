@@ -43,7 +43,8 @@ abstract class AbstractPropertySourceIterator implements \Iterator
      */
     public function __construct(
         protected array $fields,
-        protected string $dateTimeFormat = 'r'
+        protected string $dateTimeFormat = 'r',
+        protected bool $useBackedEnumValue = true
     ) {
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
     }
@@ -83,6 +84,16 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     public function getDateTimeFormat(): string
     {
         return $this->dateTimeFormat;
+    }
+
+    public function useBackedEnumValue(bool $useBackedEnumValue): void
+    {
+        $this->useBackedEnumValue = $useBackedEnumValue;
+    }
+
+    public function isBackedEnumValueInUse(): bool
+    {
+        return $this->useBackedEnumValue;
     }
 
     protected function getIterator(): \Iterator
@@ -126,6 +137,8 @@ abstract class AbstractPropertySourceIterator implements \Iterator
             $value instanceof \Traversable => '['.implode(', ', array_map([$this, 'getValue'], iterator_to_array($value))).']',
             $value instanceof \DateTimeInterface => $value->format($this->dateTimeFormat),
             $value instanceof \DateInterval => $this->getDuration($value),
+            $value instanceof \BackedEnum && $this->useBackedEnumValue => $value->value,
+            $value instanceof \UnitEnum => $value->name,
             \is_object($value) => method_exists($value, '__toString') ? (string) $value : null,
             default => $value,
         };
