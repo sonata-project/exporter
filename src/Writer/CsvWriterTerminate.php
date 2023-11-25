@@ -21,16 +21,16 @@ final class CsvWriterTerminate extends \php_user_filter
     /**
      * @param resource $in
      * @param resource $out
-     * @param int      $consumed
+     * @param int      $rw_consumed
      * @param bool     $closing
      */
-    public function filter($in, $out, &$consumed, $closing): int
+    public function filter($in, $out, &$rw_consumed, $closing): int
     {
         while ($bucket = stream_bucket_make_writeable($in)) {
             if (isset($this->params['terminate'])) {
                 $bucket->data = preg_replace('/([^\r])\n/', '$1'.$this->params['terminate'], $bucket->data);
             }
-            $consumed += $bucket->datalen;
+            $rw_consumed += $bucket->datalen;
             stream_bucket_append($out, $bucket);
         }
 
