@@ -25,13 +25,20 @@ final class DoctrineODMQuerySourceIterator extends AbstractPropertySourceIterato
     public function __construct(
         Query $query,
         array $fields,
-        string $dateTimeFormat = \DateTimeInterface::ATOM,
+        ?string $dateTimeFormat = null,
         private int $batchSize = 100,
-        bool $useBackedEnumValue = true
+        ?bool $useBackedEnumValue = null,
+        bool $disableSourceFormatters = false
     ) {
         $this->query = clone $query;
 
-        parent::__construct($fields, $dateTimeFormat, $useBackedEnumValue);
+        parent::__construct($fields, $dateTimeFormat, $useBackedEnumValue, $disableSourceFormatters);
+
+        // NEXT_MAJOR: Remove this condition.
+        if (null === $dateTimeFormat) {
+            /** @psalm-suppress DeprecatedProperty */
+            $this->dateTimeFormat = \DateTimeInterface::ATOM;
+        }
     }
 
     /**

@@ -17,6 +17,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -60,6 +61,14 @@ final class SonataExporterExtension extends Extension
     private function configureWriters(ContainerBuilder $container, array $config): void
     {
         foreach ($config as $format => $settings) {
+            if ($container->hasDefinition('sonata.exporter.writer.'.$format)) {
+                $writer = $container->getDefinition('sonata.exporter.writer.'.$format);
+
+                foreach ($config[$format]['formatters'] as $formatter) {
+                    $writer->addMethodCall('addFormatter', [new Reference('sonata.exporter.formatter.'.$formatter)]);
+                }
+            }
+
             foreach ($settings as $key => $value) {
                 $container->setParameter(sprintf(
                     'sonata.exporter.writer.%s.%s',

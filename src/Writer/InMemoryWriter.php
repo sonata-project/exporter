@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Writer;
 
-final class InMemoryWriter implements WriterInterface
+final class InMemoryWriter extends AbstractWriter implements WriterInterface
 {
     /**
      * @var array<mixed>
@@ -32,7 +32,7 @@ final class InMemoryWriter implements WriterInterface
 
     public function write(array $data): void
     {
-        $this->elements[] = $data;
+        $this->elements[] = $this->format($data);
     }
 
     /**

@@ -19,7 +19,7 @@ use Sonata\Exporter\Exception\RuntimeException;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-final class XmlWriter implements TypedWriterInterface
+final class XmlWriter extends AbstractWriter implements TypedWriterInterface
 {
     /**
      * @var resource|null
@@ -78,8 +78,8 @@ final class XmlWriter implements TypedWriterInterface
     {
         fwrite($this->getFile(), sprintf("<%s>\n", $this->childElement));
 
-        foreach ($data as $k => $v) {
-            $this->generateNode($k, $v);
+        foreach ($this->format($data) as $k => $v) {
+            $this->generateNode((string) $k, $v);
         }
 
         fwrite($this->getFile(), sprintf("</%s>\n", $this->childElement));
@@ -92,11 +92,13 @@ final class XmlWriter implements TypedWriterInterface
     {
         if (\is_array($value)) {
             throw new RuntimeException('Not implemented');
-        } elseif (\is_scalar($value) || null === $value) {
-            fwrite($this->getFile(), sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
-        } else {
+        }
+
+        if (!\is_scalar($value) && null !== $value) {
             throw new InvalidDataFormatException('Invalid data');
         }
+
+        fwrite($this->getFile(), sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
     }
 
     /**

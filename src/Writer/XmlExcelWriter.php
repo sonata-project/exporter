@@ -18,7 +18,7 @@ namespace Sonata\Exporter\Writer;
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
  */
-final class XmlExcelWriter implements WriterInterface
+final class XmlExcelWriter extends AbstractWriter implements WriterInterface
 {
     /**
      * @var resource|null
@@ -71,7 +71,7 @@ final class XmlExcelWriter implements WriterInterface
             ++$this->position;
         }
 
-        fwrite($this->getFile(), $this->getXmlString($data));
+        fwrite($this->getFile(), $this->getXmlString($this->format($data)));
         ++$this->position;
     }
 

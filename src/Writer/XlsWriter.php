@@ -16,7 +16,7 @@ namespace Sonata\Exporter\Writer;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-final class XlsWriter implements TypedWriterInterface
+final class XlsWriter extends AbstractWriter implements TypedWriterInterface
 {
     /**
      * @var resource|null
@@ -77,9 +77,10 @@ final class XlsWriter implements TypedWriterInterface
         $this->init($data);
 
         fwrite($this->getFile(), '<tr>');
-        foreach ($data as $value) {
+        foreach ($this->format($data) as $value) {
             fwrite($this->getFile(), sprintf('<td>%s</td>', $value));
         }
+
         fwrite($this->getFile(), '</tr>');
 
         ++$this->position;

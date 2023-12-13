@@ -21,6 +21,10 @@ use Sonata\Exporter\Writer\TypedWriterInterface;
  * Format boolean before use another writer.
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
+ *
+ * @group legacy
+ *
+ * @psalm-suppress DeprecatedClass
  */
 final class FormattedBoolWriterTest extends TestCase
 {

@@ -50,12 +50,16 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
             ->execute();
     }
 
+    /**
+     * @group legacy
+     */
     public function testGetDateTimeFormat(): void
     {
         $query = $this->dm->createQueryBuilder(Document::class)->getQuery();
 
         $iterator = new DoctrineODMQuerySourceIterator($query, []);
 
+        /** @psalm-suppress DeprecatedMethod */
         static::assertSame(\DateTimeInterface::ATOM, $iterator->getDateTimeFormat());
     }
 
@@ -76,7 +80,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         $query = $this->dm->createQueryBuilder(Document::class)->getQuery();
 
         $batchSize = 2;
-        $iterator = new DoctrineODMQuerySourceIterator($query, ['id'], 'r', $batchSize);
+        $iterator = new DoctrineODMQuerySourceIterator($query, ['id'], null, $batchSize);
 
         foreach ($iterator as $i => $item) {
             static::assertSame(0 === $i % $batchSize ? 0 : $i, $this->dm->getUnitOfWork()->size());

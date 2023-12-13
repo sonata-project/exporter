@@ -1,8 +1,8 @@
 ===============
-Sonata exporter
+Sonata Exporter
 ===============
 
-Sonata exporter allows you to convert large amount of data from a source to an output format
+Sonata Exporter allows you to convert large amount of data from a source to an output format
 (most generally to a file) by streaming it (hence avoiding too much memory consumption).
 
 Usage

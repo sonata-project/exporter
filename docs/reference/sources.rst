@@ -4,16 +4,16 @@ Sources
 
 You may export data from various sources:
 
-* PHP Array
+* Chain (can aggregate data from several different iterators)
 * CSV
 * Doctrine Query (ORM & ODM supported)
 * PDO Statement
+* PHP Array
 * PHP Iterator instance
 * PHP Iterator with a callback on current
-* XML
-* Excel XML
-* XLSX (SpreadsheetML format for Microsoft Excel)
 * Sitemap (Takes another iterator)
-* Chain (can aggregate data from several different iterators)
+* XML
+* XLS XML
+* XLSX (SpreadsheetML format for Microsoft Excel)
 
 You may also create your own. To do so, create a class that implements ``\Iterator``.
