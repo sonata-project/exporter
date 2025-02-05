@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.3.1](https://github.com/sonata-project/exporter/compare/3.3.0...3.3.1) - 2025-02-05
+### Fixed
+- [[#671](https://github.com/sonata-project/exporter/pull/671)] Symfony 7.1 deprecation about `Symfony\Component\HttpKernel\DependencyInjection\Extension` usage ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [3.3.0](https://github.com/sonata-project/exporter/compare/3.2.0...3.3.0) - 2023-10-23
 ### Added
 - [[#648](https://github.com/sonata-project/exporter/pull/648)] Support for enum types in exported values ([@phansys](https://github.com/phansys))
