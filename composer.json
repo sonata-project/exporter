@@ -27,7 +27,7 @@
     "require-dev": {
         "doctrine/dbal": "^3.1",
         "doctrine/mongodb-odm": "^2.3",
-        "doctrine/orm": "^2.14",
+        "doctrine/orm": "^2.14 || ^3.0",
         "friendsofphp/php-cs-fixer": "^3.4",
         "matthiasnoback/symfony-config-test": "^4.2 || ^5.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0 || ^5.0",
