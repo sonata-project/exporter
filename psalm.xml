@@ -13,5 +13,6 @@
     </plugins>
     <issueHandlers>
         <MissingClassConstType errorLevel="suppress"/>
+        <MissingOverrideAttribute errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
