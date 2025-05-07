@@ -26,12 +26,17 @@ final class CsvWriterTerminate extends \php_user_filter
      */
     public function filter($in, $out, &$consumed, $closing): int
     {
-        while ($bucket = stream_bucket_make_writeable($in)) {
+        $bucket = stream_bucket_make_writeable($in);
+        while (null !== $bucket) {
             if (isset($this->params['terminate'])) {
-                $bucket->data = preg_replace('/([^\r])\n/', '$1'.$this->params['terminate'], $bucket->data);
+                $newData = preg_replace('/([^\r])\n/', '$1'.$this->params['terminate'], $bucket->data);
+                if (null !== $newData) {
+                    $bucket->data = $newData;
+                }
             }
             $consumed += (int) $bucket->datalen;
             stream_bucket_append($out, $bucket);
+            $bucket = stream_bucket_make_writeable($in);
         }
 
         return \PSFS_PASS_ON;

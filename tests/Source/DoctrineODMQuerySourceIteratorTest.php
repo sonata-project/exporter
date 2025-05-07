@@ -79,6 +79,7 @@ final class DoctrineODMQuerySourceIteratorTest extends TestCase
         $iterator = new DoctrineODMQuerySourceIterator($query, ['id'], 'r', $batchSize);
 
         foreach ($iterator as $i => $item) {
+            // @phpstan-ignore-next-line method.internal
             static::assertSame(0 === $i % $batchSize ? 0 : $i, $this->dm->getUnitOfWork()->size());
         }
     }

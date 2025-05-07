@@ -45,17 +45,27 @@ final class ChainSourceIterator implements \Iterator
      */
     public function current(): array
     {
-        return $this->sources->current()->current();
+        $current = $this->sources->current();
+        \assert(null !== $current);
+
+        return $current->current();
     }
 
     public function next(): void
     {
-        $this->sources->current()->next();
+        if ($this->sources->valid()) {
+            $current = $this->sources->current();
+            \assert(null !== $current);
+            $current->next();
+        }
     }
 
     public function key(): mixed
     {
-        return $this->sources->current()->key();
+        $current = $this->sources->current();
+        \assert(null !== $current);
+
+        return $current->key();
     }
 
     public function valid(): bool
@@ -64,14 +74,18 @@ final class ChainSourceIterator implements \Iterator
             return false;
         }
 
-        while (!$this->sources->current()->valid()) {
+        $current = $this->sources->current();
+        \assert(null !== $current);
+        while (!$current->valid()) {
             $this->sources->next();
 
             if (!$this->sources->valid()) {
                 return false;
             }
 
-            $this->sources->current()->rewind();
+            $current = $this->sources->current();
+            \assert(null !== $current);
+            $current->rewind();
         }
 
         return true;
@@ -80,7 +94,9 @@ final class ChainSourceIterator implements \Iterator
     public function rewind(): void
     {
         if ($this->sources->valid()) {
-            $this->sources->current()->rewind();
+            $current = $this->sources->current();
+            \assert(null !== $current);
+            $current->rewind();
         }
     }
 }

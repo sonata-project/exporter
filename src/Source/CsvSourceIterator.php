@@ -31,14 +31,14 @@ final class CsvSourceIterator implements \Iterator
     private $file;
 
     /**
-     * @var array<string>
+     * @var array<string|null>
      */
     private array $columns = [];
 
     private int $position = 0;
 
     /**
-     * @var array<string>|false
+     * @var array<string|null>|false
      */
     private array|false $currentLine = [];
 
@@ -70,13 +70,14 @@ final class CsvSourceIterator implements \Iterator
     {
         \assert(\is_resource($this->file));
 
+        /** @var list<string|null>|false $line */
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
         ++$this->position;
         if ($this->hasHeaders && \is_array($line)) {
             $data = [];
             foreach ($line as $key => $value) {
-                $data[$this->columns[$key]] = $value;
+                $data[$this->columns[$key] ?? ''] = $value;
             }
             $this->currentLine = $data;
         }
@@ -88,19 +89,23 @@ final class CsvSourceIterator implements \Iterator
         if (false === $file) {
             throw new \Exception(\sprintf('Cannot open file %s.', $this->filename));
         }
-        $this->file = $file;
 
+        $this->file = $file;
         $this->position = 0;
+
+        /** @var list<string|null>|false $line */
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         if ($this->hasHeaders && \is_array($line)) {
             $this->columns = $line;
+            /** @var list<string|null>|false $line */
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }
+
         $this->currentLine = $line;
         if ($this->hasHeaders && \is_array($line)) {
             $data = [];
             foreach ($line as $key => $value) {
-                $data[$this->columns[$key]] = $value;
+                $data[$this->columns[$key] ?? ''] = $value;
             }
             $this->currentLine = $data;
         }
