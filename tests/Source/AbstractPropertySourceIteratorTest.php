@@ -73,11 +73,6 @@ final class AbstractPropertySourceIteratorTest extends TestCase
         yield [new \DateInterval('P1Y1M1DT1H1M1S'), 'P1Y1M1DT1H1M1S'];
         yield [new \DateInterval('P0Y'), 'P0Y'];
         yield [new \DateInterval('PT0S'), 'P0Y'];
-
-        if (\PHP_VERSION_ID < 80100) {
-            return;
-        }
-
         yield [Element::Hydrogen, 'Hydrogen'];
         yield [Suit::Diamonds, 'D'];
         yield [Suit::Diamonds, 'Diamonds', 'r', false];
