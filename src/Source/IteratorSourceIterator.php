@@ -37,7 +37,10 @@ class IteratorSourceIterator implements \Iterator
      */
     public function current(): array
     {
-        return $this->iterator->current();
+        $current = $this->iterator->current();
+        \assert(null !== $current);
+
+        return $current;
     }
 
     final public function next(): void
