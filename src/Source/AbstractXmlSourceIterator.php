@@ -103,7 +103,6 @@ abstract class AbstractXmlSourceIterator implements \Iterator
     final public function rewind(): void
     {
         $this->parser = xml_parser_create();
-        xml_set_object($this->parser, $this);
         xml_set_element_handler($this->parser, $this->tagStart(...), $this->tagEnd(...));
         xml_set_character_data_handler($this->parser, $this->tagContent(...));
         xml_parser_set_option($this->parser, \XML_OPTION_CASE_FOLDING, 0);
