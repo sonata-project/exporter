@@ -44,8 +44,8 @@ final class CsvWriterTerminateTest extends TestCase
 
         stream_filter_register('filter', CsvWriterTerminate::class);
         stream_filter_append($file, 'filter', \STREAM_FILTER_WRITE, ['terminate' => "\r\n"]);
-        @fputcsv($file, ['john', 'doe', '1']);
-        @fputcsv($file, ['john', 'doe', '2']);
+        @fputcsv($file, ['john', 'doe', '1'], escape: '\\');
+        @fputcsv($file, ['john', 'doe', '2'], escape: '\\');
         fclose($file);
 
         $expected = "john,doe,1\r\njohn,doe,2";
