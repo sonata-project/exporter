@@ -80,6 +80,7 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
      */
     private function createConnection(): Connection
     {
+        // @phpstan-ignore-next-line method.internalClass
         return new Connection([], new Driver\PDO\SQLite\Driver());
     }
 }

@@ -34,7 +34,7 @@ final class CsvWriterTerminate extends \php_user_filter
                     $bucket->data = $newData;
                 }
             }
-            $consumed += (int) $bucket->datalen;
+            $consumed += $bucket->datalen;
             stream_bucket_append($out, $bucket);
             $bucket = stream_bucket_make_writeable($in);
         }
