@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Exporter;
 use Sonata\Exporter\Source\ArraySourceIterator;
@@ -57,9 +58,7 @@ final class ExporterTest extends TestCase
         static::assertSame(['whatever'], $exporter->getAvailableFormats());
     }
 
-    /**
-     * @dataProvider provideGetResponseCases
-     */
+    #[DataProvider('provideGetResponseCases')]
     public function testGetResponse(string $format, string $filename, string $contentType, string $expectedOutput): void
     {
         $source = new ArraySourceIterator([
@@ -92,7 +91,7 @@ final class ExporterTest extends TestCase
     /**
      * @return iterable<array{string, string, string, string}>
      */
-    public function provideGetResponseCases(): iterable
+    public static function provideGetResponseCases(): iterable
     {
         yield ['json', 'foo.json', 'application/json', '#foo#'];
         yield ['xml', 'foo.xml', 'text/xml', '#foo#'];

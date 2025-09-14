@@ -13,14 +13,13 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\ChainSourceIterator;
 
 final class ChainSourceIteratorTest extends TestCase
 {
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testIterator(): void
     {
         $source = $this->createMock(\Iterator::class);
@@ -31,9 +30,7 @@ final class ChainSourceIteratorTest extends TestCase
         }
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testEmptyIterator(): void
     {
         $iterator = new ChainSourceIterator([]);

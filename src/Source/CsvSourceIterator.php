@@ -70,7 +70,7 @@ final class CsvSourceIterator implements \Iterator
     {
         \assert(\is_resource($this->file));
 
-        /** @var list<string|null>|false $line */
+        /** @var non-empty-list<string|null>|false $line */
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
         ++$this->position;
@@ -93,11 +93,11 @@ final class CsvSourceIterator implements \Iterator
         $this->file = $file;
         $this->position = 0;
 
-        /** @var list<string|null>|false $line */
+        /** @var non-empty-list<string|null>|false $line */
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         if ($this->hasHeaders && \is_array($line)) {
             $this->columns = $line;
-            /** @var list<string|null>|false $line */
+            /** @var non-empty-list<string|null>|false $line */
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }
 
