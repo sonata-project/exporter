@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\AbstractPropertySourceIterator;
 use Sonata\Exporter\Tests\Source\Fixtures\Element;
@@ -21,9 +22,7 @@ use Sonata\Exporter\Tests\Source\Fixtures\Suit;
 
 final class AbstractPropertySourceIteratorTest extends TestCase
 {
-    /**
-     * @dataProvider provideGetValueCases
-     */
+    #[DataProvider('provideGetValueCases')]
     public function testGetValue(mixed $value, mixed $expected, string $dateFormat = 'r', bool $useBackedEnumValue = true): void
     {
         $iterator = new class([], $dateFormat, $useBackedEnumValue) extends AbstractPropertySourceIterator {
@@ -45,7 +44,7 @@ final class AbstractPropertySourceIteratorTest extends TestCase
     /**
      * @return iterable<array{0: mixed, 1: mixed, 2?: string, 3?: bool}>
      */
-    public function provideGetValueCases(): iterable
+    public static function provideGetValueCases(): iterable
     {
         $datetime = new \DateTime();
         $dateTimeImmutable = new \DateTimeImmutable();
