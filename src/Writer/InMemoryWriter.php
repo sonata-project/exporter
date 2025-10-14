@@ -20,6 +20,9 @@ final class InMemoryWriter implements WriterInterface
      */
     private array $elements = [];
 
+    /**
+     * @phpstan-throws void
+     */
     public function open(): void
     {
         $this->elements = [];
@@ -30,6 +33,9 @@ final class InMemoryWriter implements WriterInterface
         unset($this->elements);
     }
 
+    /**
+     * @phpstan-throws void
+     */
     public function write(array $data): void
     {
         $this->elements[] = $data;
