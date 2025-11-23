@@ -16,9 +16,6 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @psalm-suppress ClassMustBeFinal
- */
 #[ORM\Entity]
 class Entity
 {

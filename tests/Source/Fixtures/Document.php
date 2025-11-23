@@ -15,9 +15,6 @@ namespace Sonata\Exporter\Tests\Source\Fixtures;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-/**
- * @psalm-suppress ClassMustBeFinal
- */
 #[ODM\Document]
 class Document
 {

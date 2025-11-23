@@ -37,9 +37,6 @@ final class ExporterTest extends TestCase
         $exporter->getResponse('foo', 'foo', $source);
     }
 
-    /**
-     * @psalm-suppress InvalidArgument
-     */
     public function testConstructorRejectsNonTypedWriters(): void
     {
         $this->expectException(\TypeError::class);

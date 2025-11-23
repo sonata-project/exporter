@@ -61,11 +61,6 @@ final class XlsWriter implements TypedWriterInterface
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     public function close(): void
     {
         fwrite($this->getFile(), '</table></body></html>');

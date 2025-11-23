@@ -76,11 +76,6 @@ final class CsvWriter implements TypedWriterInterface
         }
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     public function close(): void
     {
         fclose($this->getFile());

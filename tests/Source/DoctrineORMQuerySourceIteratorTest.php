@@ -32,9 +32,22 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
             static::markTestSkipped('The sqlite extension is not available.');
         }
 
+        /* @phpstan-ignore function.alreadyNarrowedType */
+        if (method_exists(ORMSetup::class, 'createAttributeMetadataConfig')) {
+            $config = ORMSetup::createAttributeMetadataConfig([], true);
+            if (\PHP_VERSION_ID >= 80400) {
+                $config->enableNativeLazyObjects(true);
+            } else {
+                $config->setProxyDir(sys_get_temp_dir());
+                $config->setProxyNamespace('Sonata');
+            }
+        } else {
+            $config = ORMSetup::createAttributeMetadataConfiguration([], true);
+        }
+
         $this->em = new EntityManager(
             $this->createConnection(),
-            ORMSetup::createAttributeMetadataConfiguration([], true),
+            $config,
         );
 
         $schemaTool = new SchemaTool($this->em);
@@ -55,9 +68,11 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        $this->em
-            ->createQuery('DELETE FROM '.Entity::class)
-            ->execute();
+        if (\extension_loaded('pdo_sqlite') && class_exists(Driver\PDO\SQLite\Driver::class)) {
+            $this->em
+                ->createQuery('DELETE FROM '.Entity::class)
+                ->execute();
+        }
     }
 
     public function testEntityManagerClear(): void
@@ -75,9 +90,6 @@ final class DoctrineORMQuerySourceIteratorTest extends TestCase
         }
     }
 
-    /**
-     * @psalm-suppress InternalMethod
-     */
     private function createConnection(): Connection
     {
         // @phpstan-ignore-next-line method.internalClass

@@ -162,11 +162,10 @@ abstract class AbstractXmlSourceIterator implements \Iterator
 
         $this->currentRowEnded = false;
 
-        /**
+        /*
          * Read file until row is ended
          * The currentRowEnded value is updated when parsing the data.
          *
-         * @psalm-suppress RedundantCondition
          * @phpstan-ignore-next-line
          */
         while (!$this->currentRowEnded && !feof($this->file)) {
