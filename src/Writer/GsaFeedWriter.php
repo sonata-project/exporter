@@ -131,11 +131,6 @@ final class GsaFeedWriter implements WriterInterface
         $this->bufferSize += $written;
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     private function closeFeed(): void
     {
         fwrite(

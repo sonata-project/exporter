@@ -22,15 +22,15 @@
     ],
     "homepage": "https://docs.sonata-project.org/projects/exporter",
     "require": {
-        "php": "^8.1"
+        "php": "^8.2"
     },
     "require-dev": {
-        "doctrine/dbal": "^3.1",
-        "doctrine/mongodb-odm": "^2.3",
+        "doctrine/dbal": "^3.1 || ^4.0",
+        "doctrine/mongodb-odm": "^2.15.1",
         "doctrine/orm": "^2.14 || ^3.0",
         "friendsofphp/php-cs-fixer": "^3.4",
         "matthiasnoback/symfony-config-test": "^6.1",
-        "matthiasnoback/symfony-dependency-injection-test": "^6.1",
+        "matthiasnoback/symfony-dependency-injection-test": "dev-ci-updates as 6.1.0.1",
         "phpoffice/phpspreadsheet": "^1.23",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpdoc-parser": "^1.0",
@@ -38,17 +38,15 @@
         "phpstan/phpstan-phpunit": "^1.0 || ^2.0",
         "phpstan/phpstan-strict-rules": "^1.0 || ^2.0",
         "phpstan/phpstan-symfony": "^1.0 || ^2.0",
-        "phpunit/phpunit": "^10.5.54 || ^11.5.38 || ^12.3.10",
-        "psalm/plugin-phpunit": "^0.18 || ^0.19",
-        "psalm/plugin-symfony": "^5.0",
+        "phpunit/phpunit": "^11.5.38 || ^12.3.10",
         "rector/rector": "^1.1 || ^2.0",
-        "symfony/config": "^6.4 || ^7.1",
-        "symfony/dependency-injection": "^6.4 || ^7.1",
-        "symfony/http-foundation": "^6.4 || ^7.1",
-        "symfony/http-kernel": "^6.4 || ^7.1",
-        "symfony/property-access": "^6.4 || ^7.1",
-        "symfony/routing": "^6.4 || ^7.1",
-        "vimeo/psalm": "^5.0 || ^6.10"
+        "symfony/cache": "^6.4 || ^7.3 || ^8.0",
+        "symfony/config": "^6.4 || ^7.3 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.3 || ^8.0",
+        "symfony/http-foundation": "^6.4 || ^7.3 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.3 || ^8.0",
+        "symfony/property-access": "^6.4 || ^7.3 || ^8.0",
+        "symfony/routing": "^6.4 || ^7.3 || ^8.0"
     },
     "conflict": {
         "doctrine/mongodb-odm": "<2.3",
@@ -61,6 +59,12 @@
         "symfony/property-access": "To be able to export from database entities",
         "symfony/routing": "To be able to export the routes of a Symfony app"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:dmaicher/SymfonyDependencyInjectionTest.git"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {

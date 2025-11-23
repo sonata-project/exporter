@@ -335,11 +335,6 @@ final class SitemapWriter implements WriterInterface
         return $result;
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     private function closeSitemap(): void
     {
         fwrite($this->getBuffer(), '</urlset>');
