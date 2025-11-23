@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.4.0](https://github.com/sonata-project/exporter/compare/3.3.1...3.4.0) - 2025-11-23
+### Added
+- [[#698](https://github.com/sonata-project/exporter/pull/698)] Support for Symfony 8 ([@dmaicher](https://github.com/dmaicher))
+
+### Fixed
+- [[#698](https://github.com/sonata-project/exporter/pull/698)] Compatibility for `DoctrineDBALConnectionSourceIterator` with `doctrine/dbal` 4 ([@dmaicher](https://github.com/dmaicher))
+
+### Removed
+- [[#698](https://github.com/sonata-project/exporter/pull/698)] Support for PHP 8.1 ([@dmaicher](https://github.com/dmaicher))
+- [[#698](https://github.com/sonata-project/exporter/pull/698)] Support for Symfony 7.1 and 7.2 ([@dmaicher](https://github.com/dmaicher))
+
 ## [3.3.1](https://github.com/sonata-project/exporter/compare/3.3.0...3.3.1) - 2025-02-05
 ### Fixed
 - [[#671](https://github.com/sonata-project/exporter/pull/671)] Symfony 7.1 deprecation about `Symfony\Component\HttpKernel\DependencyInjection\Extension` usage ([@VincentLanglet](https://github.com/VincentLanglet))
