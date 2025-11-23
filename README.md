@@ -10,7 +10,6 @@ Lightweight Exporter library
 
 [![Latest Stable Version](https://poser.pugx.org/sonata-project/exporter/v/stable)](https://packagist.org/packages/sonata-project/exporter)
 [![Latest Unstable Version](https://poser.pugx.org/sonata-project/exporter/v/unstable)](https://packagist.org/packages/sonata-project/exporter)
-[![Psalm Type Coverage][shepherd_stable_badge]][shepherd_stable_link]
 [![License](https://poser.pugx.org/sonata-project/exporter/license)](https://packagist.org/packages/sonata-project/exporter)
 
 [![Total Downloads](https://poser.pugx.org/sonata-project/exporter/downloads)](https://packagist.org/packages/sonata-project/exporter)
