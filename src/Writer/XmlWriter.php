@@ -63,11 +63,6 @@ final class XmlWriter implements TypedWriterInterface
         fwrite($this->file, \sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     public function close(): void
     {
         fwrite($this->getFile(), \sprintf('</%s>', $this->mainElement));

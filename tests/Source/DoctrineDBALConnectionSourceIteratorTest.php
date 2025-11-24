@@ -29,11 +29,11 @@ final class DoctrineDBALConnectionSourceIteratorTest extends TestCase
 
     public function testRewindWithEmptyQuery(): void
     {
-        $connection = DriverManager::getConnection(['url' => 'sqlite:///:memory:']);
+        $connection = DriverManager::getConnection(['driver' => 'pdo_sqlite', 'path' => ':memory:']);
 
-        $iterator = new DoctrineDBALConnectionSourceIterator($connection, ' ');
+        $iterator = new DoctrineDBALConnectionSourceIterator($connection, 'SELECT :param AS foo', ['param' => '1']);
         $iterator->rewind();
 
-        static::assertCount(0, iterator_to_array($iterator));
+        static::assertSame([2 => ['foo' => '1']], iterator_to_array($iterator));
     }
 }

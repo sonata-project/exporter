@@ -70,9 +70,7 @@ final class DoctrineDBALConnectionSourceIterator implements \Iterator
 
     public function rewind(): void
     {
-        $statement = $this->connection->prepare($this->query);
-
-        $this->result = $statement->executeQuery($this->parameters);
+        $this->result = $this->connection->executeQuery($this->query, $this->parameters);
 
         $this->next();
     }

@@ -59,11 +59,6 @@ final class JsonWriter implements TypedWriterInterface
         fwrite($this->file, '[');
     }
 
-    /**
-     * @psalm-suppress InvalidPassByReference
-     *
-     * @see https://github.com/vimeo/psalm/issues/7505
-     */
     public function close(): void
     {
         fwrite($this->getFile(), ']');
