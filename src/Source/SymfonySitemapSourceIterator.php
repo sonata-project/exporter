@@ -22,7 +22,8 @@ use Symfony\Component\Routing\RouterInterface;
 final class SymfonySitemapSourceIterator implements \Iterator
 {
     /**
-     * @param array<string, mixed> $parameters
+     * @param \Iterator<array<mixed>> $source
+     * @param array<string, mixed>    $parameters
      */
     public function __construct(
         private \Iterator $source,

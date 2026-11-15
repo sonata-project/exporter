@@ -19,12 +19,12 @@ namespace Sonata\Exporter\Source;
 final class ChainSourceIterator implements \Iterator
 {
     /**
-     * @var \ArrayIterator<array-key, \Iterator>
+     * @var \ArrayIterator<array-key, \Iterator<array<mixed>>>
      */
     private \ArrayIterator $sources;
 
     /**
-     * @param array<\Iterator> $sources
+     * @param array<\Iterator<array<mixed>>> $sources
      */
     public function __construct(array $sources = [])
     {
@@ -35,6 +35,9 @@ final class ChainSourceIterator implements \Iterator
         }
     }
 
+    /**
+     * @param \Iterator<array<mixed>> $source
+     */
     public function addSource(\Iterator $source): void
     {
         $this->sources->append($source);

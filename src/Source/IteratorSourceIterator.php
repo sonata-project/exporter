@@ -27,6 +27,9 @@ class IteratorSourceIterator implements \Iterator
     {
     }
 
+    /**
+     * @return \Iterator<mixed, array<mixed>>
+     */
     final public function getIterator(): \Iterator
     {
         return $this->iterator;

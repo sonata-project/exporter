@@ -127,7 +127,7 @@ final class GsaFeedWriterTest extends TestCase
         $writer = new GsaFeedWriter($this->folder, $this->dtd, $this->datasource, $this->feedtype);
         $writer->open();
 
-        foreach (range(0, GsaFeedWriter::LIMIT_SIZE / 8196) as $i) {
+        for ($i = 0; $i <= GsaFeedWriter::LIMIT_SIZE / 8196; ++$i) {
             $writer->write([
                 'url' => str_repeat('x', 8196),
                 'mime_type' => 'text/html',

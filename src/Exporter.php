@@ -39,6 +39,8 @@ final class Exporter implements ExporterInterface
     }
 
     /**
+     * @param \Iterator<array<mixed>> $source
+     *
      * @throws \RuntimeException
      */
     public function getResponse(string $format, string $filename, \Iterator $source): StreamedResponse

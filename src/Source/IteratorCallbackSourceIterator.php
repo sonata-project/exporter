@@ -21,8 +21,8 @@ namespace Sonata\Exporter\Source;
 final class IteratorCallbackSourceIterator extends IteratorSourceIterator
 {
     /**
-     * @param \Iterator $iterator    Iterator with string array elements
-     * @param \Closure  $transformer Altering a data row
+     * @param \Iterator<mixed, array<mixed>> $iterator    Iterator with string array elements
+     * @param \Closure                       $transformer Altering a data row
      */
     public function __construct(
         \Iterator $iterator,
