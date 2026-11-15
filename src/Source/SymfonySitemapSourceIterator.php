@@ -41,9 +41,7 @@ final class SymfonySitemapSourceIterator implements \Iterator
 
         $parameters = array_merge($this->parameters, array_intersect_key($data, $this->parameters));
 
-        if (!isset($data['url'])) {
-            $data['url'] = $this->router->generate($this->routeName, $parameters, UrlGeneratorInterface::ABSOLUTE_URL);
-        }
+        $data['url'] ??= $this->router->generate($this->routeName, $parameters, UrlGeneratorInterface::ABSOLUTE_URL);
 
         return $data;
     }

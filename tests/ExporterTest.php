@@ -30,8 +30,8 @@ final class ExporterTest extends TestCase
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Invalid "foo" format');
-        $source = $this->createMock(\Iterator::class);
-        $writer = $this->createMock(TypedWriterInterface::class);
+        $source = static::createStub(\Iterator::class);
+        $writer = static::createStub(TypedWriterInterface::class);
 
         $exporter = new Exporter([$writer]);
         $exporter->getResponse('foo', 'foo', $source);

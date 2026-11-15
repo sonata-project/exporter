@@ -133,8 +133,8 @@ abstract class AbstractPropertySourceIterator implements \Iterator
     protected function getValue(mixed $value): bool|int|float|string|null
     {
         return match (true) {
-            \is_array($value) => '['.implode(', ', array_map([$this, 'getValue'], $value)).']',
-            $value instanceof \Traversable => '['.implode(', ', array_map([$this, 'getValue'], iterator_to_array($value))).']',
+            \is_array($value) => '['.implode(', ', array_map($this->getValue(...), $value)).']',
+            $value instanceof \Traversable => '['.implode(', ', array_map($this->getValue(...), iterator_to_array($value))).']',
             $value instanceof \DateTimeInterface => $value->format($this->dateTimeFormat),
             $value instanceof \DateInterval => $this->getDuration($value),
             $value instanceof \BackedEnum && $this->useBackedEnumValue => $value->value,
