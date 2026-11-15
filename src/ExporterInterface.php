@@ -22,5 +22,8 @@ interface ExporterInterface
      */
     public function getAvailableFormats(): array;
 
+    /**
+     * @param \Iterator<array<mixed>> $source
+     */
     public function getResponse(string $format, string $filename, \Iterator $source): StreamedResponse;
 }

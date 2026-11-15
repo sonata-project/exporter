@@ -13,29 +13,24 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Tests\Source;
 
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\TestCase;
 use Sonata\Exporter\Source\ChainSourceIterator;
 
 final class ChainSourceIteratorTest extends TestCase
 {
-    #[DoesNotPerformAssertions]
     public function testIterator(): void
     {
         $source = static::createStub(\Iterator::class);
 
         $iterator = new ChainSourceIterator([$source]);
 
-        foreach ($iterator as $data) {
-        }
+        static::assertSame([], iterator_to_array($iterator, false));
     }
 
-    #[DoesNotPerformAssertions]
     public function testEmptyIterator(): void
     {
         $iterator = new ChainSourceIterator([]);
 
-        foreach ($iterator as $data) {
-        }
+        static::assertSame([], iterator_to_array($iterator, false));
     }
 }

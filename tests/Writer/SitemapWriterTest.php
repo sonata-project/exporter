@@ -139,7 +139,7 @@ final class SitemapWriterTest extends TestCase
         $writer = new SitemapWriter($this->folder);
         $writer->open();
 
-        foreach (range(0, SitemapWriter::LIMIT_SIZE / 8196) as $i) {
+        for ($i = 0; $i <= SitemapWriter::LIMIT_SIZE / 8196; ++$i) {
             $writer->write([
                 'url' => str_repeat('x', 8196),
                 'lastmod' => 'now',
@@ -172,7 +172,7 @@ final class SitemapWriterTest extends TestCase
         $writer = new SitemapWriter($this->folder);
         $writer->open();
 
-        foreach (range(1, SitemapWriter::LIMIT_URL + 1) as $i) {
+        for ($i = 1; $i <= SitemapWriter::LIMIT_URL + 1; ++$i) {
             $writer->write([
                 'url' => str_repeat('x', 40),
                 'lastmod' => 'now',

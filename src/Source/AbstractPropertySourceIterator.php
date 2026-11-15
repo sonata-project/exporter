@@ -34,6 +34,9 @@ abstract class AbstractPropertySourceIterator implements \Iterator
         's' => 'S',
     ];
 
+    /**
+     * @var \Iterator<mixed>|null
+     */
     protected ?\Iterator $iterator = null;
 
     protected PropertyAccessor $propertyAccessor;
@@ -96,6 +99,9 @@ abstract class AbstractPropertySourceIterator implements \Iterator
         return $this->useBackedEnumValue;
     }
 
+    /**
+     * @return \Iterator<mixed>
+     */
     protected function getIterator(): \Iterator
     {
         if (null === $this->iterator) {

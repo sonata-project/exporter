@@ -17,6 +17,9 @@ use Sonata\Exporter\Writer\WriterInterface;
 
 final class Handler
 {
+    /**
+     * @param \Iterator<array<mixed>> $source
+     */
     public function __construct(
         private \Iterator $source,
         private WriterInterface $writer,
@@ -34,6 +37,9 @@ final class Handler
         $this->writer->close();
     }
 
+    /**
+     * @param \Iterator<array<mixed>> $source
+     */
     public static function create(\Iterator $source, WriterInterface $writer): self
     {
         return new self($source, $writer);
