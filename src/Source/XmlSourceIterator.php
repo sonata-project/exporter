@@ -38,9 +38,7 @@ final class XmlSourceIterator extends AbstractXmlSourceIterator
 
                 break;
             default:
-                if (!isset($this->columns[$this->currentColumnIndex])) {
-                    $this->columns[$this->currentColumnIndex] = $name;
-                }
+                $this->columns[$this->currentColumnIndex] ??= $name;
                 // set empty values when opening Cell tag
                 $this->bufferedRow['i_'.$this->currentRowIndex][$this->currentColumnIndex] = '';
 

@@ -22,7 +22,7 @@ final class ChainSourceIteratorTest extends TestCase
     #[DoesNotPerformAssertions]
     public function testIterator(): void
     {
-        $source = $this->createMock(\Iterator::class);
+        $source = static::createStub(\Iterator::class);
 
         $iterator = new ChainSourceIterator([$source]);
 

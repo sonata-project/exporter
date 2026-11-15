@@ -21,7 +21,7 @@ final class HandlerTest extends TestCase
 {
     public function testHandler(): void
     {
-        $source = $this->createMock(\Iterator::class);
+        $source = static::createStub(\Iterator::class);
         $writer = $this->createMock(WriterInterface::class);
         $writer->expects(static::once())->method('open');
         $writer->expects(static::once())->method('close');
